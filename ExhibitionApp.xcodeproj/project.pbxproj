@@ -563,7 +563,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionApp;
 				PRODUCT_NAME = "制作展アプリ";
-				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile for ExhibitionApp";
+				PROVISIONING_PROFILE_SPECIFIER = "Development Provision Profile for Exhibition";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -587,7 +587,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionApp;
 				PRODUCT_NAME = "制作展アプリ";
-				PROVISIONING_PROFILE_SPECIFIER = "Ad hoc Provisioning Profile for ExhibitionApp";
+				PROVISIONING_PROFILE_SPECIFIER = "Ad hoc Provision Profile for Exhibition";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
