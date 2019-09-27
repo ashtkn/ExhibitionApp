@@ -33,13 +33,10 @@
 		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
 		41D34EBF2339CECD0096188B /* TopCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D34EBE2339CECD0096188B /* TopCollectionViewCellModel.swift */; };
 		41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC42339DF090096188B /* RxSwift.framework */; };
-		41D34EC62339DF090096188B /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC42339DF090096188B /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC82339DF140096188B /* RxCocoa.framework */; };
-		41D34ECA2339DF140096188B /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC82339DF140096188B /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		41D34ECE2339E22F0096188B /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41D34ECD2339E22F0096188B /* DetailViewController.storyboard */; };
 		41D34ED02339E2420096188B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D34ECF2339E2420096188B /* DetailViewController.swift */; };
 		41D34ED22339E7C80096188B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34ED12339E7C80096188B /* RxRelay.framework */; };
-		41D34ED32339E7C80096188B /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34ED12339E7C80096188B /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C0F2334D86700552D40 /* UICollectionView+Extensions.swift */; };
 		41EA9C122334D9EA00552D40 /* TopCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EA9C112334D9EA00552D40 /* TopCollectionViewController.storyboard */; };
 		41EA9C202334E21600552D40 /* TopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C1F2334E21600552D40 /* TopCollectionViewController.swift */; };
@@ -47,22 +44,6 @@
 		41EA9C262334E2AF00552D40 /* TopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41EA9C242334E2AF00552D40 /* TopCollectionViewCell.xib */; };
 		41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C272334F57600552D40 /* NSObject+Extensions.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		41D34EC72339DF090096188B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				41D34ECA2339DF140096188B /* RxCocoa.framework in Embed Frameworks */,
-				41D34EC62339DF090096188B /* RxSwift.framework in Embed Frameworks */,
-				41D34ED32339E7C80096188B /* RxRelay.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		41270E9C233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -310,7 +291,6 @@
 				4186ADD723324192002F6A4C /* Frameworks */,
 				4186ADD823324192002F6A4C /* Resources */,
 				41D34EC22339DE410096188B /* ShellScript */,
-				41D34EC72339DF090096188B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -570,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P2SAHRC466;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -583,6 +564,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionApp;
 				PRODUCT_NAME = "制作展アプリ";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -592,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P2SAHRC466;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -605,6 +588,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionApp;
 				PRODUCT_NAME = "制作展アプリ";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
