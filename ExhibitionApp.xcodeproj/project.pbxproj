@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410F16E1233DF063004EA872 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410F16E0233DF062004EA872 /* Realm.framework */; };
+		410F16E2233DF063004EA872 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 410F16E0233DF062004EA872 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		410F16E4233DF06E004EA872 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410F16E3233DF06E004EA872 /* RealmSwift.framework */; };
+		410F16E5233DF06E004EA872 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 410F16E3233DF06E004EA872 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		410F16E7233DF087004EA872 /* Works.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410F16E6233DF087004EA872 /* Works.swift */; };
 		41270E9E233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270E9C233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift */; };
 		41270E9F233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41270E9D233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib */; };
 		41270EA1233A1DBD00B88732 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EA0233A1DBD00B88732 /* DetailViewModel.swift */; };
@@ -55,6 +60,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				410F16E2233DF063004EA872 /* Realm.framework in Embed Frameworks */,
+				410F16E5233DF06E004EA872 /* RealmSwift.framework in Embed Frameworks */,
 				41D34ECA2339DF140096188B /* RxCocoa.framework in Embed Frameworks */,
 				41D34EC62339DF090096188B /* RxSwift.framework in Embed Frameworks */,
 				41D34ED32339E7C80096188B /* RxRelay.framework in Embed Frameworks */,
@@ -65,6 +72,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		410F16E0233DF062004EA872 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		410F16E3233DF06E004EA872 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		410F16E6233DF087004EA872 /* Works.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Works.swift; sourceTree = "<group>"; };
 		41270E9C233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		41270E9D233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewGalleryCollectionViewCell.xib; sourceTree = "<group>"; };
 		41270EA0233A1DBD00B88732 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -110,6 +120,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				410F16E1233DF063004EA872 /* Realm.framework in Frameworks */,
+				410F16E4233DF06E004EA872 /* RealmSwift.framework in Frameworks */,
 				41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */,
 				41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */,
 				41D34ED22339E7C80096188B /* RxRelay.framework in Frameworks */,
@@ -255,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				41A596A523333EE8008DA6AF /* Work.swift */,
+				410F16E6233DF087004EA872 /* Works.swift */,
 				41270EA7233A22A900B88732 /* Data.swift */,
 			);
 			path = Models;
@@ -292,6 +305,8 @@
 		41D34EC32339DF080096188B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				410F16E3233DF06E004EA872 /* RealmSwift.framework */,
+				410F16E0233DF062004EA872 /* Realm.framework */,
 				41D34ED12339E7C80096188B /* RxRelay.framework */,
 				41D34EC82339DF140096188B /* RxCocoa.framework */,
 				41D34EC42339DF090096188B /* RxSwift.framework */,
@@ -388,6 +403,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -404,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				410F16E7233DF087004EA872 /* Works.swift in Sources */,
 				41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */,
 				4186ADE223324192002F6A4C /* CameraViewController.swift in Sources */,
 				41A596A623333EE8008DA6AF /* Work.swift in Sources */,
