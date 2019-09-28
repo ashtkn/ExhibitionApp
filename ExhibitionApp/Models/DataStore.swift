@@ -4,8 +4,8 @@ import RealmSwift
 final class DataStore {
     
     static let shared = DataStore()
-    let realm = try! Realm()
     
+    private let realm = try! Realm()
     var works: [Work] {
         return Array(realm.objects(Work.self))
     }
