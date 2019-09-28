@@ -29,7 +29,7 @@ struct TopCollectionViewCellModel {
             self.imagePath = "hatena.png"
         } else {
             self.title = work.title
-            self.authors = work.authors
+            self.authors = work.authorsList
             self.imagePath = work.headerImagePath
         }
     }

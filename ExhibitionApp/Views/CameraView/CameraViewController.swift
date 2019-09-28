@@ -62,9 +62,9 @@ extension CameraViewController: ARSCNViewDelegate {
         
         guard let objectAnchor = anchor as? ARObjectAnchor else { return }
         
-        // Prepare for segue
-        if let detectingWorkIndex =  workData.firstIndex(where: { $0.resource == objectAnchor.name }) {
-            self.detectingWork = workData[detectingWorkIndex]
+        let works = DataStore.shared.works
+        if let detectingWorkIndex =  works.firstIndex(where: { $0.resource == objectAnchor.name }) {
+            self.detectingWork = works[detectingWorkIndex]
         }
         
         // TODO: Show AR object

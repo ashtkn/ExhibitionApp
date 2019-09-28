@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet private weak var descriptionLabel: UILabel! {
         didSet {
-            self.descriptionLabel.text = viewModel?.description
+            self.descriptionLabel.text = viewModel?.caption
         }
     }
     
