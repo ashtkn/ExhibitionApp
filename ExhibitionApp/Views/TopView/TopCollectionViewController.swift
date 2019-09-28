@@ -57,12 +57,12 @@ extension TopCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return workData.count
+        return DataStore.shared.works.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: TopCollectionViewCell.self, for: indexPath)
-        let work = workData[indexPath.row]
+        let work = DataStore.shared.works[indexPath.row]
         cell.configure(TopCollectionViewCellModel(from: work))
         
         return cell
@@ -76,7 +76,7 @@ extension TopCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let work = workData[indexPath.row]
+        let work = DataStore.shared.works[indexPath.row]
         if work.isLocked { return }
         
         let detailViewController = DetailViewController.loadViewControllerFromStoryboard()
