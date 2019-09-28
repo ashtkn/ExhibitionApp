@@ -33,6 +33,10 @@ class DetailViewController: UIViewController {
             self.galleryCollectionView.register(cellType: DetailViewGalleryCollectionViewCell.self)
             self.galleryCollectionView.dataSource = self
             self.galleryCollectionView.delegate = self
+            
+            let layout = UICollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: 160, height: 160)
+            self.galleryCollectionView.collectionViewLayout = layout
         }
     }
     
