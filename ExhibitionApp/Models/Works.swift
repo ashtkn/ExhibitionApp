@@ -2,5 +2,5 @@ import Foundation
 import RealmSwift
 
 final class Works: Object, Codable {
-    // Comment
+    dynamic var id: Int = 0
 }
