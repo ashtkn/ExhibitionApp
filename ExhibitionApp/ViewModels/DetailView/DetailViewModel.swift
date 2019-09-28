@@ -6,7 +6,7 @@ struct DetailViewModel {
     let headerImagePath: String
     let title: String
     let authors: [String]
-    let description: String
+    let caption: String
     let galleryImagesPaths: [String]
     
     var headerImage: UIImage? {
@@ -33,9 +33,9 @@ struct DetailViewModel {
         self.id = work.id
         self.headerImagePath = work.headerImagePath
         self.title = work.title
-        self.authors = work.authors
-        self.description = work.description
-        self.galleryImagesPaths = work.galleryImagesPaths
+        self.authors = work.authorsList
+        self.caption = work.caption
+        self.galleryImagesPaths = work.galleryImagesPathsList
     }
     
 }

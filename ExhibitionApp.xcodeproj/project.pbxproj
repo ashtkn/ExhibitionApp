@@ -12,7 +12,6 @@
 		41270EA1233A1DBD00B88732 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EA0233A1DBD00B88732 /* DetailViewModel.swift */; };
 		41270EA5233A20FA00B88732 /* turtlerock.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41270EA3233A20FA00B88732 /* turtlerock.jpg */; };
 		41270EA6233A20FA00B88732 /* workData.json in Resources */ = {isa = PBXBuildFile; fileRef = 41270EA4233A20FA00B88732 /* workData.json */; };
-		41270EA8233A22A900B88732 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EA7233A22A900B88732 /* Data.swift */; };
 		41270EAC233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAB233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift */; };
 		41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAD233B291C00B88732 /* Array+Extensions.swift */; };
 		41429539233DAB960031C81E /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41429538233DAB960031C81E /* PreviewViewModel.swift */; };
@@ -28,6 +27,10 @@
 		4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADF9233254FB002F6A4C /* UIViewController+Extensions.swift */; };
 		4186AE00233254FB002F6A4C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADFA233254FB002F6A4C /* UITableView+Extensions.swift */; };
 		4186AE092332553F002F6A4C /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186AE082332553F002F6A4C /* Injectable.swift */; };
+		41907CA7233F146A00C54253 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41907CA6233F146A00C54253 /* UserData.swift */; };
+		41907CA9233F19EC00C54253 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41907CA8233F19EC00C54253 /* DataStore.swift */; };
+		41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AD233E6C7C008C797A /* Realm.framework */; };
+		41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AF233E6C86008C797A /* RealmSwift.framework */; };
 		41A3F9CF233DC2D8000E8341 /* hatena.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A3F9CE233DC2D8000E8341 /* hatena.png */; };
 		41A596A623333EE8008DA6AF /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A523333EE8008DA6AF /* Work.swift */; };
 		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
@@ -51,7 +54,6 @@
 		41270EA0233A1DBD00B88732 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		41270EA3233A20FA00B88732 /* turtlerock.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = turtlerock.jpg; sourceTree = "<group>"; };
 		41270EA4233A20FA00B88732 /* workData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = workData.json; sourceTree = "<group>"; };
-		41270EA7233A22A900B88732 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		41270EAB233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewGalleryCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		41270EAD233B291C00B88732 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		41429538233DAB960031C81E /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
@@ -69,6 +71,10 @@
 		4186ADF9233254FB002F6A4C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		4186ADFA233254FB002F6A4C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		4186AE082332553F002F6A4C /* Injectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
+		41907CA6233F146A00C54253 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		41907CA8233F19EC00C54253 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		41A3C7AD233E6C7C008C797A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		41A3C7AF233E6C86008C797A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		41A3F9CE233DC2D8000E8341 /* hatena.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hatena.png; sourceTree = "<group>"; };
 		41A596A523333EE8008DA6AF /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		41A596A823334179008DA6AF /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
@@ -91,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */,
+				41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */,
 				41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */,
 				41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */,
 				41D34ED22339E7C80096188B /* RxRelay.framework in Frameworks */,
@@ -236,7 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				41A596A523333EE8008DA6AF /* Work.swift */,
-				41270EA7233A22A900B88732 /* Data.swift */,
+				41907CA6233F146A00C54253 /* UserData.swift */,
+				41907CA8233F19EC00C54253 /* DataStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +282,8 @@
 		41D34EC32339DF080096188B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41A3C7AF233E6C86008C797A /* RealmSwift.framework */,
+				41A3C7AD233E6C7C008C797A /* Realm.framework */,
 				41D34ED12339E7C80096188B /* RxRelay.framework */,
 				41D34EC82339DF140096188B /* RxCocoa.framework */,
 				41D34EC42339DF090096188B /* RxSwift.framework */,
@@ -368,6 +379,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -397,12 +410,13 @@
 				41270EA1233A1DBD00B88732 /* DetailViewModel.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,
 				41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */,
-				41270EA8233A22A900B88732 /* Data.swift in Sources */,
 				4186ADF4233253E9002F6A4C /* PreviewViewController.swift in Sources */,
 				41270EAC233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift in Sources */,
+				41907CA7233F146A00C54253 /* UserData.swift in Sources */,
 				41270E9E233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift in Sources */,
 				41EA9C252334E2AF00552D40 /* TopCollectionViewCell.swift in Sources */,
 				4186ADFC233254FB002F6A4C /* UIImage+Extensions.swift in Sources */,
+				41907CA9233F19EC00C54253 /* DataStore.swift in Sources */,
 				4186AE00233254FB002F6A4C /* UITableView+Extensions.swift in Sources */,
 				41EA9C202334E21600552D40 /* TopCollectionViewController.swift in Sources */,
 			);
