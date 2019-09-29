@@ -31,6 +31,8 @@ class WorkTests: XCTestCase {
 
     func testDecoding() {
         let decoder = JSONDecoder()
+        
+        XCTAssertNoThrow(try decoder.decode(Work.self, from: jsonData))
         let work = try! decoder.decode(Work.self, from: jsonData)
         
         XCTAssertEqual(work.id, 1)
@@ -40,10 +42,16 @@ class WorkTests: XCTestCase {
     
     func testEncoding() {
         let decoder = JSONDecoder()
+        
+        XCTAssertNoThrow(try decoder.decode(Work.self, from: jsonData))
         let work = try! decoder.decode(Work.self, from: jsonData)
         
         let encoder = JSONEncoder()
+        
+        XCTAssertNoThrow(try encoder.encode(work))
         let data = try! encoder.encode(work)
+        
+        XCTAssertNoThrow(try decoder.decode(Work.self, from: data))
         let workToCompare = try! decoder.decode(Work.self, from: data)
         
         XCTAssertEqual(work.id, workToCompare.id)
@@ -53,6 +61,8 @@ class WorkTests: XCTestCase {
     
     func testEuatableProtocol() {
         let decoder = JSONDecoder()
+        
+        XCTAssertNoThrow(try decoder.decode(Work.self, from: jsonData))
         let work = try! decoder.decode(Work.self, from: jsonData)
         
         let id = 1
