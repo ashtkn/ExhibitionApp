@@ -21,23 +21,39 @@ class WorkTests: XCTestCase {
     }
     """.data(using: .utf8)!
 
-    override func setUp() {}
+    override func setUp() {
+        super.setUp()
+    }
 
-    override func tearDown() {}
+    override func tearDown() {
+        super.tearDown()
+    }
 
-    func testDecodingFromJsonData() {
+    func testDecoding() {
         let decoder = JSONDecoder()
-        let work = try? decoder.decode(Work.self, from: jsonData)
+        let work = try! decoder.decode(Work.self, from: jsonData)
         
-        XCTAssertNotNil(work)
-        XCTAssertEqual(work?.id, 1)
-        XCTAssertEqual(work?.title, "Turtle Rock 1")
-        XCTAssertEqual(work?.resource, "Syaro")
+        XCTAssertEqual(work.id, 1)
+        XCTAssertEqual(work.title, "Turtle Rock 1")
+        XCTAssertEqual(work.resource, "Syaro")
+    }
+    
+    func testEncoding() {
+        let decoder = JSONDecoder()
+        let work = try! decoder.decode(Work.self, from: jsonData)
+        
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(work)
+        let workToCompare = try! decoder.decode(Work.self, from: data)
+        
+        XCTAssertEqual(work.id, workToCompare.id)
+        XCTAssertEqual(work.title, workToCompare.title)
+        XCTAssertEqual(work.resource, workToCompare.resource)
     }
     
     func testEuatableProtocol() {
         let decoder = JSONDecoder()
-        let work = try? decoder.decode(Work.self, from: jsonData)
+        let work = try! decoder.decode(Work.self, from: jsonData)
         
         let id = 1
         let workToCompare = Work(id: id, title: "", resource: "", authors: [], headerImagePath: "", galleryImagesPaths: [], caption: "", isLocked: false)
