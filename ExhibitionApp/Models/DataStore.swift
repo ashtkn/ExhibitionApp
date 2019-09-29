@@ -4,59 +4,44 @@ import RealmSwift
 final class DataStore {
     
     static let shared = DataStore()
-    
     private let realm = try! Realm()
+    
     var works: [Work] {
-        return Array(realm.objects(Work.self))
+        return Array(realm.objects(WorkObject.self)).map { $0.entity }
+    }
+    
+    var userData: UserData {
+        return realm.object(ofType: UserDataObject.self, forPrimaryKey: 0)!.entity
     }
     
     private init() {
+        
         // If UserData does not exist,
-        if realm.objects(UserData.self).count == 0 {
-            print("Creating new user data")
-            let newUserData = UserData()
-            newUserData.isFirstLaunch = true
+        if realm.objects(UserDataObject.self).count == 0 {
+            
+            let newUserData: UserData = UserData(id: 0, isFirstLaunch: true)
+            let newUserDataModel: UserDataObject = UserDataObject.create(from: newUserData)
             
             try! realm.write {
-                realm.add(newUserData)
+                realm.deleteAll()
+                realm.add(newUserDataModel)
             }
         }
         
-        guard let userData = realm.object(ofType: UserData.self, forPrimaryKey: 0) else {
+        guard let userDataModel = realm.object(ofType: UserDataObject.self, forPrimaryKey: 0) else {
             fatalError("UserData is invalid!")
         }
         
+        let userData = userDataModel.entity
+        
         // When app is launched for the first time,
         if userData.isFirstLaunch {
-            print("Creating database from JSON file")
-            let initialWorkData: [Work] = load("workData.json")
+            let initialWorkData: [Work] = JsonUtility.load("workData.json")
+            let initialWorkDataModels: [WorkObject] = initialWorkData.map { WorkObject.create(from: $0) }
             try! realm.write {
-                realm.add(initialWorkData)
-                userData.isFirstLaunch = false
+                realm.add(initialWorkDataModels)
+                userDataModel.isFirstLaunch = false
             }
-        }
-    }
-    
-    private func load<T: Decodable> (_ filename: String, as type: T.Type = T.self) -> T {
-        
-        let data: Data
-        
-        guard let file = Bundle.main.url(forResource: filename, withExtension: nil) else {
-            fatalError("Couldn't find \(filename) in main bundle.")
-        }
-        
-        do {
-            data = try Data(contentsOf: file)
-        } catch {
-            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-        }
-        
-        do {
-            let decoder = JSONDecoder()
-            return try decoder.decode(T.self, from: data)
-            
-        } catch {
-            fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
         }
     }
 }

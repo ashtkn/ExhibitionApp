@@ -33,9 +33,9 @@ struct DetailViewModel {
         self.id = work.id
         self.headerImagePath = work.headerImagePath
         self.title = work.title
-        self.authors = work.authorsList
+        self.authors = work.authors
         self.caption = work.caption
-        self.galleryImagesPaths = work.galleryImagesPathsList
+        self.galleryImagesPaths = work.galleryImagesPaths
     }
     
 }
