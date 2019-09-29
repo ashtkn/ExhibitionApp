@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A22340E3C000644A61 /* HyperionCore.framework */; };
+		411A16A72340E3D000644A61 /* AttributesInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A62340E3D000644A61 /* AttributesInspector.framework */; };
 		41222D022340452000F5EFE9 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D012340452000F5EFE9 /* Work.swift */; };
 		41222D042340484600F5EFE9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D032340484600F5EFE9 /* UserData.swift */; };
 		41270E9E233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270E9C233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift */; };
@@ -63,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
+		411A16A62340E3D000644A61 /* AttributesInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AttributesInspector.framework; path = Carthage/Build/iOS/AttributesInspector.framework; sourceTree = "<group>"; };
 		41222D012340452000F5EFE9 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		41222D032340484600F5EFE9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		41270E9C233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -117,11 +121,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411A16A72340E3D000644A61 /* AttributesInspector.framework in Frameworks */,
 				41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */,
 				41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */,
 				41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */,
 				41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */,
 				41D34ED22339E7C80096188B /* RxRelay.framework in Frameworks */,
+				411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +328,8 @@
 		41D34EC32339DF080096188B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				411A16A62340E3D000644A61 /* AttributesInspector.framework */,
+				411A16A22340E3C000644A61 /* HyperionCore.framework */,
 				41A3C7AF233E6C86008C797A /* RealmSwift.framework */,
 				41A3C7AD233E6C7C008C797A /* Realm.framework */,
 				41D34ED12339E7C80096188B /* RxRelay.framework */,
@@ -358,7 +366,8 @@
 				4186ADD623324192002F6A4C /* Sources */,
 				4186ADD723324192002F6A4C /* Frameworks */,
 				4186ADD823324192002F6A4C /* Resources */,
-				41D34EC22339DE410096188B /* ShellScript */,
+				41D34EC22339DE410096188B /* Run Script for Carthage */,
+				411A16AA2340E40200644A61 /* Run Script for Carthage (Debug) */,
 			);
 			buildRules = (
 			);
@@ -455,7 +464,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		41D34EC22339DE410096188B /* ShellScript */ = {
+		411A16AA2340E40200644A61 /* Run Script for Carthage (Debug) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/HyperionCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AttributesInspector.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SlowAnimations.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Measurements.framework",
+			);
+			name = "Run Script for Carthage (Debug)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/HyperionCore.framework",
+				"$(DERIVED_FILE_DIR)/AttributesInspector.framework",
+				"$(DERIVED_FILE_DIR)/SlowAnimations.framework",
+				"$(DERIVED_FILE_DIR)/Measurements.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"$CONFIGURATION\" == \"Debug\" ]; then\n    /usr/local/bin/carthage copy-frameworks\nfi\n";
+		};
+		41D34EC22339DE410096188B /* Run Script for Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -469,6 +504,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
+			name = "Run Script for Carthage";
 			outputFileListPaths = (
 			);
 			outputPaths = (

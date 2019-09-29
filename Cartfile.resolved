@@ -1,2 +1,3 @@
 github "ReactiveX/RxSwift" "5.0.1"
 github "realm/realm-cocoa" "v3.19.0"
+github "willowtreeapps/Hyperion-iOS" "1.1.0"
