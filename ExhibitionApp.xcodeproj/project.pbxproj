@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A22340E3C000644A61 /* HyperionCore.framework */; };
-		411A16A72340E3D000644A61 /* AttributesInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A62340E3D000644A61 /* AttributesInspector.framework */; };
+		411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A22340E3C000644A61 /* HyperionCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		411A16A72340E3D000644A61 /* AttributesInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A62340E3D000644A61 /* AttributesInspector.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		41222D022340452000F5EFE9 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D012340452000F5EFE9 /* Work.swift */; };
 		41222D042340484600F5EFE9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D032340484600F5EFE9 /* UserData.swift */; };
 		41270E9E233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270E9C233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift */; };
