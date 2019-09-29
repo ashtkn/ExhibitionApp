@@ -47,8 +47,6 @@ class DetailViewController: UIViewController {
     
     func configure(_ viewModel: DetailViewModel) {
         self.viewModel = viewModel
-        // TODO; Unlock the work here if it is locked
-        print("Unlock: \(viewModel)")
     }
     
     override func viewDidLoad() {

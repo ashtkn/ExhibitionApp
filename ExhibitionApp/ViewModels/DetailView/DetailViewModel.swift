@@ -26,16 +26,20 @@ struct DetailViewModel {
     }
     
     init(from work: Work) {
+        
         if work.isLocked {
-            fatalError("Implement logic is not appropriate")
+            print("Now this work is unlocked.")
+            DataStore.shared.unlock(work: work)
+        } else {
+            print("This work is already unlocked.")
         }
         
         self.id = work.id
         self.headerImagePath = work.headerImagePath
         self.title = work.title
-        self.authors = work.authorsList
+        self.authors = work.authors
         self.caption = work.caption
-        self.galleryImagesPaths = work.galleryImagesPathsList
+        self.galleryImagesPaths = work.galleryImagesPaths
     }
     
 }
