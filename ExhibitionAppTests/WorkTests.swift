@@ -20,6 +20,13 @@ class WorkTests: XCTestCase {
         "isLocked": false
     }
     """.data(using: .utf8)!
+    
+    let invalidJsonData = """
+    {
+        "id": 1,
+        "title": "Turtle Rock 1"
+    }
+    """.data(using: .utf8)!
 
     override func setUp() {
         super.setUp()
@@ -38,6 +45,8 @@ class WorkTests: XCTestCase {
         XCTAssertEqual(work.id, 1)
         XCTAssertEqual(work.title, "Turtle Rock 1")
         XCTAssertEqual(work.resource, "Syaro")
+        
+        XCTAssertThrowsError(try decoder.decode(Work.self, from: invalidJsonData))
     }
     
     func testEncoding() {
