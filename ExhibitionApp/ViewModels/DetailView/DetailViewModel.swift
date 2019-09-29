@@ -26,8 +26,12 @@ struct DetailViewModel {
     }
     
     init(from work: Work) {
+        
         if work.isLocked {
-            fatalError("Implement logic is not appropriate")
+            print("Now this work is unlocked.")
+            DataStore.shared.unlock(work: work)
+        } else {
+            print("This work is already unlocked.")
         }
         
         self.id = work.id

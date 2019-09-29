@@ -6,13 +6,7 @@ final class DataStore {
     static let shared = DataStore()
     private let realm = try! Realm()
     
-    var works: [Work] {
-        return Array(realm.objects(WorkObject.self)).map { $0.entity }
-    }
-    
-    var userData: UserData {
-        return realm.object(ofType: UserDataObject.self, forPrimaryKey: 0)!.entity
-    }
+    // MARK: Initializer
     
     private init() {
         
@@ -44,4 +38,28 @@ final class DataStore {
             }
         }
     }
+    
+    // MARK: Getters
+    
+    var works: [Work] {
+        get {
+            return Array(realm.objects(WorkObject.self)).map { $0.entity }
+        }
+    }
+    
+    var userData: UserData {
+        get {
+            return realm.object(ofType: UserDataObject.self, forPrimaryKey: 0)!.entity
+        }
+    }
+    
+    // MARK: Setters
+    
+    func unlock(work: Work) {
+        let workObject = realm.object(ofType: WorkObject.self, forPrimaryKey: work.id)
+        try! realm.write {
+            workObject?.isLocked = false
+        }
+    }
+
 }
