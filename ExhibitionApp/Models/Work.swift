@@ -1,6 +1,6 @@
 import Foundation
 
-struct Work: Codable {
+struct Work: Codable, Equatable {
     let id: Int
     let title: String
     let resource: String
@@ -19,5 +19,9 @@ struct Work: Codable {
         case galleryImagesPaths
         case caption
         case isLocked
+    }
+    
+    static func ==(lhs: Work, rhs: Work) -> Bool {
+        return lhs.id == rhs.id
     }
 }

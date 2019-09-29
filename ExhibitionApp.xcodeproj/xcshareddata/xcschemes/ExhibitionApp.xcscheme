@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4186ADD923324192002F6A4C"
-               BuildableName = "&#x5236;&#x4f5c;&#x5c55;&#x30a2;&#x30d5;&#x309a;&#x30ea;.app"
+               BuildableName = "ExhibitionApp.app"
                BlueprintName = "ExhibitionApp"
                ReferencedContainer = "container:ExhibitionApp.xcodeproj">
             </BuildableReference>
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "41C1E80523406D07003B708D"
+               BuildableName = "ExhibitionAppTests.xctest"
+               BlueprintName = "ExhibitionAppTests"
+               ReferencedContainer = "container:ExhibitionApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -45,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4186ADD923324192002F6A4C"
-            BuildableName = "&#x5236;&#x4f5c;&#x5c55;&#x30a2;&#x30d5;&#x309a;&#x30ea;.app"
+            BuildableName = "ExhibitionApp.app"
             BlueprintName = "ExhibitionApp"
             ReferencedContainer = "container:ExhibitionApp.xcodeproj">
          </BuildableReference>
@@ -62,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4186ADD923324192002F6A4C"
-            BuildableName = "&#x5236;&#x4f5c;&#x5c55;&#x30a2;&#x30d5;&#x309a;&#x30ea;.app"
+            BuildableName = "ExhibitionApp.app"
             BlueprintName = "ExhibitionApp"
             ReferencedContainer = "container:ExhibitionApp.xcodeproj">
          </BuildableReference>
