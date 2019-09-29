@@ -35,6 +35,7 @@
 		41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AF233E6C86008C797A /* RealmSwift.framework */; };
 		41A3F9CF233DC2D8000E8341 /* hatena.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A3F9CE233DC2D8000E8341 /* hatena.png */; };
 		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
+		41C1E81323406E4F003B708D /* WorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C1E81223406E4F003B708D /* WorkTests.swift */; };
 		41D34EBF2339CECD0096188B /* TopCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D34EBE2339CECD0096188B /* TopCollectionViewCellModel.swift */; };
 		41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC42339DF090096188B /* RxSwift.framework */; };
 		41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC82339DF140096188B /* RxCocoa.framework */; };
@@ -51,6 +52,16 @@
 		41F46B8E2340502B00606D7B /* WorkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8D2340502B00606D7B /* WorkObject.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		41C1E80B23406D07003B708D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4186ADD223324192002F6A4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4186ADD923324192002F6A4C;
+			remoteInfo = ExhibitionApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		41222D012340452000F5EFE9 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		41222D032340484600F5EFE9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -63,7 +74,7 @@
 		41270EAD233B291C00B88732 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		41429538233DAB960031C81E /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
 		4176FAE72340509B0025B470 /* UserDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataObject.swift; sourceTree = "<group>"; };
-		4186ADDA23324192002F6A4C /* 制作展アプリ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "制作展アプリ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4186ADDA23324192002F6A4C /* ExhibitionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4186ADDD23324192002F6A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4186ADDF23324192002F6A4C /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		4186ADE123324192002F6A4C /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +93,9 @@
 		41A3C7AF233E6C86008C797A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		41A3F9CE233DC2D8000E8341 /* hatena.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hatena.png; sourceTree = "<group>"; };
 		41A596A823334179008DA6AF /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
+		41C1E80623406D07003B708D /* ExhibitionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExhibitionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41C1E80A23406D07003B708D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41C1E81223406E4F003B708D /* WorkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTests.swift; sourceTree = "<group>"; };
 		41D34EBE2339CECD0096188B /* TopCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		41D34EC42339DF090096188B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		41D34EC82339DF140096188B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -108,6 +122,13 @@
 				41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */,
 				41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */,
 				41D34ED22339E7C80096188B /* RxRelay.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41C1E80323406D07003B708D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				4186ADDC23324192002F6A4C /* ExhibitionApp */,
+				41C1E80723406D07003B708D /* ExhibitionAppTests */,
 				4186ADDB23324192002F6A4C /* Products */,
 				41D34EC32339DF080096188B /* Frameworks */,
 			);
@@ -165,7 +187,8 @@
 		4186ADDB23324192002F6A4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4186ADDA23324192002F6A4C /* 制作展アプリ.app */,
+				4186ADDA23324192002F6A4C /* ExhibitionApp.app */,
+				41C1E80623406D07003B708D /* ExhibitionAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -266,6 +289,15 @@
 			path = SceneNodes;
 			sourceTree = "<group>";
 		};
+		41C1E80723406D07003B708D /* ExhibitionAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				41C1E80A23406D07003B708D /* Info.plist */,
+				41C1E81223406E4F003B708D /* WorkTests.swift */,
+			);
+			path = ExhibitionAppTests;
+			sourceTree = "<group>";
+		};
 		41D34EBC2339CA530096188B /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,8 +366,26 @@
 			);
 			name = ExhibitionApp;
 			productName = DetectingApp;
-			productReference = 4186ADDA23324192002F6A4C /* 制作展アプリ.app */;
+			productReference = 4186ADDA23324192002F6A4C /* ExhibitionApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		41C1E80523406D07003B708D /* ExhibitionAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41C1E80F23406D07003B708D /* Build configuration list for PBXNativeTarget "ExhibitionAppTests" */;
+			buildPhases = (
+				41C1E80223406D07003B708D /* Sources */,
+				41C1E80323406D07003B708D /* Frameworks */,
+				41C1E80423406D07003B708D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41C1E80C23406D07003B708D /* PBXTargetDependency */,
+			);
+			name = ExhibitionAppTests;
+			productName = ExhibitionAppTests;
+			productReference = 41C1E80623406D07003B708D /* ExhibitionAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -343,12 +393,16 @@
 		4186ADD223324192002F6A4C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1030;
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "竹ノ内朝陽";
 				TargetAttributes = {
 					4186ADD923324192002F6A4C = {
 						CreatedOnToolsVersion = 10.3;
+					};
+					41C1E80523406D07003B708D = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 4186ADD923324192002F6A4C;
 					};
 				};
 			};
@@ -366,6 +420,7 @@
 			projectRoot = "";
 			targets = (
 				4186ADD923324192002F6A4C /* ExhibitionApp */,
+				41C1E80523406D07003B708D /* ExhibitionAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -387,6 +442,13 @@
 				4186ADE523324192002F6A4C /* CameraViewController.storyboard in Resources */,
 				41EA9C122334D9EA00552D40 /* TopCollectionViewController.storyboard in Resources */,
 				41270EA6233A20FA00B88732 /* workData.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41C1E80423406D07003B708D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +512,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		41C1E80223406D07003B708D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41C1E81323406E4F003B708D /* WorkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		41C1E80C23406D07003B708D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4186ADD923324192002F6A4C /* ExhibitionApp */;
+			targetProxy = 41C1E80B23406D07003B708D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4186ADE323324192002F6A4C /* CameraViewController.storyboard */ = {
@@ -604,7 +682,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionApp;
-				PRODUCT_NAME = "制作展アプリ";
+				PRODUCT_NAME = ExhibitionApp;
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provision Profile for Exhibition";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -628,10 +706,52 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionApp;
-				PRODUCT_NAME = "制作展アプリ";
+				PRODUCT_NAME = ExhibitionApp;
 				PROVISIONING_PROFILE_SPECIFIER = "Ad hoc Provision Profile for Exhibition";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		41C1E80D23406D07003B708D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P2SAHRC466;
+				INFOPLIST_FILE = ExhibitionAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExhibitionApp.app/ExhibitionApp";
+			};
+			name = Debug;
+		};
+		41C1E80E23406D07003B708D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P2SAHRC466;
+				INFOPLIST_FILE = ExhibitionAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExhibitionApp.app/ExhibitionApp";
 			};
 			name = Release;
 		};
@@ -652,6 +772,15 @@
 			buildConfigurations = (
 				4186ADEF23324194002F6A4C /* Debug */,
 				4186ADF023324194002F6A4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41C1E80F23406D07003B708D /* Build configuration list for PBXNativeTarget "ExhibitionAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41C1E80D23406D07003B708D /* Debug */,
+				41C1E80E23406D07003B708D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
