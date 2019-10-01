@@ -20,7 +20,6 @@
 		41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAD233B291C00B88732 /* Array+Extensions.swift */; };
 		41429539233DAB960031C81E /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41429538233DAB960031C81E /* PreviewViewModel.swift */; };
 		41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41481F4023438129004E2EB2 /* GoogleService-Info.plist */; };
-		41481F42234385D0004E2EB2 /* AttributesInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A62340E3D000644A61 /* AttributesInspector.framework */; };
 		41481F582343873E004E2EB2 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F452343873D004E2EB2 /* nanopb.framework */; };
 		41481F5A2343873E004E2EB2 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F462343873D004E2EB2 /* FirebaseCoreDiagnostics.framework */; };
 		41481F5C2343873E004E2EB2 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F472343873D004E2EB2 /* FirebaseAnalytics.framework */; };
@@ -200,7 +199,6 @@
 				41481F722343873E004E2EB2 /* Protobuf.framework in Frameworks */,
 				411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */,
 				41481F602343873E004E2EB2 /* leveldb-library.framework in Frameworks */,
-				41481F42234385D0004E2EB2 /* AttributesInspector.framework in Frameworks */,
 				41481F762343873F004E2EB2 /* FirebaseCore.framework in Frameworks */,
 				41481F662343873E004E2EB2 /* GoogleUtilities.framework in Frameworks */,
 				41481F6E2343873E004E2EB2 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
@@ -514,7 +512,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "竹ノ内朝陽";
 				TargetAttributes = {
 					4186ADD923324192002F6A4C = {
