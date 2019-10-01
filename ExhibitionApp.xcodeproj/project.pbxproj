@@ -45,6 +45,7 @@
 		41481F8523438966004E2EB2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F812343892C004E2EB2 /* libsqlite3.tbd */; };
 		41481F862343896E004E2EB2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F822343893E004E2EB2 /* libc++.tbd */; };
 		41481F89234389AF004E2EB2 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41481F88234389AF004E2EB2 /* FirebaseService.swift */; };
+		41481F8B234390C8004E2EB2 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F8A234390C8004E2EB2 /* Hydra.framework */; };
 		4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176FAE72340509B0025B470 /* UserDataObject.swift */; };
 		4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADDD23324192002F6A4C /* AppDelegate.swift */; };
 		4186ADE023324192002F6A4C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4186ADDF23324192002F6A4C /* art.scnassets */; };
@@ -128,6 +129,7 @@
 		41481F822343893E004E2EB2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		41481F8323438949004E2EB2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		41481F88234389AF004E2EB2 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		41481F8A234390C8004E2EB2 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
 		4176FAE72340509B0025B470 /* UserDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataObject.swift; sourceTree = "<group>"; };
 		4186ADDA23324192002F6A4C /* ExhibitionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4186ADDD23324192002F6A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				41481F6C2343873E004E2EB2 /* BoringSSL-GRPC.framework in Frameworks */,
 				41481F702343873E004E2EB2 /* FIRAnalyticsConnector.framework in Frameworks */,
 				41481F742343873E004E2EB2 /* GoogleDataTransport.framework in Frameworks */,
+				41481F8B234390C8004E2EB2 /* Hydra.framework in Frameworks */,
 				41481F862343896E004E2EB2 /* libc++.tbd in Frameworks */,
 				41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */,
 				41481F8523438966004E2EB2 /* libsqlite3.tbd in Frameworks */,
@@ -413,6 +416,7 @@
 		41D34EC32339DF080096188B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41481F8A234390C8004E2EB2 /* Hydra.framework */,
 				41481F8323438949004E2EB2 /* StoreKit.framework */,
 				41481F822343893E004E2EB2 /* libc++.tbd */,
 				41481F812343892C004E2EB2 /* libsqlite3.tbd */,
@@ -612,6 +616,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 			);
 			name = "Run Script for Carthage";
 			outputFileListPaths = (

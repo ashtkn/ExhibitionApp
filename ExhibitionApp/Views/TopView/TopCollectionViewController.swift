@@ -3,15 +3,21 @@ import UIKit
 class TopCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var scanButton: UIButton!
-
+    private var dataStoreSubscriptionToken: SubscriptionToken?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         collectionView.register(cellType: TopCollectionViewCell.self)
         
-         let layout = collectionViewLayout as! UICollectionViewFlowLayout
-         layout.minimumInteritemSpacing = 8
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 8
+        
+        dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
+            print("Reload data")
+            self?.collectionView.reloadData()
+        }
     }
     
     @IBAction func didScanButtonTapped(_ sender: Any) {
@@ -86,5 +92,4 @@ extension TopCollectionViewController {
             self.present(detailViewController, animated: true, completion: nil)
         }
     }
-
 }

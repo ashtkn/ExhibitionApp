@@ -5,3 +5,4 @@ binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.j
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAuthBinary.json"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseFirestoreBinary.json"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseStorageBinary.json"
+github "malcommac/Hydra"
