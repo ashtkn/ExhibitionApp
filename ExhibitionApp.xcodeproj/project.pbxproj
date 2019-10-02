@@ -65,7 +65,6 @@
 		41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AD233E6C7C008C797A /* Realm.framework */; };
 		41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AF233E6C86008C797A /* RealmSwift.framework */; };
 		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
-		41C1E81323406E4F003B708D /* WorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C1E81223406E4F003B708D /* WorkTests.swift */; };
 		41D34EBF2339CECD0096188B /* TopCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D34EBE2339CECD0096188B /* TopCollectionViewCellModel.swift */; };
 		41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC42339DF090096188B /* RxSwift.framework */; };
 		41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC82339DF140096188B /* RxCocoa.framework */; };
@@ -168,7 +167,6 @@
 		41A596A823334179008DA6AF /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
 		41C1E80623406D07003B708D /* ExhibitionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExhibitionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C1E80A23406D07003B708D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41C1E81223406E4F003B708D /* WorkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTests.swift; sourceTree = "<group>"; };
 		41D34EBE2339CECD0096188B /* TopCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		41D34EC42339DF090096188B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		41D34EC82339DF140096188B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				41C1E80A23406D07003B708D /* Info.plist */,
-				41C1E81223406E4F003B708D /* WorkTests.swift */,
 			);
 			path = ExhibitionAppTests;
 			sourceTree = "<group>";
@@ -679,7 +676,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41C1E81323406E4F003B708D /* WorkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
