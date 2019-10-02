@@ -80,7 +80,7 @@ final class DataStore {
                 let resourcesNames = initialWorkData.map { $0.resource }
                 let downloadResoucesPromises: [Promise<URL>] = resourcesNames.map { resourceName in
                     // TODO: 拡張子によって処理を変更すること
-                    return FirebaseService.shared.download(arobject: resourceName, to: self.resourceDirectory)
+                    return FirebaseService.shared.download(resource: resourceName, to: self.resourceDirectory)
                 }
                 
                 // Create promises for downloading images
