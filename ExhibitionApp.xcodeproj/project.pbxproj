@@ -46,7 +46,6 @@
 		414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5323446C100013F833 /* Firestore+Extensions.swift */; };
 		414F0E5623446D990013F833 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5523446D990013F833 /* Kingfisher.framework */; };
 		414F0E5A23446E2D0013F833 /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; };
-		414F0E5B23446E2D0013F833 /* CodableFirebase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5F234488F20013F833 /* SubscriptionToken.swift */; };
 		414F0E6523448FA70013F833 /* WorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E6423448FA70013F833 /* WorkTests.swift */; };
 		4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176FAE72340509B0025B470 /* UserDataObject.swift */; };
@@ -91,20 +90,6 @@
 			remoteInfo = ExhibitionApp;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		414F0E5C23446E2D0013F833 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				414F0E5B23446E2D0013F833 /* CodableFirebase.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
@@ -491,7 +476,6 @@
 				4186ADD823324192002F6A4C /* Resources */,
 				41D34EC22339DE410096188B /* Run Script for Carthage */,
 				411A16AA2340E40200644A61 /* Run Script for Carthage (Debug) */,
-				414F0E5C23446E2D0013F833 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
