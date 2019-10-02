@@ -76,9 +76,10 @@ final class DataStore {
                     realm.add(initialWorkDataModels)
                 }
                 
-                // Create promises for downloading AR objects
+                // Create promises for downloading resources
                 let resourcesNames = initialWorkData.map { $0.resource }
-                let downloadResoucesPromises = resourcesNames.map { resourceName in
+                let downloadResoucesPromises: [Promise<URL>] = resourcesNames.map { resourceName in
+                    // TODO: 拡張子によって処理を変更すること
                     return FirebaseService.shared.download(arobject: resourceName, to: self.resourceDirectory)
                 }
                 
@@ -95,6 +96,7 @@ final class DataStore {
                 
                 // Execute downloading
                 zip(all(downloadResoucesPromises), all(downloadImagesPromises)).then({ resourcesPaths, imagesPaths in
+                    // TODO: リソースの種類によって処理を変更すること
                     let resoruces = resourcesPaths.compactMap { try? ARReferenceObject.init(archiveURL: $0) }
                     
                     for resource in resoruces {

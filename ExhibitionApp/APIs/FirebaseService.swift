@@ -42,11 +42,11 @@ final class FirebaseService {
         }
     }
     
-    func download(arobject name: String, to directory: URL) -> Promise<URL> {
+    func download(arobject fileName: String, to directory: URL) -> Promise<URL> {
         return Promise<URL> { [unowned self] resolve, reject, _ in
             self.signInAsync().then( {
-                let reference = Storage.storage().reference(withPath: "Assets/ARObjects/\(name).arobject")
-                let path = directory.appendingPathComponent("\(name).arobject")
+                let reference = Storage.storage().reference(withPath: "Assets/ARObjects/\(fileName)")
+                let path = directory.appendingPathComponent("\(fileName)")
                 reference.write(toFile: path) { url, error in
                     if let error = error {
                         reject(error)
