@@ -1,9 +1,9 @@
 import UIKit
 
 struct DetailViewGalleryCollectionViewCellModel {
-    
     let galleryImagePath: String
     var galleryImage: UIImage? {
-        return UIImage(named: galleryImagePath)
+        let path = DataStore.shared.imagesDirectory.appendingPathComponent(galleryImagePath).path
+        return UIImage(contentsOfFile: path)
     }
 }

@@ -2,7 +2,6 @@ import UIKit
 
 struct DetailViewModel {
     
-//    let id: Int
     let headerImagePath: String?
     let title: String
     let authors: [String]
@@ -10,10 +9,9 @@ struct DetailViewModel {
     let galleryImagesPaths: [String]
     
     var headerImage: UIImage? {
-        guard let headerImagePath = headerImagePath else {
-            return nil
-        }
-        return UIImage(named: headerImagePath)
+        guard let headerImagePath = headerImagePath else { return nil }
+        let path = DataStore.shared.imagesDirectory.appendingPathComponent(headerImagePath).path
+        return UIImage(contentsOfFile: path)
     }
     
     var titleText: String {

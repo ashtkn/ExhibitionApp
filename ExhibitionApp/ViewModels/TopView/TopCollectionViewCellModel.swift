@@ -11,10 +11,9 @@ struct TopCollectionViewCellModel {
     
     let imagePath: String?
     var image: UIImage? {
-        guard let imagePath = imagePath else {
-            return nil
-        }
-        return UIImage(named: imagePath)
+        guard let imagePath = imagePath else { return nil }
+        let path = DataStore.shared.imagesDirectory.appendingPathComponent(imagePath).path
+        return UIImage(contentsOfFile: path)
     }
     
     var authorsText: String {

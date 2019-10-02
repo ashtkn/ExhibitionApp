@@ -42,11 +42,83 @@ final class FirebaseService {
         }
     }
     
+    private func getImageUrl(name: String) -> Promise<URL> {
+        return Promise<URL> { [unowned self] resolve, reject, _ in
+            self.signInAsync().then({
+                let imagePath = "Assets/Images/\(name)"
+                let reference = Storage.storage().reference(withPath: imagePath)
+                reference.downloadURL { url, error in
+                    if let error = error {
+                        reject(error)
+                    } else {
+                        guard let url = url else { fatalError() }
+                        resolve(url)
+                    }
+                }
+            }).catch({ error in
+                reject(error)
+            })
+        }
+    }
+    
+    private func getImagesUrls(work: Work) -> Promise<[URL]> {
+        return Promise<[URL]> { [unowned self] resolve, reject, _ in
+            self.signInAsync().then({
+                let imagesPaths = work.images.map { name in
+                    return "Assets/Images/\(work.id)/\(name)"
+                }
+                let imagesReferences = imagesPaths.map { imagePath in
+                    return Storage.storage().reference(withPath: imagePath)
+                }
+                let getUrlsPromises = imagesReferences.map { reference in
+                    return Promise<URL> { resolve, reject, _ in
+                        reference.downloadURL { url, error in
+                            if let error = error {
+                                reject(error)
+                            } else {
+                                guard let url = url else { fatalError() }
+                                resolve(url)
+                            }
+                        }
+                    }
+                }
+                
+                all(getUrlsPromises).then({ urls in
+                    resolve(urls)
+                }).catch({ error in
+                    reject(error)
+                })
+                
+            }).catch({ error in
+                reject(error)
+            })
+        }
+    }
+    
     func download(arobject name: String, to directory: URL) -> Promise<URL> {
         return Promise<URL> { [unowned self] resolve, reject, _ in
             self.signInAsync().then( {
                 let reference = Storage.storage().reference(withPath: "Assets/ARObjects/\(name).arobject")
                 let path = directory.appendingPathComponent("\(name).arobject")
+                reference.write(toFile: path) { url, error in
+                    if let error = error {
+                        reject(error)
+                    } else {
+                        guard let url = url else { fatalError() }
+                        resolve(url)
+                    }
+                }
+            }).catch({ error in
+                reject(error)
+            })
+        }
+    }
+    
+    func download(image fileName: String, to directory: URL) -> Promise<URL> {
+        return Promise<URL> { [unowned self] resolve, reject, _ in
+            self.signInAsync().then( {
+                let reference = Storage.storage().reference(withPath: "Assets/Images/\(fileName)")
+                let path = directory.appendingPathComponent("\(fileName)")
                 reference.write(toFile: path) { url, error in
                     if let error = error {
                         reject(error)

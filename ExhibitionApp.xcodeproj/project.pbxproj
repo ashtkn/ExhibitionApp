@@ -14,7 +14,6 @@
 		41270E9E233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270E9C233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift */; };
 		41270E9F233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41270E9D233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib */; };
 		41270EA1233A1DBD00B88732 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EA0233A1DBD00B88732 /* DetailViewModel.swift */; };
-		41270EA5233A20FA00B88732 /* turtlerock.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41270EA3233A20FA00B88732 /* turtlerock.jpg */; };
 		41270EAC233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAB233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift */; };
 		41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAD233B291C00B88732 /* Array+Extensions.swift */; };
 		41429539233DAB960031C81E /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41429538233DAB960031C81E /* PreviewViewModel.swift */; };
@@ -64,7 +63,6 @@
 		41907CA9233F19EC00C54253 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41907CA8233F19EC00C54253 /* DataStore.swift */; };
 		41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AD233E6C7C008C797A /* Realm.framework */; };
 		41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AF233E6C86008C797A /* RealmSwift.framework */; };
-		41A3F9CF233DC2D8000E8341 /* hatena.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A3F9CE233DC2D8000E8341 /* hatena.png */; };
 		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
 		41C1E81323406E4F003B708D /* WorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C1E81223406E4F003B708D /* WorkTests.swift */; };
 		41D34EBF2339CECD0096188B /* TopCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D34EBE2339CECD0096188B /* TopCollectionViewCellModel.swift */; };
@@ -115,7 +113,6 @@
 		41270E9C233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		41270E9D233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewGalleryCollectionViewCell.xib; sourceTree = "<group>"; };
 		41270EA0233A1DBD00B88732 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
-		41270EA3233A20FA00B88732 /* turtlerock.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = turtlerock.jpg; sourceTree = "<group>"; };
 		41270EAB233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewGalleryCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		41270EAD233B291C00B88732 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		41429538233DAB960031C81E /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
@@ -166,7 +163,6 @@
 		41907CA8233F19EC00C54253 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		41A3C7AD233E6C7C008C797A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		41A3C7AF233E6C86008C797A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		41A3F9CE233DC2D8000E8341 /* hatena.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hatena.png; sourceTree = "<group>"; };
 		41A596A823334179008DA6AF /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
 		41C1E80623406D07003B708D /* ExhibitionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExhibitionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C1E80A23406D07003B708D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -266,15 +262,6 @@
 			path = PreviewView;
 			sourceTree = "<group>";
 		};
-		41270EA2233A20B800B88732 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				41270EA3233A20FA00B88732 /* turtlerock.jpg */,
-				41A3F9CE233DC2D8000E8341 /* hatena.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		41481F872343899D004E2EB2 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,7 +295,6 @@
 			children = (
 				41481F872343899D004E2EB2 /* APIs */,
 				41F46B8923404D8200606D7B /* Commons */,
-				41270EA2233A20B800B88732 /* Resources */,
 				41A596A423333EDD008DA6AF /* Models */,
 				41D34EBD2339CEBB0096188B /* ViewModels */,
 				4186AE0A233256FF002F6A4C /* Views */,
@@ -578,9 +564,7 @@
 				41270E9F233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib in Resources */,
 				4186ADE023324192002F6A4C /* art.scnassets in Resources */,
 				41EA9C262334E2AF00552D40 /* TopCollectionViewCell.xib in Resources */,
-				41270EA5233A20FA00B88732 /* turtlerock.jpg in Resources */,
 				4186ADF2233253CE002F6A4C /* PreviewViewController.storyboard in Resources */,
-				41A3F9CF233DC2D8000E8341 /* hatena.png in Resources */,
 				4186ADEA23324194002F6A4C /* LaunchScreen.storyboard in Resources */,
 				4186ADE723324194002F6A4C /* Assets.xcassets in Resources */,
 				4186ADE523324192002F6A4C /* CameraViewController.storyboard in Resources */,

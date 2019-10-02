@@ -12,6 +12,22 @@ final class DataStore {
     static let shared = DataStore()
     private let realm = try! Realm()
     
+    private var applicationSupportDirectory: URL {
+        return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+    }
+    
+    var resourceDirectory: URL {
+        let resourceDirectory = applicationSupportDirectory.appendingPathComponent("ARObjects", isDirectory: true)
+        try! FileManager.default.createDirectory(at: resourceDirectory, withIntermediateDirectories: true, attributes: nil)
+        return resourceDirectory
+    }
+    
+    var imagesDirectory: URL {
+        let imagesDirectory = applicationSupportDirectory.appendingPathComponent("Images", isDirectory: true)
+        try! FileManager.default.createDirectory(at: resourceDirectory, withIntermediateDirectories: true, attributes: nil)
+        return imagesDirectory
+    }
+    
     // MARK: Initializer
     
     private init() {
@@ -51,33 +67,41 @@ final class DataStore {
     private func fetchWorkDataAsync() -> Promise<Void> {
         
         return Promise<Void> { resolve, reject, _ in
-            FirebaseService.shared.fetchWorks().then({ initialWorkData in
-                let realm = try! Realm()
+            FirebaseService.shared.fetchWorks().then({ [unowned self] initialWorkData in
                 let initialWorkDataModels: [WorkObject] = initialWorkData.map { WorkObject.create(from: $0) }
+                
+                // Register fetched data to Realm database
+                let realm = try! Realm()
                 try! realm.write {
                     realm.add(initialWorkDataModels)
                 }
                 
-                // Create directory for AR Resources
-                let fileManager = FileManager.default
-                let applicationSupportDirectory = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-                let resourceDirectory = applicationSupportDirectory.appendingPathComponent("ARObjects", isDirectory: true)
-                try fileManager.createDirectory(at: resourceDirectory, withIntermediateDirectories: true, attributes: nil)
-                
-                // TODO: download AR objects data from Firebase storage
+                // Create promises for downloading AR objects data from storage
                 let resourcesNames = initialWorkData.map { $0.resource }
                 let downloadResoucesPromises = resourcesNames.map { resourceName in
-                    return FirebaseService.shared.download(arobject: resourceName, to: resourceDirectory)
+                    return FirebaseService.shared.download(arobject: resourceName, to: self.resourceDirectory)
                 }
                 
-                all(downloadResoucesPromises).then({ resourcesPaths in
+                // Create promises for downloading images from storage
+                var downloadImagesPromises: [Promise<URL>] = initialWorkData.flatMap { work in
+                    return work.images.map { imageName in
+                        FirebaseService.shared.download(image: imageName, to: self.imagesDirectory)
+                    }
+                }
+                
+                // Download hatena.png
+                let downloadHatenaImagePromise = FirebaseService.shared.download(image: "hatena.png", to: self.imagesDirectory)
+                downloadImagesPromises.append(downloadHatenaImagePromise)
+                
+                // Execute downloading
+                zip(all(downloadResoucesPromises), all(downloadImagesPromises)).then({ resourcesPaths, imagesPaths in
                     let resoruces = resourcesPaths.compactMap { try? ARReferenceObject.init(archiveURL: $0) }
                     
-                    // TODO:
                     for resource in resoruces {
                         print("Name: \(resource.name!), Center: \(resource.center)")
                     }
                     
+                    print(imagesPaths)
                     resolve(())
                     
                 }).catch({ error in
