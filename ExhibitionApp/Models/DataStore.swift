@@ -76,20 +76,20 @@ final class DataStore {
                     realm.add(initialWorkDataModels)
                 }
                 
-                // Create promises for downloading AR objects data from storage
+                // Create promises for downloading AR objects
                 let resourcesNames = initialWorkData.map { $0.resource }
                 let downloadResoucesPromises = resourcesNames.map { resourceName in
                     return FirebaseService.shared.download(arobject: resourceName, to: self.resourceDirectory)
                 }
                 
-                // Create promises for downloading images from storage
+                // Create promises for downloading images
                 var downloadImagesPromises: [Promise<URL>] = initialWorkData.flatMap { work in
                     return work.images.map { imageName in
                         FirebaseService.shared.download(image: imageName, to: self.imagesDirectory)
                     }
                 }
                 
-                // Download hatena.png
+                // Add promise for downloading hatena.png
                 let downloadHatenaImagePromise = FirebaseService.shared.download(image: "hatena.png", to: self.imagesDirectory)
                 downloadImagesPromises.append(downloadHatenaImagePromise)
                 
@@ -136,8 +136,4 @@ final class DataStore {
         
         return SubscriptionToken(token: token)
     }
-}
-
-struct SubscriptionToken {
-    let token: NotificationToken
 }

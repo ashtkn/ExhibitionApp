@@ -47,6 +47,7 @@
 		414F0E5623446D990013F833 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5523446D990013F833 /* Kingfisher.framework */; };
 		414F0E5A23446E2D0013F833 /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; };
 		414F0E5B23446E2D0013F833 /* CodableFirebase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5F234488F20013F833 /* SubscriptionToken.swift */; };
 		4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176FAE72340509B0025B470 /* UserDataObject.swift */; };
 		4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADDD23324192002F6A4C /* AppDelegate.swift */; };
 		4186ADE023324192002F6A4C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4186ADDF23324192002F6A4C /* art.scnassets */; };
@@ -145,6 +146,7 @@
 		414F0E5323446C100013F833 /* Firestore+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firestore+Extensions.swift"; sourceTree = "<group>"; };
 		414F0E5523446D990013F833 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		414F0E5923446E2D0013F833 /* CodableFirebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CodableFirebase.framework; path = Carthage/Build/iOS/CodableFirebase.framework; sourceTree = "<group>"; };
+		414F0E5F234488F20013F833 /* SubscriptionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionToken.swift; sourceTree = "<group>"; };
 		4176FAE72340509B0025B470 /* UserDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataObject.swift; sourceTree = "<group>"; };
 		4186ADDA23324192002F6A4C /* ExhibitionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4186ADDD23324192002F6A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			children = (
 				41F46B8D2340502B00606D7B /* WorkObject.swift */,
 				4176FAE72340509B0025B470 /* UserDataObject.swift */,
+				414F0E5F234488F20013F833 /* SubscriptionToken.swift */,
 			);
 			path = RealmObjects;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				4186ADE223324192002F6A4C /* CameraViewController.swift in Sources */,
 				41222D022340452000F5EFE9 /* Work.swift in Sources */,
 				41D34EBF2339CECD0096188B /* TopCollectionViewCellModel.swift in Sources */,
+				414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */,
 				4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */,
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
