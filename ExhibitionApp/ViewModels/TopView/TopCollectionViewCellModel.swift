@@ -9,9 +9,11 @@ struct TopCollectionViewCellModel {
     
     let authors: [String]
     
-    let imagePath: String
+    let imagePath: String?
     var image: UIImage? {
-        return UIImage(named: imagePath)
+        guard let imagePath = imagePath else { return nil }
+        let path = DataStore.shared.imagesDirectory.appendingPathComponent(imagePath).path
+        return UIImage(contentsOfFile: path)
     }
     
     var authorsText: String {
@@ -30,7 +32,7 @@ struct TopCollectionViewCellModel {
         } else {
             self.title = work.title
             self.authors = work.authors
-            self.imagePath = work.headerImagePath
+            self.imagePath = work.images.first
         }
     }
 }

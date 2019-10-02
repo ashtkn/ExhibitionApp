@@ -2,15 +2,16 @@ import UIKit
 
 struct DetailViewModel {
     
-    let id: Int
-    let headerImagePath: String
+    let headerImagePath: String?
     let title: String
     let authors: [String]
     let caption: String
     let galleryImagesPaths: [String]
     
     var headerImage: UIImage? {
-        return UIImage(named: headerImagePath)
+        guard let headerImagePath = headerImagePath else { return nil }
+        let path = DataStore.shared.imagesDirectory.appendingPathComponent(headerImagePath).path
+        return UIImage(contentsOfFile: path)
     }
     
     var titleText: String {
@@ -34,12 +35,11 @@ struct DetailViewModel {
             print("This work is already unlocked.")
         }
         
-        self.id = work.id
-        self.headerImagePath = work.headerImagePath
+        self.headerImagePath = work.images.first
         self.title = work.title
         self.authors = work.authors
         self.caption = work.caption
-        self.galleryImagesPaths = work.galleryImagesPaths
+        self.galleryImagesPaths = work.images
     }
     
 }

@@ -5,26 +5,25 @@ class WorkTests: XCTestCase {
     
     let jsonData = """
     {
-        "id": 1,
-        "title": "Turtle Rock 1",
-        "resource": "Syaro",
+        "id": "XXXXXX",
+        "title": "Syaro",
+        "resource": "Syaro.arobject",
         "authors": [
             "Someone"
         ],
-        "headerImagePath": "turtlerock.jpg",
-        "galleryImagesPaths": [
+        "images": [
             "turtlerock.jpg",
             "turtlerock.jpg"
         ],
         "caption": "これはキャプションです．",
-        "isLocked": false
+        "is_locked": false
     }
     """.data(using: .utf8)!
     
     let invalidJsonData = """
     {
-        "id": 1,
-        "title": "Turtle Rock 1"
+        "id": "XXXXXX",
+        "title": "Syaro"
     }
     """.data(using: .utf8)!
 
@@ -42,9 +41,9 @@ class WorkTests: XCTestCase {
         XCTAssertNoThrow(try decoder.decode(Work.self, from: jsonData))
         let work = try! decoder.decode(Work.self, from: jsonData)
         
-        XCTAssertEqual(work.id, 1)
-        XCTAssertEqual(work.title, "Turtle Rock 1")
-        XCTAssertEqual(work.resource, "Syaro")
+        XCTAssertEqual(work.id, "XXXXXX")
+        XCTAssertEqual(work.title, "Syaro")
+        XCTAssertEqual(work.resource, "Syaro.arobject")
         
         XCTAssertThrowsError(try decoder.decode(Work.self, from: invalidJsonData))
     }
@@ -74,8 +73,8 @@ class WorkTests: XCTestCase {
         XCTAssertNoThrow(try decoder.decode(Work.self, from: jsonData))
         let work = try! decoder.decode(Work.self, from: jsonData)
         
-        let id = 1
-        let workToCompare = Work(id: id, title: "", resource: "", authors: [], headerImagePath: "", galleryImagesPaths: [], caption: "", isLocked: false)
+        let id = "XXXXXX"
+        let workToCompare = Work(id: id, title: "", resource: "", authors: [], images: [], caption: "", isLocked: false)
         XCTAssertEqual(work, workToCompare)
     }
 }
