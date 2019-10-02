@@ -48,6 +48,7 @@
 		414F0E5A23446E2D0013F833 /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; };
 		414F0E5B23446E2D0013F833 /* CodableFirebase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5F234488F20013F833 /* SubscriptionToken.swift */; };
+		414F0E6523448FA70013F833 /* WorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E6423448FA70013F833 /* WorkTests.swift */; };
 		4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176FAE72340509B0025B470 /* UserDataObject.swift */; };
 		4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADDD23324192002F6A4C /* AppDelegate.swift */; };
 		4186ADE023324192002F6A4C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4186ADDF23324192002F6A4C /* art.scnassets */; };
@@ -146,6 +147,8 @@
 		414F0E5523446D990013F833 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		414F0E5923446E2D0013F833 /* CodableFirebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CodableFirebase.framework; path = Carthage/Build/iOS/CodableFirebase.framework; sourceTree = "<group>"; };
 		414F0E5F234488F20013F833 /* SubscriptionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionToken.swift; sourceTree = "<group>"; };
+		414F0E6423448FA70013F833 /* WorkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTests.swift; sourceTree = "<group>"; };
+		414F0E66234490400013F833 /* ExhibitionAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExhibitionAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		4176FAE72340509B0025B470 /* UserDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataObject.swift; sourceTree = "<group>"; };
 		4186ADDA23324192002F6A4C /* ExhibitionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4186ADDD23324192002F6A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 			isa = PBXGroup;
 			children = (
 				41C1E80A23406D07003B708D /* Info.plist */,
+				414F0E6423448FA70013F833 /* WorkTests.swift */,
+				414F0E66234490400013F833 /* ExhibitionAppTests-Bridging-Header.h */,
 			);
 			path = ExhibitionAppTests;
 			sourceTree = "<group>";
@@ -530,6 +535,7 @@
 					};
 					41C1E80523406D07003B708D = {
 						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
 						TestTargetID = 4186ADD923324192002F6A4C;
 					};
 				};
@@ -676,6 +682,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				414F0E6523448FA70013F833 /* WorkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +891,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P2SAHRC466;
 				INFOPLIST_FILE = ExhibitionAppTests/Info.plist;
@@ -895,6 +903,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExhibitionAppTests/ExhibitionAppTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExhibitionApp.app/ExhibitionApp";
@@ -905,6 +915,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P2SAHRC466;
 				INFOPLIST_FILE = ExhibitionAppTests/Info.plist;
@@ -916,6 +927,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asahi.ExhibitionAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExhibitionAppTests/ExhibitionAppTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExhibitionApp.app/ExhibitionApp";
