@@ -9,8 +9,11 @@ struct TopCollectionViewCellModel {
     
     let authors: [String]
     
-    let imagePath: String
+    let imagePath: String?
     var image: UIImage? {
+        guard let imagePath = imagePath else {
+            return nil
+        }
         return UIImage(named: imagePath)
     }
     
@@ -30,7 +33,7 @@ struct TopCollectionViewCellModel {
         } else {
             self.title = work.title
             self.authors = work.authors
-            self.imagePath = work.headerImagePath
+            self.imagePath = work.images.first
         }
     }
 }

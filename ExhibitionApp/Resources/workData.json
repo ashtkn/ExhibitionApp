@@ -1,14 +1,13 @@
 [
     {
-        "id": 1,
+        "id": "1",
         "title": "Turtle Rock 1",
         "resource": "Syaro",
         "authors": [
             "Fujinami Hidemaro",
             "Kentaro Sumida"
         ],
-        "headerImagePath": "turtlerock.jpg",
-        "galleryImagesPaths": [
+        "images": [
             "turtlerock.jpg",
             "turtlerock.jpg",
             "turtlerock.jpg",
@@ -16,51 +15,34 @@
             "turtlerock.jpg"
         ],
         "caption": "これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．",
-        "isLocked": false
+        "is_locked": false
     },
     {
-        "id": 2,
+        "id": "2",
         "title": "Turtle Rock 2",
         "resource": "Chino",
         "authors": [
             "Fujinami Hidemaro",
             "Kentaro Sumida"
         ],
-        "headerImagePath": "turtlerock.jpg",
-        "galleryImagesPaths": [
+        "images": [
             "turtlerock.jpg"
         ],
         "caption": "これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．",
-        "isLocked": true
+        "is_locked": true
     },
     {
-        "id": 3,
+        "id": "3",
         "title": "Turtle Rock 3",
         "resource": "Cocoa",
         "authors": [
             "Fujinami Hidemaro",
             "Kentaro Sumida"
         ],
-        "headerImagePath": "turtlerock.jpg",
-        "galleryImagesPaths": [
+        "images": [
             "turtlerock.jpg"
         ],
         "caption": "これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．",
-        "isLocked": true
-    },
-    {
-        "id": 4,
-        "title": "Turtle Rock 4",
-        "resource": "Rize",
-        "authors": [
-            "Fujinami Hidemaro",
-            "Kentaro Sumida"
-        ],
-        "headerImagePath": "turtlerock.jpg",
-        "galleryImagesPaths": [
-            "turtlerock.jpg"
-        ],
-        "caption": "これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．これはキャプションです．",
-        "isLocked": true
+        "is_locked": true
     }
 ]
