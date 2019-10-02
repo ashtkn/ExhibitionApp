@@ -23,6 +23,25 @@ final class FirebaseService {
         }
     }
     
+    func fetchWorks() -> Promise<[Work]> {
+        return Promise<[Work]> { [unowned self] resolve, reject, _ in
+            self.signInAsync().then({
+                let collection = Firestore.firestore().collection("works")
+                collection.getDocuments { querySnapshot, error in
+                    if let error = error {
+                        reject(error)
+                    } else {
+                        guard let querySnapshot = querySnapshot else { fatalError() }
+                        let works = querySnapshot.documents.compactMap { try? $0.decode(as: Work.self) }
+                        resolve(works)
+                    }
+                }
+            }).catch({ error in
+                reject(error)
+            })
+        }
+    }
+    
     func download(arobject name: String, to directory: URL) -> Promise<URL> {
         return Promise<URL> { [unowned self] resolve, reject, _ in
             self.signInAsync().then( {

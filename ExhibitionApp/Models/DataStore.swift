@@ -51,32 +51,39 @@ final class DataStore {
     private func fetchWorkDataAsync() -> Promise<Void> {
         
         return Promise<Void> { resolve, reject, _ in
-            
-            let realm = try! Realm()
-            
-            // TODO: fetch work data fron Firestore
-            let initialWorkData: [Work] = JsonUtility.load("workData.json")
-            let initialWorkDataModels: [WorkObject] = initialWorkData.map { WorkObject.create(from: $0) }
-            try! realm.write {
-                realm.add(initialWorkDataModels)
-            }
-            
-            // Create directory for AR Resources
-            let fileManager = FileManager.default
-            let applicationSupportDirectory = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-            let resourceDirectory = applicationSupportDirectory.appendingPathComponent("ARObjects", isDirectory: true)
-            try fileManager.createDirectory(at: resourceDirectory, withIntermediateDirectories: true, attributes: nil)
-            
-            // TODO: download AR objects data from Firebase storage
-            FirebaseService.shared.download(arobject: "Chino", to: resourceDirectory).then( { resourcePath in
-                let resource = try ARReferenceObject.init(archiveURL: resourcePath)
-                print(resource.center)
+            FirebaseService.shared.fetchWorks().then({ initialWorkData in
+                let realm = try! Realm()
+                let initialWorkDataModels: [WorkObject] = initialWorkData.map { WorkObject.create(from: $0) }
+                try! realm.write {
+                    realm.add(initialWorkDataModels)
+                }
                 
-                resolve(())
+                // Create directory for AR Resources
+                let fileManager = FileManager.default
+                let applicationSupportDirectory = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+                let resourceDirectory = applicationSupportDirectory.appendingPathComponent("ARObjects", isDirectory: true)
+                try fileManager.createDirectory(at: resourceDirectory, withIntermediateDirectories: true, attributes: nil)
                 
-            }).catch({ error in
-                print(error)
-                reject(DataStoreError.fetchError)
+                // TODO: download AR objects data from Firebase storage
+                let resourcesNames = initialWorkData.map { $0.resource }
+                let downloadResoucesPromises = resourcesNames.map { resourceName in
+                    return FirebaseService.shared.download(arobject: resourceName, to: resourceDirectory)
+                }
+                
+                all(downloadResoucesPromises).then({ resourcesPaths in
+                    let resoruces = resourcesPaths.compactMap { try? ARReferenceObject.init(archiveURL: $0) }
+                    
+                    // TODO:
+                    for resource in resoruces {
+                        print("Name: \(resource.name!), Center: \(resource.center)")
+                    }
+                    
+                    resolve(())
+                    
+                }).catch({ error in
+                    print(error)
+                    reject(DataStoreError.fetchError)
+                })
             })
         }
     }

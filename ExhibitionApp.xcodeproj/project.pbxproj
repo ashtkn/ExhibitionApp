@@ -15,7 +15,6 @@
 		41270E9F233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41270E9D233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib */; };
 		41270EA1233A1DBD00B88732 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EA0233A1DBD00B88732 /* DetailViewModel.swift */; };
 		41270EA5233A20FA00B88732 /* turtlerock.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41270EA3233A20FA00B88732 /* turtlerock.jpg */; };
-		41270EA6233A20FA00B88732 /* workData.json in Resources */ = {isa = PBXBuildFile; fileRef = 41270EA4233A20FA00B88732 /* workData.json */; };
 		41270EAC233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAB233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift */; };
 		41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAD233B291C00B88732 /* Array+Extensions.swift */; };
 		41429539233DAB960031C81E /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41429538233DAB960031C81E /* PreviewViewModel.swift */; };
@@ -45,6 +44,10 @@
 		41481F862343896E004E2EB2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F822343893E004E2EB2 /* libc++.tbd */; };
 		41481F89234389AF004E2EB2 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41481F88234389AF004E2EB2 /* FirebaseService.swift */; };
 		41481F8B234390C8004E2EB2 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F8A234390C8004E2EB2 /* Hydra.framework */; };
+		414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5323446C100013F833 /* Firestore+Extensions.swift */; };
+		414F0E5623446D990013F833 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5523446D990013F833 /* Kingfisher.framework */; };
+		414F0E5A23446E2D0013F833 /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; };
+		414F0E5B23446E2D0013F833 /* CodableFirebase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176FAE72340509B0025B470 /* UserDataObject.swift */; };
 		4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADDD23324192002F6A4C /* AppDelegate.swift */; };
 		4186ADE023324192002F6A4C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4186ADDF23324192002F6A4C /* art.scnassets */; };
@@ -90,6 +93,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		414F0E5C23446E2D0013F833 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				414F0E5B23446E2D0013F833 /* CodableFirebase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
 		411A16A62340E3D000644A61 /* AttributesInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AttributesInspector.framework; path = Carthage/Build/iOS/AttributesInspector.framework; sourceTree = "<group>"; };
@@ -99,7 +116,6 @@
 		41270E9D233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewGalleryCollectionViewCell.xib; sourceTree = "<group>"; };
 		41270EA0233A1DBD00B88732 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		41270EA3233A20FA00B88732 /* turtlerock.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = turtlerock.jpg; sourceTree = "<group>"; };
-		41270EA4233A20FA00B88732 /* workData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = workData.json; sourceTree = "<group>"; };
 		41270EAB233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewGalleryCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		41270EAD233B291C00B88732 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		41429538233DAB960031C81E /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
@@ -129,6 +145,9 @@
 		41481F8323438949004E2EB2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		41481F88234389AF004E2EB2 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		41481F8A234390C8004E2EB2 /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
+		414F0E5323446C100013F833 /* Firestore+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firestore+Extensions.swift"; sourceTree = "<group>"; };
+		414F0E5523446D990013F833 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		414F0E5923446E2D0013F833 /* CodableFirebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CodableFirebase.framework; path = Carthage/Build/iOS/CodableFirebase.framework; sourceTree = "<group>"; };
 		4176FAE72340509B0025B470 /* UserDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataObject.swift; sourceTree = "<group>"; };
 		4186ADDA23324192002F6A4C /* ExhibitionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4186ADDD23324192002F6A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				414F0E5A23446E2D0013F833 /* CodableFirebase.framework in Frameworks */,
 				411A16A72340E3D000644A61 /* AttributesInspector.framework in Frameworks */,
 				41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */,
 				41481F6A2343873E004E2EB2 /* GoogleAppMeasurement.framework in Frameworks */,
@@ -199,6 +219,7 @@
 				41481F722343873E004E2EB2 /* Protobuf.framework in Frameworks */,
 				411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */,
 				41481F602343873E004E2EB2 /* leveldb-library.framework in Frameworks */,
+				414F0E5623446D990013F833 /* Kingfisher.framework in Frameworks */,
 				41481F762343873F004E2EB2 /* FirebaseCore.framework in Frameworks */,
 				41481F662343873E004E2EB2 /* GoogleUtilities.framework in Frameworks */,
 				41481F6E2343873E004E2EB2 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
@@ -250,7 +271,6 @@
 			children = (
 				41270EA3233A20FA00B88732 /* turtlerock.jpg */,
 				41A3F9CE233DC2D8000E8341 /* hatena.png */,
-				41270EA4233A20FA00B88732 /* workData.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -314,6 +334,7 @@
 				41EA9C272334F57600552D40 /* NSObject+Extensions.swift */,
 				4186ADF9233254FB002F6A4C /* UIViewController+Extensions.swift */,
 				41270EAD233B291C00B88732 /* Array+Extensions.swift */,
+				414F0E5323446C100013F833 /* Firestore+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -414,6 +435,8 @@
 		41D34EC32339DF080096188B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				414F0E5923446E2D0013F833 /* CodableFirebase.framework */,
+				414F0E5523446D990013F833 /* Kingfisher.framework */,
 				41481F8A234390C8004E2EB2 /* Hydra.framework */,
 				41481F8323438949004E2EB2 /* StoreKit.framework */,
 				41481F822343893E004E2EB2 /* libc++.tbd */,
@@ -477,6 +500,7 @@
 				4186ADD823324192002F6A4C /* Resources */,
 				41D34EC22339DE410096188B /* Run Script for Carthage */,
 				411A16AA2340E40200644A61 /* Run Script for Carthage (Debug) */,
+				414F0E5C23446E2D0013F833 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -561,7 +585,6 @@
 				4186ADE723324194002F6A4C /* Assets.xcassets in Resources */,
 				4186ADE523324192002F6A4C /* CameraViewController.storyboard in Resources */,
 				41EA9C122334D9EA00552D40 /* TopCollectionViewController.storyboard in Resources */,
-				41270EA6233A20FA00B88732 /* workData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,11 +638,13 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
 			name = "Run Script for Carthage";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -638,6 +663,7 @@
 				41D34EBF2339CECD0096188B /* TopCollectionViewCellModel.swift in Sources */,
 				4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */,
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
+				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
 				41A596A923334179008DA6AF /* LabelNode.swift in Sources */,
 				41D34ED02339E2420096188B /* DetailViewController.swift in Sources */,
 				41429539233DAB960031C81E /* PreviewViewModel.swift in Sources */,
