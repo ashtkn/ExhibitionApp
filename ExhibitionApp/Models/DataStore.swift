@@ -130,13 +130,19 @@ extension DataStore {
                 // Execute downloading
                 zip(all(downloadResoucesPromises), all(downloadImagesPromises)).then({ resourcesPaths, imagesPaths in
                     // TODO: リソースの拡張子によって処理を変更すること
-                    let resoruces = resourcesPaths.compactMap { try? ARReferenceObject.init(archiveURL: $0) }
-                    
-                    for resource in resoruces {
-                        print("Name: \(resource.name!), Center: \(resource.center), Extent: \(resource.extent)")
+                    let resoruces: [ARReferenceObject] = resourcesPaths.compactMap {
+                        try? ARReferenceObject.init(archiveURL: $0)
                     }
                     
-                    print(imagesPaths)
+                    for (index, resource) in resoruces.enumerated() {
+                        let name = resource.name!
+                        print("Resource \(index): \(name) has been downloaded.")
+                    }
+                    
+                    for (index, imagePath) in imagesPaths.enumerated() {
+                        print("Image \(index): \(imagePath.path) has been downloaded.")
+                    }
+                    
                     resolve(())
                     
                 }).catch({ error in
