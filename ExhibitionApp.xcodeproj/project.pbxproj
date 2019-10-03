@@ -48,6 +48,7 @@
 		414F0E5A23446E2D0013F833 /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; };
 		414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5F234488F20013F833 /* SubscriptionToken.swift */; };
 		414F0E6523448FA70013F833 /* WorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E6423448FA70013F833 /* WorkTests.swift */; };
+		41629A44234644300081FD18 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41629A43234644300081FD18 /* CameraViewModel.swift */; };
 		4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176FAE72340509B0025B470 /* UserDataObject.swift */; };
 		4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADDD23324192002F6A4C /* AppDelegate.swift */; };
 		4186ADE023324192002F6A4C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4186ADDF23324192002F6A4C /* art.scnassets */; };
@@ -137,6 +138,7 @@
 		414F0E5F234488F20013F833 /* SubscriptionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionToken.swift; sourceTree = "<group>"; };
 		414F0E6423448FA70013F833 /* WorkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTests.swift; sourceTree = "<group>"; };
 		414F0E66234490400013F833 /* ExhibitionAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExhibitionAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		41629A43234644300081FD18 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		4176FAE72340509B0025B470 /* UserDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataObject.swift; sourceTree = "<group>"; };
 		4186ADDA23324192002F6A4C /* ExhibitionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4186ADDD23324192002F6A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -262,6 +264,14 @@
 				41481F88234389AF004E2EB2 /* FirebaseService.swift */,
 			);
 			path = APIs;
+			sourceTree = "<group>";
+		};
+		41629A422346441D0081FD18 /* CameraView */ = {
+			isa = PBXGroup;
+			children = (
+				41629A43234644300081FD18 /* CameraViewModel.swift */,
+			);
+			path = CameraView;
 			sourceTree = "<group>";
 		};
 		4186ADD123324192002F6A4C = {
@@ -409,6 +419,7 @@
 		41D34EBD2339CEBB0096188B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				41629A422346441D0081FD18 /* CameraView */,
 				41A3F9C9233DBEDA000E8341 /* DetailView */,
 				41A3F9CA233DBEE8000E8341 /* PreviewView */,
 				41A3F9CB233DBEFF000E8341 /* TopView */,
@@ -646,6 +657,7 @@
 				41222D022340452000F5EFE9 /* Work.swift in Sources */,
 				41D34EBF2339CECD0096188B /* TopCollectionViewCellModel.swift in Sources */,
 				414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */,
+				41629A44234644300081FD18 /* CameraViewModel.swift in Sources */,
 				4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */,
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,

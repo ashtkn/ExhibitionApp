@@ -32,6 +32,32 @@ final class DataStore {
         return Array(realm.objects(WorkObject.self)).map { $0.entity }
     }
     
+    var arObjects: Set<ARReferenceObject> {
+        let arObjects: [ARReferenceObject] = works.compactMap { work in
+            let resourcePath = resourcesDirectory.appendingPathComponent("\(work.resource)")
+            if resourcePath.pathExtension != "arobject" {
+                return nil
+            }
+            return try? ARReferenceObject.init(archiveURL: resourcePath)
+        }
+        return Set(arObjects)
+    }
+    
+    var images: [String: UIImage] {
+        var images: [String: UIImage] = [:]
+        for work in works {
+            let imagesInWork: [(String, UIImage)] = work.images.compactMap { imageName in
+                let imagePath = imagesDirectory.appendingPathComponent(imageName)
+                guard let image = UIImage(contentsOfFile: imagePath.path) else { return nil }
+                return (imagePath.lastPathComponent, image)
+            }
+            for (fileName, image) in imagesInWork {
+                images[fileName] = image
+            }
+        }
+        return images
+    }
+    
     // MARK: Initializer
     
     private init() {
@@ -130,8 +156,8 @@ extension DataStore {
                 // Execute downloading
                 zip(all(downloadResoucesPromises), all(downloadImagesPromises)).then({ resourcesPaths, imagesPaths in
                     // TODO: リソースの拡張子によって処理を変更すること
-                    let resoruces: [ARReferenceObject] = resourcesPaths.compactMap {
-                        try? ARReferenceObject.init(archiveURL: $0)
+                    let resoruces: [ARReferenceObject] = resourcesPaths.compactMap { resourcePath in
+                        try? ARReferenceObject.init(archiveURL: resourcePath)
                     }
                     
                     for (index, resource) in resoruces.enumerated() {

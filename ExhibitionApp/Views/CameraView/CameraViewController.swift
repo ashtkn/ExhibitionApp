@@ -11,7 +11,12 @@ class CameraViewController: UIViewController {
     }
     @IBOutlet private weak var takeSnapshotButton: UIButton!
     
+    var viewModel: CameraViewModel?
     private var detectingWork: Work?
+    
+    func configure(_ viewModel: CameraViewModel) {
+        self.viewModel = viewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +50,8 @@ class CameraViewController: UIViewController {
     
     private var configuration: ARConfiguration {
         let configuration = ARWorldTrackingConfiguration()
-        guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "AR Resources", bundle: nil) else {
-            fatalError("Missing expected asset catalog resources.")
-        }
-        configuration.detectionObjects = referenceObjects
+        guard let detectionObjects = viewModel?.detectionObjects else { fatalError() }
+        configuration.detectionObjects = detectionObjects
         
         return configuration
     }

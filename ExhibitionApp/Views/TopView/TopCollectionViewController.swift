@@ -15,13 +15,14 @@ class TopCollectionViewController: UICollectionViewController {
         layout.minimumInteritemSpacing = 8
         
         dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
-            print("Reload data")
             self?.collectionView.reloadData()
         }
     }
     
     @IBAction func didScanButtonTapped(_ sender: Any) {
         let cameraViewController = CameraViewController.loadViewControllerFromStoryboard()
+        let viewModel = CameraViewModel(detectionObjects: DataStore.shared.arObjects)
+        cameraViewController.configure(viewModel)
         DispatchQueue.main.async {
             self.present(cameraViewController, animated: true, completion: nil)
         }
