@@ -15,15 +15,16 @@ class CameraViewController: UIViewController {
     
     // MARK: ViewModel
     
-    var viewModel: CameraViewModel?
-    func configure(_ viewModel: CameraViewModel) {
-        self.viewModel = viewModel
+    var cameraViewModel: CameraViewModel?
+    func configure(_ cameraViewModel: CameraViewModel) {
+        self.cameraViewModel = cameraViewModel
     }
     
     // MARK: Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cameraViewModel?.detectingWork = nil // Clear the previous detecting work
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +39,7 @@ class CameraViewController: UIViewController {
     
     private var configuration: ARConfiguration {
         let configuration = ARWorldTrackingConfiguration()
-        guard let detectionObjects = viewModel?.detectionObjects else { fatalError() }
+        guard let detectionObjects = cameraViewModel?.detectionObjects else { fatalError() }
         configuration.detectionObjects = detectionObjects
         
         return configuration
@@ -48,10 +49,11 @@ class CameraViewController: UIViewController {
     
     @IBAction private func didTakeSnapshotButtonTap(_ sender: Any) {
         let snapshotImage = sceneView.snapshot()
-        let viweModel = PreviewViewModel(snapshotImage: snapshotImage, detectingWork: viewModel?.detectingWork)
+        guard let cameraViewModel = cameraViewModel else { fatalError() }
+        let previewViewModel = PreviewViewModel(snapshotImage: snapshotImage, detectingWork: cameraViewModel.detectingWork, stashedCameraViewModel: cameraViewModel)
         
         let previewViewController = PreviewViewController.loadViewControllerFromStoryboard()
-        previewViewController.configure(viweModel)
+        previewViewController.configure(previewViewModel)
         
         let presentingViewController = self.presentingViewController
         DispatchQueue.main.async {
@@ -76,7 +78,7 @@ extension CameraViewController: ARSCNViewDelegate {
         let works = DataStore.shared.works
         if let detectingWorkIndex =  works.firstIndex(where: { $0.resource == expectedResourceName }) {
             // Register the detecting work
-            viewModel?.detectingWork = works[detectingWorkIndex]
+            cameraViewModel?.detectingWork = works[detectingWorkIndex]
             // Show AR Objects
             addNode(to: node, for: objectAnchor)
         }
