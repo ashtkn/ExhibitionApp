@@ -3,6 +3,8 @@ import SceneKit
 import ARKit
 
 class CameraViewController: UIViewController {
+    
+    // MARK: Outlets
 
     @IBOutlet private var sceneView: ARSCNView! {
         didSet {
@@ -11,12 +13,14 @@ class CameraViewController: UIViewController {
     }
     @IBOutlet private weak var takeSnapshotButton: UIButton!
     
-    var viewModel: CameraViewModel?
-    private var detectingWork: Work?
+    // MARK: ViewModel
     
+    var viewModel: CameraViewModel?
     func configure(_ viewModel: CameraViewModel) {
         self.viewModel = viewModel
     }
+    
+    // MARK: Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,28 +36,29 @@ class CameraViewController: UIViewController {
         sceneView.session.pause()
     }
     
-    @IBAction private func didTakeSnapshotButtonTap(_ sender: Any) {
-        let snapshotImage = sceneView.snapshot()
-        
-        let presentingViewController = self.presentingViewController
-        let previewViewController = PreviewViewController.loadViewControllerFromStoryboard()
-        
-        let viweModel = PreviewViewModel(snapshotImage: snapshotImage, detectingWork: detectingWork)
-        previewViewController.configure(viweModel)
-        
-        DispatchQueue.main.async {
-            self.dismiss(animated: true) {
-                presentingViewController?.present(previewViewController, animated: true, completion: nil)
-            }
-        }
-    }
-    
     private var configuration: ARConfiguration {
         let configuration = ARWorldTrackingConfiguration()
         guard let detectionObjects = viewModel?.detectionObjects else { fatalError() }
         configuration.detectionObjects = detectionObjects
         
         return configuration
+    }
+    
+    // MARK: Actions
+    
+    @IBAction private func didTakeSnapshotButtonTap(_ sender: Any) {
+        let snapshotImage = sceneView.snapshot()
+        let viweModel = PreviewViewModel(snapshotImage: snapshotImage, detectingWork: viewModel?.detectingWork)
+        
+        let previewViewController = PreviewViewController.loadViewControllerFromStoryboard()
+        previewViewController.configure(viweModel)
+        
+        let presentingViewController = self.presentingViewController
+        DispatchQueue.main.async {
+            self.dismiss(animated: true) {
+                presentingViewController?.present(previewViewController, animated: true, completion: nil)
+            }
+        }
     }
 }
 
@@ -65,12 +70,21 @@ extension CameraViewController: ARSCNViewDelegate {
         
         guard let objectAnchor = anchor as? ARObjectAnchor else { return }
         
-        let works = DataStore.shared.works
-        if let detectingWorkIndex =  works.firstIndex(where: { $0.resource == objectAnchor.name }) {
-            self.detectingWork = works[detectingWorkIndex]
-        }
+        // TODO: ARResourceImage
+        let expectedResourceName = "\(objectAnchor.name ?? "").arobject"
         
-        // TODO: Show AR object
+        let works = DataStore.shared.works
+        if let detectingWorkIndex =  works.firstIndex(where: { $0.resource == expectedResourceName }) {
+            // Register the detecting work
+            viewModel?.detectingWork = works[detectingWorkIndex]
+            // Show AR Objects
+            addNode(to: node, for: objectAnchor)
+        }
+    }
+    
+    // TODO: Implement AR Objects
+    private func addNode(to node: SCNNode, for objectAnchor: ARObjectAnchor) {
+        
         switch objectAnchor.name {
         case "Syaro":
             let labelNode = LabelNode(text: "Syaro", width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
@@ -79,7 +93,6 @@ extension CameraViewController: ARSCNViewDelegate {
         default:
             fatalError("Unknown object has been detected.")
         }
-    
     }
 
     func session(_ session: ARSession, didFailWithError error: Error) {}
