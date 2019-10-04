@@ -48,6 +48,7 @@
 		414F0E5A23446E2D0013F833 /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; };
 		414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5F234488F20013F833 /* SubscriptionToken.swift */; };
 		414F0E6523448FA70013F833 /* WorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E6423448FA70013F833 /* WorkTests.swift */; };
+		41629A44234644300081FD18 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41629A43234644300081FD18 /* CameraViewModel.swift */; };
 		4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176FAE72340509B0025B470 /* UserDataObject.swift */; };
 		4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADDD23324192002F6A4C /* AppDelegate.swift */; };
 		4186ADE023324192002F6A4C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4186ADDF23324192002F6A4C /* art.scnassets */; };
@@ -65,6 +66,9 @@
 		41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AD233E6C7C008C797A /* Realm.framework */; };
 		41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AF233E6C86008C797A /* RealmSwift.framework */; };
 		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
+		41B5BB232344F27700A274C7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BB222344F27700A274C7 /* String+Extensions.swift */; };
+		41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BB242344F48700A274C7 /* UIView+Extensions.swift */; };
+		41B5BB272344F4BE00A274C7 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BB262344F4BE00A274C7 /* UIApplication+Extensions.swift */; };
 		41D34EBF2339CECD0096188B /* TopCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D34EBE2339CECD0096188B /* TopCollectionViewCellModel.swift */; };
 		41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC42339DF090096188B /* RxSwift.framework */; };
 		41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC82339DF140096188B /* RxCocoa.framework */; };
@@ -134,6 +138,7 @@
 		414F0E5F234488F20013F833 /* SubscriptionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionToken.swift; sourceTree = "<group>"; };
 		414F0E6423448FA70013F833 /* WorkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTests.swift; sourceTree = "<group>"; };
 		414F0E66234490400013F833 /* ExhibitionAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExhibitionAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		41629A43234644300081FD18 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		4176FAE72340509B0025B470 /* UserDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataObject.swift; sourceTree = "<group>"; };
 		4186ADDA23324192002F6A4C /* ExhibitionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4186ADDD23324192002F6A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +158,9 @@
 		41A3C7AD233E6C7C008C797A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		41A3C7AF233E6C86008C797A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		41A596A823334179008DA6AF /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
+		41B5BB222344F27700A274C7 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		41B5BB242344F48700A274C7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		41B5BB262344F4BE00A274C7 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		41C1E80623406D07003B708D /* ExhibitionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExhibitionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C1E80A23406D07003B708D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41D34EBE2339CECD0096188B /* TopCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCellModel.swift; sourceTree = "<group>"; };
@@ -258,6 +266,14 @@
 			path = APIs;
 			sourceTree = "<group>";
 		};
+		41629A422346441D0081FD18 /* CameraView */ = {
+			isa = PBXGroup;
+			children = (
+				41629A43234644300081FD18 /* CameraViewModel.swift */,
+			);
+			path = CameraView;
+			sourceTree = "<group>";
+		};
 		4186ADD123324192002F6A4C = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +325,9 @@
 				4186ADF9233254FB002F6A4C /* UIViewController+Extensions.swift */,
 				41270EAD233B291C00B88732 /* Array+Extensions.swift */,
 				414F0E5323446C100013F833 /* Firestore+Extensions.swift */,
+				41B5BB222344F27700A274C7 /* String+Extensions.swift */,
+				41B5BB242344F48700A274C7 /* UIView+Extensions.swift */,
+				41B5BB262344F4BE00A274C7 /* UIApplication+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -400,6 +419,7 @@
 		41D34EBD2339CEBB0096188B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				41629A422346441D0081FD18 /* CameraView */,
 				41A3F9C9233DBEDA000E8341 /* DetailView */,
 				41A3F9CA233DBEE8000E8341 /* PreviewView */,
 				41A3F9CB233DBEFF000E8341 /* TopView */,
@@ -637,6 +657,7 @@
 				41222D022340452000F5EFE9 /* Work.swift in Sources */,
 				41D34EBF2339CECD0096188B /* TopCollectionViewCellModel.swift in Sources */,
 				414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */,
+				41629A44234644300081FD18 /* CameraViewModel.swift in Sources */,
 				4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */,
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
@@ -644,18 +665,21 @@
 				41D34ED02339E2420096188B /* DetailViewController.swift in Sources */,
 				41429539233DAB960031C81E /* PreviewViewModel.swift in Sources */,
 				4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */,
+				41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */,
 				41270EA1233A1DBD00B88732 /* DetailViewModel.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,
 				41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */,
 				41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */,
 				4186ADF4233253E9002F6A4C /* PreviewViewController.swift in Sources */,
 				4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */,
+				41B5BB272344F4BE00A274C7 /* UIApplication+Extensions.swift in Sources */,
 				41270EAC233B1F5800B88732 /* DetailViewGalleryCollectionViewCellModel.swift in Sources */,
 				41270E9E233A1C0900B88732 /* DetailViewGalleryCollectionViewCell.swift in Sources */,
 				41222D042340484600F5EFE9 /* UserData.swift in Sources */,
 				41EA9C252334E2AF00552D40 /* TopCollectionViewCell.swift in Sources */,
 				41481F89234389AF004E2EB2 /* FirebaseService.swift in Sources */,
 				4186ADFC233254FB002F6A4C /* UIImage+Extensions.swift in Sources */,
+				41B5BB232344F27700A274C7 /* String+Extensions.swift in Sources */,
 				41907CA9233F19EC00C54253 /* DataStore.swift in Sources */,
 				41F46B8E2340502B00606D7B /* WorkObject.swift in Sources */,
 				4186AE00233254FB002F6A4C /* UITableView+Extensions.swift in Sources */,
