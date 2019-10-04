@@ -95,6 +95,9 @@ extension ScanningViewController: ARSCNViewDelegate {
         case "Syaro":
             let labelNode = LabelNode(text: "Syaro", width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
             node.addChildNode(labelNode)
+        case "Chino":
+            let labelNode = LabelNode(text: "Chino", width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+            node.addChildNode(labelNode)
         default:
             fatalError("Unknown object has been detected.")
         }
