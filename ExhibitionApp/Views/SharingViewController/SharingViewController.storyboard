@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d1o-C1-yNj">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sharing View Controller-->
+        <scene sceneID="XCY-vB-NcP">
+            <objects>
+                <viewController storyboardIdentifier="SharingViewController" id="d1o-C1-yNj" customClass="SharingViewController" customModule="ExhibitionApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nJ0-hE-dbs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWv-ic-prB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="738"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gy-to-hYc">
+                                <rect key="frame" x="0.0" y="782" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edU-k3-IKI">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                        <state key="normal" title="Share"/>
+                                        <connections>
+                                            <action selector="didShareButtonTapped:" destination="d1o-C1-yNj" eventType="touchUpInside" id="EFM-ZR-Vew"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="edU-k3-IKI" firstAttribute="top" secondItem="4gy-to-hYc" secondAttribute="top" id="L5X-xv-eIN"/>
+                                    <constraint firstItem="edU-k3-IKI" firstAttribute="leading" secondItem="4gy-to-hYc" secondAttribute="leading" id="N4F-df-MER"/>
+                                    <constraint firstAttribute="trailing" secondItem="edU-k3-IKI" secondAttribute="trailing" id="isv-UY-lxS"/>
+                                    <constraint firstAttribute="bottom" secondItem="edU-k3-IKI" secondAttribute="bottom" id="teA-Pv-dng"/>
+                                    <constraint firstAttribute="height" constant="80" id="xqK-L4-MJa"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rfK-0g-Rxs" firstAttribute="trailing" secondItem="4gy-to-hYc" secondAttribute="trailing" id="AzO-yc-alf"/>
+                            <constraint firstItem="4gy-to-hYc" firstAttribute="leading" secondItem="rfK-0g-Rxs" secondAttribute="leading" id="Bkq-P7-HM7"/>
+                            <constraint firstItem="rfK-0g-Rxs" firstAttribute="trailing" secondItem="dWv-ic-prB" secondAttribute="trailing" id="C8B-XN-Nwk"/>
+                            <constraint firstItem="rfK-0g-Rxs" firstAttribute="bottom" secondItem="4gy-to-hYc" secondAttribute="bottom" id="Etc-Me-sVO"/>
+                            <constraint firstItem="dWv-ic-prB" firstAttribute="leading" secondItem="rfK-0g-Rxs" secondAttribute="leading" id="INB-8H-tOI"/>
+                            <constraint firstItem="dWv-ic-prB" firstAttribute="top" secondItem="rfK-0g-Rxs" secondAttribute="top" id="qJs-dg-yej"/>
+                            <constraint firstItem="4gy-to-hYc" firstAttribute="top" secondItem="dWv-ic-prB" secondAttribute="bottom" id="rJ5-9s-kmD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rfK-0g-Rxs"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="dWv-ic-prB" id="2IF-3Y-YrY"/>
+                        <outlet property="shareButton" destination="edU-k3-IKI" id="7ma-Aw-fKH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nvy-Uj-fIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="153"/>
+        </scene>
+    </scenes>
+</document>

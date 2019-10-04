@@ -1,7 +1,7 @@
 import UIKit
 import ARKit
 
-struct CameraViewModel {
+struct ScanningViewModel {
     let detectionObjects: Set<ARReferenceObject>
     let detectionImages: Set<ARReferenceImage>
     var detectingWork: Work?

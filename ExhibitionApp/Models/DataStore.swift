@@ -67,8 +67,18 @@ final class DataStore {
         return Set(arImages)
     }
     
+    private var lockedWorkImagePath: URL {
+        return imagesDirectory.appendingPathComponent("hatena.png")
+    }
+    
     var images: [String: UIImage] {
         var images: [String: UIImage] = [:]
+        
+        // hatena.png
+        let lockedWorkImageName = lockedWorkImagePath.lastPathComponent
+        images[lockedWorkImageName] = UIImage(contentsOfFile: lockedWorkImagePath.path)!
+        
+        // Images of works
         for work in works {
             let imagesInWork: [(String, UIImage)] = work.images.compactMap { imageName in
                 let imagePath = imagesDirectory.appendingPathComponent(imageName)
@@ -178,7 +188,8 @@ extension DataStore {
                 }
                 
                 // Add promise for downloading hatena.png
-                let downloadHatenaImagePromise = FirebaseService.shared.download(image: "hatena.png", to: self.imagesDirectory)
+                let lockedWorkImageName = self.lockedWorkImagePath.lastPathComponent
+                let downloadHatenaImagePromise = FirebaseService.shared.download(image: lockedWorkImageName, to: self.imagesDirectory)
                 downloadImagesPromises.append(downloadHatenaImagePromise)
                 
                 // Execute downloading
