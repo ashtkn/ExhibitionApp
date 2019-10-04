@@ -10,7 +10,8 @@ enum DataStoreError: Error {
 final class DataStore {
     
     static let shared = DataStore()
-    private let realm = try! Realm()
+    // Declaration of realm here is prohibited because incorrent thread access error occurs
+    // private let realm = try! Realm()
     
     private var applicationSupportDirectory: URL {
         return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
@@ -29,6 +30,7 @@ final class DataStore {
     }
     
     var works: [Work] {
+        let realm = try! Realm()
         return Array(realm.objects(WorkObject.self)).map { $0.entity }
     }
     
@@ -61,6 +63,8 @@ final class DataStore {
     // MARK: Initializer
     
     private init() {
+        let realm = try! Realm()
+        
         // Check if user data exists,
         firstLabel: do {
             if let userDataObject = realm.object(ofType: UserDataObject.self, forPrimaryKey: 0) {
@@ -107,6 +111,7 @@ final class DataStore {
     // MARK: Methods
     
     func unlock(work: Work) {
+        let realm = try! Realm()
         let workObject = realm.object(ofType: WorkObject.self, forPrimaryKey: work.id)
         try! realm.write {
             workObject?.isLocked = false
@@ -114,6 +119,7 @@ final class DataStore {
     }
     
     func subscribe(_ handler: @escaping () -> Void) -> SubscriptionToken {
+        let realm = try! Realm()
         let token = realm.observe { notification, realm in
             handler()
         }
