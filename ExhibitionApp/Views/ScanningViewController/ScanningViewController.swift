@@ -17,7 +17,7 @@ class ScanningViewController: UIViewController {
     
     // MARK: ViewModel
     
-    private var scanningViewModel = ScanningViewModel()
+    private var viewModel = ScanningViewModel()
     
     // MARK: Lifecycles
     
@@ -37,11 +37,11 @@ class ScanningViewController: UIViewController {
     
     private var configuration: ARConfiguration {
         let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionObjects = scanningViewModel.detectionObjects
-        configuration.detectionImages = scanningViewModel.detectionImages
+        configuration.detectionObjects = viewModel.detectionObjects
+        configuration.detectionImages = viewModel.detectionImages
         
-        print("Detection Objects: \(scanningViewModel.detectionObjects)")
-        print("Detection Images: \(scanningViewModel.detectionImages)")
+        print("Detection Objects: \(viewModel.detectionObjects)")
+        print("Detection Images: \(viewModel.detectionImages)")
         
         return configuration
     }
@@ -50,7 +50,7 @@ class ScanningViewController: UIViewController {
     
     @IBAction private func didTakeSnapshotButtonTapped(_ sender: Any) {
         let snapshotImage = sceneView.snapshot()
-        let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: scanningViewModel.detectingWork, stash: scanningViewModel)
+        let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: viewModel.detectingWork, stash: viewModel)
         
         let sharingViewController = SharingViewController.loadViewControllerFromStoryboard()
         sharingViewController.configure(sharingViewModel)
@@ -78,10 +78,10 @@ extension ScanningViewController: ARSCNViewDelegate {
         // TODO: ARResourceImage
         let expectedResourceName = "\(objectAnchor.name ?? "").arobject"
         
-        let works = DataStore.shared.works
+        let works = viewModel.works
         if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
             // Register the detecting work
-            scanningViewModel.detectingWork = works[detectingWorkIndex]
+            viewModel.detectingWork = works[detectingWorkIndex]
             // Show AR Objects
             addNode(to: node, for: objectAnchor)
         }
