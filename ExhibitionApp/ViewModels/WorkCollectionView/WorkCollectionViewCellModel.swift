@@ -9,7 +9,7 @@ struct WorkCollectionViewCellModel {
     let imageName: String?
     var image: UIImage? {
         guard let imageName = imageName else { return nil }
-        return DataStore.shared.images[imageName]
+        return DataStore.shared.getImage(name: imageName)
     }
     
     init(from work: Work) {

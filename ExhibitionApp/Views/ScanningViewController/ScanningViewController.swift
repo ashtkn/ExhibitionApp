@@ -4,19 +4,20 @@ import ARKit
 
 class ScanningViewController: UIViewController {
     
-    @IBOutlet weak var sceneView: ARSCNView! {
+    // MARK: Outlets
+    
+    @IBOutlet private weak var sceneView: ARSCNView! {
         didSet {
             self.sceneView.delegate = self
         }
     }
     
-    @IBOutlet weak var takeSnapshotButton: UIButton!
+    @IBOutlet private weak var takeSnapshotButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIBarButtonItem!
     
     // MARK: ViewModel
-    var scanningViewModel: ScanningViewModel?
-    func configure(_ scanningViewModel: ScanningViewModel) {
-        self.scanningViewModel = scanningViewModel
-    }
+    
+    private var scanningViewModel = ScanningViewModel()
     
     // MARK: Lifecycles
     
@@ -36,36 +37,34 @@ class ScanningViewController: UIViewController {
     
     private var configuration: ARConfiguration {
         let configuration = ARWorldTrackingConfiguration()
-        guard let detectionObjects = scanningViewModel?.detectionObjects else { fatalError() }
-        configuration.detectionObjects = detectionObjects
-        guard let detectionImages = scanningViewModel?.detectionImages else { fatalError() }
-        configuration.detectionImages = detectionImages
+        configuration.detectionObjects = scanningViewModel.detectionObjects
+        configuration.detectionImages = scanningViewModel.detectionImages
         
-        print("Detection Objects: \(detectionObjects)")
-        print("Detection Images: \(detectionImages)")
+        print("Detection Objects: \(scanningViewModel.detectionObjects)")
+        print("Detection Images: \(scanningViewModel.detectionImages)")
         
         return configuration
     }
     
     // MARK: Actions
     
-    @IBAction func didTakeSnapshotButtonTapped(_ sender: Any) {
+    @IBAction private func didTakeSnapshotButtonTapped(_ sender: Any) {
         let snapshotImage = sceneView.snapshot()
-        guard let currentScanningViewModel = self.scanningViewModel else { fatalError() }
-        let currentDetectingWork = currentScanningViewModel.detectingWork
-        let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: currentDetectingWork, stash: currentScanningViewModel)
+        let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: scanningViewModel.detectingWork, stash: scanningViewModel)
         
         let sharingViewController = SharingViewController.loadViewControllerFromStoryboard()
         sharingViewController.configure(sharingViewModel)
         
-        let presentingViewController = self.presentingViewController
-        DispatchQueue.main.async {
-            self.dismiss(animated: true) {
-                presentingViewController?.present(sharingViewController, animated: true, completion: nil)
-            }
+        DispatchQueue.main.async { [unowned self] in
+            self.navigationController?.show(sharingViewController, sender: nil)
         }
     }
     
+    @IBAction private func didCancelButtonTapped(_ sender: Any) {
+        DispatchQueue.main.async { [unowned self] in
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
+    }
 }
 
 // MARK: - ARSCNViewDelegatea
@@ -82,7 +81,7 @@ extension ScanningViewController: ARSCNViewDelegate {
         let works = DataStore.shared.works
         if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
             // Register the detecting work
-            scanningViewModel?.detectingWork = works[detectingWorkIndex]
+            scanningViewModel.detectingWork = works[detectingWorkIndex]
             // Show AR Objects
             addNode(to: node, for: objectAnchor)
         }

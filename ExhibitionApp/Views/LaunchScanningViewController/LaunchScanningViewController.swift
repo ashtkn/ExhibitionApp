@@ -6,13 +6,10 @@ class LaunchScanningViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func didScanButtonTapped(_ sender: Any) {
-        let scannignViewModel = ScanningViewModel(objects: DataStore.shared.arObjects, images: DataStore.shared.arImages)
-        let scanningViewController = ScanningViewController.loadViewControllerFromStoryboard()
-        scanningViewController.configure(scannignViewModel)
-        
+    @IBAction private func didScanButtonTapped(_ sender: Any) {
+        let navigationViewController = ScanningViewController.loadNavigationControllerFromStoryboard()
         DispatchQueue.main.async {
-            self.present(scanningViewController, animated: true, completion: nil)
+            self.present(navigationViewController, animated: true, completion: nil)
         }
     }
 }

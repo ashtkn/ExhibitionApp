@@ -10,8 +10,8 @@ enum DataStoreError: Error {
 final class DataStore {
     
     static let shared = DataStore()
-    // Declaration of realm here is prohibited because incorrent thread access error occurs
-    // private let realm = try! Realm()
+    
+    // MARK: Properties
     
     private var applicationSupportDirectory: URL {
         return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
@@ -32,64 +32,6 @@ final class DataStore {
     var works: [Work] {
         let realm = try! Realm()
         return Array(realm.objects(WorkObject.self)).map { $0.entity }
-    }
-    
-    var arObjects: Set<ARReferenceObject> {
-        let arObjects: [ARReferenceObject] = works.compactMap { work in
-            let resourcePath = resourcesDirectory.appendingPathComponent("\(work.resource)")
-            if resourcePath.pathExtension != "arobject" {
-                return nil
-            }
-            return try? ARReferenceObject.init(archiveURL: resourcePath)
-        }
-        return Set(arObjects)
-    }
-    
-    var arImages: Set<ARReferenceImage> {
-        let arImages: [ARReferenceImage] = works.compactMap { work in
-            let resourcePath = resourcesDirectory.appendingPathComponent("\(work.resource)")
-            if resourcePath.pathExtension != "jpg" {
-                return nil
-            }
-            
-            guard let image = UIImage(contentsOfFile: resourcePath.path) else {
-                print("Cannot load image")
-                return nil
-            }
-            guard let cgImage = image.cgImage else {
-                print("Cannot export CGImage")
-                return nil
-            }
-            
-            let physicalWidth: CGFloat = 0.2 // You have to fix the real size of the image marker.
-            return ARReferenceImage.init(cgImage, orientation: .init(image.imageOrientation), physicalWidth: physicalWidth)
-        }
-        return Set(arImages)
-    }
-    
-    private var lockedWorkImagePath: URL {
-        return imagesDirectory.appendingPathComponent("hatena.png")
-    }
-    
-    var images: [String: UIImage] {
-        var images: [String: UIImage] = [:]
-        
-        // hatena.png
-        let lockedWorkImageName = lockedWorkImagePath.lastPathComponent
-        images[lockedWorkImageName] = UIImage(contentsOfFile: lockedWorkImagePath.path)!
-        
-        // Images of works
-        for work in works {
-            let imagesInWork: [(String, UIImage)] = work.images.compactMap { imageName in
-                let imagePath = imagesDirectory.appendingPathComponent(imageName)
-                guard let image = UIImage(contentsOfFile: imagePath.path) else { return nil }
-                return (imagePath.lastPathComponent, image)
-            }
-            for (fileName, image) in imagesInWork {
-                images[fileName] = image
-            }
-        }
-        return images
     }
     
     // MARK: Initializer
@@ -142,6 +84,44 @@ final class DataStore {
     
     // MARK: Methods
     
+    func getImage(name imageName: String) -> UIImage? {
+        let imagePath = imagesDirectory.appendingPathComponent(imageName)
+        return UIImage(contentsOfFile: imagePath.path)
+    }
+    
+    func getARObjectsSet() -> Set<ARReferenceObject> {
+        let arObjects: [ARReferenceObject] = works.compactMap { work in
+            let resourcePath = resourcesDirectory.appendingPathComponent("\(work.resource)")
+            if resourcePath.pathExtension != "arobject" {
+                return nil
+            }
+            return try? ARReferenceObject.init(archiveURL: resourcePath)
+        }
+        return Set(arObjects)
+    }
+    
+    func getARImagesSet() -> Set<ARReferenceImage> {
+        let arImages: [ARReferenceImage] = works.compactMap { work in
+            let resourcePath = resourcesDirectory.appendingPathComponent("\(work.resource)")
+            if resourcePath.pathExtension != "jpg" {
+                return nil
+            }
+            
+            guard let image = UIImage(contentsOfFile: resourcePath.path) else {
+                print("Cannot load image")
+                return nil
+            }
+            guard let cgImage = image.cgImage else {
+                print("Cannot export CGImage")
+                return nil
+            }
+            
+            let physicalWidth: CGFloat = 0.2 // You have to fix the real size of the image marker.
+            return ARReferenceImage.init(cgImage, orientation: .init(image.imageOrientation), physicalWidth: physicalWidth)
+        }
+        return Set(arImages)
+    }
+    
     func unlock(work: Work) {
         let realm = try! Realm()
         let workObject = realm.object(ofType: WorkObject.self, forPrimaryKey: work.id)
@@ -188,8 +168,7 @@ extension DataStore {
                 }
                 
                 // Add promise for downloading hatena.png
-                let lockedWorkImageName = self.lockedWorkImagePath.lastPathComponent
-                let downloadHatenaImagePromise = FirebaseService.shared.download(image: lockedWorkImageName, to: self.imagesDirectory)
+                let downloadHatenaImagePromise = FirebaseService.shared.download(image: "hatena.png", to: self.imagesDirectory)
                 downloadImagesPromises.append(downloadHatenaImagePromise)
                 
                 // Execute downloading

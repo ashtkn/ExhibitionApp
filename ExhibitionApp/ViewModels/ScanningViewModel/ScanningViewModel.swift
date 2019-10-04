@@ -6,9 +6,9 @@ struct ScanningViewModel {
     let detectionImages: Set<ARReferenceImage>
     var detectingWork: Work?
     
-    init(objects detectionObjects: Set<ARReferenceObject>, images detectionImages: Set<ARReferenceImage>) {
-        self.detectionObjects = detectionObjects
-        self.detectionImages = detectionImages
+    init() {
+        self.detectionObjects = DataStore.shared.getARObjectsSet()
+        self.detectionImages = DataStore.shared.getARImagesSet()
         self.detectingWork = nil
     }
 }
