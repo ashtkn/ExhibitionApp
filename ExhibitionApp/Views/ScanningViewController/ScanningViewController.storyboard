@@ -43,7 +43,7 @@
                         <viewLayoutGuide key="safeArea" id="ruN-uD-uKV"/>
                     </view>
                     <navigationItem key="navigationItem" title="ARカメラ" id="B6s-ck-lpm">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="eAk-gx-Zdz">
+                        <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="eAk-gx-Zdz">
                             <connections>
                                 <action selector="didCancelButtonTapped:" destination="qqt-59-AZP" id="0Pq-Sc-DIA"/>
                             </connections>
@@ -78,4 +78,7 @@
             <point key="canvasLocation" x="-59.420289855072468" y="105.80357142857143"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

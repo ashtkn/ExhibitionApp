@@ -53,12 +53,7 @@
                         <viewLayoutGuide key="safeArea" id="rfK-0g-Rxs"/>
                     </view>
                     <navigationItem key="navigationItem" title="プレビュー" id="sdw-LK-oic">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="iba-ty-T5q">
-                            <connections>
-                                <action selector="didBackButtonTapped:" destination="d1o-C1-yNj" id="fJn-wn-kbw"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Xmi-8H-iSH">
+                        <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="Xmi-8H-iSH">
                             <connections>
                                 <action selector="didCancelButtonTapped:" destination="d1o-C1-yNj" id="iY7-h4-gnw"/>
                             </connections>
@@ -66,7 +61,6 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="backButton" destination="iba-ty-T5q" id="3Dt-wX-wD0"/>
                         <outlet property="cancelButton" destination="Xmi-8H-iSH" id="Lxr-eq-RKJ"/>
                         <outlet property="imageView" destination="dWv-ic-prB" id="2IF-3Y-YrY"/>
                         <outlet property="shareButton" destination="edU-k3-IKI" id="7ma-Aw-fKH"/>
@@ -77,4 +71,7 @@
             <point key="canvasLocation" x="74" y="153"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
