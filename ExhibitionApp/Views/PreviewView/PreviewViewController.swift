@@ -4,15 +4,17 @@ import SafariServices
 
 class PreviewViewController: UIViewController {
     
+    // MARK: Outlets
+    
     @IBOutlet private weak var declineButton: UIButton!
     
     @IBOutlet private weak var acceptButton: UIButton! {
         didSet {
-            if let detectingWork = viewModel?.detectingWork {
-                print("Object is detected: \(detectingWork.title)")
+            if let detectingWork = previewViewModel?.detectingWork {
+                print("Work is detected: \(detectingWork.title)")
                 self.acceptButton.isEnabled = true
             } else {
-                print("Object is not detected.")
+                print("Work is not detected")
                 self.acceptButton.isEnabled = false
             }
         }
@@ -20,24 +22,32 @@ class PreviewViewController: UIViewController {
     
     @IBOutlet private weak var imageView: UIImageView! {
         didSet {
-            self.imageView.image = viewModel?.snapshotImage
+            self.imageView.image = previewViewModel?.snapshotImage
         }
     }
     
-    private var viewModel: PreviewViewModel?
+    // MARK: ViewModel
     
-    func configure(_ viewModel: PreviewViewModel) {
-        self.viewModel = viewModel
+    private var previewViewModel: PreviewViewModel?
+    func configure(_ previewViewModel: PreviewViewModel) {
+        self.previewViewModel = previewViewModel
     }
+    
+    // MARK: Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    // MARK: Actions
+    
     @IBAction private func didDeclineButtonTap(_ sender: Any) {
         
         let presentingViewController = self.presentingViewController
         let cameraViewController = CameraViewController.loadViewControllerFromStoryboard()
+        
+        guard let previewViewModel = previewViewModel else { fatalError() }
+        cameraViewController.configure(previewViewModel.stashedCameraViewModel)
         
         DispatchQueue.main.async {
             self.dismiss(animated: true) {
@@ -51,7 +61,7 @@ class PreviewViewController: UIViewController {
         let presentingViewController = self.presentingViewController
         let detailViewController = DetailViewController.loadViewControllerFromStoryboard()
         
-        guard let detectingWork = self.viewModel?.detectingWork else { return }
+        guard let detectingWork = previewViewModel?.detectingWork else { fatalError() }
         detailViewController.configure(DetailViewModel(from: detectingWork))
         
         DispatchQueue.main.async {
