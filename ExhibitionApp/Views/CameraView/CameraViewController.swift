@@ -24,7 +24,6 @@ class CameraViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cameraViewModel?.detectingWork = nil // Clear the previous detecting work
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +40,11 @@ class CameraViewController: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         guard let detectionObjects = cameraViewModel?.detectionObjects else { fatalError() }
         configuration.detectionObjects = detectionObjects
+        guard let detectionImages = cameraViewModel?.detectionImages else { fatalError() }
+        configuration.detectionImages = detectionImages
+        
+        print("Detection Objects: \(detectionObjects)")
+        print("Detection Images: \(detectionImages)")
         
         return configuration
     }
@@ -50,7 +54,8 @@ class CameraViewController: UIViewController {
     @IBAction private func didTakeSnapshotButtonTap(_ sender: Any) {
         let snapshotImage = sceneView.snapshot()
         guard let cameraViewModel = cameraViewModel else { fatalError() }
-        let previewViewModel = PreviewViewModel(snapshotImage: snapshotImage, detectingWork: cameraViewModel.detectingWork, stashedCameraViewModel: cameraViewModel)
+        let detectingWork = cameraViewModel.detectingWork
+        let previewViewModel = PreviewViewModel(snapshot: snapshotImage, detecting: detectingWork, stash: cameraViewModel)
         
         let previewViewController = PreviewViewController.loadViewControllerFromStoryboard()
         previewViewController.configure(previewViewModel)

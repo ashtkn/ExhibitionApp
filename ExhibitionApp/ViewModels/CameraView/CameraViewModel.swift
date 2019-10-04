@@ -3,5 +3,12 @@ import ARKit
 
 struct CameraViewModel {
     let detectionObjects: Set<ARReferenceObject>
-    var detectingWork: Work? = nil
+    let detectionImages: Set<ARReferenceImage>
+    var detectingWork: Work?
+    
+    init(objects detectionObjects: Set<ARReferenceObject>, images detectionImages: Set<ARReferenceImage>) {
+        self.detectionObjects = detectionObjects
+        self.detectionImages = detectionImages
+        self.detectingWork = nil
+    }
 }

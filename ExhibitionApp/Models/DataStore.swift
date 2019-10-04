@@ -45,6 +45,28 @@ final class DataStore {
         return Set(arObjects)
     }
     
+    var arImages: Set<ARReferenceImage> {
+        let arImages: [ARReferenceImage] = works.compactMap { work in
+            let resourcePath = resourcesDirectory.appendingPathComponent("\(work.resource)")
+            if resourcePath.pathExtension != "jpg" {
+                return nil
+            }
+            
+            guard let image = UIImage(contentsOfFile: resourcePath.path) else {
+                print("Cannot load image")
+                return nil
+            }
+            guard let cgImage = image.cgImage else {
+                print("Cannot export CGImage")
+                return nil
+            }
+            
+            let physicalWidth: CGFloat = 0.2 // You have to fix the real size of the image marker.
+            return ARReferenceImage.init(cgImage, orientation: .init(image.imageOrientation), physicalWidth: physicalWidth)
+        }
+        return Set(arImages)
+    }
+    
     var images: [String: UIImage] {
         var images: [String: UIImage] = [:]
         for work in works {
@@ -161,22 +183,9 @@ extension DataStore {
                 
                 // Execute downloading
                 zip(all(downloadResoucesPromises), all(downloadImagesPromises)).then({ resourcesPaths, imagesPaths in
-                    // TODO: リソースの拡張子によって処理を変更すること
-                    let resoruces: [ARReferenceObject] = resourcesPaths.compactMap { resourcePath in
-                        try? ARReferenceObject.init(archiveURL: resourcePath)
-                    }
-                    
-                    for (index, resource) in resoruces.enumerated() {
-                        let name = resource.name!
-                        print("Resource \(index): \(name) has been downloaded.")
-                    }
-                    
-                    for (index, imagePath) in imagesPaths.enumerated() {
-                        print("Image \(index): \(imagePath.path) has been downloaded.")
-                    }
-                    
+                    print("Downloaded resources: \(resourcesPaths)")
+                    print("Downloaded images: \(imagesPaths)")
                     resolve(())
-                    
                 }).catch({ error in
                     print(error)
                     reject(DataStoreError.fetchError)

@@ -21,7 +21,9 @@ class TopCollectionViewController: UICollectionViewController {
     
     @IBAction func didScanButtonTapped(_ sender: Any) {
         let cameraViewController = CameraViewController.loadViewControllerFromStoryboard()
-        let viewModel = CameraViewModel(detectionObjects: DataStore.shared.arObjects)
+        let arObjects = DataStore.shared.arObjects
+        let arImages = DataStore.shared.arImages
+        let viewModel = CameraViewModel(objects: arObjects, images: arImages)
         cameraViewController.configure(viewModel)
         DispatchQueue.main.async {
             self.present(cameraViewController, animated: true, completion: nil)
