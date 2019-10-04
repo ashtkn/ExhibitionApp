@@ -3,7 +3,6 @@ import SafariServices
 
 class WorkCollectionViewController: UICollectionViewController {
     
-    private let viewModel = WorkCollectionViewModel()
     private var dataStoreSubscriptionToken: SubscriptionToken?
     
     override func viewDidLoad() {
@@ -57,12 +56,12 @@ extension WorkCollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.works.count
+        return DataStore.shared.works.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: WorkCollectionViewCell.self, for: indexPath)
-        let work = viewModel.works[indexPath.row]
+        let work = DataStore.shared.works[indexPath.row]
         cell.configure(WorkCollectionViewCellModel(from: work))
         
         return cell
@@ -74,7 +73,7 @@ extension WorkCollectionViewController {
 extension WorkCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: Show the page of selected work
-        let work = viewModel.works[indexPath.row]
+        let work = DataStore.shared.works[indexPath.row]
         print("Showing page of \(work.title)")
         
         let url = URL(string: "https://www.google.co.jp/")!

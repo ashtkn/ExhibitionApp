@@ -78,7 +78,7 @@ extension ScanningViewController: ARSCNViewDelegate {
         // TODO: ARResourceImage
         let expectedResourceName = "\(objectAnchor.name ?? "").arobject"
         
-        let works = viewModel.works
+        let works = DataStore.shared.works
         if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
             // Register the detecting work
             viewModel.detectingWork = works[detectingWorkIndex]
