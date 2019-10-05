@@ -53,6 +53,13 @@ class ScanningViewController: UIViewController {
         let snapshotImage = sceneView.snapshot()
         let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: viewModel.detectingWork, stash: viewModel)
         
+        // Unlock the detecting work.
+        if let detectingWork = viewModel.detectingWork {
+            if detectingWork.isLocked {
+                DataStore.shared.unlock(work: detectingWork)
+            }
+        }
+        
         let sharingViewController = SharingViewController.loadViewControllerFromStoryboard()
         sharingViewController.configure(sharingViewModel)
         

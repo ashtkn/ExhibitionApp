@@ -7,6 +7,7 @@ struct Work: Codable, Equatable {
     let authors: [String]
     let images: [String]
     let caption: String
+    let url: String
     let isLocked: Bool
     
     private enum CodingKeys: String, CodingKey {
@@ -16,6 +17,7 @@ struct Work: Codable, Equatable {
         case authors
         case images
         case caption
+        case url
         case isLocked = "is_locked"
     }
     

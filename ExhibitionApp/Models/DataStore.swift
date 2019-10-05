@@ -116,7 +116,7 @@ final class DataStore {
                 return nil
             }
             
-            let physicalWidth: CGFloat = 0.2 // You have to fix the real size of the image marker.
+            let physicalWidth: CGFloat = 0.127 // You have to fix the real size of the image marker.
             return ARReferenceImage.init(cgImage, orientation: .init(image.imageOrientation), physicalWidth: physicalWidth)
         }
         return Set(arImages)
