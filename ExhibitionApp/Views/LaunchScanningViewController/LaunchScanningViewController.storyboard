@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oue-hB-pWa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Launch Scanning View Controller-->
+        <scene sceneID="51K-eh-Hqn">
+            <objects>
+                <viewController storyboardIdentifier="LaunchScanViewController" id="oue-hB-pWa" customClass="LaunchScanningViewController" customModule="ExhibitionApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tkf-a6-XXJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Z3-RW-3Q9">
+                                <rect key="frame" x="182" y="433" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="H79-RC-srQ"/>
+                                    <constraint firstAttribute="height" constant="30" id="cNW-Nj-MHi"/>
+                                </constraints>
+                                <state key="normal" title="Scan"/>
+                                <connections>
+                                    <action selector="didScanButtonTapped:" destination="oue-hB-pWa" eventType="touchUpInside" id="1lD-98-Wt8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0Z3-RW-3Q9" firstAttribute="centerX" secondItem="Tkf-a6-XXJ" secondAttribute="centerX" id="JR1-wG-WhX"/>
+                            <constraint firstItem="0Z3-RW-3Q9" firstAttribute="centerY" secondItem="Tkf-a6-XXJ" secondAttribute="centerY" id="s2N-dn-Api"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oKl-es-BQH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pvy-HD-MT1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="38" y="155"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,2 +1,10 @@
 github "ReactiveX/RxSwift" ~> 5.0
 github "realm/realm-cocoa"
+github "willowtreeapps/Hyperion-iOS"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAuthBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseFirestoreBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseStorageBinary.json"
+github "malcommac/Hydra"
+github "alickbass/CodableFirebase"
+github "onevcat/Kingfisher" ~> 5.0

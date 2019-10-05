@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Qg-qP-gLe">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ARカメラ-->
+        <scene sceneID="Q4Y-DT-KWf">
+            <objects>
+                <viewController storyboardIdentifier="ScanViewController" id="qqt-59-AZP" customClass="ScanningViewController" customModule="ExhibitionApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B4j-7l-jaV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogI-yU-DL8">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1H-6h-pYw">
+                                <rect key="frame" x="157" y="423" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="CX4-HW-y0H"/>
+                                    <constraint firstAttribute="height" constant="50" id="Vqt-fb-qtv"/>
+                                </constraints>
+                                <state key="normal" title="Snapshot"/>
+                                <connections>
+                                    <action selector="didTakeSnapshotButtonTapped:" destination="qqt-59-AZP" eventType="touchUpInside" id="pfN-Du-oAh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ogI-yU-DL8" firstAttribute="leading" secondItem="ruN-uD-uKV" secondAttribute="leading" id="5y2-i0-XnK"/>
+                            <constraint firstItem="ruN-uD-uKV" firstAttribute="bottom" secondItem="ogI-yU-DL8" secondAttribute="bottom" id="7dW-1x-l1J"/>
+                            <constraint firstItem="A1H-6h-pYw" firstAttribute="centerX" secondItem="B4j-7l-jaV" secondAttribute="centerX" id="RW0-Cm-x2i"/>
+                            <constraint firstItem="ruN-uD-uKV" firstAttribute="trailing" secondItem="ogI-yU-DL8" secondAttribute="trailing" id="Wwt-gr-W0z"/>
+                            <constraint firstItem="ogI-yU-DL8" firstAttribute="top" secondItem="ruN-uD-uKV" secondAttribute="top" id="f05-Yw-5NS"/>
+                            <constraint firstItem="A1H-6h-pYw" firstAttribute="centerY" secondItem="B4j-7l-jaV" secondAttribute="centerY" id="kSP-v1-nme"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ruN-uD-uKV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="ARカメラ" id="B6s-ck-lpm">
+                        <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="eAk-gx-Zdz">
+                            <connections>
+                                <action selector="didCancelButtonTapped:" destination="qqt-59-AZP" id="0Pq-Sc-DIA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="eAk-gx-Zdz" id="z7x-02-PMw"/>
+                        <outlet property="sceneView" destination="ogI-yU-DL8" id="E2k-SR-kis"/>
+                        <outlet property="takeSnapshotButton" destination="A1H-6h-pYw" id="DZO-lc-PPr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UPB-nb-Qdz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="850.72463768115949" y="105.80357142857143"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LHP-ZQ-9wu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Qg-qP-gLe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZZL-u0-k8T">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qqt-59-AZP" kind="relationship" relationship="rootViewController" id="8F3-GD-mn3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qfh-ss-LtF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-59.420289855072468" y="105.80357142857143"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="64" height="56"/>
+    </resources>
+</document>
