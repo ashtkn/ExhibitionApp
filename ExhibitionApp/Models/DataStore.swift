@@ -148,12 +148,6 @@ extension DataStore {
             FirebaseService.shared.fetchWorks().then({ [unowned self] initialWorkData in
                 let initialWorkDataModels: [WorkObject] = initialWorkData.map { WorkObject.create(from: $0) }
                 
-                // Register fetched data to Realm database
-                let realm = try! Realm()
-                try! realm.write {
-                    realm.add(initialWorkDataModels)
-                }
-                
                 // Create promises for downloading resources
                 let resourcesNames = initialWorkData.map { $0.resource }
                 let downloadResoucesPromises: [Promise<URL>] = resourcesNames.map { resourceName in
@@ -175,6 +169,13 @@ extension DataStore {
                 zip(all(downloadResoucesPromises), all(downloadImagesPromises)).then({ resourcesPaths, imagesPaths in
                     print("Downloaded resources: \(resourcesPaths)")
                     print("Downloaded images: \(imagesPaths)")
+                    
+                    // Register fetched data to Realm database
+                    let realm = try! Realm()
+                    try! realm.write {
+                        realm.add(initialWorkDataModels)
+                    }
+                    
                     resolve(())
                 }).catch({ error in
                     print(error)

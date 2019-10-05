@@ -10,12 +10,7 @@ class SharingViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var shareButton: UIButton! {
-        didSet {
-            self.shareButton.setTitle("写真をシェア！", for: .normal)
-        }
-    }
-    
+    @IBOutlet private weak var shareButton: UIButton!
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
     
     // MARK: ViewModel
