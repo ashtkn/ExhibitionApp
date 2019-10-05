@@ -1,15 +1,13 @@
 import UIKit
 
-class TopCollectionViewCell: UICollectionViewCell {
+class WorkCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var authorsLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     
-    func configure(_ viewModel: TopCollectionViewCellModel) {
+    func configure(_ viewModel: WorkCollectionViewCellModel) {
         self.imageView.image = viewModel.image
-        self.titleLabel.text = viewModel.title
-        self.authorsLabel.text = viewModel.authorsText
+        self.titleLabel.text = viewModel.titleText
     }
     
     override func awakeFromNib() {
