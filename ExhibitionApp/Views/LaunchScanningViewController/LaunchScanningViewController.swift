@@ -8,7 +8,7 @@ class LaunchScanningViewController: UIViewController {
     
     @IBAction private func didScanButtonTapped(_ sender: Any) {
         let navigationViewController = ScanningViewController.loadNavigationControllerFromStoryboard()
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             self.present(navigationViewController, animated: true, completion: nil)
         }
     }

@@ -12,6 +12,9 @@ class TopPageViewController: UIPageViewController {
         
         let launchScanningViewController = LaunchScanningViewController.loadViewControllerFromStoryboard()
         self.setViewControllers([launchScanningViewController], direction: .forward, animated: true, completion: nil)
+        
+        // To run initializer
+        let _ = DataStore.shared.works
     }
 }
 

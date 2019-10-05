@@ -73,24 +73,33 @@ extension ScanningViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
-        guard let objectAnchor = anchor as? ARObjectAnchor else { return }
-        
-        // TODO: ARResourceImage
-        let expectedResourceName = "\(objectAnchor.name ?? "").arobject"
-        
-        let works = DataStore.shared.works
-        if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
-            // Register the detecting work
-            viewModel.detectingWork = works[detectingWorkIndex]
-            // Show AR Objects
-            addNode(to: node, for: objectAnchor)
+        switch anchor {
+        case let objectAnchor as ARObjectAnchor:
+            let expectedResourceName = "\(objectAnchor.name ?? "").arobject"
+            let works = DataStore.shared.works
+            if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
+                viewModel.detectingWork = works[detectingWorkIndex]
+                addNode(to: node, for: objectAnchor)
+            }
+            
+        case let imageAnchor as ARImageAnchor:
+            print("Image anchor detected: \(imageAnchor.name ?? "nil")")
+            
+        default:
+            print("Unknown anchor: \(anchor)")
         }
     }
     
+    func session(_ session: ARSession, didFailWithError error: Error) {}
+    func sessionWasInterrupted(_ session: ARSession) {}
+    func sessionInterruptionEnded(_ session: ARSession) {}
+}
+
+extension ScanningViewController {
     // TODO: Implement AR Objects
-    private func addNode(to node: SCNNode, for objectAnchor: ARObjectAnchor) {
+    private func addNode(to node: SCNNode, for anchor: ARAnchor) {
         
-        switch objectAnchor.name {
+        switch anchor.name {
         case "Syaro":
             let labelNode = LabelNode(text: "Syaro", width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
             node.addChildNode(labelNode)
@@ -101,8 +110,4 @@ extension ScanningViewController: ARSCNViewDelegate {
             fatalError("Unknown object has been detected.")
         }
     }
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {}
-    func sessionWasInterrupted(_ session: ARSession) {}
-    func sessionInterruptionEnded(_ session: ARSession) {}
 }

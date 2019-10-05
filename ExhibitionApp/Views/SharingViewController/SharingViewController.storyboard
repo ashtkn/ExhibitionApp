@@ -22,9 +22,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gy-to-hYc">
                                 <rect key="frame" x="0.0" y="782" width="414" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edU-k3-IKI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edU-k3-IKI">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                        <state key="normal" title="Share"/>
+                                        <state key="normal" image="square.and.arrow.up" catalog="system"/>
                                         <connections>
                                             <action selector="didShareButtonTapped:" destination="d1o-C1-yNj" eventType="touchUpInside" id="EFM-ZR-Vew"/>
                                         </connections>
@@ -72,6 +72,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
 </document>

@@ -79,7 +79,7 @@ extension WorkCollectionViewController {
         let url = URL(string: "https://www.google.co.jp/")!
         let safariViewController = SFSafariViewController(url: url)
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             self.present(safariViewController, animated: true, completion: nil)
         }
     }
