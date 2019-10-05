@@ -543,10 +543,10 @@
 			};
 			buildConfigurationList = 4186ADD523324192002F6A4C /* Build configuration list for PBXProject "ExhibitionApp" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				ja,
 				Base,
 			);
 			mainGroup = 4186ADD123324192002F6A4C;
