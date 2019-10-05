@@ -39,6 +39,7 @@ class ScanningViewController: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.detectionObjects = viewModel.detectionObjects
         configuration.detectionImages = viewModel.detectionImages
+        configuration.maximumNumberOfTrackedImages = 1
         
         print("Detection Objects: \(viewModel.detectionObjects)")
         print("Detection Images: \(viewModel.detectionImages)")
@@ -72,21 +73,24 @@ class ScanningViewController: UIViewController {
 extension ScanningViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        
+        var expectedResourceName = ""
         switch anchor {
         case let objectAnchor as ARObjectAnchor:
-            let expectedResourceName = "\(objectAnchor.name ?? "").arobject"
-            let works = DataStore.shared.works
-            if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
-                viewModel.detectingWork = works[detectingWorkIndex]
-                addNode(to: node, for: objectAnchor)
-            }
+            print("Detected \(objectAnchor.name ?? "unknown").arobject")
+            expectedResourceName = "\(objectAnchor.name ?? "").arobject"
             
         case let imageAnchor as ARImageAnchor:
-            print("Image anchor detected: \(imageAnchor.name ?? "nil")")
+            print("Detected: \(imageAnchor.name ?? "unknown").jpg")
+            expectedResourceName = "\(imageAnchor.name ?? "").jpg"
             
         default:
-            print("Unknown anchor: \(anchor)")
+            print("Detected unknown anchor: \(anchor.name ?? "unknown")")
+        }
+        
+        let works = DataStore.shared.works
+        if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
+            viewModel.detectingWork = works[detectingWorkIndex]
+            addNode(to: node, for: anchor)
         }
     }
     
