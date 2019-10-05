@@ -12,10 +12,10 @@ class WorkTests: XCTestCase {
             "Someone"
         ],
         "images": [
-            "turtlerock.jpg",
             "turtlerock.jpg"
         ],
         "caption": "これはキャプションです．",
+        "url": "https://www.google.co.jp/",
         "is_locked": false
     }
     """.data(using: .utf8)!
@@ -74,7 +74,7 @@ class WorkTests: XCTestCase {
         let work = try! decoder.decode(Work.self, from: jsonData)
         
         let id = "XXXXXX"
-        let workToCompare = Work(id: id, title: "", resource: "", authors: [], images: [], caption: "", isLocked: false)
+        let workToCompare = Work(id: id, title: "", resource: "", authors: [], images: [], caption: "", url: "",  isLocked: false)
         XCTAssertEqual(work, workToCompare)
     }
 }

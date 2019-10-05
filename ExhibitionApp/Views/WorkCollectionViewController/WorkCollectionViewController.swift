@@ -72,11 +72,10 @@ extension WorkCollectionViewController {
 
 extension WorkCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: Show the page of selected work
         let work = DataStore.shared.works[indexPath.row]
-        print("Showing page of \(work.title)")
+        if work.isLocked { return }
         
-        let url = URL(string: "https://www.google.co.jp/")!
+        let url = URL(string: work.url)!
         let safariViewController = SFSafariViewController(url: url)
         
         DispatchQueue.main.async { [unowned self] in

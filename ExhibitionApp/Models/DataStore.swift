@@ -95,7 +95,10 @@ final class DataStore {
             if resourcePath.pathExtension != "arobject" {
                 return nil
             }
-            return try? ARReferenceObject.init(archiveURL: resourcePath)
+            let referenceObject = try? ARReferenceObject.init(archiveURL: resourcePath)
+            referenceObject?.name = "\(work.title)"
+            
+            return referenceObject
         }
         return Set(arObjects)
     }
@@ -116,8 +119,11 @@ final class DataStore {
                 return nil
             }
             
-            let physicalWidth: CGFloat = 0.2 // You have to fix the real size of the image marker.
-            return ARReferenceImage.init(cgImage, orientation: .init(image.imageOrientation), physicalWidth: physicalWidth)
+            let physicalWidth: CGFloat = 0.127 // You have to fix the real size of the image marker.
+            let referenceImage = ARReferenceImage.init(cgImage, orientation: .init(image.imageOrientation), physicalWidth: physicalWidth)
+            referenceImage.name = "\(work.title)"
+            
+            return referenceImage
         }
         return Set(arImages)
     }
