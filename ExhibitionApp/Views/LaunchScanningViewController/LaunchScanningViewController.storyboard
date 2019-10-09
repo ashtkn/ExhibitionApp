@@ -17,28 +17,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Z3-RW-3Q9">
-                                <rect key="frame" x="182" y="433" width="50" height="30"/>
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.85098039215686272" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="H79-RC-srQ"/>
-                                    <constraint firstAttribute="height" constant="30" id="cNW-Nj-MHi"/>
+                                    <constraint firstAttribute="width" constant="200" id="H79-RC-srQ"/>
+                                    <constraint firstAttribute="height" constant="200" id="cNW-Nj-MHi"/>
                                 </constraints>
-                                <state key="normal" title="Scan"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="52"/>
+                                <state key="normal" title="SCAN">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="didScanButtonTapped:" destination="oue-hB-pWa" eventType="touchUpInside" id="1lD-98-Wt8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="作品をARでみよう！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-I7-EMi">
+                                <rect key="frame" x="96" y="255" width="223" height="21"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ow-05-A3I">
+                                <rect key="frame" x="354" y="48" width="36" height="36"/>
+                                <state key="normal" image="outline_collections_white_36pt_1x"/>
+                                <connections>
+                                    <action selector="didCollectionButtonTapped:" destination="oue-hB-pWa" eventType="touchUpInside" id="LQQ-hJ-F9W"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="0Z3-RW-3Q9" firstAttribute="top" secondItem="QAQ-I7-EMi" secondAttribute="bottom" constant="69" id="68W-l0-b8i"/>
                             <constraint firstItem="0Z3-RW-3Q9" firstAttribute="centerX" secondItem="Tkf-a6-XXJ" secondAttribute="centerX" id="JR1-wG-WhX"/>
+                            <constraint firstItem="oKl-es-BQH" firstAttribute="trailing" secondItem="4ow-05-A3I" secondAttribute="trailing" constant="24" id="eF4-X2-Pwo"/>
+                            <constraint firstItem="QAQ-I7-EMi" firstAttribute="centerX" secondItem="0Z3-RW-3Q9" secondAttribute="centerX" id="g2D-iG-Q0B"/>
+                            <constraint firstItem="4ow-05-A3I" firstAttribute="top" secondItem="oKl-es-BQH" secondAttribute="top" constant="4" id="oYD-TC-7rn"/>
                             <constraint firstItem="0Z3-RW-3Q9" firstAttribute="centerY" secondItem="Tkf-a6-XXJ" secondAttribute="centerY" id="s2N-dn-Api"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oKl-es-BQH"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionButton" destination="4ow-05-A3I" id="okl-YC-L56"/>
+                        <outlet property="scanButton" destination="0Z3-RW-3Q9" id="iJh-Wb-Z7q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvy-HD-MT1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="38" y="155"/>
+            <point key="canvasLocation" x="37.681159420289859" y="154.6875"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="outline_collections_white_36pt_1x" width="36" height="36"/>
+    </resources>
 </document>
