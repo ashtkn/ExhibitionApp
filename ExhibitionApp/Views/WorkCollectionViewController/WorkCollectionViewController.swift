@@ -1,7 +1,14 @@
 import UIKit
 import SafariServices
 
-class WorkCollectionViewController: UICollectionViewController {
+class WorkCollectionViewController: UIViewController {
+    
+    @IBOutlet private weak var collectionView: UICollectionView! {
+        didSet {
+            self.collectionView.dataSource = self
+            self.collectionView.delegate = self
+        }
+    }
     
     private var dataStoreSubscriptionToken: SubscriptionToken?
     
@@ -10,7 +17,7 @@ class WorkCollectionViewController: UICollectionViewController {
         collectionView.contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         collectionView.register(cellType: WorkCollectionViewCell.self)
         
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 15
         
         dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
@@ -48,18 +55,17 @@ extension WorkCollectionViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: UICollectionViewDataSource
 
-extension WorkCollectionViewController {
+extension WorkCollectionViewController: UICollectionViewDataSource {
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataStore.shared.works.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: WorkCollectionViewCell.self, for: indexPath)
         let work = DataStore.shared.works[indexPath.row]
         cell.configure(WorkCollectionViewCellModel(from: work))
@@ -70,8 +76,9 @@ extension WorkCollectionViewController {
 
 // MARK: UICollectionViewDelegate
 
-extension WorkCollectionViewController {
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+extension WorkCollectionViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let work = DataStore.shared.works[indexPath.row]
         if work.isLocked { return }
         
