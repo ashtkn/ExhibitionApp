@@ -7,11 +7,11 @@ class WorkCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        collectionView.contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         collectionView.register(cellType: WorkCollectionViewCell.self)
         
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumInteritemSpacing = 8
+        layout.minimumInteritemSpacing = 15
         
         dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
             self?.collectionView.reloadData()
