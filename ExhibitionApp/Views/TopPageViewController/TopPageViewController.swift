@@ -3,6 +3,15 @@ import UIKit
 class TopPageViewController: UIPageViewController {
     
     var pageIndex: Int = 0
+    lazy var pageViewControllers = [
+        LaunchScanningViewController.loadViewControllerFromStoryboard(),
+        WorkCollectionViewController.loadViewControllerFromStoryboard()
+    ]
+    
+    enum PageInstance: Int {
+        case launchScanningViewController = 0
+        case workCollectionViewController = 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -10,11 +19,23 @@ class TopPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         
-        let launchScanningViewController = LaunchScanningViewController.loadViewControllerFromStoryboard()
-        self.setViewControllers([launchScanningViewController], direction: .forward, animated: true, completion: nil)
+        showPage(.launchScanningViewController)
         
         // To run initializer
         let _ = DataStore.shared.works
+    }
+    
+    func showPage(_ instance: PageInstance) {
+        let viewController = pageViewControllers[instance.rawValue]
+        self.pageIndex = instance.rawValue
+        
+        switch instance {
+        case .launchScanningViewController:
+            self.setViewControllers([viewController], direction: .reverse, animated: true, completion: nil)
+            
+        case .workCollectionViewController:
+            self.setViewControllers([viewController], direction: .forward, animated: true, completion: nil)
+        }
     }
 }
 
@@ -22,7 +43,7 @@ extension TopPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if viewController is WorkCollectionViewController {
             pageIndex = 0
-            return LaunchScanningViewController.loadViewControllerFromStoryboard()
+            return pageViewControllers[pageIndex] // launchScanningViewController
         } else {
             return nil
         }
@@ -31,7 +52,7 @@ extension TopPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if viewController is LaunchScanningViewController {
             pageIndex = 1
-            return WorkCollectionViewController.loadViewControllerFromStoryboard()
+            return pageViewControllers[pageIndex] // workCollectionViewController
         } else {
             return nil
         }
