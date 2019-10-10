@@ -27,7 +27,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>TopPageViewController</string>
+	<string>LoadingViewController</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>TopPageViewController</string>
 	<key>UIRequiredDeviceCapabilities</key>
