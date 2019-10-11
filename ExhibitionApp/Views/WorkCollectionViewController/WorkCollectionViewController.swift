@@ -10,6 +10,8 @@ class WorkCollectionViewController: UIViewController {
         }
     }
     
+    var scanProgressView: UIProgressView!
+    
     private var dataStoreSubscriptionToken: SubscriptionToken?
     
     override func viewDidLoad() {
@@ -23,6 +25,16 @@ class WorkCollectionViewController: UIViewController {
         dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
             self?.collectionView.reloadData()
         }
+        
+        // FIXME: Trying to implement instead of storyboard
+        scanProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 96, height: 6))
+        scanProgressView.center = view.center
+               //スケール行列を生成
+        scanProgressView.transform = CGAffineTransform(scaleX: 1.0, y: 6.0)
+               // 色合い
+        scanProgressView.progressTintColor = .yellow
+        scanProgressView.setProgress(0.6, animated: false)
+        view.addSubview(scanProgressView)
     }
 }
 
