@@ -6,13 +6,15 @@ struct WorkCollectionViewCellModel {
         return title
     }
     
+    let imageSize: CGSize
     let imageName: String?
     var image: UIImage? {
         guard let imageName = imageName else { return nil }
         return DataStore.shared.getImage(name: imageName)
     }
     
-    init(from work: Work) {
+    init(from work: Work, imageSize: CGSize) {
+        self.imageSize = imageSize
         if work.isLocked {
             self.title = "???"
             self.imageName = "hatena.png"

@@ -6,7 +6,7 @@ class WorkCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     func configure(_ viewModel: WorkCollectionViewCellModel) {
-        self.imageView.image = viewModel.image
+        self.imageView.image = viewModel.image?.resize(to: viewModel.imageSize)
         self.titleLabel.text = viewModel.titleText
     }
     

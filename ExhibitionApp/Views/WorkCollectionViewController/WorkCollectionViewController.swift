@@ -5,8 +5,18 @@ class WorkCollectionViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
+            self.collectionView.register(cellType: WorkCollectionViewCell.self)
             self.collectionView.dataSource = self
             self.collectionView.delegate = self
+            
+            // Configure layout
+            self.collectionView.contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+            
+            let layout = UICollectionViewFlowLayout()
+            // TODO:
+            layout.minimumInteritemSpacing = 15
+            
+            self.collectionView.collectionViewLayout = layout
         }
     }
     
@@ -16,11 +26,6 @@ class WorkCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        collectionView.register(cellType: WorkCollectionViewCell.self)
-        
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumInteritemSpacing = 15
         
         dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
             self?.collectionView.reloadData()
@@ -29,9 +34,7 @@ class WorkCollectionViewController: UIViewController {
         // FIXME: Trying to implement instead of storyboard
         scanProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 96, height: 6))
         scanProgressView.center = view.center
-               //スケール行列を生成
         scanProgressView.transform = CGAffineTransform(scaleX: 1.0, y: 6.0)
-               // 色合い
         scanProgressView.progressTintColor = .yellow
         scanProgressView.setProgress(0.6, animated: false)
         view.addSubview(scanProgressView)
@@ -42,10 +45,11 @@ class WorkCollectionViewController: UIViewController {
 
 extension WorkCollectionViewController: UICollectionViewDelegateFlowLayout {
     
-    // FIXME: This code does not seem to work
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        return cellSize
+    }
+    
+    private var cellSize: CGSize {
         let prototypeCell = collectionView.getNib(cellType: WorkCollectionViewCell.self)
         prototypeCell.bounds.size.width = cellWidth
         prototypeCell.contentView.bounds.size.width = cellWidth
@@ -58,7 +62,7 @@ extension WorkCollectionViewController: UICollectionViewDelegateFlowLayout {
     private var cellWidth: CGFloat {
         let availableWidth = collectionView.bounds.inset(by: collectionView.adjustedContentInset).width
         let interColumnSpace = CGFloat(8)
-        let numColumns = CGFloat(2)
+        let numColumns = CGFloat(1)
         let numInterColumnSpaces = numColumns - 1
         
         return ((availableWidth - interColumnSpace * numInterColumnSpaces) / numColumns).rounded(.down)
@@ -80,7 +84,7 @@ extension WorkCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: WorkCollectionViewCell.self, for: indexPath)
         let work = DataStore.shared.works[indexPath.row]
-        cell.configure(WorkCollectionViewCellModel(from: work))
+        cell.configure(WorkCollectionViewCellModel(from: work, imageSize: cellSize))
         
         return cell
     }
