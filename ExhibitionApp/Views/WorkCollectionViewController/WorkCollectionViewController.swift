@@ -13,9 +13,7 @@ class WorkCollectionViewController: UIViewController {
             self.collectionView.contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
             
             let layout = UICollectionViewFlowLayout()
-            // TODO:
-            layout.minimumInteritemSpacing = 15
-            
+            // layout.minimumInteritemSpacing = 15
             self.collectionView.collectionViewLayout = layout
         }
     }
