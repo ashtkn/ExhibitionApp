@@ -1,5 +1,6 @@
 import UIKit
 import SafariServices
+import SnapKit
 
 class WorkCollectionViewController: UIViewController {
     
@@ -10,8 +11,9 @@ class WorkCollectionViewController: UIViewController {
         }
     }
     
-    var scanProgressView: UIProgressView!
-    
+    lazy var scanProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317
+        , height: 6))
+
     private var dataStoreSubscriptionToken: SubscriptionToken?
     
     override func viewDidLoad() {
@@ -25,18 +27,30 @@ class WorkCollectionViewController: UIViewController {
         dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
             self?.collectionView.reloadData()
         }
-        
-        // FIXME: Trying to implement instead of storyboard
-        scanProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 96, height: 6))
-        scanProgressView.center = view.center
-               //スケール行列を生成
-        scanProgressView.transform = CGAffineTransform(scaleX: 1.0, y: 6.0)
-               // 色合い
-        scanProgressView.progressTintColor = .yellow
+
+        setupView()
+        setupLayout()
+    }
+    
+    // FIXME: Trying to implement instead of storyboard
+    func setupView() {
+        self.view.addSubview(scanProgressView)
+        scanProgressView.progressTintColor = UIColor(247, 217, 58)
+        scanProgressView.backgroundColor = UIColor(216,216, 216)
         scanProgressView.setProgress(0.6, animated: false)
-        view.addSubview(scanProgressView)
+        scanProgressView.layer.masksToBounds = true
+        scanProgressView.layer.cornerRadius = 3.0
+    }
+    
+    func setupLayout() {
+        scanProgressView.snp.makeConstraints { (make) -> Void in
+            make.center.equalTo(self.view)
+            make.width.equalTo(317)
+            make.height.equalTo(6)
+        }
     }
 }
+
 
 // MARK: UICollectionViewDelegateFlowLayout
 

@@ -82,6 +82,9 @@
 		41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C272334F57600552D40 /* NSObject+Extensions.swift */; };
 		41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8A23404DBE00606D7B /* JsonUtility.swift */; };
 		41F46B8E2340502B00606D7B /* WorkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8D2340502B00606D7B /* WorkObject.swift */; };
+		8A6804A723503B3D0059019D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6804A623503B3D0059019D /* SnapKit.framework */; };
+		8A6804A823503B3D0059019D /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6804A623503B3D0059019D /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AA235040290059019D /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,20 @@
 			remoteInfo = ExhibitionApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8A6804A923503B3D0059019D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8A6804A823503B3D0059019D /* SnapKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
@@ -175,6 +192,8 @@
 		41EA9C272334F57600552D40 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
 		41F46B8A23404DBE00606D7B /* JsonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtility.swift; sourceTree = "<group>"; };
 		41F46B8D2340502B00606D7B /* WorkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkObject.swift; sourceTree = "<group>"; };
+		8A6804A623503B3D0059019D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		8A6804AA235040290059019D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +222,7 @@
 				41481F5A2343873E004E2EB2 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				41481F8423438949004E2EB2 /* StoreKit.framework in Frameworks */,
 				41481F622343873E004E2EB2 /* FirebaseFirestore.framework in Frameworks */,
+				8A6804A723503B3D0059019D /* SnapKit.framework in Frameworks */,
 				41481F5C2343873E004E2EB2 /* FirebaseAnalytics.framework in Frameworks */,
 				41481F782343873F004E2EB2 /* gRPC-Core.framework in Frameworks */,
 				41481F7A2343873F004E2EB2 /* FirebaseInstanceID.framework in Frameworks */,
@@ -343,6 +363,7 @@
 				41B5BB222344F27700A274C7 /* String+Extensions.swift */,
 				41B5BB242344F48700A274C7 /* UIView+Extensions.swift */,
 				41B5BB262344F4BE00A274C7 /* UIApplication+Extensions.swift */,
+				8A6804AA235040290059019D /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -427,6 +448,7 @@
 		41D34EC32339DF080096188B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A6804A623503B3D0059019D /* SnapKit.framework */,
 				414F0E5923446E2D0013F833 /* CodableFirebase.framework */,
 				414F0E5523446D990013F833 /* Kingfisher.framework */,
 				41481F8A234390C8004E2EB2 /* Hydra.framework */,
@@ -493,6 +515,7 @@
 				4186ADD823324192002F6A4C /* Resources */,
 				41D34EC22339DE410096188B /* Run Script for Carthage */,
 				411A16AA2340E40200644A61 /* Run Script for Carthage (Debug) */,
+				8A6804A923503B3D0059019D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -660,6 +683,7 @@
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
 				41A596A923334179008DA6AF /* LabelNode.swift in Sources */,
+				8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */,
 				4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */,
 				41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,
