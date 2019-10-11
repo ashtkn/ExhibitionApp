@@ -12,7 +12,7 @@ struct WorkCollectionViewCellModel {
         return DataStore.shared.getImage(name: imageName)
     }
     
-    init(from work: Work, imageSize: CGSize) {
+    init(from work: Work) {
         if work.isLocked {
             self.title = "???"
             self.imageName = "hatena.png"

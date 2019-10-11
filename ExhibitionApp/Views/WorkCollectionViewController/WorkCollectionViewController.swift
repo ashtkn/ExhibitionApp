@@ -82,7 +82,7 @@ extension WorkCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: WorkCollectionViewCell.self, for: indexPath)
         let work = DataStore.shared.works[indexPath.row]
-        cell.configure(WorkCollectionViewCellModel(from: work, imageSize: cellSize))
+        cell.configure(WorkCollectionViewCellModel(from: work))
         
         return cell
     }
