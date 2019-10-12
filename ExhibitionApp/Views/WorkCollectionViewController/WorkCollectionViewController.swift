@@ -6,8 +6,16 @@ class WorkCollectionViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
+            self.collectionView.register(cellType: WorkCollectionViewCell.self)
             self.collectionView.dataSource = self
             self.collectionView.delegate = self
+            
+            // Configure layout
+            self.collectionView.contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+            
+            let layout = UICollectionViewFlowLayout()
+            // layout.minimumInteritemSpacing = 15
+            self.collectionView.collectionViewLayout = layout
         }
     }
     
@@ -18,25 +26,10 @@ class WorkCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        collectionView.register(cellType: WorkCollectionViewCell.self)
-        
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumInteritemSpacing = 15
         
         dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
             self?.collectionView.reloadData()
         }
-
-        setupView()
-        setupLayout()
-    }
-    
-    // FIXME: Trying to implement instead of storyboard
-    func setupView() {
-        self.view.addSubview(scanProgressView)
-        scanProgressView.progressTintColor = UIColor(247, 217, 58)
-        scanProgressView.backgroundColor = UIColor(216,216, 216)
         scanProgressView.setProgress(0.6, animated: false)
         scanProgressView.layer.masksToBounds = true
         scanProgressView.layer.cornerRadius = 3.0
@@ -56,10 +49,11 @@ class WorkCollectionViewController: UIViewController {
 
 extension WorkCollectionViewController: UICollectionViewDelegateFlowLayout {
     
-    // FIXME: This code does not seem to work
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        return cellSize
+    }
+    
+    private var cellSize: CGSize {
         let prototypeCell = collectionView.getNib(cellType: WorkCollectionViewCell.self)
         prototypeCell.bounds.size.width = cellWidth
         prototypeCell.contentView.bounds.size.width = cellWidth
@@ -72,7 +66,7 @@ extension WorkCollectionViewController: UICollectionViewDelegateFlowLayout {
     private var cellWidth: CGFloat {
         let availableWidth = collectionView.bounds.inset(by: collectionView.adjustedContentInset).width
         let interColumnSpace = CGFloat(8)
-        let numColumns = CGFloat(2)
+        let numColumns = CGFloat(1)
         let numInterColumnSpaces = numColumns - 1
         
         return ((availableWidth - interColumnSpace * numInterColumnSpaces) / numColumns).rounded(.down)

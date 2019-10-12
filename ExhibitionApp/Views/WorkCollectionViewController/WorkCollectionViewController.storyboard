@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bgr-Ll-k1D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bgr-Ll-k1D">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +36,7 @@
                                             <constraint firstItem="b3L-yt-092" firstAttribute="centerX" secondItem="9d0-9R-ng7" secondAttribute="centerX" id="yfr-Gr-g54"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63W-B0-wjZ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63W-B0-wjZ">
                                         <rect key="frame" x="0.0" y="68" width="414" height="233"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スキャンした作品数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4Y-ym-UYf">
@@ -45,8 +45,8 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="15" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxZ-e0-AG2">
-                                                <rect key="frame" x="144.5" y="46" width="125" height="125"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxZ-e0-AG2">
+                                                <rect key="frame" x="144.5" y="54" width="125" height="125"/>
                                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="96"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -55,19 +55,20 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="VxZ-e0-AG2" firstAttribute="centerY" secondItem="63W-B0-wjZ" secondAttribute="centerY" id="7Fi-Rf-7qM"/>
+                                            <constraint firstAttribute="height" constant="233" id="IcL-xD-wCr"/>
                                             <constraint firstItem="G4Y-ym-UYf" firstAttribute="centerX" secondItem="63W-B0-wjZ" secondAttribute="centerX" id="JJm-rO-RGi"/>
-                                            <constraint firstItem="VxZ-e0-AG2" firstAttribute="centerX" secondItem="63W-B0-wjZ" secondAttribute="centerX" id="QmR-Hj-Ibd"/>
                                             <constraint firstItem="G4Y-ym-UYf" firstAttribute="top" secondItem="63W-B0-wjZ" secondAttribute="top" constant="36" id="gIC-8E-XbO"/>
+                                            <constraint firstItem="VxZ-e0-AG2" firstAttribute="centerY" secondItem="63W-B0-wjZ" secondAttribute="centerY" id="mhe-er-hQI"/>
+                                            <constraint firstItem="VxZ-e0-AG2" firstAttribute="centerX" secondItem="63W-B0-wjZ" secondAttribute="centerX" id="oHP-lf-kFd"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rOv-9k-OZb">
-                                        <rect key="frame" x="0.0" y="312" width="414" height="506"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOv-9k-OZb">
+                                        <rect key="frame" x="0.0" y="301" width="414" height="517"/>
                                         <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sOY-lh-NpC">
-                                                <rect key="frame" x="0.0" y="-8" width="414" height="514"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Llt-pB-rXz">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sOY-lh-NpC">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="517"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="Llt-pB-rXz">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -76,7 +77,7 @@
                                                 <cells/>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="sOY-lh-NpC" firstAttribute="top" secondItem="rOv-9k-OZb" secondAttribute="top" id="7Nw-ZR-Jkl"/>
                                             <constraint firstAttribute="bottom" secondItem="sOY-lh-NpC" secondAttribute="bottom" id="bhX-GC-Xph"/>
