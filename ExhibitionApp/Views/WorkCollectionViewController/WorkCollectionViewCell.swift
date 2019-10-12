@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class WorkCollectionViewCell: UICollectionViewCell {
     
@@ -9,17 +10,17 @@ class WorkCollectionViewCell: UICollectionViewCell {
     func configure(_ viewModel: WorkCollectionViewCellModel) {
         self.viewModel = viewModel
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        // Initialization code
+        setupView()
         
         NSLayoutConstraint.activate([
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+              contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+              contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+              contentView.topAnchor.constraint(equalTo: topAnchor),
+              contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -29,6 +30,14 @@ class WorkCollectionViewCell: UICollectionViewCell {
         // https://terakoya.site/bb/ios10-awakefromnib-frame-size-error/
         self.imageView.image = viewModel?.image
         self.titleLabel.text = viewModel?.title
+        
     }
+    
+    fileprivate func setupView() {
 
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.layer.cornerRadius = 8.0
+        contentView.layer.masksToBounds = true
+    }
+    
 }

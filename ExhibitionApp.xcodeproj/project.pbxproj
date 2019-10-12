@@ -87,6 +87,7 @@
 		8A6804A723503B3D0059019D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6804A623503B3D0059019D /* SnapKit.framework */; };
 		8A6804A823503B3D0059019D /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6804A623503B3D0059019D /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AA235040290059019D /* UIColor+Extensions.swift */; };
+		8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +199,7 @@
 		41F46B8D2340502B00606D7B /* WorkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkObject.swift; sourceTree = "<group>"; };
 		8A6804A623503B3D0059019D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		8A6804AA235040290059019D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +302,7 @@
 				416C2130234724D500648C0A /* WorkCollectionViewController.swift */,
 				41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */,
 				416C21322347256A00648C0A /* WorkCollectionViewCell.swift */,
+				8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */,
 			);
 			path = WorkCollectionViewController;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,
 				41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */,
+				8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */,
 				41647D8B2347458B0021A2E3 /* SharingViewModel.swift in Sources */,
 				41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */,
 				4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */,
