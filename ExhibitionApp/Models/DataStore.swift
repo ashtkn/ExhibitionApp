@@ -11,6 +11,10 @@ final class DataStore {
     
     static let shared = DataStore()
     
+    // MARK: Initializer
+    
+    private init() {}
+    
     // MARK: Properties
     
     private var applicationSupportDirectory: URL {
@@ -34,55 +38,50 @@ final class DataStore {
         return Array(realm.objects(WorkObject.self)).map { $0.entity }
     }
     
-    // MARK: Initializer
-    
-    private init() {
+    var hasCompletedSetup: Bool {
         let realm = try! Realm()
-        
-        // Check if user data exists,
-        firstLabel: do {
-            if let userDataObject = realm.object(ofType: UserDataObject.self, forPrimaryKey: 0) {
-                if !userDataObject.entity.isLoadingFiles {
-                    break firstLabel
-                }
-            }
-            
-            let newUserData = UserData(id: 0, isFirstLaunch: true, isLoadingFiles: false)
-            let newUserDataObject = UserDataObject.create(from: newUserData)
-            
-            try! realm.write {
-                realm.deleteAll()
-                realm.add(newUserDataObject)
+        if let userDataObject = realm.object(ofType: UserDataObject.self, forPrimaryKey: 0) {
+            let userData = userDataObject.entity
+            if !userData.isFirstLaunch && !userData.isLoadingFiles {
+                return true
             }
         }
-        
-        // After checking user data exists,
-        secondLabel: do {
-            guard let userDataObject = realm.object(ofType: UserDataObject.self, forPrimaryKey: 0) else {
-                fatalError()
-            }
-            
-            if !userDataObject.entity.isFirstLaunch {
-                break secondLabel
-            }
-            
-            try! realm.write {
-                userDataObject.isLoadingFiles = true
-            }
-            
-            fetchWorkDataAsync().then({
-                let realm = try! Realm()
-                try! realm.write {
-                    userDataObject.isLoadingFiles = false
-                    userDataObject.isFirstLaunch = false
-                }
-            }).catch({ error in
-                print(error)
-            })
-        }
+        return false
     }
     
     // MARK: Methods
+    
+    func createNewUserData() {
+        let realm = try! Realm()
+        let newUserData = UserData(id: 0, isFirstLaunch: true, isLoadingFiles: false)
+        let newUserDataObject = UserDataObject.create(from: newUserData)
+        
+        try! realm.write {
+            realm.deleteAll()
+            realm.add(newUserDataObject)
+        }
+    }
+    
+    func downloadFiles(completion handler: ((_ error: Error?) -> Void)?) {
+        let realm = try! Realm()
+        guard let userDataObject = realm.object(ofType: UserDataObject.self, forPrimaryKey: 0) else { fatalError() }
+        
+        try! realm.write {
+            userDataObject.isLoadingFiles = true
+        }
+        
+        fetchWorkDataAsync().then({
+            let realm = try! Realm()
+            try! realm.write {
+                userDataObject.isLoadingFiles = false
+                userDataObject.isFirstLaunch = false
+            }
+            handler?(nil)
+            
+        }).catch({ error in
+            handler?(error)
+        })
+    }
     
     func getImage(name imageName: String) -> UIImage? {
         let imagePath = imagesDirectory.appendingPathComponent(imageName)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410E1C07234EC6940088C71A /* LoadingViewController.storyboard */; };
+		410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E1C09234EC6B10088C71A /* LoadingViewController.swift */; };
 		411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A22340E3C000644A61 /* HyperionCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		411A16A72340E3D000644A61 /* AttributesInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A62340E3D000644A61 /* AttributesInspector.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		41222D022340452000F5EFE9 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D012340452000F5EFE9 /* Work.swift */; };
@@ -112,6 +114,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		410E1C07234EC6940088C71A /* LoadingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
+		410E1C09234EC6B10088C71A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
 		411A16A62340E3D000644A61 /* AttributesInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AttributesInspector.framework; path = Carthage/Build/iOS/AttributesInspector.framework; sourceTree = "<group>"; };
 		41222D012340452000F5EFE9 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
@@ -247,6 +251,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410E1C06234EC6580088C71A /* LoadingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				410E1C07234EC6940088C71A /* LoadingViewController.storyboard */,
+				410E1C09234EC6B10088C71A /* LoadingViewController.swift */,
+			);
+			path = LoadingViewController;
+			sourceTree = "<group>";
+		};
 		41481F872343899D004E2EB2 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +392,7 @@
 		4186AE0A233256FF002F6A4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				410E1C06234EC6580088C71A /* LoadingViewController */,
 				416C21282347236200648C0A /* TopPageViewController */,
 				416C212D2347244500648C0A /* WorkCollectionViewController */,
 				416C21362347258700648C0A /* LaunchScanningViewController */,
@@ -596,6 +610,7 @@
 				416C213D2347261B00648C0A /* ScanningViewController.storyboard in Resources */,
 				4186ADEA23324194002F6A4C /* LaunchScreen.storyboard in Resources */,
 				416C212A234723A100648C0A /* TopPageViewController.storyboard in Resources */,
+				410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */,
 				4186ADE723324194002F6A4C /* Assets.xcassets in Resources */,
 				416C2138234725C100648C0A /* LaunchScanningViewController.storyboard in Resources */,
 				41B58A1323473A5E00C4BB45 /* WorkCollectionViewCell.xib in Resources */,
@@ -692,6 +707,7 @@
 				41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */,
 				4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */,
 				41B5BB272344F4BE00A274C7 /* UIApplication+Extensions.swift in Sources */,
+				410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */,
 				41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */,
 				416C213A234725DD00648C0A /* LaunchScanningViewController.swift in Sources */,
 				41222D042340484600F5EFE9 /* UserData.swift in Sources */,

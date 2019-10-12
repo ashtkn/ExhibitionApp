@@ -20,9 +20,6 @@ class TopPageViewController: UIPageViewController {
         self.delegate = self
         
         showPage(.launchScanningViewController)
-        
-        // To run initializer
-        let _ = DataStore.shared.works
     }
     
     func showPage(_ instance: PageInstance) {
