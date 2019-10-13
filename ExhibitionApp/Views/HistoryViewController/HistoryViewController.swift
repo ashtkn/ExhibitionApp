@@ -4,7 +4,6 @@ import SnapKit
 
 class HistoryViewController: UIViewController {
     
-    fileprivate let headerID = "WorkCollectionHeaderView"
     fileprivate let padding: CGFloat = 15
     
     lazy var header = UIView()
@@ -62,7 +61,7 @@ class HistoryViewController: UIViewController {
         workCollectionView.dataSource = self
         workCollectionView.delegate = self
         workCollectionView.register(cellType: WorkCollectionViewCell.self)
-        workCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+        workCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorkCollectionHeaderView.className)
         
         // Subscribe DataStore
         viewModel.dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
@@ -169,7 +168,7 @@ extension HistoryViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "WorkCollectionHeaderView", for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: WorkCollectionHeaderView.className, for: indexPath)
         return header
     }
 }
