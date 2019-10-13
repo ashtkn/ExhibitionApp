@@ -4,74 +4,84 @@ import SnapKit
 
 class HistoryViewController: UIViewController {
     
-    fileprivate let headerID = "WorkCollectionHeaderView"
-    fileprivate let padding: CGFloat = 15
+    private let padding: CGFloat = 15
     
-    lazy var header = UIView()
-    lazy var headerTitle = UILabel()
-    lazy var workAcheivementView = UIView()
-    lazy var workAcheivementLabel = UILabel()
-    lazy var workAcheivementNumberLabel = UILabel()
-    lazy var workAcheivementBarView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
-    lazy var workCollectionViewCellLayout = UICollectionViewFlowLayout()
-    lazy var workCollectionView = UICollectionView(frame: .zero, collectionViewLayout: workCollectionViewCellLayout)
+    lazy private var header = UIView()
+    lazy private var headerTitle = UILabel()
+    lazy private var workAcheivementView = UIView()
+    lazy private var workAcheivementLabel = UILabel()
+    lazy private var workAcheivementNumberLabel = UILabel()
+    lazy private var workAcheivementBarView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
+    lazy private var workCollectionViewCellLayout = UICollectionViewFlowLayout()
+    lazy private var workCollectionView = UICollectionView(frame: .zero, collectionViewLayout: workCollectionViewCellLayout)
+    lazy private var moveToHistoryViewButton = UIButton()
 
-    private var dataStoreSubscriptionToken: SubscriptionToken?
+    private var viewModel = HistoryViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
-            self?.workCollectionView.reloadData()
-        }
-        
         setupView()
         setupLayout()
     }
     
-    fileprivate func setupView() {
-
+    private func setupView() {
+        setupHeaderView()
+        setupMoveToHistoryViewButton()
+        setupWorkAchievementView()
+        setupWorkCollectionView()
+    }
+    
+    private func setupHeaderView() {
         self.view.addSubview(header)
         header.addSubview(headerTitle)
-        
+        header.backgroundColor = .black
+        headerTitle.text = viewModel.headerTitleText
+        headerTitle.textColor = .white
+        headerTitle.font = .mainFont(ofSize: 16)
+    }
+    
+    private func setupMoveToHistoryViewButton() {
+        self.view.addSubview(moveToHistoryViewButton)
+        moveToHistoryViewButton.frame.size = CGSize(width: 36, height: 36)
+        moveToHistoryViewButton.addTarget(self, action: #selector(didMoveToHistoryViewButtonTapped), for: .touchUpInside)
+        let image = UIImage(named: "outline_collections_white_36pt_1x") // FIXME: change the icon
+        moveToHistoryViewButton.setImage(image, for: .normal)
+    }
+    
+    private func setupWorkAchievementView() {
         self.view.addSubview(workAcheivementView)
         workAcheivementView.addSubview(workAcheivementLabel)
         workAcheivementView.addSubview(workAcheivementNumberLabel)
         workAcheivementView.addSubview(workAcheivementBarView)
-        
-        self.view.addSubview(workCollectionView)
-    
-        header.backgroundColor = .black
-        
-        headerTitle.text = "履歴"
-        headerTitle.textColor = .white
-        headerTitle.font = .mainFont(ofSize: 16)
-        
-        workAcheivementLabel.text = "スキャンした作品数"
+        workAcheivementLabel.text = viewModel.workAcheivementLabelText
         workAcheivementLabel.textColor = .white
         workAcheivementLabel.font = .mainFont(ofSize: 18)
-        
-        workAcheivementNumberLabel.text = "15"
+        workAcheivementNumberLabel.text = "\(viewModel.unlockedWorksNumber)"
         workAcheivementNumberLabel.textColor = .white
         workAcheivementNumberLabel.font = UIFont(name: "Futura-Bold", size:96)
-        
         workAcheivementBarView.setProgress(0.6, animated: false)
         workAcheivementBarView.layer.masksToBounds = true
         workAcheivementBarView.layer.cornerRadius = 3.0
-        
+    }
+    
+    private func setupWorkCollectionView() {
+        self.view.addSubview(workCollectionView)
         workCollectionViewCellLayout.sectionInset = .init(top: padding , left: 0, bottom: 0, right: 0)
         workCollectionViewCellLayout.minimumLineSpacing = padding
+        workCollectionView.dataSource = self
+        workCollectionView.delegate = self
+        workCollectionView.register(cellType: WorkCollectionViewCell.self)
+        workCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorkCollectionHeaderView.className)
         
-        self.workCollectionView.dataSource = self
-        self.workCollectionView.delegate = self
-        
-        self.workCollectionView.register(cellType: WorkCollectionViewCell.self)
-        self.workCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+        // Subscribe DataStore
+        viewModel.dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
+            self?.workCollectionView.reloadData()
+        }
     }
     
     // FIXME: Some constraints are absolute, especially height. Desirable to arrange into aspect ratio.
     
-    fileprivate func setupLayout() {
+    private func setupLayout() {
         header.snp.makeConstraints{ (make) -> Void in
             make.top.equalToSuperview()
             make.width.equalToSuperview()
@@ -81,6 +91,11 @@ class HistoryViewController: UIViewController {
         headerTitle.snp.makeConstraints{ (make) -> Void in
             make.top.equalTo(52)
             make.centerX.equalToSuperview()
+        }
+        
+        moveToHistoryViewButton.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(view.safeArea.top).offset(4)
+            make.trailing.equalTo(view.safeArea.trailing).offset(-24)
         }
         
         workAcheivementView.snp.makeConstraints{ (make) -> Void in
@@ -108,6 +123,15 @@ class HistoryViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.width.equalToSuperview()
         }
+    }
+}
+
+extension HistoryViewController {
+    
+    @objc private func didMoveToHistoryViewButtonTapped(sender: UIButton) {
+        let topPageViewController = self.parent as! TopPageViewController
+        // NOTE: 理由は不明だがこれで動く．要動作確認．
+        topPageViewController.showPage(.historyViewController)
     }
 }
 
@@ -168,7 +192,7 @@ extension HistoryViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "WorkCollectionHeaderView", for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: WorkCollectionHeaderView.className, for: indexPath)
         return header
     }
 }

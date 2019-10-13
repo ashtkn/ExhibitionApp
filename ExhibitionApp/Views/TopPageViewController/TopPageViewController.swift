@@ -3,14 +3,14 @@ import UIKit
 class TopPageViewController: UIPageViewController {
     
     var pageIndex: Int = 0
-    lazy var pageViewControllers = [
+    lazy var pageViewControllers: [UIViewController] = [
         LaunchScanningViewController.loadViewControllerFromStoryboard(),
         HistoryViewController.init()
     ]
     
     enum PageInstance: Int {
         case launchScanningViewController = 0
-        case workCollectionViewController = 1
+        case historyViewController = 1
     }
     
     override func viewDidLoad() {
@@ -24,13 +24,12 @@ class TopPageViewController: UIPageViewController {
     
     func showPage(_ instance: PageInstance) {
         let viewController = pageViewControllers[instance.rawValue]
-        self.pageIndex = instance.rawValue
+        pageIndex = instance.rawValue
         
         switch instance {
         case .launchScanningViewController:
             self.setViewControllers([viewController], direction: .reverse, animated: true, completion: nil)
-            
-        case .workCollectionViewController:
+        case .historyViewController:
             self.setViewControllers([viewController], direction: .forward, animated: true, completion: nil)
         }
     }

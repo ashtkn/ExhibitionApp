@@ -3,7 +3,7 @@ import SnapKit
 
 class WorkCollectionHeaderView: UICollectionReusableView {
 
-    lazy var workHeaderLabel = UILabel()
+    lazy private var workHeaderLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,7 +20,7 @@ class WorkCollectionHeaderView: UICollectionReusableView {
         setupLayout()
     }
     
-    fileprivate func setupView(){
+    private func setupView(){
         self.addSubview(workHeaderLabel)
         workHeaderLabel.font = UIFont.mainFont(ofSize: 24)
         workHeaderLabel.text = "スキャンした作品"
@@ -28,7 +28,7 @@ class WorkCollectionHeaderView: UICollectionReusableView {
         workHeaderLabel.textColor = .white
     }
     
-    fileprivate func setupLayout(){
+    private func setupLayout(){
         workHeaderLabel.snp.makeConstraints{ make -> Void in
             make.left.equalTo(16)
             make.centerY.equalToSuperview()
