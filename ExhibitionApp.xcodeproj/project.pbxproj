@@ -63,6 +63,7 @@
 		4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADF9233254FB002F6A4C /* UIViewController+Extensions.swift */; };
 		4186AE00233254FB002F6A4C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADFA233254FB002F6A4C /* UITableView+Extensions.swift */; };
 		4186AE092332553F002F6A4C /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186AE082332553F002F6A4C /* Injectable.swift */; };
+		418E40C92352FB1100322B6A /* SnapKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E40C82352FB1100322B6A /* SnapKit+Extensions.swift */; };
 		418FDBDC2352E77300E57D51 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FDBDB2352E77300E57D51 /* HistoryViewModel.swift */; };
 		41907CA9233F19EC00C54253 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41907CA8233F19EC00C54253 /* DataStore.swift */; };
 		41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AD233E6C7C008C797A /* Realm.framework */; };
@@ -159,6 +160,7 @@
 		4186ADF9233254FB002F6A4C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		4186ADFA233254FB002F6A4C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		4186AE082332553F002F6A4C /* Injectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
+		418E40C82352FB1100322B6A /* SnapKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnapKit+Extensions.swift"; sourceTree = "<group>"; };
 		418FDBDB2352E77300E57D51 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		41907CA8233F19EC00C54253 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		41A3C7AD233E6C7C008C797A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				41B5BB262344F4BE00A274C7 /* UIApplication+Extensions.swift */,
 				8A6804AA235040290059019D /* UIColor+Extensions.swift */,
 				8A6804B423527B890059019D /* UIFont+Extensions.swift */,
+				418E40C82352FB1100322B6A /* SnapKit+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */,
 				41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */,
 				416C213A234725DD00648C0A /* LaunchScanningViewController.swift in Sources */,
+				418E40C92352FB1100322B6A /* SnapKit+Extensions.swift in Sources */,
 				41222D042340484600F5EFE9 /* UserData.swift in Sources */,
 				41481F89234389AF004E2EB2 /* FirebaseService.swift in Sources */,
 				4186ADFC233254FB002F6A4C /* UIImage+Extensions.swift in Sources */,

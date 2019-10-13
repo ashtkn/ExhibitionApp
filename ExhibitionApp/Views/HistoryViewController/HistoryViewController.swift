@@ -14,6 +14,7 @@ class HistoryViewController: UIViewController {
     lazy private var workAcheivementBarView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
     lazy private var workCollectionViewCellLayout = UICollectionViewFlowLayout()
     lazy private var workCollectionView = UICollectionView(frame: .zero, collectionViewLayout: workCollectionViewCellLayout)
+    lazy private var moveToHistoryViewButton = UIButton()
 
     private var viewModel = HistoryViewModel()
     
@@ -25,6 +26,7 @@ class HistoryViewController: UIViewController {
     
     private func setupView() {
         setupHeaderView()
+        setupMoveToHistoryViewButton()
         setupWorkAchievementView()
         setupWorkCollectionView()
     }
@@ -36,6 +38,14 @@ class HistoryViewController: UIViewController {
         headerTitle.text = viewModel.headerTitleText
         headerTitle.textColor = .white
         headerTitle.font = .mainFont(ofSize: 16)
+    }
+    
+    private func setupMoveToHistoryViewButton() {
+        self.view.addSubview(moveToHistoryViewButton)
+        moveToHistoryViewButton.frame.size = CGSize(width: 36, height: 36)
+        moveToHistoryViewButton.addTarget(self, action: #selector(didMoveToHistoryViewButtonTapped), for: .touchUpInside)
+        let image = UIImage(named: "outline_collections_white_36pt_1x") // FIXME: change the icon
+        moveToHistoryViewButton.setImage(image, for: .normal)
     }
     
     private func setupWorkAchievementView() {
@@ -83,6 +93,11 @@ class HistoryViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        moveToHistoryViewButton.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(view.safeArea.top).offset(4)
+            make.trailing.equalTo(view.safeArea.trailing).offset(-24)
+        }
+        
         workAcheivementView.snp.makeConstraints{ (make) -> Void in
             make.top.equalTo(header.snp.bottom)
             make.width.equalToSuperview()
@@ -108,6 +123,15 @@ class HistoryViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.width.equalToSuperview()
         }
+    }
+}
+
+extension HistoryViewController {
+    
+    @objc private func didMoveToHistoryViewButtonTapped(sender: UIButton) {
+        let topPageViewController = self.parent as! TopPageViewController
+        // NOTE: 理由は不明だがこれで動く．要動作確認．
+        topPageViewController.showPage(.historyViewController)
     }
 }
 
