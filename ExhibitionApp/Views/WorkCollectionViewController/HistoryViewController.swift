@@ -1,0 +1,191 @@
+import UIKit
+import SafariServices
+import SnapKit
+
+class HistoryViewController: UIViewController {
+    
+    fileprivate let headerID = "WorkCollectionHeaderView"
+    fileprivate let padding: CGFloat = 15
+    
+    lazy var header = UIView()
+    lazy var headerTitle = UILabel()
+    lazy var workAcheivementView = UIView()
+    lazy var workAcheivementLabel = UILabel()
+    lazy var workAcheivementNumberLabel = UILabel()
+    lazy var workAcheivementBarView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
+    lazy var workCollectionViewCellLayout = UICollectionViewFlowLayout()
+    lazy var workCollectionView = UICollectionView(frame: .zero, collectionViewLayout: workCollectionViewCellLayout)
+
+    private var dataStoreSubscriptionToken: SubscriptionToken?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
+            self?.workCollectionView.reloadData()
+        }
+        
+        setupView()
+        setupLayout()
+    }
+    
+    fileprivate func setupView() {
+
+        self.view.addSubview(header)
+        header.addSubview(headerTitle)
+        
+        self.view.addSubview(workAcheivementView)
+        workAcheivementView.addSubview(workAcheivementLabel)
+        workAcheivementView.addSubview(workAcheivementNumberLabel)
+        workAcheivementView.addSubview(workAcheivementBarView)
+        
+        self.view.addSubview(workCollectionView)
+    
+        header.backgroundColor = .black
+        
+        headerTitle.text = "履歴"
+        headerTitle.textColor = .white
+        headerTitle.font = .mainFont(ofSize: 16)
+        
+        workAcheivementLabel.text = "スキャンした作品数"
+        workAcheivementLabel.textColor = .white
+        workAcheivementLabel.font = .mainFont(ofSize: 18)
+        
+        workAcheivementNumberLabel.text = "15"
+        workAcheivementNumberLabel.textColor = .white
+        workAcheivementNumberLabel.font = UIFont(name: "Futura-Bold", size:96)
+        
+        workAcheivementBarView.setProgress(0.6, animated: false)
+        workAcheivementBarView.layer.masksToBounds = true
+        workAcheivementBarView.layer.cornerRadius = 3.0
+        
+        workCollectionViewCellLayout.sectionInset = .init(top: padding , left: 0, bottom: 0, right: 0)
+        workCollectionViewCellLayout.minimumLineSpacing = padding
+        
+        self.workCollectionView.dataSource = self
+        self.workCollectionView.delegate = self
+        
+        self.workCollectionView.register(cellType: WorkCollectionViewCell.self)
+        self.workCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+    }
+    
+    // FIXME: Some constraints are absolute, especially height. Desirable to arrange into aspect ratio.
+    
+    fileprivate func setupLayout() {
+        header.snp.makeConstraints{ (make) -> Void in
+            make.top.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(112)
+        }
+        
+        headerTitle.snp.makeConstraints{ (make) -> Void in
+            make.top.equalTo(52)
+            make.centerX.equalToSuperview()
+        }
+        
+        workAcheivementView.snp.makeConstraints{ (make) -> Void in
+            make.top.equalTo(header.snp.bottom)
+            make.width.equalToSuperview()
+            make.height.equalTo(233)
+        }
+        
+        workAcheivementLabel.snp.makeConstraints{ (make) -> Void in
+            make.top.equalToSuperview().inset(36)
+            make.centerX.equalToSuperview()
+        }
+        
+        workAcheivementNumberLabel.snp.makeConstraints{ (make) -> Void in
+            make.center.equalToSuperview()
+        }
+        
+        workAcheivementBarView.snp.makeConstraints{ (make) -> Void in
+            make.bottom.equalToSuperview().inset(36)
+            make.centerX.equalToSuperview()
+        }
+        
+        workCollectionView.snp.remakeConstraints{ (make) -> Void in
+            make.top.equalTo(workAcheivementView.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+        }
+    }
+}
+
+
+// MARK: UICollectionViewDelegateFlowLayout
+
+extension HistoryViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return cellSize
+    }
+    
+    private var cellSize: CGSize {
+        let prototypeCell = workCollectionView.getNib(cellType: WorkCollectionViewCell.self)
+        prototypeCell.bounds.size.width = cellWidth
+        prototypeCell.contentView.bounds.size.width = cellWidth
+        
+        let size = prototypeCell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
+        
+        return size
+    }
+    
+    private var cellWidth: CGFloat {
+        let availableWidth = workCollectionView.bounds.inset(by: workCollectionView.adjustedContentInset).width
+        let interColumnSpace = padding
+        let numColumns = CGFloat(1)
+        let numInterColumnSpaces = numColumns - 1
+        
+        return ((availableWidth - interColumnSpace * numInterColumnSpaces) / numColumns).rounded(.down) - padding*2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return .init(width: view.frame.width, height: 56)
+    }
+
+}
+
+// MARK: UICollectionViewDataSource
+
+extension HistoryViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return DataStore.shared.works.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! WorkCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(with: WorkCollectionViewCell.self, for: indexPath)
+
+        let work = DataStore.shared.works[indexPath.row]
+        cell.configure(WorkCollectionViewCellModel(from: work))
+        
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "WorkCollectionHeaderView", for: indexPath)
+        return header
+    }
+}
+
+// MARK: UICollectionViewDelegate
+
+extension HistoryViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let work = DataStore.shared.works[indexPath.row]
+        if work.isLocked { return }
+        
+        let url = URL(string: work.url)!
+        let safariViewController = SFSafariViewController(url: url)
+        
+        DispatchQueue.main.async { [unowned self] in
+            self.present(safariViewController, animated: true, completion: nil)
+        }
+    }
+}

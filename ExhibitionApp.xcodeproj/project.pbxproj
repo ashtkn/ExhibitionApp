@@ -42,7 +42,6 @@
 		41481F89234389AF004E2EB2 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41481F88234389AF004E2EB2 /* FirebaseService.swift */; };
 		41481F8B234390C8004E2EB2 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F8A234390C8004E2EB2 /* Hydra.framework */; };
 		414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5323446C100013F833 /* Firestore+Extensions.swift */; };
-		414F0E5623446D990013F833 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5523446D990013F833 /* Kingfisher.framework */; };
 		414F0E5A23446E2D0013F833 /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; };
 		414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5F234488F20013F833 /* SubscriptionToken.swift */; };
 		414F0E6523448FA70013F833 /* WorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E6423448FA70013F833 /* WorkTests.swift */; };
@@ -51,7 +50,7 @@
 		416C212A234723A100648C0A /* TopPageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416C2129234723A100648C0A /* TopPageViewController.storyboard */; };
 		416C212C2347240200648C0A /* TopPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C212B2347240200648C0A /* TopPageViewController.swift */; };
 		416C212F2347246200648C0A /* WorkCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416C212E2347246200648C0A /* WorkCollectionViewController.storyboard */; };
-		416C2131234724D500648C0A /* WorkCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C2130234724D500648C0A /* WorkCollectionViewController.swift */; };
+		416C2131234724D500648C0A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C2130234724D500648C0A /* HistoryViewController.swift */; };
 		416C21342347256A00648C0A /* WorkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C21322347256A00648C0A /* WorkCollectionViewCell.swift */; };
 		416C2138234725C100648C0A /* LaunchScanningViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416C2137234725C100648C0A /* LaunchScanningViewController.storyboard */; };
 		416C213A234725DD00648C0A /* LaunchScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C2139234725DD00648C0A /* LaunchScanningViewController.swift */; };
@@ -84,6 +83,10 @@
 		41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C272334F57600552D40 /* NSObject+Extensions.swift */; };
 		41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8A23404DBE00606D7B /* JsonUtility.swift */; };
 		41F46B8E2340502B00606D7B /* WorkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8D2340502B00606D7B /* WorkObject.swift */; };
+		8A6804A723503B3D0059019D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6804A623503B3D0059019D /* SnapKit.framework */; };
+		8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AA235040290059019D /* UIColor+Extensions.swift */; };
+		8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */; };
+		8A6804B523527B890059019D /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804B423527B890059019D /* UIFont+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,7 +145,7 @@
 		416C2129234723A100648C0A /* TopPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TopPageViewController.storyboard; sourceTree = "<group>"; };
 		416C212B2347240200648C0A /* TopPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPageViewController.swift; sourceTree = "<group>"; };
 		416C212E2347246200648C0A /* WorkCollectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorkCollectionViewController.storyboard; sourceTree = "<group>"; };
-		416C2130234724D500648C0A /* WorkCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionViewController.swift; sourceTree = "<group>"; };
+		416C2130234724D500648C0A /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		416C21322347256A00648C0A /* WorkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionViewCell.swift; sourceTree = "<group>"; };
 		416C2137234725C100648C0A /* LaunchScanningViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScanningViewController.storyboard; sourceTree = "<group>"; };
 		416C2139234725DD00648C0A /* LaunchScanningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScanningViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +182,10 @@
 		41EA9C272334F57600552D40 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
 		41F46B8A23404DBE00606D7B /* JsonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtility.swift; sourceTree = "<group>"; };
 		41F46B8D2340502B00606D7B /* WorkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkObject.swift; sourceTree = "<group>"; };
+		8A6804A623503B3D0059019D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		8A6804AA235040290059019D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionHeaderView.swift; sourceTree = "<group>"; };
+		8A6804B423527B890059019D /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,13 +214,13 @@
 				41481F5A2343873E004E2EB2 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				41481F8423438949004E2EB2 /* StoreKit.framework in Frameworks */,
 				41481F622343873E004E2EB2 /* FirebaseFirestore.framework in Frameworks */,
+				8A6804A723503B3D0059019D /* SnapKit.framework in Frameworks */,
 				41481F5C2343873E004E2EB2 /* FirebaseAnalytics.framework in Frameworks */,
 				41481F782343873F004E2EB2 /* gRPC-Core.framework in Frameworks */,
 				41481F7A2343873F004E2EB2 /* FirebaseInstanceID.framework in Frameworks */,
 				41481F722343873E004E2EB2 /* Protobuf.framework in Frameworks */,
 				411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */,
 				41481F602343873E004E2EB2 /* leveldb-library.framework in Frameworks */,
-				414F0E5623446D990013F833 /* Kingfisher.framework in Frameworks */,
 				41481F762343873F004E2EB2 /* FirebaseCore.framework in Frameworks */,
 				41481F662343873E004E2EB2 /* GoogleUtilities.framework in Frameworks */,
 				41481F6E2343873E004E2EB2 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
@@ -277,9 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				416C212E2347246200648C0A /* WorkCollectionViewController.storyboard */,
-				416C2130234724D500648C0A /* WorkCollectionViewController.swift */,
+				416C2130234724D500648C0A /* HistoryViewController.swift */,
 				41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */,
 				416C21322347256A00648C0A /* WorkCollectionViewCell.swift */,
+				8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */,
 			);
 			path = WorkCollectionViewController;
 			sourceTree = "<group>";
@@ -356,6 +364,8 @@
 				41B5BB222344F27700A274C7 /* String+Extensions.swift */,
 				41B5BB242344F48700A274C7 /* UIView+Extensions.swift */,
 				41B5BB262344F4BE00A274C7 /* UIApplication+Extensions.swift */,
+				8A6804AA235040290059019D /* UIColor+Extensions.swift */,
+				8A6804B423527B890059019D /* UIFont+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -441,6 +451,7 @@
 		41D34EC32339DF080096188B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A6804A623503B3D0059019D /* SnapKit.framework */,
 				414F0E5923446E2D0013F833 /* CodableFirebase.framework */,
 				414F0E5523446D990013F833 /* Kingfisher.framework */,
 				41481F8A234390C8004E2EB2 /* Hydra.framework */,
@@ -644,8 +655,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CodableFirebase.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			name = "Run Script for Carthage";
 			outputFileListPaths = (
@@ -675,10 +686,12 @@
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
 				41A596A923334179008DA6AF /* LabelNode.swift in Sources */,
+				8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */,
 				4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */,
 				41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,
 				41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */,
+				8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */,
 				41647D8B2347458B0021A2E3 /* SharingViewModel.swift in Sources */,
 				41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */,
 				4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */,
@@ -689,11 +702,12 @@
 				41222D042340484600F5EFE9 /* UserData.swift in Sources */,
 				41481F89234389AF004E2EB2 /* FirebaseService.swift in Sources */,
 				4186ADFC233254FB002F6A4C /* UIImage+Extensions.swift in Sources */,
+				8A6804B523527B890059019D /* UIFont+Extensions.swift in Sources */,
 				416C21342347256A00648C0A /* WorkCollectionViewCell.swift in Sources */,
 				41B5BB232344F27700A274C7 /* String+Extensions.swift in Sources */,
 				41907CA9233F19EC00C54253 /* DataStore.swift in Sources */,
 				41F46B8E2340502B00606D7B /* WorkObject.swift in Sources */,
-				416C2131234724D500648C0A /* WorkCollectionViewController.swift in Sources */,
+				416C2131234724D500648C0A /* HistoryViewController.swift in Sources */,
 				4186AE00233254FB002F6A4C /* UITableView+Extensions.swift in Sources */,
 				41B58A182347425200C4BB45 /* WorkCollectionViewCellModel.swift in Sources */,
 			);

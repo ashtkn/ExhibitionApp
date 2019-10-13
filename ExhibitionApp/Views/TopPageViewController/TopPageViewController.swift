@@ -5,7 +5,7 @@ class TopPageViewController: UIPageViewController {
     var pageIndex: Int = 0
     lazy var pageViewControllers = [
         LaunchScanningViewController.loadViewControllerFromStoryboard(),
-        WorkCollectionViewController.loadViewControllerFromStoryboard()
+        HistoryViewController.init()
     ]
     
     enum PageInstance: Int {
@@ -38,7 +38,7 @@ class TopPageViewController: UIPageViewController {
 
 extension TopPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if viewController is WorkCollectionViewController {
+        if viewController is HistoryViewController {
             pageIndex = 0
             return pageViewControllers[pageIndex] // launchScanningViewController
         } else {
