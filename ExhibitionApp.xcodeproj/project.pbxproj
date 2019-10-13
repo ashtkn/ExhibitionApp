@@ -85,7 +85,6 @@
 		41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8A23404DBE00606D7B /* JsonUtility.swift */; };
 		41F46B8E2340502B00606D7B /* WorkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8D2340502B00606D7B /* WorkObject.swift */; };
 		8A6804A723503B3D0059019D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6804A623503B3D0059019D /* SnapKit.framework */; };
-		8A6804A823503B3D0059019D /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6804A623503B3D0059019D /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AA235040290059019D /* UIColor+Extensions.swift */; };
 		8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */; };
 		8A6804B523527B890059019D /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804B423527B890059019D /* UIFont+Extensions.swift */; };
@@ -100,20 +99,6 @@
 			remoteInfo = ExhibitionApp;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		8A6804A923503B3D0059019D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8A6804A823503B3D0059019D /* SnapKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		410E1C07234EC6940088C71A /* LoadingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
@@ -535,7 +520,6 @@
 				4186ADD823324192002F6A4C /* Resources */,
 				41D34EC22339DE410096188B /* Run Script for Carthage */,
 				411A16AA2340E40200644A61 /* Run Script for Carthage (Debug) */,
-				8A6804A923503B3D0059019D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -675,6 +659,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CodableFirebase.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			name = "Run Script for Carthage";
 			outputFileListPaths = (
