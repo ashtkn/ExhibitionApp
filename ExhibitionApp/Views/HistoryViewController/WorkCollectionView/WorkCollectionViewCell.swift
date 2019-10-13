@@ -3,8 +3,8 @@ import SnapKit
 
 class WorkCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
     
     private var viewModel: WorkCollectionViewCellModel?
     func configure(_ viewModel: WorkCollectionViewCellModel) {
@@ -22,7 +22,7 @@ class WorkCollectionViewCell: UICollectionViewCell {
         self.titleLabel.text = viewModel?.title
     }
     
-    fileprivate func setupView() {
+    private func setupView() {
         contentView.layer.cornerRadius = 8.0
         contentView.layer.masksToBounds = true
     }

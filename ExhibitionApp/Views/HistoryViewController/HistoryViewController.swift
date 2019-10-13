@@ -4,16 +4,16 @@ import SnapKit
 
 class HistoryViewController: UIViewController {
     
-    fileprivate let padding: CGFloat = 15
+    private let padding: CGFloat = 15
     
-    lazy var header = UIView()
-    lazy var headerTitle = UILabel()
-    lazy var workAcheivementView = UIView()
-    lazy var workAcheivementLabel = UILabel()
-    lazy var workAcheivementNumberLabel = UILabel()
-    lazy var workAcheivementBarView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
-    lazy var workCollectionViewCellLayout = UICollectionViewFlowLayout()
-    lazy var workCollectionView = UICollectionView(frame: .zero, collectionViewLayout: workCollectionViewCellLayout)
+    lazy private var header = UIView()
+    lazy private var headerTitle = UILabel()
+    lazy private var workAcheivementView = UIView()
+    lazy private var workAcheivementLabel = UILabel()
+    lazy private var workAcheivementNumberLabel = UILabel()
+    lazy private var workAcheivementBarView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
+    lazy private var workCollectionViewCellLayout = UICollectionViewFlowLayout()
+    lazy private var workCollectionView = UICollectionView(frame: .zero, collectionViewLayout: workCollectionViewCellLayout)
 
     private var viewModel = HistoryViewModel()
     
@@ -23,7 +23,7 @@ class HistoryViewController: UIViewController {
         setupLayout()
     }
     
-    fileprivate func setupView() {
+    private func setupView() {
         setupHeaderView()
         setupWorkAchievementView()
         setupWorkCollectionView()
@@ -71,7 +71,7 @@ class HistoryViewController: UIViewController {
     
     // FIXME: Some constraints are absolute, especially height. Desirable to arrange into aspect ratio.
     
-    fileprivate func setupLayout() {
+    private func setupLayout() {
         header.snp.makeConstraints{ (make) -> Void in
             make.top.equalToSuperview()
             make.width.equalToSuperview()
