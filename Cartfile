@@ -7,5 +7,4 @@ binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseFirestoreBinary.j
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseStorageBinary.json"
 github "malcommac/Hydra"
 github "alickbass/CodableFirebase"
-github "onevcat/Kingfisher" ~> 5.0
 github "SnapKit/SnapKit" ~> 5.0.0

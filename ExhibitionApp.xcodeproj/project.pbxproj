@@ -42,7 +42,6 @@
 		41481F89234389AF004E2EB2 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41481F88234389AF004E2EB2 /* FirebaseService.swift */; };
 		41481F8B234390C8004E2EB2 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F8A234390C8004E2EB2 /* Hydra.framework */; };
 		414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5323446C100013F833 /* Firestore+Extensions.swift */; };
-		414F0E5623446D990013F833 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5523446D990013F833 /* Kingfisher.framework */; };
 		414F0E5A23446E2D0013F833 /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F0E5923446E2D0013F833 /* CodableFirebase.framework */; };
 		414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E5F234488F20013F833 /* SubscriptionToken.swift */; };
 		414F0E6523448FA70013F833 /* WorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F0E6423448FA70013F833 /* WorkTests.swift */; };
@@ -222,7 +221,6 @@
 				41481F722343873E004E2EB2 /* Protobuf.framework in Frameworks */,
 				411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */,
 				41481F602343873E004E2EB2 /* leveldb-library.framework in Frameworks */,
-				414F0E5623446D990013F833 /* Kingfisher.framework in Frameworks */,
 				41481F762343873F004E2EB2 /* FirebaseCore.framework in Frameworks */,
 				41481F662343873E004E2EB2 /* GoogleUtilities.framework in Frameworks */,
 				41481F6E2343873E004E2EB2 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
@@ -657,7 +655,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CodableFirebase.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
