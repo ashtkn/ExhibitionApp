@@ -18,6 +18,8 @@ class HistoryViewController: UIViewController {
 
     private var dataStoreSubscriptionToken: SubscriptionToken?
     
+    private let viewModel = HistoryViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,7 +53,7 @@ class HistoryViewController: UIViewController {
         workAcheivementLabel.textColor = .white
         workAcheivementLabel.font = .mainFont(ofSize: 18)
         
-        workAcheivementNumberLabel.text = "15"
+        workAcheivementNumberLabel.text = "\(viewModel.unlockedWorksNumber)"
         workAcheivementNumberLabel.textColor = .white
         workAcheivementNumberLabel.font = UIFont(name: "Futura-Bold", size:96)
         
