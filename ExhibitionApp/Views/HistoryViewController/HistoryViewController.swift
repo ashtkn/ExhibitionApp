@@ -16,59 +16,58 @@ class HistoryViewController: UIViewController {
     lazy var workCollectionViewCellLayout = UICollectionViewFlowLayout()
     lazy var workCollectionView = UICollectionView(frame: .zero, collectionViewLayout: workCollectionViewCellLayout)
 
-    private var dataStoreSubscriptionToken: SubscriptionToken?
-    
-    private let viewModel = HistoryViewModel()
+    private var viewModel = HistoryViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
-            self?.workCollectionView.reloadData()
-        }
-        
         setupView()
         setupLayout()
     }
     
     fileprivate func setupView() {
-
+        setupHeaderView()
+        setupWorkAchievementView()
+        setupWorkCollectionView()
+    }
+    
+    private func setupHeaderView() {
         self.view.addSubview(header)
         header.addSubview(headerTitle)
-        
+        header.backgroundColor = .black
+        headerTitle.text = viewModel.headerTitleText
+        headerTitle.textColor = .white
+        headerTitle.font = .mainFont(ofSize: 16)
+    }
+    
+    private func setupWorkAchievementView() {
         self.view.addSubview(workAcheivementView)
         workAcheivementView.addSubview(workAcheivementLabel)
         workAcheivementView.addSubview(workAcheivementNumberLabel)
         workAcheivementView.addSubview(workAcheivementBarView)
-        
-        self.view.addSubview(workCollectionView)
-    
-        header.backgroundColor = .black
-        
-        headerTitle.text = "履歴"
-        headerTitle.textColor = .white
-        headerTitle.font = .mainFont(ofSize: 16)
-        
-        workAcheivementLabel.text = "スキャンした作品数"
+        workAcheivementLabel.text = viewModel.workAcheivementLabelText
         workAcheivementLabel.textColor = .white
         workAcheivementLabel.font = .mainFont(ofSize: 18)
-        
         workAcheivementNumberLabel.text = "\(viewModel.unlockedWorksNumber)"
         workAcheivementNumberLabel.textColor = .white
         workAcheivementNumberLabel.font = UIFont(name: "Futura-Bold", size:96)
-        
         workAcheivementBarView.setProgress(0.6, animated: false)
         workAcheivementBarView.layer.masksToBounds = true
         workAcheivementBarView.layer.cornerRadius = 3.0
-        
+    }
+    
+    private func setupWorkCollectionView() {
+        self.view.addSubview(workCollectionView)
         workCollectionViewCellLayout.sectionInset = .init(top: padding , left: 0, bottom: 0, right: 0)
         workCollectionViewCellLayout.minimumLineSpacing = padding
+        workCollectionView.dataSource = self
+        workCollectionView.delegate = self
+        workCollectionView.register(cellType: WorkCollectionViewCell.self)
+        workCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
         
-        self.workCollectionView.dataSource = self
-        self.workCollectionView.delegate = self
-        
-        self.workCollectionView.register(cellType: WorkCollectionViewCell.self)
-        self.workCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+        // Subscribe DataStore
+        viewModel.dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
+            self?.workCollectionView.reloadData()
+        }
     }
     
     // FIXME: Some constraints are absolute, especially height. Desirable to arrange into aspect ratio.
