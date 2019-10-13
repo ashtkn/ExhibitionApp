@@ -22,7 +22,7 @@ class WorkCollectionHeaderView: UICollectionReusableView {
     
     fileprivate func setupView(){
         self.addSubview(workHeaderLabel)
-        workHeaderLabel.font = UIFont(name: "HiraginoSans-W6", size:24)
+        workHeaderLabel.font = UIFont.mainFont(ofSize: 24)
         workHeaderLabel.text = "スキャンした作品"
         workHeaderLabel.textAlignment = .left
         workHeaderLabel.textColor = .white
