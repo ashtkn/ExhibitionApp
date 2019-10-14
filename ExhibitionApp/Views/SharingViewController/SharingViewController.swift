@@ -116,6 +116,7 @@ class SharingViewController: UIViewController {
     
     // MARK: Actions
     
+// FIXME: ボタンのタップが引き起こされていない
 extension SharingViewController {
     @objc private func didShareButtonTapped(sender: UIButton) {
         
