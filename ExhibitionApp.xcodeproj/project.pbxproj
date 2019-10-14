@@ -87,6 +87,7 @@
 		8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AA235040290059019D /* UIColor+Extensions.swift */; };
 		8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */; };
 		8A6804B523527B890059019D /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804B423527B890059019D /* UIFont+Extensions.swift */; };
+		8A6804BB2354E1E70059019D /* UIButton+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804BA2354E1E70059019D /* UIButton+Custom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,7 @@
 		8A6804AA235040290059019D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionHeaderView.swift; sourceTree = "<group>"; };
 		8A6804B423527B890059019D /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		8A6804BA2354E1E70059019D /* UIButton+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Custom.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +366,7 @@
 				8A6804AA235040290059019D /* UIColor+Extensions.swift */,
 				8A6804B423527B890059019D /* UIFont+Extensions.swift */,
 				418E40C82352FB1100322B6A /* SnapKit+Extensions.swift */,
+				8A6804BA2354E1E70059019D /* UIButton+Custom.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				41A596A923334179008DA6AF /* LabelNode.swift in Sources */,
 				8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */,
 				4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */,
+				8A6804BB2354E1E70059019D /* UIButton+Custom.swift in Sources */,
 				41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,
 				41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */,

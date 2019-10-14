@@ -1,5 +1,6 @@
 import UIKit
 import SceneKit
+import SnapKit
 import ARKit
 
 class ScanningViewController: UIViewController {
@@ -13,7 +14,8 @@ class ScanningViewController: UIViewController {
     }
     
     @IBOutlet private weak var takeSnapshotButton: UIButton!
-    @IBOutlet private weak var cancelButton: UIBarButtonItem!
+
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     // MARK: ViewModel
     
@@ -68,7 +70,7 @@ class ScanningViewController: UIViewController {
         }
     }
     
-    @IBAction private func didCancelButtonTapped(_ sender: Any) {
+    @IBAction func didCancelButtonTapped(_ sender: Any) {
         DispatchQueue.main.async { [unowned self] in
             self.navigationController?.dismiss(animated: true, completion: nil)
         }
