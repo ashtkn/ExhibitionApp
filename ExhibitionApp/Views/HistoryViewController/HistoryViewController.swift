@@ -70,21 +70,21 @@ class HistoryViewController: UIViewController {
     }
     
     private func setupSubviews(parent container: inout UIView) {
-        let subContainers = HistoryViewController.addSubContainers(container: &container)
+        let subContainers = HistoryViewController.addSubContainers(parent: &container)
         
-        var headerViewContainer = subContainers.headerView
-        self.headerTitleLabel = HistoryViewController.addHeaderView(headerViewContainer: &headerViewContainer)
+        var headerViewContainer = subContainers.headerViewContainer
+        self.headerTitleLabel = HistoryViewController.addHeaderView(parent: &headerViewContainer)
         
-        var scannedWorksCounterViewContainer = subContainers.counterView
-        let scannedWorksCounterView = HistoryViewController.addScannedWorksCounterView(counterContainer: &scannedWorksCounterViewContainer)
+        var scannedWorksCounterViewContainer = subContainers.counterViewContainer
+        let scannedWorksCounterView = HistoryViewController.addScannedWorksCounterView(parent: &scannedWorksCounterViewContainer)
         self.scannedWorksCounterTextLabel = scannedWorksCounterView.textLabel
         self.scannedWorksCounterNumberLabel = scannedWorksCounterView.numberLabel
         self.scannedWorksCounterProgressView = scannedWorksCounterView.progressView
 
-        var scannedWorksCollectionViewContainer = subContainers.collectionView
-        self.scannedWorksCollectionView = HistoryViewController.addScannedWorksCollectionView(collectionViewContainer: &scannedWorksCollectionViewContainer)
+        var scannedWorksCollectionViewContainer = subContainers.collectionViewContainer
+        self.scannedWorksCollectionView = HistoryViewController.addScannedWorksCollectionView(parent: &scannedWorksCollectionViewContainer)
         
-        self.moveToLaunchScanningViewButton = HistoryViewController.addMoveToLaunchScanningButton(container: &container)
+        self.moveToLaunchScanningViewButton = HistoryViewController.addMoveToLaunchScanningButton(parent: &container)
     }
 }
 
@@ -178,7 +178,7 @@ extension HistoryViewController: UICollectionViewDelegate {
 
 extension HistoryViewController {
     
-    private static func addMoveToLaunchScanningButton(container containerView: inout UIView) -> UIButton {
+    private static func addMoveToLaunchScanningButton(parent containerView: inout UIView) -> UIButton {
         let moveToLaunchScanningViewButton = UIButton()
         containerView.addSubview(moveToLaunchScanningViewButton)
         
@@ -193,7 +193,7 @@ extension HistoryViewController {
         return moveToLaunchScanningViewButton
     }
     
-    private static func addSubContainers(container containerView: inout UIView) -> (headerView: UIView, counterView: UIView, collectionView: UIView) {
+    private static func addSubContainers(parent containerView: inout UIView) -> (headerViewContainer: UIView, counterViewContainer: UIView, collectionViewContainer: UIView) {
         let headerViewContainer = UIView()
         containerView.addSubview(headerViewContainer)
         
@@ -224,7 +224,7 @@ extension HistoryViewController {
         return (headerViewContainer, counterViewContainer, collectionViewContainer)
     }
     
-    private static func addHeaderView(headerViewContainer containerView: inout UIView) -> UILabel {
+    private static func addHeaderView(parent containerView: inout UIView) -> UILabel {
         let headerView = UIView()
         containerView.addSubview(headerView)
         
@@ -248,7 +248,7 @@ extension HistoryViewController {
         return label
     }
     
-    private static func addScannedWorksCounterView(counterContainer containerView: inout UIView) -> (textLabel: UILabel, numberLabel: UILabel, progressView: UIProgressView) {
+    private static func addScannedWorksCounterView(parent containerView: inout UIView) -> (textLabel: UILabel, numberLabel: UILabel, progressView: UIProgressView) {
         let scannedWorksCounterView = UIView()
         containerView.addSubview(scannedWorksCounterView)
         
@@ -294,7 +294,7 @@ extension HistoryViewController {
         return (counterTextLabel, counterNumberLabel, counterProgressView)
     }
     
-    private static func addScannedWorksCollectionView(collectionViewContainer containerView: inout UIView) -> UICollectionView {
+    private static func addScannedWorksCollectionView(parent containerView: inout UIView) -> UICollectionView {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = .init(top: padding , left: 0, bottom: 0, right: 0)
         flowLayout.minimumLineSpacing = padding
