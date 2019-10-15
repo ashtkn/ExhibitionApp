@@ -71,14 +71,9 @@ class SharingViewController: UIViewController {
         guard let image = self.imageView.image else { fatalError() }
         
         let activityItems: [Any] = [image]
-        let activityViewController =
-            UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         activityViewController.excludedActivityTypes = [.message, .print]
         
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            activityViewController.popoverPresentationController?.sourceView = self.imageView
-        }
-                
         DispatchQueue.main.async { [unowned self] in
             self.present(activityViewController, animated: true, completion: nil)
         }
