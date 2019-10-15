@@ -63,13 +63,7 @@ class ScanningViewController: UIViewController {
         }
         
         let sharingViewController = SharingViewController.init()
-
         sharingViewController.configure(sharingViewModel)
-       // sharingViewController.navigationBar.isTranslucent = true
-       // sharingViewController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-       // sharingViewController.navigationBar.shadowImage = UIImage()
-       // sharingViewController.navigationBar.tintColor = .white
-       // sharingViewController.navigationItem.title = ""
         
         DispatchQueue.main.async { [unowned self] in
             sharingViewController.navigationItem.hidesBackButton = true
