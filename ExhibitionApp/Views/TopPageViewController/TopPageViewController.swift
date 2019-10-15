@@ -1,6 +1,6 @@
 import UIKit
 
-class TopPageViewController: UIPageViewController {
+final class TopPageViewController: UIPageViewController {
     
     var pageIndex: Int = 0
     lazy var pageViewControllers: [UIViewController] = [

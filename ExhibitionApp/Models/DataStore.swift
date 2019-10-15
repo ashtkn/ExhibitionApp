@@ -110,11 +110,9 @@ final class DataStore {
             }
             
             guard let image = UIImage(contentsOfFile: resourcePath.path) else {
-                print("Cannot load image")
                 return nil
             }
             guard let cgImage = image.cgImage else {
-                print("Cannot export CGImage")
                 return nil
             }
             
@@ -172,9 +170,6 @@ extension DataStore {
                 
                 // Execute downloading
                 zip(all(downloadResoucesPromises), all(downloadImagesPromises)).then({ resourcesPaths, imagesPaths in
-                    print("Downloaded resources: \(resourcesPaths)")
-                    print("Downloaded images: \(imagesPaths)")
-                    
                     // Register fetched data to Realm database
                     let realm = try! Realm()
                     try! realm.write {
@@ -182,8 +177,7 @@ extension DataStore {
                     }
                     
                     resolve(())
-                }).catch({ error in
-                    print(error)
+                }).catch({ _ in
                     reject(DataStoreError.fetchError)
                 })
             })

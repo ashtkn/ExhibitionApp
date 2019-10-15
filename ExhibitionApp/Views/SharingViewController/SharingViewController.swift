@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class SharingViewController: UIViewController {
+final class SharingViewController: UIViewController {
     
     // MARK: Outlets
     private weak var imageView: UIImageView! {
@@ -12,7 +12,9 @@ class SharingViewController: UIViewController {
     
     private weak var shareButton: UIButton! {
         didSet {
-            self.shareButton.setTitle("シェア", for: .normal)
+            if let title = viewModel?.shareButtonTitle {
+                self.shareButton.setTitle(title, for: .normal)
+            }
             self.shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
         }
     }
@@ -86,7 +88,23 @@ class SharingViewController: UIViewController {
     }
     
     @objc private func didSaveSnapshotButtonTapped(_ sender: UIButton) {
-        print("Save Image")
+        guard let image = self.imageView.image else { fatalError() }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(didSavingSnapshotImageSavingFinished(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @objc private func didSavingSnapshotImageSavingFinished(_ image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
+        
+        var alert = viewModel!.imageSavingSuccessAlert
+        if let _ = error {
+            alert = viewModel!.imageSavingErrorAlert
+        }
+        
+        let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -111,7 +129,6 @@ extension SharingViewController {
         
         shareButton.backgroundColor = .yellow
         shareButton.layer.cornerRadius = 20
-        shareButton.setTitle("Share", for: .normal)
         shareButton.setTitleColor(.black, for: .normal)
         shareButton.titleLabel?.font = UIFont.mainFont(ofSize: 14)
         shareButton.titleLabel?.textAlignment = .center

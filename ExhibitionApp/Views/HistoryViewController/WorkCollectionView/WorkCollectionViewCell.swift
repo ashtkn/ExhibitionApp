@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class WorkCollectionViewCell: UICollectionViewCell {
+final class WorkCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
