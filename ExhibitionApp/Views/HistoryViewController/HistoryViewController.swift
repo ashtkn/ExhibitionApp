@@ -49,7 +49,16 @@ class HistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupSubviews()
         
+        // Subscribe DataStore
+        viewModel.dataStoreSubscriptionToken = DataStore.shared.subscribe { [unowned self] in
+            self.scannedWorksCounterNumberLabel.text = "\(self.viewModel.unlockedWorksCount)"
+            self.scannedWorksCollectionView.reloadData()
+        }
+    }
+    
+    private func setupSubviews() {
         var container = UIView()
         self.view.addSubview(container)
         
@@ -61,15 +70,6 @@ class HistoryViewController: UIViewController {
             make.trailing.equalTo(safeArea.trailing)
         }
         
-        self.setupSubviews(parent: &container)
-        
-        viewModel.dataStoreSubscriptionToken = DataStore.shared.subscribe { [unowned self] in
-            self.scannedWorksCounterNumberLabel.text = "\(self.viewModel.unlockedWorksCount)"
-            self.scannedWorksCollectionView.reloadData()
-        }
-    }
-    
-    private func setupSubviews(parent container: inout UIView) {
         let subContainers = HistoryViewController.addSubContainers(parent: &container)
         
         var headerViewContainer = subContainers.headerViewContainer
