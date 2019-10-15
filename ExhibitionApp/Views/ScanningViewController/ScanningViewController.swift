@@ -71,7 +71,6 @@ class ScanningViewController: UIViewController {
         sharingViewController.configure(sharingViewModel)
         
         DispatchQueue.main.async { [unowned self] in
-            sharingViewController.navigationItem.hidesBackButton = true
             self.navigationController?.show(sharingViewController, sender: nil)
         }
     }
