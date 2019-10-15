@@ -17,11 +17,6 @@ class LaunchScanningViewController: UIViewController {
     @IBAction private func didScanButtonTapped(_ sender: Any) {
         let navigationViewController = ScanningViewController.loadNavigationControllerFromStoryboard()
         navigationViewController.modalPresentationStyle = .fullScreen
-        navigationViewController.navigationBar.isTranslucent = true
-        navigationViewController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationViewController.navigationBar.shadowImage = UIImage()
-        navigationViewController.navigationBar.tintColor = .white
-        navigationViewController.navigationItem.title = ""
 
         DispatchQueue.main.async { [unowned self] in
             self.present(navigationViewController, animated: true, completion: nil)

@@ -14,8 +14,12 @@ class ScanningViewController: UIViewController {
     }
     
     @IBOutlet private weak var takeSnapshotButton: UIButton!
-
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
+    @IBOutlet private weak var cancelButton: UIButton! {
+        didSet {
+            self.cancelButton.setImage(AssetsManager.default.getImage(icon: .close), for: .normal)
+        }
+    }
     
     // MARK: ViewModel
     
@@ -29,6 +33,7 @@ class ScanningViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         sceneView.session.run(configuration)
     }
     

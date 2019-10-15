@@ -42,6 +42,11 @@ class SharingViewController: UIViewController {
         self.setupSubviews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     private func setupSubviews() {
         var container = UIView()
         self.view.addSubview(container)
