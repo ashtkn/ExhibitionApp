@@ -12,7 +12,9 @@ class SharingViewController: UIViewController {
     
     private weak var shareButton: UIButton! {
         didSet {
-            self.shareButton.setTitle("シェア", for: .normal)
+            if let title = viewModel?.shareButtonTitle {
+                self.shareButton.setTitle(title, for: .normal)
+            }
             self.shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
         }
     }
@@ -92,14 +94,12 @@ class SharingViewController: UIViewController {
     
     @objc private func didSavingSnapshotImageSavingFinished(_ image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
         
-        var title = "保存完了"
-        var message = "画像をカメラロールに保存しました"
+        var alert = viewModel!.imageSavingSuccessAlert
         if let _ = error {
-            title = "エラー"
-            message = "画像の保存に失敗しました"
+            alert = viewModel!.imageSavingErrorAlert
         }
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         DispatchQueue.main.async {
@@ -129,7 +129,6 @@ extension SharingViewController {
         
         shareButton.backgroundColor = .yellow
         shareButton.layer.cornerRadius = 20
-        shareButton.setTitle("Share", for: .normal)
         shareButton.setTitleColor(.black, for: .normal)
         shareButton.titleLabel?.font = UIFont.mainFont(ofSize: 14)
         shareButton.titleLabel?.textAlignment = .center
