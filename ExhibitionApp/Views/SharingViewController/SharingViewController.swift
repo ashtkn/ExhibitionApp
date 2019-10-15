@@ -4,19 +4,16 @@ import SnapKit
 class SharingViewController: UIViewController {
     
     // MARK: Outlets
-    
-    lazy var imageView = UIImageView()
-    lazy var containerView = UIImageView()
-    
-    lazy var shareButton = UIButton()
-    lazy var backButton = UIButton()
-    lazy var saveButton = UIButton()
+    private weak var container: UIView!
+    private weak var imageView: UIImageView!
+    private weak var shareButton: UIButton!
+    private weak var backButton: UIButton!
+    private weak var saveButton: UIButton!
 
-    // MARK: ViewModel
+    private var viewModel: SharingViewModel?
     
-    private var sharingViewModel: SharingViewModel?
-    func configure(_ sharingViewModel: SharingViewModel) {
-        self.sharingViewModel = sharingViewModel
+    func configure(_ viewModel: SharingViewModel) {
+        self.viewModel = viewModel
     }
 
     // MARK: Lifecycles
@@ -24,36 +21,60 @@ class SharingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // First, setup container
+        setupContainer()
         
-        setupView()
-        setupLayout()
-    }
-    
-    private func setupView() {
-        self.view.backgroundColor = .black
+        // Second, setup components
         setupImageView()
-        setupContainerView()
         setupShareButton()
         setupBackButton()
         setupSaveButton()
+    }
+    
+    private func setupContainer() {
+        let container = UIView()
+        self.view.addSubview(container)
         
+        let top = self.view.safeArea.top
+        let bottom = self.view.safeArea.bottom
+        let leading = self.view.safeArea.leading
+        let trailing = self.view.safeArea.trailing
+        
+        container.snp.makeConstraints { make in
+            make.top.equalTo(top)
+            make.bottom.equalTo(bottom)
+            make.leading.equalTo(leading)
+            make.trailing.equalTo(trailing)
+        }
+        
+        self.container = container
     }
     
     private func setupImageView() {
-        self.view.addSubview(imageView)
+        let imageView = UIImageView()
+        container.addSubview(imageView)
         
-        // imageView.image = sharingViewModel?.snapshotImage
-        imageView.backgroundColor = .systemBlue
-    }
-    
-    private func setupContainerView() {
-        self.view.addSubview(containerView)
+        imageView.image = viewModel?.snapshotImage
+        imageView.backgroundColor = .blue
         
-        containerView.backgroundColor = .systemRed
+        // NOTE: ImageViewはデフォルトで `isUserInteractionEnabled == false` なので，UIButtonを子にしても動きません．
+        // imageView.isUserInteractionEnabled = true
+        
+        imageView.snp.makeConstraints { make in
+            // NOTE: この制約は実現できません
+            // let ratio: CGFloat = 16/9
+            // make.top.equalToSuperview()
+            // make.width.equalToSuperview()
+            // make.height.equalTo(imageView.snp.width).multipliedBy(ratio)
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        self.imageView = imageView
     }
     
     private func setupShareButton() {
-        containerView.addSubview(shareButton)
+        let shareButton = UIButton()
+        container.addSubview(shareButton)
         
         shareButton.backgroundColor = .yellow
         shareButton.layer.cornerRadius = 20
@@ -63,65 +84,56 @@ class SharingViewController: UIViewController {
         shareButton.titleLabel?.textAlignment = .center
         shareButton.contentHorizontalAlignment = .center
         shareButton.contentVerticalAlignment = .center
-
-        shareButton.addTarget(self, action: #selector(didShareButtonTapped), for: .touchUpInside)
+        
+        shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
+        
+        shareButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().inset(40)
+            make.height.equalTo(40)
+            make.bottom.equalToSuperview().offset(-20)
+        }
+        
+        self.shareButton = shareButton
     }
     
     private func setupBackButton() {
-        imageView.addSubview(backButton)
-        
-        backButton.addTarget(self, action: #selector(didBackButtonTapped), for: .touchUpInside)
+        let backButton = UIButton()
+        container.addSubview(backButton)
         
         let image = UIImage(named: "outline_keyboard_arrow_left_white_36pt_1x")
         backButton.setImage(image, for: .normal)
+        backButton.addTarget(self, action: #selector(didBackButtonTapped(_:)), for: .touchUpInside)
+        
+        backButton.snp.makeConstraints { make in
+            make.width.height.equalTo(36)
+            make.top.equalToSuperview().offset(18)
+            make.left.equalToSuperview().offset(18)
+        }
+        
+        self.backButton = backButton
     }
     
     private func setupSaveButton() {
-        imageView.addSubview(saveButton)
+        let saveButton = UIButton()
+        container.addSubview(saveButton)
         
         let image = UIImage(named: "baseline_save_alt_white_36pt_1x")
         saveButton.setImage(image, for: .normal)
-    }
-    
-    private func setupLayout() {
-        imageView.snp.makeConstraints{ (make) -> Void in
-            let ratio:CGFloat = 16/9
-            make.top.equalToSuperview().offset(44)
-            make.width.equalToSuperview()
-            make.height.equalTo(imageView.snp.width).multipliedBy(ratio)
-        }
+        saveButton.addTarget(self, action: #selector(didSaveButtonTapped(_:)), for: .touchUpInside)
         
-        containerView.snp.makeConstraints{ (make) -> Void in
-            make.top.equalTo(imageView.snp.bottom)
-            make.left.right.bottom.equalToSuperview()
-        }
-        
-        shareButton.snp.makeConstraints{ (make) -> Void in
-            make.height.equalTo(40)
-            make.width.equalToSuperview().inset(40)
-            make.center.equalToSuperview()
-        }
-        
-        backButton.snp.makeConstraints{ (make) -> Void in
-            make.top.left.equalToSuperview().offset(18)
-        }
-        
-        saveButton.snp.makeConstraints{ (make) -> Void in
+        saveButton.snp.makeConstraints { make in
+            make.width.height.equalTo(36)
             make.top.equalToSuperview().offset(18)
-            make.right.equalToSuperview().inset(18)
+            make.right.equalToSuperview().offset(-18)
         }
+        
+        self.saveButton = saveButton
     }
-    
-}
     
     // MARK: Actions
     
-// FIXME: ボタンのタップが引き起こされていない
-extension SharingViewController {
-    @objc private func didShareButtonTapped(sender: UIButton) {
-        
-        // let shareText = "ここに説明文が入ります"
-        // let shareLink = "http://www.iiiexhibition.com/"
+    @objc private func didShareButtonTapped(_ sender: UIButton) {
         guard let image = self.imageView.image else { fatalError() }
         
         let activityItems: [Any] = [image]
@@ -132,25 +144,19 @@ extension SharingViewController {
         if UIDevice.current.userInterfaceIdiom == .pad {
             activityViewController.popoverPresentationController?.sourceView = self.imageView
         }
-        
-        self.present(activityViewController, animated: true, completion: nil)
-        
-       // DispatchQueue.main.async { [unowned self] in
-       //     self.present(activityViewController, animated: true, completion: nil)
-       // }
+                
+        DispatchQueue.main.async { [unowned self] in
+            self.present(activityViewController, animated: true, completion: nil)
+        }
     }
     
-    @objc private func didBackButtonTapped(sender: UIButton) {
-        //DispatchQueue.main.async { [unowned self] in
-        //    self.navigationController?.popViewController(animated: true)
-        //}
+    @objc private func didBackButtonTapped(_ sender: UIButton) {
+        DispatchQueue.main.async { [unowned self] in
             self.navigationController?.popViewController(animated: true)
+        }
     }
-
-
-   // @IBAction private func didCancelButtonTapped(_ sender: Any) {
-   //     DispatchQueue.main.async { [unowned self] in
-   //         self.navigationController?.dismiss(animated: true, completion: nil)
-   //     }
-   // }
+    
+    @objc private func didSaveButtonTapped(_ sender: UIButton) {
+        print("Save Image")
+    }
 }
