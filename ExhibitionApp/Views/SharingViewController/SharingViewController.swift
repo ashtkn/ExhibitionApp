@@ -86,7 +86,25 @@ class SharingViewController: UIViewController {
     }
     
     @objc private func didSaveSnapshotButtonTapped(_ sender: UIButton) {
-        print("Save Image")
+        guard let image = self.imageView.image else { fatalError() }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(didSavingSnapshotImageSavingFinished(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @objc private func didSavingSnapshotImageSavingFinished(_ image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
+        
+        var title = "保存完了"
+        var message = "画像をカメラロールに保存しました"
+        if let _ = error {
+            title = "エラー"
+            message = "画像の保存に失敗しました"
+        }
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 
