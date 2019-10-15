@@ -60,13 +60,6 @@ class ScanningViewController: UIViewController {
         let snapshotImage = sceneView.snapshot()
         let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: viewModel.detectingWork, stash: viewModel)
         
-        // Unlock the detecting work.
-        if let detectingWork = viewModel.detectingWork {
-            if detectingWork.isLocked {
-                DataStore.shared.unlock(work: detectingWork)
-            }
-        }
-        
         let sharingViewController = SharingViewController.init()
         sharingViewController.configure(sharingViewModel)
         
@@ -101,9 +94,9 @@ extension ScanningViewController: ARSCNViewDelegate {
             print("Detected unknown anchor: \(anchor.name ?? "unknown")")
         }
         
-        let works = DataStore.shared.works
+        let works = viewModel.works
         if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
-            viewModel.detectingWork = works[detectingWorkIndex]
+            viewModel.setDetectingWork(works[detectingWorkIndex])
             addNode(to: node, for: anchor)
         }
     }
