@@ -4,8 +4,14 @@ struct HistoryViewModel {
     
     var dataStoreSubscriptionToken: SubscriptionToken?
     
-    var unlockedWorksNumber: Int {
-       return DataStore.shared.works.filter { !$0.isLocked }.count
+    var sortedWorks: [Work] {
+        return DataStore.shared.works.sorted { _, w1 in
+            return w1.isLocked
+        }
+    }
+    
+    var unlockedWorksCount: Int {
+        return DataStore.shared.works.filter { !$0.isLocked }.count
     }
     
     var headerTitleText: String {
