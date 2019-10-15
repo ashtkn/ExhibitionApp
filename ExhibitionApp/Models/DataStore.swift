@@ -95,7 +95,7 @@ final class DataStore {
                 return nil
             }
             let referenceObject = try? ARReferenceObject.init(archiveURL: resourcePath)
-            referenceObject?.name = "\(work.title)"
+            // referenceObject?.name = "\(work.title)"
             
             return referenceObject
         }
@@ -120,7 +120,7 @@ final class DataStore {
             
             let physicalWidth: CGFloat = 0.127 // You have to fix the real size of the image marker.
             let referenceImage = ARReferenceImage.init(cgImage, orientation: .init(image.imageOrientation), physicalWidth: physicalWidth)
-            referenceImage.name = "\(work.title)"
+            referenceImage.name = "\(work.resource)".components(separatedBy: ".").first
             
             return referenceImage
         }

@@ -6,7 +6,13 @@ class WorkCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     
-    private var viewModel: WorkCollectionViewCellModel?
+    private var viewModel: WorkCollectionViewCellModel? {
+        didSet {
+            self.imageView.image = viewModel?.image
+            self.titleLabel.text = viewModel?.title
+        }
+    }
+    
     func configure(_ viewModel: WorkCollectionViewCellModel) {
         self.viewModel = viewModel
     }

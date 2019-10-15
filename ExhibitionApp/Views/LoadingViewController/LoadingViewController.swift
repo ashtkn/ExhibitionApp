@@ -2,6 +2,8 @@ import UIKit
 
 class LoadingViewController: UIViewController {
 
+    // TODO: もし新しい作品があれば情報をアップデートする
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
