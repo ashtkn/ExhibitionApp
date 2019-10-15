@@ -30,7 +30,6 @@ class LaunchScanningViewController: UIViewController {
     
     @IBAction private func didCollectionButtonTapped(_ sender: Any) {
         let topPageViewController = self.parent as! TopPageViewController
-        // NOTE: 理由は不明だがこれで動く．要動作確認．
-        topPageViewController.showPage(.launchScanningViewController)
+        topPageViewController.showPage(.historyViewController)
     }
 }
