@@ -14,25 +14,26 @@ class HistoryViewController: UIViewController {
     
     private weak var headerTitleLabel: UILabel! {
         didSet {
-            self.headerTitleLabel.text = viewModel.headerTitleText
+            self.headerTitleLabel.text = viewModel.headerTitleLabelText
         }
     }
     
     private weak var scannedWorksCounterTextLabel: UILabel! {
         didSet {
-            self.scannedWorksCounterTextLabel.text = viewModel.workAcheivementLabelText
+            self.scannedWorksCounterTextLabel.text = viewModel.scannedWorksCounterTextLabelText
         }
     }
     
     private weak var scannedWorksCounterNumberLabel: UILabel! {
         didSet {
-            self.scannedWorksCounterNumberLabel.text = "\(viewModel.unlockedWorksCount)"
+            self.scannedWorksCounterNumberLabel.text = viewModel.scannedWorksCounterNumberLabelText
         }
     }
     
     private weak var scannedWorksCounterProgressView: UIProgressView! {
         didSet {
-            self.scannedWorksCounterProgressView.setProgress(0.6, animated: false)
+            let value = viewModel.scannedWorksCounterProgressViewValue
+            self.scannedWorksCounterProgressView.setProgress(value, animated: false)
         }
     }
     
@@ -52,8 +53,12 @@ class HistoryViewController: UIViewController {
         self.setupSubviews()
         
         // Subscribe DataStore
-        viewModel.dataStoreSubscriptionToken = DataStore.shared.subscribe { [unowned self] in
-            self.scannedWorksCounterNumberLabel.text = "\(self.viewModel.unlockedWorksCount)"
+        viewModel.setDataStoreSubscription { [unowned self] in
+            self.scannedWorksCounterNumberLabel.text = self.viewModel.scannedWorksCounterNumberLabelText
+            
+            let value = self.viewModel.scannedWorksCounterProgressViewValue
+            self.scannedWorksCounterProgressView.setProgress(value, animated: false)
+            
             self.scannedWorksCollectionView.reloadData()
         }
     }
@@ -102,16 +107,11 @@ extension HistoryViewController {
 extension HistoryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return cellSize
-    }
-    
-    private var cellSize: CGSize {
         let prototypeCell = scannedWorksCollectionView.getNib(cellType: WorkCollectionViewCell.self)
         prototypeCell.bounds.size.width = cellWidth
         prototypeCell.contentView.bounds.size.width = cellWidth
         
         let size = prototypeCell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
-        
         return size
     }
     
@@ -122,7 +122,7 @@ extension HistoryViewController: UICollectionViewDelegateFlowLayout {
         let numColumns = CGFloat(1)
         let numInterColumnSpaces = numColumns - 1
         
-        return ((availableWidth - interColumnSpace * numInterColumnSpaces) / numColumns).rounded(.down) - padding*2
+        return ((availableWidth - interColumnSpace * numInterColumnSpaces) / numColumns).rounded(.down) - padding * 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
