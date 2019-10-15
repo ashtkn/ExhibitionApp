@@ -4,10 +4,30 @@ import SnapKit
 class SharingViewController: UIViewController {
     
     // MARK: Outlets
-    private weak var imageView: UIImageView!
-    private weak var shareButton: UIButton!
-    private weak var backButton: UIButton!
-    private weak var saveSnapshotButton: UIButton!
+    private weak var imageView: UIImageView! {
+        didSet {
+            self.imageView.image = viewModel?.snapshotImage
+        }
+    }
+    
+    private weak var shareButton: UIButton! {
+        didSet {
+            self.shareButton.setTitle("シェア", for: .normal)
+            self.shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
+        }
+    }
+    
+    private weak var backButton: UIButton! {
+        didSet {
+            self.backButton.addTarget(self, action: #selector(didBackButtonTapped(_:)), for: .touchUpInside)
+        }
+    }
+    
+    private weak var saveSnapshotButton: UIButton! {
+        didSet {
+            self.saveSnapshotButton.addTarget(self, action: #selector(didSaveSnapshotButtonTapped(_:)), for: .touchUpInside)
+        }
+    }
 
     private var viewModel: SharingViewModel?
     
@@ -19,7 +39,10 @@ class SharingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setupSubviews()
+    }
+    
+    private func setupSubviews() {
         var container = UIView()
         self.view.addSubview(container)
         
@@ -31,18 +54,10 @@ class SharingViewController: UIViewController {
             make.trailing.equalTo(safeArea.trailing)
         }
         
-        imageView = SharingViewController.addImageView(&container)
-        imageView.image = viewModel?.snapshotImage
-        
-        shareButton = SharingViewController.addShareButton(&container)
-        shareButton.setTitle("シェア", for: .normal)
-        shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
-        
-        backButton = SharingViewController.addBackButton(&container)
-        backButton.addTarget(self, action: #selector(didBackButtonTapped(_:)), for: .touchUpInside)
-        
-        saveSnapshotButton = SharingViewController.addSaveButton(&container)
-        saveSnapshotButton.addTarget(self, action: #selector(didSaveSnapshotButtonTapped(_:)), for: .touchUpInside)
+        self.imageView = SharingViewController.addImageView(parent: &container)
+        self.shareButton = SharingViewController.addShareButton(parent: &container)
+        self.backButton = SharingViewController.addBackButton(parent: &container)
+        self.saveSnapshotButton = SharingViewController.addSaveSnapshotButton(parent: &container)
     }
     
     // MARK: Actions
@@ -79,7 +94,7 @@ class SharingViewController: UIViewController {
 
 extension SharingViewController {
     
-    private static func addImageView(_ containerView: inout UIView) -> UIImageView {
+    private static func addImageView(parent containerView: inout UIView) -> UIImageView {
         let imageView = UIImageView()
         containerView.addSubview(imageView)
         
@@ -90,7 +105,7 @@ extension SharingViewController {
         return imageView
     }
     
-    private static func addShareButton(_ containerView: inout UIView) -> UIButton {
+    private static func addShareButton(parent containerView: inout UIView) -> UIButton {
         let shareButton = UIButton()
         containerView.addSubview(shareButton)
         
@@ -113,7 +128,7 @@ extension SharingViewController {
         return shareButton
     }
     
-    private static func addBackButton(_ containerView: inout UIView) -> UIButton {
+    private static func addBackButton(parent containerView: inout UIView) -> UIButton {
         let backButton = UIButton()
         containerView.addSubview(backButton)
         
@@ -128,7 +143,7 @@ extension SharingViewController {
         return backButton
     }
     
-    private static func addSaveButton(_ containerView: inout UIView) -> UIButton {
+    private static func addSaveSnapshotButton(parent containerView: inout UIView) -> UIButton {
         let saveButton = UIButton()
         containerView.addSubview(saveButton)
         
