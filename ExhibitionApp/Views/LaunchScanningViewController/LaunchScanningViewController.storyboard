@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oue-hB-pWa">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,11 +11,11 @@
             <objects>
                 <viewController storyboardIdentifier="LaunchScanViewController" id="oue-hB-pWa" customClass="LaunchScanningViewController" customModule="ExhibitionApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tkf-a6-XXJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Z3-RW-3Q9">
-                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.85098039215686272" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="H79-RC-srQ"/>
@@ -32,16 +30,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作品をARでみよう！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-I7-EMi">
-                                <rect key="frame" x="121" y="261" width="172" height="18"/>
+                                <rect key="frame" x="214" y="113" width="172" height="18"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ow-05-A3I">
-                                <rect key="frame" x="354" y="48" width="36" height="36"/>
+                                <rect key="frame" x="504" y="4" width="72" height="72"/>
                                 <state key="normal" image="outline_collections_white_36pt_1x"/>
                                 <connections>
-                                    <action selector="didCollectionButtonTapped:" destination="oue-hB-pWa" eventType="touchUpInside" id="LQQ-hJ-F9W"/>
+                                    <action selector="didMoveToHistoryViewButtonTapped:" destination="oue-hB-pWa" eventType="touchUpInside" id="LQQ-hJ-F9W"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -57,7 +55,7 @@
                         <viewLayoutGuide key="safeArea" id="oKl-es-BQH"/>
                     </view>
                     <connections>
-                        <outlet property="collectionButton" destination="4ow-05-A3I" id="okl-YC-L56"/>
+                        <outlet property="moveToHistoryViewButton" destination="4ow-05-A3I" id="okl-YC-L56"/>
                         <outlet property="scanButton" destination="0Z3-RW-3Q9" id="iJh-Wb-Z7q"/>
                     </connections>
                 </viewController>

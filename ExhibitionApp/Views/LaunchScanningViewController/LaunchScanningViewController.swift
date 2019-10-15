@@ -8,7 +8,7 @@ class LaunchScanningViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var collectionButton: UIButton!
+    @IBOutlet weak var moveToHistoryViewButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class LaunchScanningViewController: UIViewController {
         }
     }
     
-    @IBAction private func didCollectionButtonTapped(_ sender: Any) {
+    @IBAction private func didMoveToHistoryViewButtonTapped(_ sender: Any) {
         let topPageViewController = self.parent as! TopPageViewController
         topPageViewController.showPage(.historyViewController)
     }
