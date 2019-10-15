@@ -14,6 +14,7 @@
 		41222D022340452000F5EFE9 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D012340452000F5EFE9 /* Work.swift */; };
 		41222D042340484600F5EFE9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D032340484600F5EFE9 /* UserData.swift */; };
 		41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAD233B291C00B88732 /* Array+Extensions.swift */; };
+		41456D6223559AFE0077309C /* AssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41456D6123559AFE0077309C /* AssetsManager.swift */; };
 		41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41481F4023438129004E2EB2 /* GoogleService-Info.plist */; };
 		41481F582343873E004E2EB2 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F452343873D004E2EB2 /* nanopb.framework */; };
 		41481F5A2343873E004E2EB2 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F462343873D004E2EB2 /* FirebaseCoreDiagnostics.framework */; };
@@ -69,7 +70,6 @@
 		41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AD233E6C7C008C797A /* Realm.framework */; };
 		41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AF233E6C86008C797A /* RealmSwift.framework */; };
 		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
-		41B589EA2347277700C4BB45 /* SharingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B589E92347277700C4BB45 /* SharingViewController.storyboard */; };
 		41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B589EB2347279800C4BB45 /* SharingViewController.swift */; };
 		41B58A1323473A5E00C4BB45 /* WorkCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */; };
 		41B58A182347425200C4BB45 /* WorkCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B58A172347425200C4BB45 /* WorkCollectionViewCellModel.swift */; };
@@ -108,6 +108,7 @@
 		41222D012340452000F5EFE9 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		41222D032340484600F5EFE9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		41270EAD233B291C00B88732 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		41456D6123559AFE0077309C /* AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsManager.swift; sourceTree = "<group>"; };
 		41481F4023438129004E2EB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41481F452343873D004E2EB2 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
 		41481F462343873D004E2EB2 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Carthage/Build/iOS/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 		41A3C7AD233E6C7C008C797A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		41A3C7AF233E6C86008C797A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		41A596A823334179008DA6AF /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
-		41B589E92347277700C4BB45 /* SharingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SharingViewController.storyboard; sourceTree = "<group>"; };
 		41B589EB2347279800C4BB45 /* SharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkCollectionViewCell.xib; sourceTree = "<group>"; };
 		41B58A172347425200C4BB45 /* WorkCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionViewCellModel.swift; sourceTree = "<group>"; };
@@ -432,7 +432,6 @@
 		41B589E82347275900C4BB45 /* SharingViewController */ = {
 			isa = PBXGroup;
 			children = (
-				41B589E92347277700C4BB45 /* SharingViewController.storyboard */,
 				41B589EB2347279800C4BB45 /* SharingViewController.swift */,
 			);
 			path = SharingViewController;
@@ -511,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				41F46B8A23404DBE00606D7B /* JsonUtility.swift */,
+				41456D6123559AFE0077309C /* AssetsManager.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -612,7 +612,6 @@
 				41481F80234387C8004E2EB2 /* gRPCCertificates-Cpp.bundle in Resources */,
 				41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */,
 				4186ADE023324192002F6A4C /* art.scnassets in Resources */,
-				41B589EA2347277700C4BB45 /* SharingViewController.storyboard in Resources */,
 				416C213D2347261B00648C0A /* ScanningViewController.storyboard in Resources */,
 				4186ADEA23324194002F6A4C /* LaunchScreen.storyboard in Resources */,
 				416C212A234723A100648C0A /* TopPageViewController.storyboard in Resources */,
@@ -695,6 +694,7 @@
 			files = (
 				41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */,
 				416C212C2347240200648C0A /* TopPageViewController.swift in Sources */,
+				41456D6223559AFE0077309C /* AssetsManager.swift in Sources */,
 				41222D022340452000F5EFE9 /* Work.swift in Sources */,
 				414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */,
 				4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */,
