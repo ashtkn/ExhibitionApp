@@ -14,6 +14,7 @@
 		41222D022340452000F5EFE9 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D012340452000F5EFE9 /* Work.swift */; };
 		41222D042340484600F5EFE9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D032340484600F5EFE9 /* UserData.swift */; };
 		41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAD233B291C00B88732 /* Array+Extensions.swift */; };
+		41456D6223559AFE0077309C /* AssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41456D6123559AFE0077309C /* AssetsManager.swift */; };
 		41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41481F4023438129004E2EB2 /* GoogleService-Info.plist */; };
 		41481F582343873E004E2EB2 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F452343873D004E2EB2 /* nanopb.framework */; };
 		41481F5A2343873E004E2EB2 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F462343873D004E2EB2 /* FirebaseCoreDiagnostics.framework */; };
@@ -107,6 +108,7 @@
 		41222D012340452000F5EFE9 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		41222D032340484600F5EFE9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		41270EAD233B291C00B88732 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		41456D6123559AFE0077309C /* AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsManager.swift; sourceTree = "<group>"; };
 		41481F4023438129004E2EB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41481F452343873D004E2EB2 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
 		41481F462343873D004E2EB2 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Carthage/Build/iOS/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				41F46B8A23404DBE00606D7B /* JsonUtility.swift */,
+				41456D6123559AFE0077309C /* AssetsManager.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 			files = (
 				41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */,
 				416C212C2347240200648C0A /* TopPageViewController.swift in Sources */,
+				41456D6223559AFE0077309C /* AssetsManager.swift in Sources */,
 				41222D022340452000F5EFE9 /* Work.swift in Sources */,
 				414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */,
 				4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */,

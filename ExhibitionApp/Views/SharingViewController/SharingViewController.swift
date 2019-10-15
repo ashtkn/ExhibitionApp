@@ -83,18 +83,7 @@ extension SharingViewController {
         let imageView = UIImageView()
         containerView.addSubview(imageView)
         
-        // For debug
-        imageView.backgroundColor = .blue
-        
-        // NOTE: ImageViewはデフォルトで `isUserInteractionEnabled == false` なので，UIButtonを子にしても動きません．
-        // imageView.isUserInteractionEnabled = true
-        
         imageView.snp.makeConstraints { make in
-            // NOTE: この制約は実現できません
-            // let ratio: CGFloat = 16/9
-            // make.top.equalToSuperview()
-            // make.width.equalToSuperview()
-            // make.height.equalTo(imageView.snp.width).multipliedBy(ratio)
             make.top.bottom.leading.trailing.equalToSuperview()
         }
         
@@ -128,8 +117,7 @@ extension SharingViewController {
         let backButton = UIButton()
         containerView.addSubview(backButton)
         
-        let image = UIImage(named: "outline_keyboard_arrow_left_white_36pt_1x")
-        backButton.setImage(image, for: .normal)
+        backButton.setImage(AssetsManager.default.getImage(icon: .leftArrow), for: .normal)
         
         backButton.snp.makeConstraints { make in
             make.width.height.equalTo(36)
@@ -144,8 +132,7 @@ extension SharingViewController {
         let saveButton = UIButton()
         containerView.addSubview(saveButton)
         
-        let image = UIImage(named: "baseline_save_alt_white_36pt_1x")
-        saveButton.setImage(image, for: .normal)
+        saveButton.setImage(AssetsManager.default.getImage(icon: .save), for: .normal)
         
         saveButton.snp.makeConstraints { make in
             make.width.height.equalTo(36)
