@@ -903,7 +903,7 @@
 				PRODUCT_NAME = ExhibitionApp;
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provision Profile for Exhibition";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -931,7 +931,7 @@
 				PRODUCT_NAME = ExhibitionApp;
 				PROVISIONING_PROFILE_SPECIFIER = "Ad hoc Provision Profile for Exhibition";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

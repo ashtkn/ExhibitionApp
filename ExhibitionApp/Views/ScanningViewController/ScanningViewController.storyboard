@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Qg-qP-gLe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Qg-qP-gLe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,25 +41,36 @@
                                     <action selector="didTakeSnapshotButtonTapped:" destination="qqt-59-AZP" eventType="touchUpInside" id="pfN-Du-oAh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukp-BZ-Np8">
+                                <rect key="frame" x="18" y="106" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="KjB-DA-fgv"/>
+                                    <constraint firstAttribute="width" constant="36" id="RbV-g8-47s"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didCancelButtonTapped:" destination="qqt-59-AZP" eventType="touchUpInside" id="RfZ-Q2-F9b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ogI-yU-DL8" firstAttribute="top" secondItem="B4j-7l-jaV" secondAttribute="top" id="6VQ-m6-M2F"/>
+                            <constraint firstItem="ukp-BZ-Np8" firstAttribute="leading" secondItem="hDF-Gi-HJp" secondAttribute="leading" constant="18" id="7iE-2A-4E5"/>
                             <constraint firstItem="ogI-yU-DL8" firstAttribute="bottom" secondItem="B4j-7l-jaV" secondAttribute="bottom" id="Ajp-Ri-QAt"/>
                             <constraint firstAttribute="bottomMargin" secondItem="A1H-6h-pYw" secondAttribute="bottom" constant="32" id="E1O-v9-685"/>
                             <constraint firstItem="A1H-6h-pYw" firstAttribute="centerX" secondItem="B4j-7l-jaV" secondAttribute="centerX" id="RW0-Cm-x2i"/>
                             <constraint firstItem="ogI-yU-DL8" firstAttribute="trailing" secondItem="B4j-7l-jaV" secondAttribute="trailing" id="Ujk-2J-myq"/>
+                            <constraint firstItem="ukp-BZ-Np8" firstAttribute="top" secondItem="hDF-Gi-HJp" secondAttribute="top" constant="18" id="XdJ-BX-Ch8"/>
                             <constraint firstItem="ogI-yU-DL8" firstAttribute="leading" secondItem="B4j-7l-jaV" secondAttribute="leading" id="rfR-GG-X9b"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="hDF-Gi-HJp"/>
                     </view>
-                    <navigationItem key="navigationItem" id="B6s-ck-lpm">
-                        <barButtonItem key="leftBarButtonItem" title="close_button" image="outline_close_white_36pt_1x" id="sBb-v2-wTI" userLabel="cancelButton">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="didCancelButtonTapped:" destination="qqt-59-AZP" id="cnA-8K-evz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="B6s-ck-lpm"/>
                     <connections>
+                        <outlet property="cancelButton" destination="ukp-BZ-Np8" id="sb4-m0-q0v"/>
                         <outlet property="sceneView" destination="ogI-yU-DL8" id="E2k-SR-kis"/>
                         <outlet property="takeSnapshotButton" destination="A1H-6h-pYw" id="DZO-lc-PPr"/>
                     </connections>
@@ -86,7 +98,4 @@
             <point key="canvasLocation" x="-59.420289855072468" y="105.80357142857143"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="outline_close_white_36pt_1x" width="36" height="36"/>
-    </resources>
 </document>

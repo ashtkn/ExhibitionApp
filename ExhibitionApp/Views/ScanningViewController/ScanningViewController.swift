@@ -14,8 +14,12 @@ class ScanningViewController: UIViewController {
     }
     
     @IBOutlet private weak var takeSnapshotButton: UIButton!
-
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
+    @IBOutlet private weak var cancelButton: UIButton! {
+        didSet {
+            self.cancelButton.setImage(AssetsManager.default.getImage(icon: .close), for: .normal)
+        }
+    }
     
     // MARK: ViewModel
     
@@ -29,6 +33,7 @@ class ScanningViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         sceneView.session.run(configuration)
     }
     
@@ -55,24 +60,10 @@ class ScanningViewController: UIViewController {
         let snapshotImage = sceneView.snapshot()
         let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: viewModel.detectingWork, stash: viewModel)
         
-        // Unlock the detecting work.
-        if let detectingWork = viewModel.detectingWork {
-            if detectingWork.isLocked {
-                DataStore.shared.unlock(work: detectingWork)
-            }
-        }
-        
         let sharingViewController = SharingViewController.init()
-
         sharingViewController.configure(sharingViewModel)
-       // sharingViewController.navigationBar.isTranslucent = true
-       // sharingViewController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-       // sharingViewController.navigationBar.shadowImage = UIImage()
-       // sharingViewController.navigationBar.tintColor = .white
-       // sharingViewController.navigationItem.title = ""
         
         DispatchQueue.main.async { [unowned self] in
-            sharingViewController.navigationItem.hidesBackButton = true
             self.navigationController?.show(sharingViewController, sender: nil)
         }
     }
@@ -103,9 +94,9 @@ extension ScanningViewController: ARSCNViewDelegate {
             print("Detected unknown anchor: \(anchor.name ?? "unknown")")
         }
         
-        let works = DataStore.shared.works
+        let works = viewModel.works
         if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
-            viewModel.detectingWork = works[detectingWorkIndex]
+            viewModel.setDetectingWork(works[detectingWorkIndex])
             addNode(to: node, for: anchor)
         }
     }
