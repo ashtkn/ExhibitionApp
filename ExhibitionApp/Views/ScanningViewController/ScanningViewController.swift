@@ -48,9 +48,6 @@ class ScanningViewController: UIViewController {
         configuration.detectionImages = viewModel.detectionImages
         configuration.maximumNumberOfTrackedImages = 1
         
-        print("Detection Objects: \(viewModel.detectionObjects)")
-        print("Detection Images: \(viewModel.detectionImages)")
-        
         return configuration
     }
     
@@ -83,15 +80,11 @@ extension ScanningViewController: ARSCNViewDelegate {
         var expectedResourceName = ""
         switch anchor {
         case let objectAnchor as ARObjectAnchor:
-            print("Detected \(objectAnchor.name ?? "unknown").arobject")
             expectedResourceName = "\(objectAnchor.name ?? "").arobject"
-            
         case let imageAnchor as ARImageAnchor:
-            print("Detected: \(imageAnchor.name ?? "unknown").jpg")
             expectedResourceName = "\(imageAnchor.name ?? "").jpg"
-            
         default:
-            print("Detected unknown anchor: \(anchor.name ?? "unknown")")
+            fatalError()
         }
         
         let works = viewModel.works
@@ -107,9 +100,7 @@ extension ScanningViewController: ARSCNViewDelegate {
 }
 
 extension ScanningViewController {
-    // TODO: Implement AR Objects
     private func addNode(to node: SCNNode, for anchor: ARAnchor) {
-        
         switch anchor.name {
         case "Syaro":
             let labelNode = LabelNode(text: "Syaro", width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
@@ -118,7 +109,7 @@ extension ScanningViewController {
             let labelNode = LabelNode(text: "Chino", width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
             node.addChildNode(labelNode)
         default:
-            fatalError("Unknown object has been detected.")
+            fatalError()
         }
     }
 }

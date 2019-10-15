@@ -81,7 +81,6 @@ extension DocumentSnapshot {
             return decodedObject
             
         } catch {
-            print("failed to decode", error)
             throw error
         }
     }
