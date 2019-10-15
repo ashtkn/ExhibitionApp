@@ -29,6 +29,12 @@ class HistoryViewController: UIViewController {
         setupMoveToHistoryViewButton()
         setupWorkAchievementView()
         setupWorkCollectionView()
+        
+        // Subscribe DataStore
+        viewModel.dataStoreSubscriptionToken = DataStore.shared.subscribe { [unowned self] in
+            self.workAcheivementNumberLabel.text = "\(self.viewModel.unlockedWorksCount)"
+            self.workCollectionView.reloadData()
+        }
     }
     
     private func setupHeaderView() {
@@ -56,7 +62,7 @@ class HistoryViewController: UIViewController {
         workAcheivementLabel.text = viewModel.workAcheivementLabelText
         workAcheivementLabel.textColor = .white
         workAcheivementLabel.font = .mainFont(ofSize: 18)
-        workAcheivementNumberLabel.text = "\(viewModel.unlockedWorksNumber)"
+        workAcheivementNumberLabel.text = "\(viewModel.unlockedWorksCount)"
         workAcheivementNumberLabel.textColor = .white
         workAcheivementNumberLabel.font = UIFont(name: "Futura-Bold", size:96)
         workAcheivementBarView.setProgress(0.6, animated: false)
@@ -72,11 +78,6 @@ class HistoryViewController: UIViewController {
         workCollectionView.delegate = self
         workCollectionView.register(cellType: WorkCollectionViewCell.self)
         workCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorkCollectionHeaderView.className)
-        
-        // Subscribe DataStore
-        viewModel.dataStoreSubscriptionToken = DataStore.shared.subscribe { [weak self] in
-            self?.workCollectionView.reloadData()
-        }
     }
     
     // FIXME: Some constraints are absolute, especially height. Desirable to arrange into aspect ratio.
@@ -178,14 +179,14 @@ extension HistoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DataStore.shared.works.count
+        return viewModel.sortedWorks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! WorkCollectionViewCell
         let cell = collectionView.dequeueReusableCell(with: WorkCollectionViewCell.self, for: indexPath)
 
-        let work = DataStore.shared.works[indexPath.row]
+        let work = viewModel.sortedWorks[indexPath.row]
         cell.configure(WorkCollectionViewCellModel(from: work))
         
         return cell
@@ -202,7 +203,7 @@ extension HistoryViewController: UICollectionViewDataSource {
 extension HistoryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let work = DataStore.shared.works[indexPath.row]
+        let work = viewModel.sortedWorks[indexPath.row]
         if work.isLocked { return }
         
         let url = URL(string: work.url)!
