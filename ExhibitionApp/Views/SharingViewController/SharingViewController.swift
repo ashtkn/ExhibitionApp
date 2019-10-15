@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class SharingViewController: UIViewController {
+final class SharingViewController: UIViewController {
     
     // MARK: Outlets
     private weak var imageView: UIImageView! {

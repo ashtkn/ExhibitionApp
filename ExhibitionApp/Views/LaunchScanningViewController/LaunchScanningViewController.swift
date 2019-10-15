@@ -1,6 +1,6 @@
 import UIKit
 
-class LaunchScanningViewController: UIViewController {
+final class LaunchScanningViewController: UIViewController {
 
     @IBOutlet weak var scanButton: UIButton! {
         didSet {

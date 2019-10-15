@@ -2,7 +2,7 @@ import UIKit
 import SafariServices
 import SnapKit
 
-class HistoryViewController: UIViewController {
+final class HistoryViewController: UIViewController {
     
     private static let padding: CGFloat = 15
     

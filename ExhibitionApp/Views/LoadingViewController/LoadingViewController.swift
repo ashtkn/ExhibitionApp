@@ -1,6 +1,6 @@
 import UIKit
 
-class LoadingViewController: UIViewController {
+final class LoadingViewController: UIViewController {
 
     // TODO: もし新しい作品があれば情報をアップデートする
     

@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class WorkCollectionHeaderView: UICollectionReusableView {
+final class WorkCollectionHeaderView: UICollectionReusableView {
 
     lazy private var workHeaderLabel = UILabel()
 

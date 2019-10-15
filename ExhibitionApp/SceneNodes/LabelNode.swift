@@ -1,7 +1,7 @@
 import Foundation
 import SceneKit
 
-class LabelNode: SCNNode {
+final class LabelNode: SCNNode {
     
     init(text: String, width: CGFloat, textColor: UIColor, panelColor: UIColor, textThickness: CGFloat, panelThickness: CGFloat) {
         super.init()

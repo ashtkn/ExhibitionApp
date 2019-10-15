@@ -3,7 +3,7 @@ import SceneKit
 import SnapKit
 import ARKit
 
-class ScanningViewController: UIViewController {
+final class ScanningViewController: UIViewController {
     
     // MARK: Outlets
     
