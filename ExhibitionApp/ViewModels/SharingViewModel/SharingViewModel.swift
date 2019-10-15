@@ -10,7 +10,7 @@ struct SharingViewModel {
         self.detectingWork = work
         
         var stashedScanningViewModel = scanningViewModel
-        stashedScanningViewModel.detectingWork = nil // Clear detecting work
+        stashedScanningViewModel.setDetectingWork(nil) // Clear detecting work
         self.stashedScanningViewModel = stashedScanningViewModel
     }
 }
