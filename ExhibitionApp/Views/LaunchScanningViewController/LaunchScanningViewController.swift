@@ -8,8 +8,6 @@ final class LaunchScanningViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var moveToHistoryViewButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,10 +19,5 @@ final class LaunchScanningViewController: UIViewController {
         DispatchQueue.main.async { [unowned self] in
             self.present(navigationViewController, animated: true, completion: nil)
         }
-    }
-    
-    @IBAction private func didMoveToHistoryViewButtonTapped(_ sender: Any) {
-        let topPageViewController = self.parent as! TopPageViewController
-        topPageViewController.showPage(.historyViewController)
     }
 }

@@ -6,11 +6,11 @@ final class HistoryViewController: UIViewController {
     
     private static let padding: CGFloat = 15
     
-    private weak var moveToLaunchScanningViewButton: UIButton! {
-        didSet {
-            self.moveToLaunchScanningViewButton.addTarget(self, action: #selector(didMoveToLaunchScanningViewButtonTapped(_:)), for: .touchUpInside)
-        }
-    }
+//    private weak var moveToLaunchScanningViewButton: UIButton! {
+//        didSet {
+//            self.moveToLaunchScanningViewButton.addTarget(self, action: #selector(didMoveToLaunchScanningViewButtonTapped(_:)), for: .touchUpInside)
+//        }
+//    }
     
     private weak var headerTitleLabel: UILabel! {
         didSet {
@@ -89,17 +89,17 @@ final class HistoryViewController: UIViewController {
         var scannedWorksCollectionViewContainer = subContainers.collectionViewContainer
         self.scannedWorksCollectionView = HistoryViewController.addScannedWorksCollectionView(parent: &scannedWorksCollectionViewContainer)
         
-        self.moveToLaunchScanningViewButton = HistoryViewController.addMoveToLaunchScanningButton(parent: &container)
+//        self.moveToLaunchScanningViewButton = HistoryViewController.addMoveToLaunchScanningButton(parent: &container)
     }
 }
 
-extension HistoryViewController {
-    
-    @objc private func didMoveToLaunchScanningViewButtonTapped(_ sender: UIButton) {
-        let topPageViewController = self.parent as! TopPageViewController
-        topPageViewController.showPage(.launchScanningViewController)
-    }
-}
+//extension HistoryViewController {
+//
+//    @objc private func didMoveToLaunchScanningViewButtonTapped(_ sender: UIButton) {
+//        let topPageViewController = self.parent as! TopPageViewController
+//        topPageViewController.showPage(.launchScanningViewController)
+//    }
+//}
 
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -178,20 +178,20 @@ extension HistoryViewController: UICollectionViewDelegate {
 
 extension HistoryViewController {
     
-    private static func addMoveToLaunchScanningButton(parent containerView: inout UIView) -> UIButton {
-        let moveToLaunchScanningViewButton = UIButton()
-        containerView.addSubview(moveToLaunchScanningViewButton)
-        
-        moveToLaunchScanningViewButton.frame.size = CGSize(width: 36, height: 36)
-        moveToLaunchScanningViewButton.setImage(AssetsManager.default.getImage(icon: .collection), for: .normal)
-        
-        moveToLaunchScanningViewButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(4)
-            make.trailing.equalToSuperview().offset(-24)
-        }
-        
-        return moveToLaunchScanningViewButton
-    }
+//    private static func addMoveToLaunchScanningButton(parent containerView: inout UIView) -> UIButton {
+//        let moveToLaunchScanningViewButton = UIButton()
+//        containerView.addSubview(moveToLaunchScanningViewButton)
+//
+//        moveToLaunchScanningViewButton.frame.size = CGSize(width: 36, height: 36)
+//        moveToLaunchScanningViewButton.setImage(AssetsManager.default.getImage(icon: .collection), for: .normal)
+//
+//        moveToLaunchScanningViewButton.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(4)
+//            make.trailing.equalToSuperview().offset(-24)
+//        }
+//
+//        return moveToLaunchScanningViewButton
+//    }
     
     private static func addSubContainers(parent containerView: inout UIView) -> (headerViewContainer: UIView, counterViewContainer: UIView, collectionViewContainer: UIView) {
         let headerViewContainer = UIView()
@@ -228,7 +228,7 @@ extension HistoryViewController {
         let headerView = UIView()
         containerView.addSubview(headerView)
         
-        headerView.backgroundColor = .black
+        headerView.backgroundColor = UIColor(red: 33, green: 33, blue: 33, alpha: 100)
         
         headerView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()

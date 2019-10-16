@@ -102,7 +102,7 @@ final class SharingViewController: UIViewController {
         let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             self.present(alertController, animated: true, completion: nil)
         }
     }
@@ -127,9 +127,9 @@ extension SharingViewController {
         let shareButton = UIButton()
         containerView.addSubview(shareButton)
         
-        shareButton.backgroundColor = .yellow
+        shareButton.backgroundColor = UIColor(red: 247, green: 217, blue: 58, alpha: 100)
         shareButton.layer.cornerRadius = 20
-        shareButton.setTitleColor(.black, for: .normal)
+        shareButton.setTitleColor(UIColor(red: 33, green: 33, blue: 33, alpha: 100), for: .normal)
         shareButton.titleLabel?.font = UIFont.mainFont(ofSize: 14)
         shareButton.titleLabel?.textAlignment = .center
         shareButton.contentHorizontalAlignment = .center

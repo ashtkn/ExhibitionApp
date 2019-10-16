@@ -1,6 +1,6 @@
 import Foundation
 
-struct Work: Codable, Equatable {
+struct Work: Codable, Equatable, Hashable {
     let id: String
     let title: String
     let resource: String

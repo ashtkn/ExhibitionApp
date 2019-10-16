@@ -83,6 +83,18 @@ final class DataStore {
         })
     }
     
+    func checkForUpdates(completion handler: ((_ updated: Bool, _ error: Error?) -> Void)?) {
+        let fetchedWorksSet = Set<Work>(works)
+        FirebaseService.shared.fetchWorks().then({ fetchingWorks in
+            let fetchingWorksSet = Set<Work>(fetchingWorks)
+            let diff = fetchingWorksSet.subtracting(fetchedWorksSet)
+            let updated = diff.count > 0
+            handler?(updated, nil)
+        }).catch({ error in
+            handler?(false, error)
+        })
+    }
+    
     func getImage(name imageName: String) -> UIImage? {
         let imagePath = imagesDirectory.appendingPathComponent(imageName)
         return UIImage(contentsOfFile: imagePath.path)
