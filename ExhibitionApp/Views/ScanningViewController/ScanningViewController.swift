@@ -89,8 +89,9 @@ extension ScanningViewController: ARSCNViewDelegate {
         
         let works = viewModel.works
         if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
-            viewModel.setDetectingWork(works[detectingWorkIndex])
-            addNode(to: node, for: anchor)
+            let detectingWork = works[detectingWorkIndex]
+            viewModel.setDetectingWork(detectingWork)
+            addNode(to: node, for: anchor, work: detectingWork)
         }
     }
     
@@ -100,16 +101,9 @@ extension ScanningViewController: ARSCNViewDelegate {
 }
 
 extension ScanningViewController {
-    private func addNode(to node: SCNNode, for anchor: ARAnchor) {
-        switch anchor.name {
-        case "Syaro":
-            let labelNode = LabelNode(text: "Syaro", width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
-            node.addChildNode(labelNode)
-        case "Chino":
-            let labelNode = LabelNode(text: "Chino", width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
-            node.addChildNode(labelNode)
-        default:
-            fatalError()
-        }
+    private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
+        // TODO: objects in the world
+        let labelNode = LabelNode(text: work.title, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+        node.addChildNode(labelNode)
     }
 }

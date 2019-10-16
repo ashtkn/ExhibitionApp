@@ -102,7 +102,7 @@ final class SharingViewController: UIViewController {
         let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             self.present(alertController, animated: true, completion: nil)
         }
     }

@@ -1,7 +1,11 @@
 import Foundation
 
-struct UserData: Codable {
+struct UserData: Codable, Equatable, Hashable {
     let id: Int
     let isFirstLaunch: Bool
     let isLoadingFiles: Bool
+    
+    static func ==(lhs: UserData, rhs: UserData) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

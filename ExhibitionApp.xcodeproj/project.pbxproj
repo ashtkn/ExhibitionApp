@@ -56,6 +56,7 @@
 		416C213A234725DD00648C0A /* LaunchScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C2139234725DD00648C0A /* LaunchScanningViewController.swift */; };
 		416C213D2347261B00648C0A /* ScanningViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416C213C2347261B00648C0A /* ScanningViewController.storyboard */; };
 		416C213F2347264100648C0A /* ScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416C213E2347264100648C0A /* ScanningViewController.swift */; };
+		416E580E2357587B004A1B30 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416E580D2357587B004A1B30 /* LoadingViewModel.swift */; };
 		4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4176FAE72340509B0025B470 /* UserDataObject.swift */; };
 		4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4186ADDD23324192002F6A4C /* AppDelegate.swift */; };
 		4186ADE023324192002F6A4C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4186ADDF23324192002F6A4C /* art.scnassets */; };
@@ -153,6 +154,7 @@
 		416C2139234725DD00648C0A /* LaunchScanningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScanningViewController.swift; sourceTree = "<group>"; };
 		416C213C2347261B00648C0A /* ScanningViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanningViewController.storyboard; sourceTree = "<group>"; };
 		416C213E2347264100648C0A /* ScanningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningViewController.swift; sourceTree = "<group>"; };
+		416E580D2357587B004A1B30 /* LoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModel.swift; sourceTree = "<group>"; };
 		4176FAE72340509B0025B470 /* UserDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataObject.swift; sourceTree = "<group>"; };
 		4186ADDA23324192002F6A4C /* ExhibitionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4186ADDD23324192002F6A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +313,14 @@
 			path = ScanningViewController;
 			sourceTree = "<group>";
 		};
+		416E580C2357586C004A1B30 /* LoadingViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				416E580D2357587B004A1B30 /* LoadingViewModel.swift */,
+			);
+			path = LoadingViewModel;
+			sourceTree = "<group>";
+		};
 		4186ADD123324192002F6A4C = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +472,7 @@
 		41D34EBD2339CEBB0096188B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				416E580C2357586C004A1B30 /* LoadingViewModel */,
 				41647D89234745780021A2E3 /* SharingViewModel */,
 				41647D86234745560021A2E3 /* ScanningViewModel */,
 				41B58A14234741DB00C4BB45 /* HistoryViewModel */,
@@ -722,6 +733,7 @@
 				410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */,
 				41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */,
 				416C213A234725DD00648C0A /* LaunchScanningViewController.swift in Sources */,
+				416E580E2357587B004A1B30 /* LoadingViewModel.swift in Sources */,
 				418E40C92352FB1100322B6A /* SnapKit+Extensions.swift in Sources */,
 				41222D042340484600F5EFE9 /* UserData.swift in Sources */,
 				41481F89234389AF004E2EB2 /* FirebaseService.swift in Sources */,
