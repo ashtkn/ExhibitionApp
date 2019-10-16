@@ -15,9 +15,33 @@
                     <view key="view" contentMode="scaleToFill" id="W3A-1J-QP6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0q-iB-Mhr">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Kpl-Dq-SXA">
+                                        <rect key="frame" x="188.5" y="390.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Kpl-Dq-SXA" firstAttribute="centerX" secondItem="a0q-iB-Mhr" secondAttribute="centerX" id="e8a-RV-kc3"/>
+                                    <constraint firstItem="Kpl-Dq-SXA" firstAttribute="centerY" secondItem="a0q-iB-Mhr" secondAttribute="centerY" id="sWT-Dx-x9b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="a0q-iB-Mhr" firstAttribute="leading" secondItem="3Xy-vC-QUr" secondAttribute="leading" id="1fy-Ar-qg9"/>
+                            <constraint firstItem="a0q-iB-Mhr" firstAttribute="top" secondItem="3Xy-vC-QUr" secondAttribute="top" id="2gm-VY-FNF"/>
+                            <constraint firstItem="3Xy-vC-QUr" firstAttribute="trailing" secondItem="a0q-iB-Mhr" secondAttribute="trailing" id="G5Y-wy-fhY"/>
+                            <constraint firstItem="3Xy-vC-QUr" firstAttribute="bottom" secondItem="a0q-iB-Mhr" secondAttribute="bottom" id="c3W-hf-BQr"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3Xy-vC-QUr"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="Kpl-Dq-SXA" id="L3A-au-soZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gc7-7g-Bj3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
