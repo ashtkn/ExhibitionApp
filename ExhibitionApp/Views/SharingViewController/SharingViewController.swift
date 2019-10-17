@@ -127,9 +127,9 @@ extension SharingViewController {
         let shareButton = UIButton()
         containerView.addSubview(shareButton)
         
-        shareButton.backgroundColor = UIColor(red: 247, green: 217, blue: 58, alpha: 100)
+        shareButton.backgroundColor = .yellow
         shareButton.layer.cornerRadius = 20
-        shareButton.setTitleColor(UIColor(red: 33, green: 33, blue: 33, alpha: 100), for: .normal)
+        shareButton.setTitleColor(.black, for: .normal)
         shareButton.titleLabel?.font = UIFont.mainFont(ofSize: 14)
         shareButton.titleLabel?.textAlignment = .center
         shareButton.contentHorizontalAlignment = .center
