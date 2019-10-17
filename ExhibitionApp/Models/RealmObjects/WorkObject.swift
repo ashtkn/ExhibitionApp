@@ -9,6 +9,7 @@ final class WorkObject: Object {
     @objc dynamic var caption: String = ""
     @objc dynamic var url: String = ""
     @objc dynamic var isLocked: Bool = true
+    @objc dynamic var version: Int = 0
     
     let images = List<String>()
     let authors = List<String>()
@@ -24,6 +25,7 @@ final class WorkObject: Object {
         model.isLocked = entity.isLocked
         model.images.append(objectsIn: entity.images)
         model.authors.append(objectsIn: entity.authors)
+        model.version = entity.version
         
         return model
     }
@@ -36,6 +38,6 @@ final class WorkObject: Object {
         let authorsArray = Array(authors)
         let imagesArray = Array(images)
         
-        return Work(id: id, title: title, resource: resource, authors: authorsArray, images: imagesArray, caption: caption, url: url, isLocked: isLocked)
+        return Work(id: id, title: title, resource: resource, authors: authorsArray, images: imagesArray, caption: caption, url: url, isLocked: isLocked, version: version)
     }
 }
