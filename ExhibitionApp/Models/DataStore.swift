@@ -13,7 +13,18 @@ final class DataStore {
     
     // MARK: Initializer
     
-    private init() {}
+    private init() {
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
+                        newObject!["version"] = -1
+                    }
+                }
+        })
+        Realm.Configuration.defaultConfiguration = config
+    }
     
     // MARK: Properties
     

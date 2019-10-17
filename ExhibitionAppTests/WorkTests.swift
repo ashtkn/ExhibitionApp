@@ -16,7 +16,8 @@ class WorkTests: XCTestCase {
         ],
         "caption": "これはキャプションです．",
         "url": "https://www.google.co.jp/",
-        "is_locked": false
+        "is_locked": false,
+        "version": 0
     }
     """.data(using: .utf8)!
     
@@ -74,7 +75,7 @@ class WorkTests: XCTestCase {
         let work = try! decoder.decode(Work.self, from: jsonData)
         
         let id = "XXXXXX"
-        let workToCompare = Work(id: id, title: "", resource: "", authors: [], images: [], caption: "", url: "",  isLocked: false)
+        let workToCompare = Work(id: id, title: "", resource: "", authors: [], images: [], caption: "", url: "",  isLocked: false, version: 0)
         XCTAssertEqual(work, workToCompare)
     }
 }
