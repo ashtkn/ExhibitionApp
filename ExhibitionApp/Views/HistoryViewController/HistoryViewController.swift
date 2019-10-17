@@ -228,7 +228,7 @@ extension HistoryViewController {
         let headerView = UIView()
         containerView.addSubview(headerView)
         
-        headerView.backgroundColor = UIColor(red: 33, green: 33, blue: 33, alpha: 100)
+        headerView.backgroundColor = .black
         
         headerView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
