@@ -9,6 +9,7 @@ struct Work: Codable, Equatable, Hashable {
     let caption: String
     let url: String
     let isLocked: Bool
+    let version: Int
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -19,9 +20,10 @@ struct Work: Codable, Equatable, Hashable {
         case caption
         case url
         case isLocked = "is_locked"
+        case version
     }
     
     static func ==(lhs: Work, rhs: Work) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.id == rhs.id && lhs.version == rhs.version
     }
 }
