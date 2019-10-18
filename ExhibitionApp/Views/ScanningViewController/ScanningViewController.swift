@@ -77,18 +77,19 @@ final class ScanningViewController: UIViewController {
 extension ScanningViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        var expectedResourceName = ""
-        switch anchor {
-        case let objectAnchor as ARObjectAnchor:
-            expectedResourceName = "\(objectAnchor.name ?? "").arobject"
-        case let imageAnchor as ARImageAnchor:
-            expectedResourceName = "\(imageAnchor.name ?? "").jpg"
-        default:
-            fatalError()
-        }
+//        var expectedResourceName = ""
+//        switch anchor {
+//        case let objectAnchor as ARObjectAnchor:
+//            expectedResourceName = "\(objectAnchor.name ?? "").arobject"
+//        case let imageAnchor as ARImageAnchor:
+//            expectedResourceName = "\(imageAnchor.name ?? "").jpg"
+//        default:
+//            fatalError()
+//        }
         
+        let name = anchor.name ?? ""
         let works = viewModel.works
-        if let detectingWorkIndex = works.firstIndex(where: { $0.resource == expectedResourceName }) {
+        if let detectingWorkIndex = works.firstIndex(where: { $0.has(resource: name) }) {
             let detectingWork = works[detectingWorkIndex]
             viewModel.setDetectingWork(detectingWork)
             addNode(to: node, for: anchor, work: detectingWork)

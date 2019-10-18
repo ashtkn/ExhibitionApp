@@ -7,7 +7,17 @@ class WorkTests: XCTestCase {
     {
         "id": "XXXXXX",
         "title": "Syaro",
-        "resource": "Syaro.arobject",
+        "resources": [
+            {
+                "type": "object",
+                "filename": "Syaro.arobject"
+            },
+            {
+                "type": "image",
+                "filename": "Hachijo.jpg",
+                "size": 0.2
+            }
+        ],
         "authors": [
             "Someone"
         ],
@@ -44,7 +54,6 @@ class WorkTests: XCTestCase {
         
         XCTAssertEqual(work.id, "XXXXXX")
         XCTAssertEqual(work.title, "Syaro")
-        XCTAssertEqual(work.resource, "Syaro.arobject")
         
         XCTAssertThrowsError(try decoder.decode(Work.self, from: invalidJsonData))
     }
@@ -65,7 +74,6 @@ class WorkTests: XCTestCase {
         
         XCTAssertEqual(work.id, workToCompare.id)
         XCTAssertEqual(work.title, workToCompare.title)
-        XCTAssertEqual(work.resource, workToCompare.resource)
     }
     
     func testEuatableProtocol() {
@@ -73,9 +81,10 @@ class WorkTests: XCTestCase {
         
         XCTAssertNoThrow(try decoder.decode(Work.self, from: jsonData))
         let work = try! decoder.decode(Work.self, from: jsonData)
+        let resources = [Resource]()
         
         let id = "XXXXXX"
-        let workToCompare = Work(id: id, title: "", resource: "", authors: [], images: [], caption: "", url: "",  isLocked: false, version: 0)
+        let workToCompare = Work(id: id, title: "", authors: [], images: [], caption: "", url: "",  isLocked: false, version: 0, resources: resources)
         XCTAssertEqual(work, workToCompare)
     }
 }
