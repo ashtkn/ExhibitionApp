@@ -25,4 +25,36 @@ class FirebaseServiceTests: XCTestCase {
             wait(for: [fetchWorksExpectation], timeout: 10.0)
         }
     }
+    
+    func testPerformanceOfDownloadResource() {
+        measure {
+            let downloadResourceExpectation = expectation(description: "Download resource")
+            let resourceName = "Chino.arobject"
+            let resourceDirectoryToSave = DataStore.shared.resourcesDirectory
+            FirebaseService.shared.download(resource: resourceName, to: resourceDirectoryToSave).then({ resourcePath in
+                XCTAssertNotNil(resourcePath)
+                downloadResourceExpectation.fulfill()
+            }).catch({ error in
+                XCTFail(error.localizedDescription)
+                downloadResourceExpectation.fulfill()
+            })
+            wait(for: [downloadResourceExpectation], timeout: 10.0)
+        }
+    }
+    
+    func testPerformanceOfDownloadImage() {
+        measure {
+            let downloadImageExpectation = expectation(description: "Download image")
+            let imageName = "hatena.png"
+            let imagesDirectoryToSave = DataStore.shared.imagesDirectory
+            FirebaseService.shared.download(image: imageName, to: imagesDirectoryToSave).then({ imagePath in
+                XCTAssertNotNil(imagePath)
+                downloadImageExpectation.fulfill()
+            }).catch({ error in
+                XCTFail(error.localizedDescription)
+                downloadImageExpectation.fulfill()
+            })
+            wait(for: [downloadImageExpectation], timeout: 10.0)
+        }
+    }
 }
