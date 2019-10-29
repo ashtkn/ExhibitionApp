@@ -17,43 +17,7 @@ final class DataStore {
         Realm.Configuration.defaultConfiguration = config
     }
     
-    private var config: Realm.Configuration {
-        return Realm.Configuration(
-            schemaVersion: 2,
-            migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {
-                    migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
-                        newObject!["version"] = -1
-                    }
-                }
-                if (oldSchemaVersion < 2) {
-                    migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
-                        let resources = List<ResourceObject>()
-                        let resourceName = oldObject!["resource"] as! String
-                        let ext = resourceName.components(separatedBy: ".").last!
-                        
-                        switch(ext) {
-                        case "arobject":
-                            let resource = Resource(type: "object", filename: resourceName, size: nil)
-                            resources.append(ResourceObject.create(from: resource))
-                        case "jpg":
-                            let resource = Resource(type: "image", filename: resourceName, size: 0.127)
-                            resources.append(ResourceObject.create(from: resource))
-                        default:
-                            break
-                        }
-                        
-                        newObject!["resources"] = resources
-                    }
-                }
-        })
-    }
-    
     // MARK: Properties
-    
-    private var applicationSupportDirectory: URL {
-        return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-    }
     
     var resourcesDirectory: URL {
         let resourcesDirectory = applicationSupportDirectory.appendingPathComponent("Resources", isDirectory: true)
@@ -135,40 +99,12 @@ final class DataStore {
     }
     
     func getARObjectsSet() -> Set<ARReferenceObject> {
-        let arObjects: [ARReferenceObject] = works.flatMap { (work: Work) -> [ARReferenceObject] in
-            let resourcesDirectory = self.resourcesDirectory
-            let referenceObjects: [ARReferenceObject] = work.resources.compactMap { resource in
-                let resourcePath = resourcesDirectory.appendingPathComponent("\(resource.filename)")
-                if resource.type == "object" {
-                    let referenceObject = try? ARReferenceObject.init(archiveURL: resourcePath)
-                    referenceObject?.name = resource.file.base
-                    return referenceObject
-                }
-                return nil
-            }
-            return referenceObjects
-        }
+        let arObjects = getARObjects()
         return Set(arObjects)
     }
     
     func getARImagesSet() -> Set<ARReferenceImage> {
-        let arImages: [ARReferenceImage] = works.flatMap { (work: Work) -> [ARReferenceImage] in
-            let resourcesDirectory = self.resourcesDirectory
-            let referencesImages: [ARReferenceImage] = work.resources.compactMap { resource in
-                let resourcePath = resourcesDirectory.appendingPathComponent("\(resource.filename)")
-                let physicalWidth = resource.size ?? 0.127 // L-Size
-                
-                if resource.type == "image" {
-                    guard let image = UIImage(contentsOfFile: resourcePath.path) else { return nil }
-                    guard let cgImage = image.cgImage else { return nil }
-                    let referenceImage = ARReferenceImage.init(cgImage, orientation: .init(image.imageOrientation), physicalWidth: CGFloat(physicalWidth))
-                    referenceImage.name = resource.file.base
-                    return referenceImage
-                }
-                return nil
-            }
-            return referencesImages
-        }
+        let arImages = getARImages()
         return Set(arImages)
     }
     
@@ -191,6 +127,42 @@ final class DataStore {
 }
 
 extension DataStore {
+    
+    private var applicationSupportDirectory: URL {
+        return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+    }
+    
+    private var config: Realm.Configuration {
+        return Realm.Configuration(
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
+                        newObject!["version"] = -1
+                    }
+                }
+                if (oldSchemaVersion < 2) {
+                    migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
+                        let resources = List<ResourceObject>()
+                        let resourceName = oldObject!["resource"] as! String
+                        let ext = resourceName.components(separatedBy: ".").last!
+                        
+                        switch(ext) {
+                        case "arobject":
+                            let resource = Resource(type: "object", filename: resourceName, size: nil)
+                            resources.append(ResourceObject.create(from: resource))
+                        case "jpg":
+                            let resource = Resource(type: "image", filename: resourceName, size: 0.127)
+                            resources.append(ResourceObject.create(from: resource))
+                        default:
+                            break
+                        }
+                        
+                        newObject!["resources"] = resources
+                    }
+                }
+        })
+    }
     
     private func fetchWorkDataAsync() -> Promise<Void> {
         
@@ -229,5 +201,43 @@ extension DataStore {
                 })
             })
         }
+    }
+    
+    private func getARObjects() -> [ARReferenceObject] {
+        let arObjects: [ARReferenceObject] = works.flatMap { (work: Work) -> [ARReferenceObject] in
+            let resourcesDirectory = self.resourcesDirectory
+            let referenceObjects: [ARReferenceObject] = work.resources.compactMap { resource in
+                let resourcePath = resourcesDirectory.appendingPathComponent("\(resource.filename)")
+                if resource.type == "object" {
+                    let referenceObject = try? ARReferenceObject.init(archiveURL: resourcePath)
+                    referenceObject?.name = resource.file.base
+                    return referenceObject
+                }
+                return nil
+            }
+            return referenceObjects
+        }
+        return arObjects
+    }
+    
+    private func getARImages() -> [ARReferenceImage] {
+        let arImages: [ARReferenceImage] = works.flatMap { (work: Work) -> [ARReferenceImage] in
+            let resourcesDirectory = self.resourcesDirectory
+            let referencesImages: [ARReferenceImage] = work.resources.compactMap { resource in
+                let resourcePath = resourcesDirectory.appendingPathComponent("\(resource.filename)")
+                let physicalWidth = resource.size ?? 0.127 // L-Size
+                
+                if resource.type == "image" {
+                    guard let image = UIImage(contentsOfFile: resourcePath.path) else { return nil }
+                    guard let cgImage = image.cgImage else { return nil }
+                    let referenceImage = ARReferenceImage.init(cgImage, orientation: .init(image.imageOrientation), physicalWidth: CGFloat(physicalWidth))
+                    referenceImage.name = resource.file.base
+                    return referenceImage
+                }
+                return nil
+            }
+            return referencesImages
+        }
+        return arImages
     }
 }
