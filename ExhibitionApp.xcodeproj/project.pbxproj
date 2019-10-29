@@ -81,9 +81,6 @@
 		41B9AEB52367F64200CA1997 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9AEB42367F64200CA1997 /* System.swift */; };
 		41B9AEB92367FDEC00CA1997 /* AssetsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9AEB82367FDEC00CA1997 /* AssetsManagerTests.swift */; };
 		41B9AEBB2368022200CA1997 /* UserDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9AEBA2368022200CA1997 /* UserDataTests.swift */; };
-		41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC42339DF090096188B /* RxSwift.framework */; };
-		41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC82339DF140096188B /* RxCocoa.framework */; };
-		41D34ED22339E7C80096188B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34ED12339E7C80096188B /* RxRelay.framework */; };
 		41D77CD52359AC4800C0C860 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D77CD42359AC4800C0C860 /* Resource.swift */; };
 		41D77CD72359AC7E00C0C860 /* ResourceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D77CD62359AC7E00C0C860 /* ResourceObject.swift */; };
 		41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C0F2334D86700552D40 /* UICollectionView+Extensions.swift */; };
@@ -220,13 +217,10 @@
 				41481F862343896E004E2EB2 /* libc++.tbd in Frameworks */,
 				41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */,
 				41481F8523438966004E2EB2 /* libsqlite3.tbd in Frameworks */,
-				41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */,
 				41481F5E2343873E004E2EB2 /* GTMSessionFetcher.framework in Frameworks */,
 				41481F7C2343873F004E2EB2 /* FirebaseAuth.framework in Frameworks */,
 				41481F582343873E004E2EB2 /* nanopb.framework in Frameworks */,
-				41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */,
 				41481F682343873E004E2EB2 /* FirebaseStorage.framework in Frameworks */,
-				41D34ED22339E7C80096188B /* RxRelay.framework in Frameworks */,
 				41481F5A2343873E004E2EB2 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				41481F8423438949004E2EB2 /* StoreKit.framework in Frameworks */,
 				41481F622343873E004E2EB2 /* FirebaseFirestore.framework in Frameworks */,
@@ -714,9 +708,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
