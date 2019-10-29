@@ -14,7 +14,11 @@ final class DataStore {
     // MARK: Initializer
     
     private init() {
-        let config = Realm.Configuration(
+        Realm.Configuration.defaultConfiguration = config
+    }
+    
+    private var config: Realm.Configuration {
+        return Realm.Configuration(
             schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
                 if (oldSchemaVersion < 1) {
@@ -43,7 +47,6 @@ final class DataStore {
                     }
                 }
         })
-        Realm.Configuration.defaultConfiguration = config
     }
     
     // MARK: Properties
