@@ -24,17 +24,22 @@ final class DataStore {
                 }
                 if (oldSchemaVersion < 2) {
                     migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
-                        let resource = oldObject!["resource"] as! String
-                        let ext = resource.components(separatedBy: ".").last!
+                        let resources = List<ResourceObject>()
+                        let resourceName = oldObject!["resource"] as! String
+                        let ext = resourceName.components(separatedBy: ".").last!
+                        
                         switch(ext) {
                         case "arobject":
-                            newObject!["resources"] = ["type": "object", "filename": "\(resource)" ]
+                            let resource = Resource(type: "object", filename: resourceName, size: nil)
+                            resources.append(ResourceObject.create(from: resource))
                         case "jpg":
-                            newObject!["resources"] = ["type": "image", "filename": "\(resource)"]
+                            let resource = Resource(type: "image", filename: resourceName, size: 0.127)
+                            resources.append(ResourceObject.create(from: resource))
                         default:
-                            newObject!["resources"] = [String: String]()
+                            break
                         }
                         
+                        newObject!["resources"] = resources
                     }
                 }
         })
