@@ -2,7 +2,7 @@ import UIKit
 
 final class AssetsManager {
     
-    enum Icon: String {
+    enum Icon: String, CaseIterable {
         case save = "baseline_save_alt_white_36pt_1x"
         case close = "outline_close_white_36pt_1x"
         case collection = "outline_collections_white_36pt_1x"
