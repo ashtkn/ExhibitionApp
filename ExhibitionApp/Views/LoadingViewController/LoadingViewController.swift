@@ -3,6 +3,7 @@ import UIKit
 final class LoadingViewController: UIViewController {
     
     let viewModel = LoadingViewModel()
+    let dataStore = DataStore.shared
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView! {
         didSet {
@@ -17,12 +18,7 @@ final class LoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if DataStore.shared.hasCompletedSetup {
-            checkForUpdates()
-        } else {
-            initialSetup()
-        }
+        launchProcess()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,29 +30,40 @@ final class LoadingViewController: UIViewController {
         super.viewWillDisappear(animated)
         activityIndicatorView.stopAnimating()
     }
+}
+
+extension LoadingViewController {
     
-    private func initialSetup() {
-        DataStore.shared.createNewUserData()
-        DataStore.shared.downloadFiles { [unowned self] error in
-            self.onCompletedLoading(error: error)
+    private func launchProcess() {
+        let hasApplicationDataPrepared = dataStore.hasApplicationDataPrepared()
+        
+        if !hasApplicationDataPrepared {
+            self.launchProcessWhenDataNeedsPreparing()
+            return
         }
-    }
-    
-    private func checkForUpdates() {
-        DataStore.shared.checkForUpdates { [unowned self] updated, error in
-            if updated {
-                self.initialSetup()
+        
+        dataStore.fetchApplicationDataUpdateExists { [unowned self] updateExists, error in
+            if updateExists {
+                self.launchProcessWhenDataNeedsPreparing()
+                return
+            }
+            
+            if let error = error {
+                self.presentErrorView(error)
             } else {
-                self.onCompletedLoading(error: error)
+                self.moveToTopPageView()
             }
         }
     }
     
-    private func onCompletedLoading(error: Error?) {
-        if let error = error {
-            presentErrorView(error)
-        } else {
-            moveToTopPageView()
+    private func launchProcessWhenDataNeedsPreparing() {
+        dataStore.createNewApplicationData()
+        dataStore.prepareApplicationData { [unowned self] error in
+            if let error = error {
+                self.presentErrorView(error)
+            } else {
+                self.moveToTopPageView()
+            }
         }
     }
     
