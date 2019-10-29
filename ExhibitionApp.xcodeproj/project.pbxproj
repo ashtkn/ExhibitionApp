@@ -78,6 +78,7 @@
 		41B5BB232344F27700A274C7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BB222344F27700A274C7 /* String+Extensions.swift */; };
 		41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BB242344F48700A274C7 /* UIView+Extensions.swift */; };
 		41B5BB272344F4BE00A274C7 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BB262344F4BE00A274C7 /* UIApplication+Extensions.swift */; };
+		41B9AEB52367F64200CA1997 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9AEB42367F64200CA1997 /* System.swift */; };
 		41D34EC52339DF090096188B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC42339DF090096188B /* RxSwift.framework */; };
 		41D34EC92339DF140096188B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34EC82339DF140096188B /* RxCocoa.framework */; };
 		41D34ED22339E7C80096188B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D34ED12339E7C80096188B /* RxRelay.framework */; };
@@ -180,6 +181,7 @@
 		41B5BB222344F27700A274C7 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		41B5BB242344F48700A274C7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		41B5BB262344F4BE00A274C7 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		41B9AEB42367F64200CA1997 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		41C1E80623406D07003B708D /* ExhibitionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExhibitionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C1E80A23406D07003B708D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41D34EC42339DF090096188B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 			children = (
 				41F46B8A23404DBE00606D7B /* JsonUtility.swift */,
 				41456D6123559AFE0077309C /* AssetsManager.swift */,
+				41B9AEB42367F64200CA1997 /* System.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */,
 				41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */,
 				416C213A234725DD00648C0A /* LaunchScanningViewController.swift in Sources */,
+				41B9AEB52367F64200CA1997 /* System.swift in Sources */,
 				416E580E2357587B004A1B30 /* LoadingViewModel.swift in Sources */,
 				418E40C92352FB1100322B6A /* SnapKit+Extensions.swift in Sources */,
 				41222D042340484600F5EFE9 /* UserData.swift in Sources */,
@@ -946,7 +950,7 @@
 				PRODUCT_NAME = ExhibitionApp;
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provision Profile for Exhibition";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -974,7 +978,7 @@
 				PRODUCT_NAME = ExhibitionApp;
 				PROVISIONING_PROFILE_SPECIFIER = "Ad hoc Provision Profile for Exhibition";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

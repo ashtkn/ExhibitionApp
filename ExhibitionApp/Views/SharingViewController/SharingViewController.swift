@@ -76,6 +76,10 @@ final class SharingViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         activityViewController.excludedActivityTypes = [.message, .print]
         
+        if System.current.device == .pad {
+            activityViewController.popoverPresentationController?.sourceView = imageView
+        }
+        
         DispatchQueue.main.async { [unowned self] in
             self.present(activityViewController, animated: true, completion: nil)
         }
