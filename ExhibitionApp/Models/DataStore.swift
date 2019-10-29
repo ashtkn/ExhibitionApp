@@ -36,20 +36,10 @@ final class DataStore {
         return Array(realm.objects(WorkObject.self)).map { $0.entity }
     }
     
-    var hasCompletedSetup: Bool {
-        let realm = try! Realm()
-        if let userDataObject = realm.object(ofType: UserDataObject.self, forPrimaryKey: 0) {
-            let userData = userDataObject.entity
-            if !userData.isFirstLaunch && !userData.isLoadingFiles {
-                return true
-            }
-        }
-        return false
-    }
-    
     // MARK: Methods
+    // MARK: Preparing data
     
-    func createNewUserData() {
+    func createNewApplicationData() {
         let realm = try! Realm()
         let newUserData = UserData(id: 0, isFirstLaunch: true, isLoadingFiles: false)
         let newUserDataObject = UserDataObject.create(from: newUserData)
@@ -60,7 +50,7 @@ final class DataStore {
         }
     }
     
-    func downloadFiles(completion handler: ((_ error: Error?) -> Void)?) {
+    func prepareApplicationData(completion handler: ((_ error: Error?) -> Void)?) {
         let realm = try! Realm()
         guard let userDataObject = realm.object(ofType: UserDataObject.self, forPrimaryKey: 0) else { fatalError() }
         
@@ -68,7 +58,7 @@ final class DataStore {
             userDataObject.isLoadingFiles = true
         }
         
-        fetchWorkDataAsync().then({
+        downloadApplicationDataAsync().then({
             let realm = try! Realm()
             try! realm.write {
                 userDataObject.isLoadingFiles = false
@@ -81,7 +71,18 @@ final class DataStore {
         })
     }
     
-    func checkForUpdates(completion handler: ((_ updated: Bool, _ error: Error?) -> Void)?) {
+    func hasApplicationDataPrepared() -> Bool {
+        let realm = try! Realm()
+        if let userDataObject = realm.object(ofType: UserDataObject.self, forPrimaryKey: 0) {
+            let userData = userDataObject.entity
+            if !userData.isFirstLaunch && !userData.isLoadingFiles {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func fetchApplicationDataUpdateExists(completion handler: ((_ updated: Bool, _ error: Error?) -> Void)?) {
         let fetchedWorksSet = Set<Work>(works)
         FirebaseService.shared.fetchWorks().then({ fetchingWorks in
             let fetchingWorksSet = Set<Work>(fetchingWorks)
@@ -92,6 +93,8 @@ final class DataStore {
             handler?(false, error)
         })
     }
+    
+    // MARK: Using data
     
     func getImage(name imageName: String) -> UIImage? {
         let imagePath = imagesDirectory.appendingPathComponent(imageName)
@@ -108,14 +111,6 @@ final class DataStore {
         return Set(arImages)
     }
     
-    func unlock(work: Work) {
-        let realm = try! Realm()
-        let workObject = realm.object(ofType: WorkObject.self, forPrimaryKey: work.id)
-        try! realm.write {
-            workObject?.isLocked = false
-        }
-    }
-    
     func subscribe(_ handler: @escaping () -> Void) -> SubscriptionToken {
         let realm = try! Realm()
         let token = realm.observe { notification, realm in
@@ -123,6 +118,16 @@ final class DataStore {
         }
         
         return SubscriptionToken(token: token)
+    }
+    
+    // MARK: Operating data
+    
+    func unlock(work: Work) {
+        let realm = try! Realm()
+        let workObject = realm.object(ofType: WorkObject.self, forPrimaryKey: work.id)
+        try! realm.write {
+            workObject?.isLocked = false
+        }
     }
 }
 
@@ -164,7 +169,7 @@ extension DataStore {
         })
     }
     
-    private func fetchWorkDataAsync() -> Promise<Void> {
+    private func downloadApplicationDataAsync() -> Promise<Void> {
         
         return Promise<Void> { resolve, reject, _ in
             FirebaseService.shared.fetchWorks().then({ [unowned self] initialWorkData in
