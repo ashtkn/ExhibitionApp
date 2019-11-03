@@ -25,7 +25,7 @@ final class WorkCollectionHeaderView: UICollectionReusableView {
         workHeaderLabel.textColor = ColorManager.shared.findColor(of: .text)
         
         workHeaderLabel.snp.makeConstraints{ make -> Void in
-            make.left.equalTo(16)
+            make.left.equalTo(36)
             make.centerY.equalToSuperview()
         }
     }

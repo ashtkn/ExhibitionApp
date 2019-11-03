@@ -92,12 +92,15 @@ final class HistoryViewControllerViewsBuilder {
         let counterProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
         scannedWorksCounterView.addSubview(counterProgressView)
         
+        counterProgressView.progressTintColor = ColorManager.shared.findColor(of: .progressBar)
         counterProgressView.layer.masksToBounds = true
         counterProgressView.layer.cornerRadius = 3.0
         
-        counterProgressView.snp.makeConstraints{ make -> Void in
-            make.bottom.equalToSuperview().inset(36)
-            make.centerX.equalToSuperview()
+        counterProgressView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(36)
+            make.trailing.equalToSuperview().offset(-36)
+            make.height.equalTo(10)
+            make.bottom.equalToSuperview().offset(-36)
         }
         
         return (counterTextLabel, counterNumberLabel, counterProgressView)

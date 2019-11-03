@@ -23,6 +23,7 @@ final class ColorManager {
         case circleButton
         case circleButtonBackground
         case text
+        case progressBar
     }
     
     static let shared = ColorManager()
@@ -47,6 +48,8 @@ final class ColorManager {
             colorCode = DefaultModeColorSet.white.rawValue
         case .text:
             colorCode = DefaultModeColorSet.iconBlack.rawValue
+        case .progressBar:
+            colorCode = DefaultModeColorSet.mainRed.rawValue
         }
         
         return convertColor(code: colorCode)
