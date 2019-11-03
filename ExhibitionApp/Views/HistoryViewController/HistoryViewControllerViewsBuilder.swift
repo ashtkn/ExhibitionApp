@@ -122,6 +122,7 @@ final class HistoryViewControllerViewsBuilder {
     static func buildScannedWorksCollectionViewBackgroundView(parent containerView: inout UIView) {
         let textLabel = UILabel()
         textLabel.text = "スキャンがありません"
+        textLabel.font = UIFont.mainFont(ofSize: 16)
         containerView.addSubview(textLabel)
         
         textLabel.snp.makeConstraints { make in
@@ -129,13 +130,15 @@ final class HistoryViewControllerViewsBuilder {
             make.centerY.equalToSuperview()
         }
         
-        let emojiLabel = UILabel()
+        let emojiLabel = CustomLabel()
         emojiLabel.text = "😅😅😅"
+        emojiLabel.font = UIFont(name: "AppleColorEmoji", size: 48)
+        emojiLabel.setSpacing(5)
         containerView.addSubview(emojiLabel)
         
         emojiLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-36)
+            make.centerY.equalToSuperview().offset(-48)
         }
     }
 }

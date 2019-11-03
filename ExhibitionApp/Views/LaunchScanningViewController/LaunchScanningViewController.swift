@@ -22,6 +22,7 @@ final class LaunchScanningViewController: UIViewController {
     @IBOutlet private weak var scanTextLabel: UILabel! {
         didSet {
             self.scanTextLabel.text = "作品をARでみよう！"
+            self.scanTextLabel.font = UIFont.mainFont(ofSize: 16)
             self.scanTextLabel.textColor = ColorManager.shared.findColor(of: .text)
         }
     }
