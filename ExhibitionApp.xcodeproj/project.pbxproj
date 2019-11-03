@@ -111,6 +111,7 @@
 		41B9AF0323681DF100CA1997 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B9AF0223681DF100CA1997 /* StoreKit.framework */; };
 		41B9AF0623681E8000CA1997 /* FirebaseServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9AF0523681E8000CA1997 /* FirebaseServiceTests.swift */; };
 		41C97AC0236EDD73006E407C /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C97ABF236EDD73006E407C /* CustomLabel.swift */; };
+		41C97AC2236EE33F006E407C /* UITraitCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C97AC1236EE33F006E407C /* UITraitCollection+Extensions.swift */; };
 		41D77CD52359AC4800C0C860 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D77CD42359AC4800C0C860 /* Resource.swift */; };
 		41D77CD72359AC7E00C0C860 /* ResourceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D77CD62359AC7E00C0C860 /* ResourceObject.swift */; };
 		41D9CCB6236E6BAF003B66D2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9CCB5236E6BAF003B66D2 /* ColorManager.swift */; };
@@ -222,6 +223,7 @@
 		41C1E80623406D07003B708D /* ExhibitionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExhibitionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C1E80A23406D07003B708D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41C97ABF236EDD73006E407C /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		41C97AC1236EE33F006E407C /* UITraitCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extensions.swift"; sourceTree = "<group>"; };
 		41D34EC42339DF090096188B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		41D34EC82339DF140096188B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		41D34ED12339E7C80096188B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				8A6804B423527B890059019D /* UIFont+Extensions.swift */,
 				418E40C82352FB1100322B6A /* SnapKit+Extensions.swift */,
 				8A6804BA2354E1E70059019D /* UIButton+Custom.swift */,
+				41C97AC1236EE33F006E407C /* UITraitCollection+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */,
 				416C212C2347240200648C0A /* TopPageViewController.swift in Sources */,
 				41456D6223559AFE0077309C /* AssetsManager.swift in Sources */,
+				41C97AC2236EE33F006E407C /* UITraitCollection+Extensions.swift in Sources */,
 				41222D022340452000F5EFE9 /* Work.swift in Sources */,
 				414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */,
 				4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */,
