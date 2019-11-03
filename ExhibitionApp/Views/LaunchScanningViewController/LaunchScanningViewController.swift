@@ -4,7 +4,7 @@ final class LaunchScanningViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView! {
         didSet {
-            self.containerView.backgroundColor = ColorManager.shared.findColor(of: .background)
+            self.containerView.backgroundColor = AssetsManager.default.getColor(of: .background)
         }
     }
     
@@ -12,10 +12,10 @@ final class LaunchScanningViewController: UIViewController {
         didSet {
             self.scanButton.layer.cornerRadius = self.scanButton.frame.size.width / 2
             self.scanButton.layer.borderWidth = 1
-            self.scanButton.layer.borderColor = ColorManager.shared.findColor(of: .circleButton).cgColor
+            self.scanButton.layer.borderColor = AssetsManager.default.getColor(of: .circleButton).cgColor
             self.scanButton.setImage(AssetsManager.default.getImage(image: .finger), for: .normal)
-            self.scanButton.tintColor = ColorManager.shared.findColor(of: .circleButton)
-            self.scanButton.backgroundColor = ColorManager.shared.findColor(of: .circleButtonBackground)
+            self.scanButton.tintColor = AssetsManager.default.getColor(of: .circleButton)
+            self.scanButton.backgroundColor = AssetsManager.default.getColor(of: .circleButtonBackground)
         }
     }
     
@@ -23,7 +23,7 @@ final class LaunchScanningViewController: UIViewController {
         didSet {
             self.scanTextLabel.text = "作品をARでみよう！"
             self.scanTextLabel.font = UIFont.mainFont(ofSize: 16)
-            self.scanTextLabel.textColor = ColorManager.shared.findColor(of: .text)
+            self.scanTextLabel.textColor = AssetsManager.default.getColor(of: .text)
         }
     }
     
