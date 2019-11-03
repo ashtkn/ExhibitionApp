@@ -1,0 +1,141 @@
+import UIKit
+
+final class HistoryViewControllerViewsBuilder {
+    
+    static func createSubContainerViews(parent containerView: inout UIView) -> (headerViewContainer: UIView, counterViewContainer: UIView, collectionViewContainer: UIView) {
+        let headerViewContainer = UIView()
+        containerView.addSubview(headerViewContainer)
+        
+        headerViewContainer.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(112)
+        }
+        
+        let counterViewContainer = UIView()
+        containerView.addSubview(counterViewContainer)
+        
+        counterViewContainer.snp.makeConstraints { make in
+            make.top.equalTo(headerViewContainer.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(233)
+        }
+        
+        let collectionViewContainer = UIView()
+        containerView.addSubview(collectionViewContainer)
+                
+        collectionViewContainer.snp.makeConstraints { make in
+            make.top.equalTo(counterViewContainer.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        return (headerViewContainer, counterViewContainer, collectionViewContainer)
+    }
+    
+    static func buildHeaderView(parent containerView: inout UIView) -> UILabel {
+        let headerView = UIView()
+        containerView.addSubview(headerView)
+        
+        headerView.backgroundColor = ColorManager.default.getColor(name: .headerWhite)
+        headerView.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        let label = UILabel()
+        headerView.addSubview(label)
+        
+        label.textColor = ColorManager.default.getColor(name: .iconBlack)
+        label.font = .mainFont(ofSize: 16)
+        
+        label.snp.makeConstraints { make in
+            make.top.equalTo(52)
+            make.centerX.equalToSuperview()
+        }
+        
+        return label
+    }
+    
+    static func buildScannedWorksCounterView(parent containerView: inout UIView) -> (textLabel: UILabel, numberLabel: UILabel, progressView: UIProgressView) {
+        let scannedWorksCounterView = UIView()
+        containerView.addSubview(scannedWorksCounterView)
+        
+        scannedWorksCounterView.snp.makeConstraints{ (make) -> Void in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        // Text Label
+        let counterTextLabel = UILabel()
+        scannedWorksCounterView.addSubview(counterTextLabel)
+
+        counterTextLabel.textColor = ColorManager.default.getColor(name: .iconBlack)
+        counterTextLabel.font = .mainFont(ofSize: 18)
+        
+        counterTextLabel.snp.makeConstraints{ (make) -> Void in
+            make.top.equalToSuperview().inset(36)
+            make.centerX.equalToSuperview()
+        }
+        
+        // Number Label
+        let counterNumberLabel = UILabel()
+        scannedWorksCounterView.addSubview(counterNumberLabel)
+        
+        counterNumberLabel.textColor = ColorManager.default.getColor(name: .iconBlack)
+        counterNumberLabel.font = UIFont(name: "Futura-Bold", size:96)
+        
+        counterNumberLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        // Progress View
+        // FIXME: not working
+        let counterProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
+        scannedWorksCounterView.addSubview(counterProgressView)
+        
+        counterProgressView.layer.masksToBounds = true
+        counterProgressView.layer.cornerRadius = 3.0
+        
+        counterProgressView.snp.makeConstraints{ make -> Void in
+            make.bottom.equalToSuperview().inset(36)
+            make.centerX.equalToSuperview()
+        }
+        
+        return (counterTextLabel, counterNumberLabel, counterProgressView)
+    }
+    
+    static func buildScannedWorksCollectionView(parent containerView: inout UIView, padding: CGFloat) -> UICollectionView {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = .init(top: padding , left: 0, bottom: 0, right: 0)
+        flowLayout.minimumLineSpacing = padding
+        
+        let scannedWorksCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        scannedWorksCollectionView.backgroundColor = .clear
+        containerView.addSubview(scannedWorksCollectionView)
+        
+        scannedWorksCollectionView.snp.remakeConstraints { make in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        return scannedWorksCollectionView
+    }
+    
+    static func buildScannedWorksCollectionViewBackgroundView(parent containerView: inout UIView) {
+        let textLabel = UILabel()
+        textLabel.text = "スキャンがありません"
+        containerView.addSubview(textLabel)
+        
+        textLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+        
+        let emojiLabel = UILabel()
+        emojiLabel.text = "😅😅😅"
+        containerView.addSubview(emojiLabel)
+        
+        emojiLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-36)
+        }
+    }
+}

@@ -4,41 +4,13 @@ import SnapKit
 
 final class HistoryViewController: UIViewController {
     
-    private static let padding: CGFloat = 15
+    private let padding: CGFloat = 15
     
-    private weak var headerTitleLabel: UILabel! {
-        didSet {
-            self.headerTitleLabel.text = viewModel.headerTitleLabelText
-        }
-    }
-    
-    private weak var scannedWorksCounterTextLabel: UILabel! {
-        didSet {
-            self.scannedWorksCounterTextLabel.text = viewModel.scannedWorksCounterTextLabelText
-        }
-    }
-    
-    private weak var scannedWorksCounterNumberLabel: UILabel! {
-        didSet {
-            self.scannedWorksCounterNumberLabel.text = viewModel.scannedWorksCounterNumberLabelText
-        }
-    }
-    
-    private weak var scannedWorksCounterProgressView: UIProgressView! {
-        didSet {
-            let value = viewModel.scannedWorksCounterProgressViewValue
-            self.scannedWorksCounterProgressView.setProgress(value, animated: false)
-        }
-    }
-    
-    private weak var scannedWorksCollectionView: UICollectionView! {
-        didSet {
-            self.scannedWorksCollectionView.dataSource = self
-            self.scannedWorksCollectionView.delegate = self
-            self.scannedWorksCollectionView.register(cellType: WorkCollectionViewCell.self)
-            self.scannedWorksCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorkCollectionHeaderView.className)
-        }
-    }
+    private weak var headerTitleLabel: UILabel!
+    private weak var scannedWorksCounterTextLabel: UILabel!
+    private weak var scannedWorksCounterNumberLabel: UILabel!
+    private weak var scannedWorksCounterProgressView: UIProgressView!
+    private weak var scannedWorksCollectionView: UICollectionView!
 
     private var viewModel = HistoryViewModel()
     
@@ -54,7 +26,32 @@ final class HistoryViewController: UIViewController {
     }
     
     private func setupSubviews() {
-        var containerView = UIView()
+        var containerView = self.createContainerView()
+        var (headerViewContainer, counterViewContainer, collectionViewContainer)
+            = HistoryViewControllerViewsBuilder.createSubContainerViews(parent: &containerView)
+        
+        // HeaderViewContainer
+        self.headerTitleLabel
+            = HistoryViewControllerViewsBuilder.buildHeaderView(parent: &headerViewContainer)
+        
+        // CounterViewContainer
+        let counterViewContainerSubviews
+            = HistoryViewControllerViewsBuilder.buildScannedWorksCounterView(parent: &counterViewContainer)
+        self.scannedWorksCounterTextLabel = counterViewContainerSubviews.textLabel
+        self.scannedWorksCounterNumberLabel = counterViewContainerSubviews.numberLabel
+        self.scannedWorksCounterProgressView = counterViewContainerSubviews.progressView
+
+        // CollectionViewContainer
+        self.scannedWorksCollectionView
+            = HistoryViewControllerViewsBuilder.buildScannedWorksCollectionView(parent: &collectionViewContainer, padding: padding)
+        self.scannedWorksCollectionView.delegate = self
+        self.scannedWorksCollectionView.dataSource = self
+        self.scannedWorksCollectionView.register(cellType: WorkCollectionViewCell.self)
+        self.scannedWorksCollectionView.register(WorkCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorkCollectionHeaderView.className)
+    }
+    
+    private func createContainerView() -> UIView {
+        let containerView = UIView()
         self.view.addSubview(containerView)
         
         let safeArea = self.view.safeArea
@@ -66,37 +63,27 @@ final class HistoryViewController: UIViewController {
             make.trailing.equalTo(safeArea.trailing)
         }
         
-        let subContainerViews = HistoryViewController.addSubContainers(parent: &containerView)
-        
-        var headerViewContainer = subContainerViews.headerViewContainer
-        self.headerTitleLabel = HistoryViewController.addHeaderView(parent: &headerViewContainer)
-        
-        var scannedWorksCounterViewContainer = subContainerViews.counterViewContainer
-        let scannedWorksCounterView = HistoryViewController.addScannedWorksCounterView(parent: &scannedWorksCounterViewContainer)
-        self.scannedWorksCounterTextLabel = scannedWorksCounterView.textLabel
-        self.scannedWorksCounterNumberLabel = scannedWorksCounterView.numberLabel
-        self.scannedWorksCounterProgressView = scannedWorksCounterView.progressView
-
-        var scannedWorksCollectionViewContainer = subContainerViews.collectionViewContainer
-        self.scannedWorksCollectionView = HistoryViewController.addScannedWorksCollectionView(parent: &scannedWorksCollectionViewContainer)
+        return containerView
     }
     
     private func updateSubviews() {
+        // HeaderTitleLabel
+        self.headerTitleLabel.text = viewModel.headerTitleLabelText
+        // ScannedWorksCounterTextLabel
+        self.scannedWorksCounterTextLabel.text = viewModel.scannedWorksCounterTextLabelText
+        // ScannedWorksCounterNumberLabel
         self.scannedWorksCounterNumberLabel.text = viewModel.scannedWorksCounterNumberLabelText
-        
+        // ScannedWorksCounterProgressView
         let value = viewModel.scannedWorksCounterProgressViewValue
         self.scannedWorksCounterProgressView.setProgress(value, animated: false)
         
-        updateScannedWorksCollectionView()
-    }
-    
-    private func updateScannedWorksCollectionView() {
+        // ScannedWorksCollectionView
         self.scannedWorksCollectionView.reloadData()
-        
+        // BackgroundView of ScannedWorksCollectionView
         var backgroundViewContainer = UIView()
         self.scannedWorksCollectionView.backgroundView = backgroundViewContainer
         if viewModel.unlockedWorks.count == 0 {
-            HistoryViewController.addScannedWorksCollectionViewBackgroundViewSubviews(parent: &backgroundViewContainer)
+            HistoryViewControllerViewsBuilder.buildScannedWorksCollectionViewBackgroundView(parent: &backgroundViewContainer)
         }
     }
 }
@@ -115,7 +102,6 @@ extension HistoryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     private var cellWidth: CGFloat {
-        let padding = HistoryViewController.padding
         let availableWidth = scannedWorksCollectionView.bounds.inset(by: scannedWorksCollectionView.adjustedContentInset).width
         let interColumnSpace = padding
         let numColumns = CGFloat(1)
@@ -167,150 +153,6 @@ extension HistoryViewController: UICollectionViewDelegate {
         
         DispatchQueue.main.async { [unowned self] in
             self.present(safariViewController, animated: true, completion: nil)
-        }
-    }
-}
-
-// MARK: - Views
-
-extension HistoryViewController {
-    
-    private static func addSubContainers(parent containerView: inout UIView) -> (headerViewContainer: UIView, counterViewContainer: UIView, collectionViewContainer: UIView) {
-        let headerViewContainer = UIView()
-        containerView.addSubview(headerViewContainer)
-        
-        headerViewContainer.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(112)
-        }
-        
-        let counterViewContainer = UIView()
-        containerView.addSubview(counterViewContainer)
-        
-        counterViewContainer.snp.makeConstraints { make in
-            make.top.equalTo(headerViewContainer.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(233)
-        }
-        
-        let collectionViewContainer = UIView()
-        containerView.addSubview(collectionViewContainer)
-                
-        collectionViewContainer.snp.makeConstraints { make in
-            make.top.equalTo(counterViewContainer.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        
-        return (headerViewContainer, counterViewContainer, collectionViewContainer)
-    }
-    
-    private static func addHeaderView(parent containerView: inout UIView) -> UILabel {
-        let headerView = UIView()
-        containerView.addSubview(headerView)
-        
-        headerView.backgroundColor = ColorManager.default.getColor(name: .headerWhite)
-        headerView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
-        }
-        
-        let label = UILabel()
-        headerView.addSubview(label)
-        
-        label.textColor = ColorManager.default.getColor(name: .iconBlack)
-        label.font = .mainFont(ofSize: 16)
-        
-        label.snp.makeConstraints { make in
-            make.top.equalTo(52)
-            make.centerX.equalToSuperview()
-        }
-        
-        return label
-    }
-    
-    private static func addScannedWorksCounterView(parent containerView: inout UIView) -> (textLabel: UILabel, numberLabel: UILabel, progressView: UIProgressView) {
-        let scannedWorksCounterView = UIView()
-        containerView.addSubview(scannedWorksCounterView)
-        
-        scannedWorksCounterView.snp.makeConstraints{ (make) -> Void in
-            make.top.bottom.leading.trailing.equalToSuperview()
-        }
-        
-        // Text Label
-        let counterTextLabel = UILabel()
-        scannedWorksCounterView.addSubview(counterTextLabel)
-
-        counterTextLabel.textColor = ColorManager.default.getColor(name: .iconBlack)
-        counterTextLabel.font = .mainFont(ofSize: 18)
-        
-        counterTextLabel.snp.makeConstraints{ (make) -> Void in
-            make.top.equalToSuperview().inset(36)
-            make.centerX.equalToSuperview()
-        }
-        
-        // Number Label
-        let counterNumberLabel = UILabel()
-        scannedWorksCounterView.addSubview(counterNumberLabel)
-        
-        counterNumberLabel.textColor = ColorManager.default.getColor(name: .iconBlack)
-        counterNumberLabel.font = UIFont(name: "Futura-Bold", size:96)
-        
-        counterNumberLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-        
-        // Progress View
-        // FIXME: not working
-        let counterProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
-        scannedWorksCounterView.addSubview(counterProgressView)
-        
-        counterProgressView.layer.masksToBounds = true
-        counterProgressView.layer.cornerRadius = 3.0
-        
-        counterProgressView.snp.makeConstraints{ make -> Void in
-            make.bottom.equalToSuperview().inset(36)
-            make.centerX.equalToSuperview()
-        }
-        
-        return (counterTextLabel, counterNumberLabel, counterProgressView)
-    }
-    
-    private static func addScannedWorksCollectionView(parent containerView: inout UIView) -> UICollectionView {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = .init(top: padding , left: 0, bottom: 0, right: 0)
-        flowLayout.minimumLineSpacing = padding
-        
-        let scannedWorksCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        scannedWorksCollectionView.backgroundColor = .clear
-        containerView.addSubview(scannedWorksCollectionView)
-        
-        scannedWorksCollectionView.snp.remakeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
-        }
-        
-        return scannedWorksCollectionView
-    }
-}
-
-extension HistoryViewController {
-    private static func addScannedWorksCollectionViewBackgroundViewSubviews(parent containerView: inout UIView) {
-        let textLabel = UILabel()
-        textLabel.text = "スキャンがありません"
-        containerView.addSubview(textLabel)
-        
-        textLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-        }
-        
-        let emojiLabel = UILabel()
-        emojiLabel.text = "😅😅😅"
-        containerView.addSubview(emojiLabel)
-        
-        emojiLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-36)
         }
     }
 }
