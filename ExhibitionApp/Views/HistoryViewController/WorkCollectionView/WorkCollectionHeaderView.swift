@@ -24,8 +24,8 @@ final class WorkCollectionHeaderView: UICollectionReusableView {
         workHeaderLabel.textAlignment = .left
         workHeaderLabel.textColor = ColorManager.shared.findColor(of: .text)
         
-        workHeaderLabel.snp.makeConstraints{ make -> Void in
-            make.left.equalTo(36)
+        workHeaderLabel.snp.makeConstraints { make in
+            make.left.equalTo(16)
             make.centerY.equalToSuperview()
         }
     }

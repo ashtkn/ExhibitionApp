@@ -9,7 +9,7 @@ final class HistoryViewControllerViewsBuilder {
         headerViewContainer.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(112)
+            make.height.equalTo(64)
         }
         
         let counterViewContainer = UIView()
@@ -49,8 +49,8 @@ final class HistoryViewControllerViewsBuilder {
         label.font = .mainFont(ofSize: 16)
         
         label.snp.makeConstraints { make in
-            make.top.equalTo(52)
             make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
         
         return label
@@ -88,7 +88,6 @@ final class HistoryViewControllerViewsBuilder {
         }
         
         // Progress View
-        // FIXME: not working
         let counterProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
         scannedWorksCounterView.addSubview(counterProgressView)
         
@@ -99,8 +98,8 @@ final class HistoryViewControllerViewsBuilder {
         counterProgressView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(36)
             make.trailing.equalToSuperview().offset(-36)
-            make.height.equalTo(10)
-            make.bottom.equalToSuperview().offset(-36)
+            make.height.equalTo(6)
+            make.bottom.equalToSuperview().offset(-18)
         }
         
         return (counterTextLabel, counterNumberLabel, counterProgressView)
@@ -126,6 +125,7 @@ final class HistoryViewControllerViewsBuilder {
         let textLabel = UILabel()
         textLabel.text = "スキャンがありません"
         textLabel.font = UIFont.mainFont(ofSize: 16)
+        textLabel.textColor = ColorManager.shared.findColor(of: .text)
         containerView.addSubview(textLabel)
         
         textLabel.snp.makeConstraints { make in
