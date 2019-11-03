@@ -13,7 +13,7 @@ class AssetsManagerTests: XCTestCase {
     
     func testAssetsManager() {
         let assetsManager = AssetsManager.default
-        for icon in AssetsManager.Icon.allCases {
+        for icon in AssetsManager.IconName.allCases {
             let _ = assetsManager.getImage(icon: icon)
         }
     }

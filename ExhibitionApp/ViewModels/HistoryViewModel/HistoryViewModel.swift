@@ -10,6 +10,14 @@ struct HistoryViewModel {
         }
     }
     
+    private var allWorks: [Work] {
+        return DataStore.shared.works
+    }
+    
+    var unlockedWorks: [Work] {
+        return DataStore.shared.unlockedWorks
+    }
+    
     var headerTitleLabelText: String {
         return "履歴"
     }
@@ -19,14 +27,11 @@ struct HistoryViewModel {
     }
     
     var scannedWorksCounterNumberLabelText: String {
-        let unlockedWorks = DataStore.shared.works.filter { !$0.isLocked }
         return "\(unlockedWorks.count)"
     }
     
     var scannedWorksCounterProgressViewValue: Float {
-        let works = DataStore.shared.works
-        let unlockedWorks = works.filter { !$0.isLocked }
-        return Float(unlockedWorks.count) / Float(works.count)
+        return Float(unlockedWorks.count) / Float(allWorks.count)
     }
     
     mutating func setDataStoreSubscription(onUpdate handler: (() -> Void)?) {
