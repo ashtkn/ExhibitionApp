@@ -7,6 +7,7 @@ final class ColorManager {
         case backgroundWhite = "#F4F4F4"
         case iconBlack = "#212121"
         case headerWhite = "#FEFFFF"
+        case white = "#FFFFFF"
     }
     
     private enum DarkModeColorSet: String {
@@ -17,8 +18,10 @@ final class ColorManager {
     enum Item {
         case background
         case header
-        case rectButton
+        case rectButtonBackground
+        case rectButtonText
         case circleButton
+        case circleButtonBackground
         case text
     }
     
@@ -34,10 +37,14 @@ final class ColorManager {
             colorCode = DefaultModeColorSet.backgroundWhite.rawValue
         case .header:
             colorCode = DefaultModeColorSet.headerWhite.rawValue
-        case .rectButton:
+        case .rectButtonBackground:
             colorCode = DefaultModeColorSet.mainRed.rawValue
+        case .rectButtonText:
+            colorCode = DefaultModeColorSet.white.rawValue
         case .circleButton:
             colorCode = DefaultModeColorSet.mainRed.rawValue
+        case .circleButtonBackground:
+            colorCode = DefaultModeColorSet.white.rawValue
         case .text:
             colorCode = DefaultModeColorSet.iconBlack.rawValue
         }

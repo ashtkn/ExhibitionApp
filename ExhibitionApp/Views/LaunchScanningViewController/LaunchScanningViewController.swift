@@ -15,7 +15,7 @@ final class LaunchScanningViewController: UIViewController {
             self.scanButton.layer.borderColor = ColorManager.shared.findColor(of: .circleButton).cgColor
             self.scanButton.setImage(AssetsManager.default.getImage(image: .finger), for: .normal)
             self.scanButton.tintColor = ColorManager.shared.findColor(of: .circleButton)
-            self.scanButton.backgroundColor = .white
+            self.scanButton.backgroundColor = ColorManager.shared.findColor(of: .circleButtonBackground)
         }
     }
     
