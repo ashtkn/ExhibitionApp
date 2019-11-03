@@ -2,19 +2,6 @@ import UIKit
 
 final class ColorManager {
     
-    private enum DefaultModeColorSet: String {
-        case mainRed = "#E36263"
-        case backgroundWhite = "#F4F4F4"
-        case iconBlack = "#212121"
-        case headerWhite = "#FEFFFF"
-        case white = "#FFFFFF"
-    }
-    
-    private enum DarkModeColorSet: String {
-        // TODO: Configue colors for dark mode
-        case iconWhite = "#FFFFFF"
-    }
-    
     enum Item {
         case background
         case header
@@ -30,29 +17,18 @@ final class ColorManager {
     private init() {}
     
     func findColor(of item: Item) -> UIColor {
-        // TODO: Configue colors for dark mode
-        var colorCode: String
-        
         switch item {
         case .background:
-            colorCode = DefaultModeColorSet.backgroundWhite.rawValue
-        case .header:
-            colorCode = DefaultModeColorSet.headerWhite.rawValue
-        case .rectButtonBackground:
-            colorCode = DefaultModeColorSet.mainRed.rawValue
+            return UIColor(named: "BackgroundDefault")!
+        case .header, .circleButtonBackground:
+            return UIColor(named: "BackgroundLight")!
+        case .rectButtonBackground, .circleButton, .progressBar:
+            return UIColor(named: "ComponentsDefault")!
         case .rectButtonText:
-            colorCode = DefaultModeColorSet.white.rawValue
-        case .circleButton:
-            colorCode = DefaultModeColorSet.mainRed.rawValue
-        case .circleButtonBackground:
-            colorCode = DefaultModeColorSet.white.rawValue
+            return UIColor(named: "TextReversed")!
         case .text:
-            colorCode = DefaultModeColorSet.iconBlack.rawValue
-        case .progressBar:
-            colorCode = DefaultModeColorSet.mainRed.rawValue
+            return UIColor(named: "TextDefault")!
         }
-        
-        return convertColor(code: colorCode)
     }
     
     private func convertColor(code colorCode: String) -> UIColor {
