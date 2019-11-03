@@ -55,7 +55,7 @@ final class HistoryViewController: UIViewController {
         self.view.addSubview(containerView)
         
         let safeArea = self.view.safeArea
-        containerView.backgroundColor = ColorManager.default.getColor(name: .backgroundWhite)
+        containerView.backgroundColor = ColorManager.shared.findColor(of: .background)
         containerView.snp.makeConstraints { make in
             make.top.equalTo(safeArea.top)
             make.bottom.equalTo(safeArea.bottom)

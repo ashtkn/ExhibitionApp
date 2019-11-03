@@ -37,7 +37,7 @@ final class HistoryViewControllerViewsBuilder {
         let headerView = UIView()
         containerView.addSubview(headerView)
         
-        headerView.backgroundColor = ColorManager.default.getColor(name: .headerWhite)
+        headerView.backgroundColor = ColorManager.shared.findColor(of: .header)
         headerView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
@@ -45,7 +45,7 @@ final class HistoryViewControllerViewsBuilder {
         let label = UILabel()
         headerView.addSubview(label)
         
-        label.textColor = ColorManager.default.getColor(name: .iconBlack)
+        label.textColor = ColorManager.shared.findColor(of: .text)
         label.font = .mainFont(ofSize: 16)
         
         label.snp.makeConstraints { make in
@@ -68,7 +68,7 @@ final class HistoryViewControllerViewsBuilder {
         let counterTextLabel = UILabel()
         scannedWorksCounterView.addSubview(counterTextLabel)
 
-        counterTextLabel.textColor = ColorManager.default.getColor(name: .iconBlack)
+        counterTextLabel.textColor = ColorManager.shared.findColor(of: .text)
         counterTextLabel.font = .mainFont(ofSize: 18)
         
         counterTextLabel.snp.makeConstraints{ (make) -> Void in
@@ -80,7 +80,7 @@ final class HistoryViewControllerViewsBuilder {
         let counterNumberLabel = UILabel()
         scannedWorksCounterView.addSubview(counterNumberLabel)
         
-        counterNumberLabel.textColor = ColorManager.default.getColor(name: .iconBlack)
+        counterNumberLabel.textColor = ColorManager.shared.findColor(of: .text)
         counterNumberLabel.font = UIFont(name: "Futura-Bold", size:96)
         
         counterNumberLabel.snp.makeConstraints { make in
