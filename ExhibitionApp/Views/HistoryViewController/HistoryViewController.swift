@@ -45,15 +45,11 @@ final class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupSubviews()
+        self.updateSubviews()
         
         // Subscribe DataStore
         viewModel.setDataStoreSubscription { [unowned self] in
-            self.scannedWorksCounterNumberLabel.text = self.viewModel.scannedWorksCounterNumberLabelText
-            
-            let value = self.viewModel.scannedWorksCounterProgressViewValue
-            self.scannedWorksCounterProgressView.setProgress(value, animated: false)
-            
-            self.scannedWorksCollectionView.reloadData()
+            self.updateSubviews()
         }
     }
     
@@ -83,6 +79,25 @@ final class HistoryViewController: UIViewController {
 
         var scannedWorksCollectionViewContainer = subContainerViews.collectionViewContainer
         self.scannedWorksCollectionView = HistoryViewController.addScannedWorksCollectionView(parent: &scannedWorksCollectionViewContainer)
+    }
+    
+    private func updateSubviews() {
+        self.scannedWorksCounterNumberLabel.text = viewModel.scannedWorksCounterNumberLabelText
+        
+        let value = viewModel.scannedWorksCounterProgressViewValue
+        self.scannedWorksCounterProgressView.setProgress(value, animated: false)
+        
+        updateScannedWorksCollectionView()
+    }
+    
+    private func updateScannedWorksCollectionView() {
+        self.scannedWorksCollectionView.reloadData()
+        
+        var backgroundViewContainer = UIView()
+        self.scannedWorksCollectionView.backgroundView = backgroundViewContainer
+        if viewModel.unlockedWorks.count == 0 {
+            HistoryViewController.addScannedWorksCollectionViewBackgroundViewSubviews(parent: &backgroundViewContainer)
+        }
     }
 }
 
@@ -275,5 +290,27 @@ extension HistoryViewController {
         }
         
         return scannedWorksCollectionView
+    }
+}
+
+extension HistoryViewController {
+    private static func addScannedWorksCollectionViewBackgroundViewSubviews(parent containerView: inout UIView) {
+        let textLabel = UILabel()
+        textLabel.text = "スキャンがありません"
+        containerView.addSubview(textLabel)
+        
+        textLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+        
+        let emojiLabel = UILabel()
+        emojiLabel.text = "😅😅😅"
+        containerView.addSubview(emojiLabel)
+        
+        emojiLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-36)
+        }
     }
 }
