@@ -29,7 +29,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LoadingViewController</string>
 	<key>UIMainStoryboardFile~ipad</key>
-	<string>TopPageViewController</string>
+	<string>LoadingViewController</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -9,10 +9,18 @@ final class AssetsManager {
         case leftArrow = "outline_keyboard_arrow_left_white_36pt_1x"
     }
     
+    enum ImageName: String, CaseIterable {
+        case finger = "scan_finger"
+    }
+    
     static let `default` = AssetsManager()
     private init() {}
     
     func getImage(icon name: Icon) -> UIImage {
         return UIImage(named: name.rawValue)!
+    }
+    
+    func getImage(image imageName: ImageName) -> UIImage {
+        return UIImage(named: imageName.rawValue)!
     }
 }

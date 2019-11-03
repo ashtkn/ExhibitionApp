@@ -111,6 +111,7 @@
 		41B9AF0623681E8000CA1997 /* FirebaseServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9AF0523681E8000CA1997 /* FirebaseServiceTests.swift */; };
 		41D77CD52359AC4800C0C860 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D77CD42359AC4800C0C860 /* Resource.swift */; };
 		41D77CD72359AC7E00C0C860 /* ResourceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D77CD62359AC7E00C0C860 /* ResourceObject.swift */; };
+		41D9CCB6236E6BAF003B66D2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9CCB5236E6BAF003B66D2 /* ColorManager.swift */; };
 		41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C0F2334D86700552D40 /* UICollectionView+Extensions.swift */; };
 		41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C272334F57600552D40 /* NSObject+Extensions.swift */; };
 		41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8A23404DBE00606D7B /* JsonUtility.swift */; };
@@ -222,6 +223,7 @@
 		41D34ED12339E7C80096188B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		41D77CD42359AC4800C0C860 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		41D77CD62359AC7E00C0C860 /* ResourceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceObject.swift; sourceTree = "<group>"; };
+		41D9CCB5236E6BAF003B66D2 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		41EA9C0F2334D86700552D40 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		41EA9C272334F57600552D40 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
 		41F46B8A23404DBE00606D7B /* JsonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtility.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 			children = (
 				41F46B8A23404DBE00606D7B /* JsonUtility.swift */,
 				41456D6123559AFE0077309C /* AssetsManager.swift */,
+				41D9CCB5236E6BAF003B66D2 /* ColorManager.swift */,
 				41B9AEB42367F64200CA1997 /* System.swift */,
 			);
 			path = Commons;
@@ -831,6 +834,7 @@
 				8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */,
 				4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */,
 				41D77CD72359AC7E00C0C860 /* ResourceObject.swift in Sources */,
+				41D9CCB6236E6BAF003B66D2 /* ColorManager.swift in Sources */,
 				8A6804BB2354E1E70059019D /* UIButton+Custom.swift in Sources */,
 				41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,

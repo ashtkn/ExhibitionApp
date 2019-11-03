@@ -6,12 +6,6 @@ final class HistoryViewController: UIViewController {
     
     private static let padding: CGFloat = 15
     
-//    private weak var moveToLaunchScanningViewButton: UIButton! {
-//        didSet {
-//            self.moveToLaunchScanningViewButton.addTarget(self, action: #selector(didMoveToLaunchScanningViewButtonTapped(_:)), for: .touchUpInside)
-//        }
-//    }
-    
     private weak var headerTitleLabel: UILabel! {
         didSet {
             self.headerTitleLabel.text = viewModel.headerTitleLabelText
@@ -64,43 +58,33 @@ final class HistoryViewController: UIViewController {
     }
     
     private func setupSubviews() {
-        var container = UIView()
-        self.view.addSubview(container)
+        var containerView = UIView()
+        self.view.addSubview(containerView)
         
         let safeArea = self.view.safeArea
-        container.snp.makeConstraints { make in
+        containerView.backgroundColor = ColorManager.default.getColor(name: .backgroundWhite)
+        containerView.snp.makeConstraints { make in
             make.top.equalTo(safeArea.top)
             make.bottom.equalTo(safeArea.bottom)
             make.leading.equalTo(safeArea.leading)
             make.trailing.equalTo(safeArea.trailing)
         }
         
-        let subContainers = HistoryViewController.addSubContainers(parent: &container)
+        let subContainerViews = HistoryViewController.addSubContainers(parent: &containerView)
         
-        var headerViewContainer = subContainers.headerViewContainer
+        var headerViewContainer = subContainerViews.headerViewContainer
         self.headerTitleLabel = HistoryViewController.addHeaderView(parent: &headerViewContainer)
         
-        var scannedWorksCounterViewContainer = subContainers.counterViewContainer
+        var scannedWorksCounterViewContainer = subContainerViews.counterViewContainer
         let scannedWorksCounterView = HistoryViewController.addScannedWorksCounterView(parent: &scannedWorksCounterViewContainer)
         self.scannedWorksCounterTextLabel = scannedWorksCounterView.textLabel
         self.scannedWorksCounterNumberLabel = scannedWorksCounterView.numberLabel
         self.scannedWorksCounterProgressView = scannedWorksCounterView.progressView
 
-        var scannedWorksCollectionViewContainer = subContainers.collectionViewContainer
+        var scannedWorksCollectionViewContainer = subContainerViews.collectionViewContainer
         self.scannedWorksCollectionView = HistoryViewController.addScannedWorksCollectionView(parent: &scannedWorksCollectionViewContainer)
-        
-//        self.moveToLaunchScanningViewButton = HistoryViewController.addMoveToLaunchScanningButton(parent: &container)
     }
 }
-
-//extension HistoryViewController {
-//
-//    @objc private func didMoveToLaunchScanningViewButtonTapped(_ sender: UIButton) {
-//        let topPageViewController = self.parent as! TopPageViewController
-//        topPageViewController.showPage(.launchScanningViewController)
-//    }
-//}
-
 
 // MARK: UICollectionViewDelegateFlowLayout
 
@@ -140,12 +124,12 @@ extension HistoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.sortedWorks.count
+        return viewModel.unlockedWorks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: WorkCollectionViewCell.self, for: indexPath)
-        let work = viewModel.sortedWorks[indexPath.row]
+        let work = viewModel.unlockedWorks[indexPath.row]
         cell.configure(WorkCollectionViewCellModel(from: work))
         
         return cell
@@ -162,9 +146,7 @@ extension HistoryViewController: UICollectionViewDataSource {
 extension HistoryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let work = viewModel.sortedWorks[indexPath.row]
-        if work.isLocked { return }
-        
+        let work = viewModel.unlockedWorks[indexPath.row]
         let url = URL(string: work.url)!
         let safariViewController = SFSafariViewController(url: url)
         
@@ -177,21 +159,6 @@ extension HistoryViewController: UICollectionViewDelegate {
 // MARK: - Views
 
 extension HistoryViewController {
-    
-//    private static func addMoveToLaunchScanningButton(parent containerView: inout UIView) -> UIButton {
-//        let moveToLaunchScanningViewButton = UIButton()
-//        containerView.addSubview(moveToLaunchScanningViewButton)
-//
-//        moveToLaunchScanningViewButton.frame.size = CGSize(width: 36, height: 36)
-//        moveToLaunchScanningViewButton.setImage(AssetsManager.default.getImage(icon: .collection), for: .normal)
-//
-//        moveToLaunchScanningViewButton.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(4)
-//            make.trailing.equalToSuperview().offset(-24)
-//        }
-//
-//        return moveToLaunchScanningViewButton
-//    }
     
     private static func addSubContainers(parent containerView: inout UIView) -> (headerViewContainer: UIView, counterViewContainer: UIView, collectionViewContainer: UIView) {
         let headerViewContainer = UIView()
@@ -228,8 +195,7 @@ extension HistoryViewController {
         let headerView = UIView()
         containerView.addSubview(headerView)
         
-        headerView.backgroundColor = .black
-        
+        headerView.backgroundColor = ColorManager.default.getColor(name: .headerWhite)
         headerView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
@@ -237,7 +203,7 @@ extension HistoryViewController {
         let label = UILabel()
         headerView.addSubview(label)
         
-        label.textColor = .white
+        label.textColor = ColorManager.default.getColor(name: .iconBlack)
         label.font = .mainFont(ofSize: 16)
         
         label.snp.makeConstraints { make in
@@ -260,7 +226,7 @@ extension HistoryViewController {
         let counterTextLabel = UILabel()
         scannedWorksCounterView.addSubview(counterTextLabel)
 
-        counterTextLabel.textColor = .white
+        counterTextLabel.textColor = ColorManager.default.getColor(name: .iconBlack)
         counterTextLabel.font = .mainFont(ofSize: 18)
         
         counterTextLabel.snp.makeConstraints{ (make) -> Void in
@@ -272,7 +238,7 @@ extension HistoryViewController {
         let counterNumberLabel = UILabel()
         scannedWorksCounterView.addSubview(counterNumberLabel)
         
-        counterNumberLabel.textColor = .white
+        counterNumberLabel.textColor = ColorManager.default.getColor(name: .iconBlack)
         counterNumberLabel.font = UIFont(name: "Futura-Bold", size:96)
         
         counterNumberLabel.snp.makeConstraints { make in
@@ -280,6 +246,7 @@ extension HistoryViewController {
         }
         
         // Progress View
+        // FIXME: not working
         let counterProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: 317, height: 6))
         scannedWorksCounterView.addSubview(counterProgressView)
         
@@ -300,6 +267,7 @@ extension HistoryViewController {
         flowLayout.minimumLineSpacing = padding
         
         let scannedWorksCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        scannedWorksCollectionView.backgroundColor = .clear
         containerView.addSubview(scannedWorksCollectionView)
         
         scannedWorksCollectionView.snp.remakeConstraints { make in
