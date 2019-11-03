@@ -36,6 +36,14 @@ final class DataStore {
         return Array(realm.objects(WorkObject.self)).map { $0.entity }
     }
     
+    var unlockedWorks: [Work] {
+        return works.filter { !$0.isLocked }
+    }
+    
+    var debugDescription: String {
+        return "Works: \(works.count), ARObjectReferences: \(getARObjects()), ARImageReferences: \(getARImages().count)"
+    }
+    
     // MARK: Methods
     // MARK: Preparing data
     

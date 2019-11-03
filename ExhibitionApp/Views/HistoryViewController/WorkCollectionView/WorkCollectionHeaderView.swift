@@ -22,9 +22,9 @@ final class WorkCollectionHeaderView: UICollectionReusableView {
         workHeaderLabel.font = UIFont.mainFont(ofSize: 24)
         workHeaderLabel.text = viewModel.workHeaderLabelText
         workHeaderLabel.textAlignment = .left
-        workHeaderLabel.textColor = .white
+        workHeaderLabel.textColor = AssetsManager.default.getColor(of: .text)
         
-        workHeaderLabel.snp.makeConstraints{ make -> Void in
+        workHeaderLabel.snp.makeConstraints { make in
             make.left.equalTo(16)
             make.centerY.equalToSuperview()
         }
