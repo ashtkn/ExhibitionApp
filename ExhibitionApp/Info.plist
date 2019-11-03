@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>42</string>
+	<string>60</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -29,7 +29,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LoadingViewController</string>
 	<key>UIMainStoryboardFile~ipad</key>
-	<string>TopPageViewController</string>
+	<string>LoadingViewController</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

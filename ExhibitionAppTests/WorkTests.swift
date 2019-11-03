@@ -37,6 +37,11 @@ class WorkTests: XCTestCase {
         "title": "Syaro"
     }
     """.data(using: .utf8)!
+    
+    private func getWork() throws -> Work {
+        let decoder = JSONDecoder()
+        return try decoder.decode(Work.self, from: jsonData)
+    }
 
     override func setUp() {
         super.setUp()
@@ -47,44 +52,38 @@ class WorkTests: XCTestCase {
     }
 
     func testDecoding() {
+        XCTAssertNoThrow(try getWork())
+        
         let decoder = JSONDecoder()
-        
-        XCTAssertNoThrow(try decoder.decode(Work.self, from: jsonData))
-        let work = try! decoder.decode(Work.self, from: jsonData)
-        
-        XCTAssertEqual(work.id, "XXXXXX")
-        XCTAssertEqual(work.title, "Syaro")
-        
         XCTAssertThrowsError(try decoder.decode(Work.self, from: invalidJsonData))
     }
     
     func testEncoding() {
-        let decoder = JSONDecoder()
-        
-        XCTAssertNoThrow(try decoder.decode(Work.self, from: jsonData))
-        let work = try! decoder.decode(Work.self, from: jsonData)
+        let work = try! getWork()
         
         let encoder = JSONEncoder()
-        
         XCTAssertNoThrow(try encoder.encode(work))
+        
         let data = try! encoder.encode(work)
-        
+        let decoder = JSONDecoder()
         XCTAssertNoThrow(try decoder.decode(Work.self, from: data))
-        let workToCompare = try! decoder.decode(Work.self, from: data)
-        
-        XCTAssertEqual(work.id, workToCompare.id)
-        XCTAssertEqual(work.title, workToCompare.title)
     }
     
     func testEuatableProtocol() {
-        let decoder = JSONDecoder()
-        
-        XCTAssertNoThrow(try decoder.decode(Work.self, from: jsonData))
-        let work = try! decoder.decode(Work.self, from: jsonData)
-        let resources = [Resource]()
-        
         let id = "XXXXXX"
-        let workToCompare = Work(id: id, title: "", authors: [], images: [], caption: "", url: "",  isLocked: false, version: 0, resources: resources)
-        XCTAssertEqual(work, workToCompare)
+        let version = 0
+        let work = Work(id: id, title: "", authors: [], images: [], caption: "", url: "",  isLocked: false, version: version, resources: [])
+        
+        XCTAssertEqual(work, try! getWork())
+    }
+    
+    func testWorkObject() {
+        let work = try! getWork()
+        let workObject = WorkObject.create(from: work)
+        
+        XCTAssertEqual(work.id, workObject.id)
+        XCTAssertEqual(work.version, workObject.version)
+        
+        XCTAssertEqual(work, workObject.entity)
     }
 }

@@ -25,7 +25,7 @@ final class FirebaseService {
     
     func fetchWorks() -> Promise<[Work]> {
         return Promise<[Work]> { [unowned self] resolve, reject, _ in
-            self.signInAsync().then({
+            self.signInAsync().retry(3).timeout(timeout: 5.0).then({
                 let collection = Firestore.firestore().collection("works")
                 collection.getDocuments { querySnapshot, error in
                     if let error = error {
@@ -44,7 +44,7 @@ final class FirebaseService {
     
     func download(resource fileName: String, to directory: URL) -> Promise<URL> {
         return Promise<URL> { [unowned self] resolve, reject, _ in
-            self.signInAsync().then( {
+            self.signInAsync().retry(3).timeout(timeout: 5.0).then( {
                 let reference = Storage.storage().reference(withPath: "Assets/Resources/\(fileName)")
                 let path = directory.appendingPathComponent("\(fileName)")
                 reference.write(toFile: path) { url, error in
@@ -63,7 +63,7 @@ final class FirebaseService {
     
     func download(image fileName: String, to directory: URL) -> Promise<URL> {
         return Promise<URL> { [unowned self] resolve, reject, _ in
-            self.signInAsync().then( {
+            self.signInAsync().retry(3).timeout(timeout: 5.0).then( {
                 let reference = Storage.storage().reference(withPath: "Assets/Images/\(fileName)")
                 let path = directory.appendingPathComponent("\(fileName)")
                 reference.write(toFile: path) { url, error in
