@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4103C4E32355F2F7000918EB /* WorkCollectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103C4E22355F2F7000918EB /* WorkCollectionHeaderViewModel.swift */; };
+		410C2B29236FE270003E9415 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410C2B28236FE270003E9415 /* ARVideoKit.framework */; };
+		410C2B2C236FE2B3003E9415 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410C2B28236FE270003E9415 /* ARVideoKit.framework */; };
 		410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410E1C07234EC6940088C71A /* LoadingViewController.storyboard */; };
 		410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E1C09234EC6B10088C71A /* LoadingViewController.swift */; };
 		411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A22340E3C000644A61 /* HyperionCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -142,6 +144,7 @@
 
 /* Begin PBXFileReference section */
 		4103C4E22355F2F7000918EB /* WorkCollectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionHeaderViewModel.swift; sourceTree = "<group>"; };
+		410C2B28236FE270003E9415 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARVideoKit.framework; path = Carthage/Build/iOS/ARVideoKit.framework; sourceTree = "<group>"; };
 		410E1C07234EC6940088C71A /* LoadingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
 		410E1C09234EC6B10088C71A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
@@ -258,6 +261,7 @@
 				411A16A72340E3D000644A61 /* AttributesInspector.framework in Frameworks */,
 				41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */,
 				41481F6A2343873E004E2EB2 /* GoogleAppMeasurement.framework in Frameworks */,
+				410C2B29236FE270003E9415 /* ARVideoKit.framework in Frameworks */,
 				41481F6C2343873E004E2EB2 /* BoringSSL-GRPC.framework in Frameworks */,
 				41481F702343873E004E2EB2 /* FIRAnalyticsConnector.framework in Frameworks */,
 				41481F742343873E004E2EB2 /* GoogleDataTransport.framework in Frameworks */,
@@ -290,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				410C2B2C236FE2B3003E9415 /* ARVideoKit.framework in Frameworks */,
 				41B9AF0323681DF100CA1997 /* StoreKit.framework in Frameworks */,
 				41B9AF0123681DE400CA1997 /* libsqlite3.tbd in Frameworks */,
 				41B9AEFF23681DDB00CA1997 /* libc++.tbd in Frameworks */,
@@ -589,6 +594,7 @@
 		41D34EC32339DF080096188B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				410C2B28236FE270003E9415 /* ARVideoKit.framework */,
 				41B9AF0223681DF100CA1997 /* StoreKit.framework */,
 				41B9AF0023681DE400CA1997 /* libsqlite3.tbd */,
 				41B9AEFE23681DDB00CA1997 /* libc++.tbd */,
@@ -822,6 +828,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CodableFirebase.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -844,6 +851,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CodableFirebase.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ARVideoKit.framework",
 			);
 			name = "Run Script for Carthage";
 			outputFileListPaths = (

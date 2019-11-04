@@ -7,3 +7,4 @@ binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseStorageBinary.jso
 github "malcommac/Hydra"
 github "alickbass/CodableFirebase"
 github "SnapKit/SnapKit" ~> 5.0.0
+github "AFathi/ARVideoKit" "swift_5"
