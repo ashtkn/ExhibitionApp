@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>A-OTF-GothicBBBPr6-Medium.otf</string>
-		<string>FOT-TsukuARdGothicStd-B.otf</string>
-		<string>FOT-TsukuARdGothicStd-E.otf</string>
-		<string>FOT-TsukuARdGothicStd-R.otf</string>
-		<string>URWDIN-Regular.otf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ja_JP</string>
 	<key>CFBundleExecutable</key>
@@ -25,13 +17,25 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>60</string>
+	<string>56</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>ARカメラに使用します</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>ARカメラに使用します</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>画像を保存します</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>画像を保存します</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>A-OTF-GothicBBBPr6-Medium.otf</string>
+		<string>FOT-TsukuARdGothicStd-B.otf</string>
+		<string>FOT-TsukuARdGothicStd-E.otf</string>
+		<string>FOT-TsukuARdGothicStd-R.otf</string>
+		<string>URWDIN-Regular.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
