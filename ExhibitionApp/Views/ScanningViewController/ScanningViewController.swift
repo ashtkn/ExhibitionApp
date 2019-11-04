@@ -7,12 +7,7 @@ final class ScanningViewController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet private weak var sceneView: ARSCNView! {
-        didSet {
-            self.sceneView.delegate = self
-        }
-    }
-    
+    @IBOutlet private weak var sceneView: ARSCNView!
     @IBOutlet private weak var takeSnapshotButton: UIButton!
     
     @IBOutlet private weak var cancelButton: UIButton! {
@@ -30,11 +25,14 @@ final class ScanningViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sceneView.delegate = self
         sceneRecorder = SceneRecorder(sceneView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
         sceneView.session.run(configuration)
         
@@ -44,6 +42,7 @@ final class ScanningViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         sceneView.session.pause()
         sceneRecorder?.rest()
     }

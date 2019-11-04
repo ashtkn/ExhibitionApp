@@ -2,7 +2,7 @@ import UIKit
 
 final class SharingViewControllerViewsBuilder {
     
-    static func addImageView(parent containerView: inout UIView) -> UIImageView {
+    static func buildImageView(parent containerView: inout UIView) -> UIImageView {
         let imageView = UIImageView()
         containerView.addSubview(imageView)
         
@@ -14,7 +14,7 @@ final class SharingViewControllerViewsBuilder {
         return imageView
     }
     
-    static func addShareButton(parent containerView: inout UIView) -> UIButton {
+    static func buildShareButton(parent containerView: inout UIView) -> UIButton {
         let shareButton = UIButton()
         containerView.addSubview(shareButton)
         
@@ -37,7 +37,7 @@ final class SharingViewControllerViewsBuilder {
         return shareButton
     }
     
-    static func addBackButton(parent containerView: inout UIView) -> UIButton {
+    static func buildBackButton(parent containerView: inout UIView) -> UIButton {
         let backButton = UIButton()
         containerView.addSubview(backButton)
         
@@ -52,7 +52,7 @@ final class SharingViewControllerViewsBuilder {
         return backButton
     }
     
-    static func addSaveSnapshotButton(parent containerView: inout UIView) -> UIButton {
+    static func buildSaveSnapshotButton(parent containerView: inout UIView) -> UIButton {
         let saveButton = UIButton()
         containerView.addSubview(saveButton)
         

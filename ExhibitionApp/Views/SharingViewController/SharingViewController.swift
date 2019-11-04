@@ -29,16 +29,16 @@ final class SharingViewController: UIViewController {
     private func setupSubviews() {
         var containerView = createContainerView()
         
-        imageView = SharingViewControllerViewsBuilder.addImageView(parent: &containerView)
+        imageView = SharingViewControllerViewsBuilder.buildImageView(parent: &containerView)
 
-        shareButton = SharingViewControllerViewsBuilder.addShareButton(parent: &containerView)
+        shareButton = SharingViewControllerViewsBuilder.buildShareButton(parent: &containerView)
         shareButton.setTitle("シェア", for: .normal)
         shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
         
-        backButton = SharingViewControllerViewsBuilder.addBackButton(parent: &containerView)
+        backButton = SharingViewControllerViewsBuilder.buildBackButton(parent: &containerView)
         backButton.addTarget(self, action: #selector(didBackButtonTapped(_:)), for: .touchUpInside)
         
-        saveSnapshotButton = SharingViewControllerViewsBuilder.addSaveSnapshotButton(parent: &containerView)
+        saveSnapshotButton = SharingViewControllerViewsBuilder.buildSaveSnapshotButton(parent: &containerView)
         saveSnapshotButton.addTarget(self, action: #selector(didSaveSnapshotButtonTapped(_:)), for: .touchUpInside)
     }
     
