@@ -88,26 +88,25 @@ final class SharingViewController: UIViewController {
     // MARK: Actions
     
     @objc private func didShareButtonTapped(_ sender: UIButton) {
+        let activityItems: [Any]
         switch viewModel?.media {
         case .image(let image):
-            let activityItems: [Any] = [image]
-            let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [.message, .print]
-            
-            if System.current.device == .pad {
-                activityViewController.popoverPresentationController?.sourceView = imageView
-            }
-            
-            DispatchQueue.main.async { [unowned self] in
-                self.present(activityViewController, animated: true, completion: nil)
-            }
-            
+            activityItems = [image]
         case .video(let url):
-            // TODO: Implement
-            print("Currently not avalibale: \(url)")
-            
+            activityItems = [url]
         case .none:
             fatalError()
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [.message, .print]
+        
+        if System.current.device == .pad {
+            activityViewController.popoverPresentationController?.sourceView = imageView
+        }
+        
+        DispatchQueue.main.async { [unowned self] in
+            self.present(activityViewController, animated: true, completion: nil)
         }
     }
     
