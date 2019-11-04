@@ -17,12 +17,16 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>54</string>
+	<string>56</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>ARカメラに使用します</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>ARカメラに使用します</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>画像を保存します</string>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>画像を保存します</string>
 	<key>UIAppFonts</key>
 	<array>
