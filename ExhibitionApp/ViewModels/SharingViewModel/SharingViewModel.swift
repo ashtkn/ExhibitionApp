@@ -1,12 +1,19 @@
 import UIKit
 
 struct SharingViewModel {
-    let images: [UIImage]
+    
+    enum Media {
+        case image(UIImage)
+        case images([UIImage])
+        case video(URL)
+    }
+    
+    let media: Media
     let detectingWork: Work?
     let stashedScanningViewModel: ScanningViewModel
     
-    init(images: [UIImage], detecting work: Work?, stash scanningViewModel: ScanningViewModel) {
-        self.images = images
+    init(media inputMedia: Media, detecting work: Work?, stash scanningViewModel: ScanningViewModel) {
+        self.media = inputMedia
         self.detectingWork = work
         
         var stashedScanningViewModel = scanningViewModel

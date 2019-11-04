@@ -24,22 +24,27 @@ final class ScanningViewController: UIViewController {
     // MARK: ViewModel
     
     private var viewModel = ScanningViewModel()
+    private var sceneRecorder: SceneRecorder?
     
     // MARK: Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sceneRecorder = SceneRecorder(sceneView)
+        sceneRecorder?.requestMicrophonePermission()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         sceneView.session.run(configuration)
+        sceneRecorder?.prepare(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+        sceneRecorder?.rest()
     }
     
     private var configuration: ARConfiguration {
@@ -54,27 +59,43 @@ final class ScanningViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func didTakeSnapshotButtonTapped(_ sender: UITapGestureRecognizer) {
-        let image = sceneView.snapshot()
-        let sharingViewModel = SharingViewModel(images: [image], detecting: viewModel.detectingWork, stash: viewModel)
-        
-        let sharingViewController = SharingViewController.init()
-        sharingViewController.configure(sharingViewModel)
+        guard let sceneRecorder = sceneRecorder else { fatalError() }
+        let photo = sceneRecorder.takePhoto()
+        let sharingViewModel = SharingViewModel(media: .image(photo), detecting: viewModel.detectingWork, stash: viewModel)
         
         DispatchQueue.main.async { [unowned self] in
+            let sharingViewController = SharingViewController.init()
+            sharingViewController.configure(sharingViewModel)
             self.navigationController?.show(sharingViewController, sender: nil)
         }
     }
     
-    @IBAction private func didTakeSnaoshotButtonLongPressed(_ sender: UILongPressGestureRecognizer) {
+    @IBAction private func didTakeSnapshotButtonLongPressed(_ sender: UILongPressGestureRecognizer) {
         switch(sender.state) {
         case .began:
-            print("began")
+            startRecording()
         case .ended:
-            print("ended")
+            stopRecording()
         case .possible, .changed, .cancelled, .failed:
             break
         @unknown default:
             fatalError()
+        }
+    }
+    
+    private func startRecording() {
+        sceneRecorder?.startRecording()
+    }
+    
+    private func stopRecording() {
+        sceneRecorder?.stopRecording { [viewModel] url in
+            let sharingViewModel = SharingViewModel(media: .video(url), detecting: viewModel.detectingWork, stash: viewModel)
+            
+            DispatchQueue.main.async { [unowned self] in
+                let sharingViewController = SharingViewController.init()
+                sharingViewController.configure(sharingViewModel)
+                self.navigationController?.show(sharingViewController, sender: nil)
+            }
         }
     }
     

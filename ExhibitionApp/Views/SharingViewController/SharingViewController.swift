@@ -6,8 +6,18 @@ final class SharingViewController: UIViewController {
     // MARK: Outlets
     private weak var imageView: UIImageView! {
         didSet {
-            // TODO: 配列の長さに応じて処理を変更
-            self.imageView.image = viewModel?.images.last
+            self.imageView.contentMode = .scaleAspectFit
+            
+            switch viewModel?.media {
+            case .image(let image):
+                self.imageView.image = image
+            case .images(let images):
+                self.imageView.image = images.last
+            case .video(let url):
+                print("Video at \(url)")
+            case .none:
+                fatalError()
+            }
         }
     }
     

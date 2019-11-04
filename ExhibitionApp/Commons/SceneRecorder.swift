@@ -13,7 +13,11 @@ final class SceneRecorder {
         recorder = RecordAR(ARSceneKit: sceneView)!
     }
     
-    func prepare(configuration: ARConfiguration?) {
+    func requestMicrophonePermission() {
+        recorder.requestMicrophonePermission()
+    }
+    
+    func prepare(_ configuration: ARConfiguration?) {
         recorder.prepare(configuration)
     }
     
