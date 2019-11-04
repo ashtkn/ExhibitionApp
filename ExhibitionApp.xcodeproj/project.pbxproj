@@ -11,6 +11,7 @@
 		410C2B29236FE270003E9415 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410C2B28236FE270003E9415 /* ARVideoKit.framework */; };
 		410C2B2C236FE2B3003E9415 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410C2B28236FE270003E9415 /* ARVideoKit.framework */; };
 		410C2B2E236FE362003E9415 /* SceneRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B2D236FE362003E9415 /* SceneRecorder.swift */; };
+		410C2B3023702EED003E9415 /* SharingViewControllerViewsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */; };
 		410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410E1C07234EC6940088C71A /* LoadingViewController.storyboard */; };
 		410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E1C09234EC6B10088C71A /* LoadingViewController.swift */; };
 		411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A22340E3C000644A61 /* HyperionCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -147,6 +148,7 @@
 		4103C4E22355F2F7000918EB /* WorkCollectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionHeaderViewModel.swift; sourceTree = "<group>"; };
 		410C2B28236FE270003E9415 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARVideoKit.framework; path = Carthage/Build/iOS/ARVideoKit.framework; sourceTree = "<group>"; };
 		410C2B2D236FE362003E9415 /* SceneRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneRecorder.swift; sourceTree = "<group>"; };
+		410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewControllerViewsBuilder.swift; sourceTree = "<group>"; };
 		410E1C07234EC6940088C71A /* LoadingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
 		410E1C09234EC6B10088C71A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 			isa = PBXGroup;
 			children = (
 				41B589EB2347279800C4BB45 /* SharingViewController.swift */,
+				410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */,
 			);
 			path = SharingViewController;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				41D77CD72359AC7E00C0C860 /* ResourceObject.swift in Sources */,
 				41C97AC0236EDD73006E407C /* CustomLabel.swift in Sources */,
 				8A6804BB2354E1E70059019D /* UIButton+Custom.swift in Sources */,
+				410C2B3023702EED003E9415 /* SharingViewControllerViewsBuilder.swift in Sources */,
 				41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,
 				41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */,

@@ -6,8 +6,6 @@ final class SharingViewController: UIViewController {
     // MARK: Outlets
     private weak var imageView: UIImageView! {
         didSet {
-            self.imageView.contentMode = .scaleAspectFit
-            
             switch viewModel?.media {
             case .image(let image):
                 self.imageView.image = image
@@ -21,26 +19,9 @@ final class SharingViewController: UIViewController {
         }
     }
     
-    private weak var shareButton: UIButton! {
-        didSet {
-            if let title = viewModel?.shareButtonTitle {
-                self.shareButton.setTitle(title, for: .normal)
-            }
-            self.shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
-        }
-    }
-    
-    private weak var backButton: UIButton! {
-        didSet {
-            self.backButton.addTarget(self, action: #selector(didBackButtonTapped(_:)), for: .touchUpInside)
-        }
-    }
-    
-    private weak var saveSnapshotButton: UIButton! {
-        didSet {
-            self.saveSnapshotButton.addTarget(self, action: #selector(didSaveSnapshotButtonTapped(_:)), for: .touchUpInside)
-        }
-    }
+    private weak var shareButton: UIButton!
+    private weak var backButton: UIButton!
+    private weak var saveSnapshotButton: UIButton!
 
     private var viewModel: SharingViewModel?
     
@@ -61,21 +42,33 @@ final class SharingViewController: UIViewController {
     }
     
     private func setupSubviews() {
-        var container = UIView()
-        self.view.addSubview(container)
+        var containerView = createContainerView()
+        self.imageView = SharingViewControllerViewsBuilder.addImageView(parent: &containerView)
+        
+        self.shareButton = SharingViewControllerViewsBuilder.addShareButton(parent: &containerView)
+        self.shareButton.setTitle(viewModel?.shareButtonTitle, for: .normal)
+        self.shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
+        
+        self.backButton = SharingViewControllerViewsBuilder.addBackButton(parent: &containerView)
+        self.backButton.addTarget(self, action: #selector(didBackButtonTapped(_:)), for: .touchUpInside)
+        
+        self.saveSnapshotButton = SharingViewControllerViewsBuilder.addSaveSnapshotButton(parent: &containerView)
+        self.saveSnapshotButton.addTarget(self, action: #selector(didSaveSnapshotButtonTapped(_:)), for: .touchUpInside)
+    }
+    
+    private func createContainerView() -> UIView {
+        let containerView = UIView()
+        self.view.addSubview(containerView)
         
         let safeArea = self.view.safeArea
-        container.snp.makeConstraints { make in
+        containerView.snp.makeConstraints { make in
             make.top.equalTo(safeArea.top)
             make.bottom.equalTo(safeArea.bottom)
             make.leading.equalTo(safeArea.leading)
             make.trailing.equalTo(safeArea.trailing)
         }
         
-        self.imageView = SharingViewController.addImageView(parent: &container)
-        self.shareButton = SharingViewController.addShareButton(parent: &container)
-        self.backButton = SharingViewController.addBackButton(parent: &container)
-        self.saveSnapshotButton = SharingViewController.addSaveSnapshotButton(parent: &container)
+        return containerView
     }
     
     // MARK: Actions
@@ -122,74 +115,5 @@ final class SharingViewController: UIViewController {
         DispatchQueue.main.async { [unowned self] in
             self.present(alertController, animated: true, completion: nil)
         }
-    }
-}
-
-// MARK: - Views
-
-extension SharingViewController {
-    
-    private static func addImageView(parent containerView: inout UIView) -> UIImageView {
-        let imageView = UIImageView()
-        containerView.addSubview(imageView)
-        
-        imageView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
-        }
-        
-        return imageView
-    }
-    
-    private static func addShareButton(parent containerView: inout UIView) -> UIButton {
-        let shareButton = UIButton()
-        containerView.addSubview(shareButton)
-        
-        shareButton.backgroundColor = AssetsManager.default.getColor(of: .rectButtonBackground)
-        shareButton.layer.cornerRadius = 20
-        let titleColor = AssetsManager.default.getColor(of: .rectButtonText)
-        shareButton.setTitleColor(titleColor, for: .normal)
-        shareButton.titleLabel?.font = UIFont.mainFont(ofSize: 14)
-        shareButton.titleLabel?.textAlignment = .center
-        shareButton.contentHorizontalAlignment = .center
-        shareButton.contentVerticalAlignment = .center
-        
-        shareButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().inset(40)
-            make.height.equalTo(40)
-            make.bottom.equalToSuperview().offset(-20)
-        }
-        
-        return shareButton
-    }
-    
-    private static func addBackButton(parent containerView: inout UIView) -> UIButton {
-        let backButton = UIButton()
-        containerView.addSubview(backButton)
-        
-        backButton.setImage(AssetsManager.default.getImage(icon: .leftArrow), for: .normal)
-        
-        backButton.snp.makeConstraints { make in
-            make.width.height.equalTo(36)
-            make.top.equalToSuperview().offset(18)
-            make.left.equalToSuperview().offset(18)
-        }
-        
-        return backButton
-    }
-    
-    private static func addSaveSnapshotButton(parent containerView: inout UIView) -> UIButton {
-        let saveButton = UIButton()
-        containerView.addSubview(saveButton)
-        
-        saveButton.setImage(AssetsManager.default.getImage(icon: .save), for: .normal)
-        
-        saveButton.snp.makeConstraints { make in
-            make.width.height.equalTo(36)
-            make.top.equalToSuperview().offset(18)
-            make.right.equalToSuperview().offset(-18)
-        }
-        
-        return saveButton
     }
 }
