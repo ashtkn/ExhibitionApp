@@ -22,6 +22,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1H-6h-pYw" customClass="Button_Custom" customModule="ExhibitionApp" customModuleProvider="target">
                                 <rect key="frame" x="163" y="776" width="88" height="88"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="CX4-HW-y0H"/>
                                     <constraint firstAttribute="height" constant="88" id="Vqt-fb-qtv"/>
@@ -38,7 +39,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didTakeSnapshotButtonTapped:" destination="qqt-59-AZP" eventType="touchUpInside" id="pfN-Du-oAh"/>
+                                    <outletCollection property="gestureRecognizers" destination="Jb9-Le-Gad" appends="YES" id="EnH-ks-Hzy"/>
+                                    <outletCollection property="gestureRecognizers" destination="KtW-bU-aRk" appends="YES" id="BTX-66-hl3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukp-BZ-Np8">
@@ -76,6 +78,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UPB-nb-Qdz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Jb9-Le-Gad">
+                    <connections>
+                        <action selector="didTakeSnapshotButtonTapped:" destination="qqt-59-AZP" id="8Hh-7G-rgc"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="KtW-bU-aRk">
+                    <connections>
+                        <action selector="didTakeSnaoshotButtonLongPressed:" destination="qqt-59-AZP" id="DhD-bm-jdG"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="850.72463768115949" y="105.80357142857143"/>
         </scene>

@@ -53,7 +53,7 @@ final class ScanningViewController: UIViewController {
     
     // MARK: Actions
     
-    @IBAction private func didTakeSnapshotButtonTapped(_ sender: Any) {
+    @IBAction private func didTakeSnapshotButtonTapped(_ sender: UITapGestureRecognizer) {
         let snapshotImage = sceneView.snapshot()
         let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: viewModel.detectingWork, stash: viewModel)
         
@@ -65,7 +65,20 @@ final class ScanningViewController: UIViewController {
         }
     }
     
-    @IBAction func didCancelButtonTapped(_ sender: Any) {
+    @IBAction private func didTakeSnaoshotButtonLongPressed(_ sender: UILongPressGestureRecognizer) {
+        switch(sender.state) {
+        case .began:
+            print("began")
+        case .ended:
+            print("ended")
+        case .possible, .changed, .cancelled, .failed:
+            break
+        @unknown default:
+            fatalError()
+        }
+    }
+    
+    @IBAction private func didCancelButtonTapped(_ sender: Any) {
         DispatchQueue.main.async { [unowned self] in
             self.navigationController?.dismiss(animated: true, completion: nil)
         }
@@ -77,16 +90,6 @@ final class ScanningViewController: UIViewController {
 extension ScanningViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-//        var expectedResourceName = ""
-//        switch anchor {
-//        case let objectAnchor as ARObjectAnchor:
-//            expectedResourceName = "\(objectAnchor.name ?? "").arobject"
-//        case let imageAnchor as ARImageAnchor:
-//            expectedResourceName = "\(imageAnchor.name ?? "").jpg"
-//        default:
-//            fatalError()
-//        }
-        
         let name = anchor.name ?? ""
         let works = viewModel.works
         if let detectingWorkIndex = works.firstIndex(where: { $0.has(resource: name) }) {
