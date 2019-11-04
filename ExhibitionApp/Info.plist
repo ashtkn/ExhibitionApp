@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>A-OTF-GothicBBBPr6-Medium.otf</string>
+		<string>FOT-TsukuARdGothicStd-B.otf</string>
+		<string>FOT-TsukuARdGothicStd-E.otf</string>
+		<string>FOT-TsukuARdGothicStd-R.otf</string>
+		<string>URWDIN-Regular.otf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ja_JP</string>
 	<key>CFBundleExecutable</key>
