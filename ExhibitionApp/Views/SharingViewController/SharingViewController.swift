@@ -119,43 +119,46 @@ final class SharingViewController: UIViewController {
     @objc private func didSaveSnapshotButtonTapped(_ sender: UIButton) {
         switch viewModel?.media {
         case .image(let image):
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(didImageSavingFinished(image:didFinishSavingWithError:contextInfo:)), nil)
+            PhotoLibraryManager.default.save(image: image) { success in
+                DispatchQueue.main.async { [unowned self] in
+                    let alertController = self.createAlertController(mediaType: "画像", success: success)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+
         case .video(let url):
-            UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(didVideoSavingFinished(video:didFinishSavingWithError:contextInfo:)), nil)
+            PhotoLibraryManager.default.save(video: url.path) { success in
+                DispatchQueue.main.async { [unowned self] in
+                    let alertController = self.createAlertController(mediaType: "動画", success: success)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+            
         case .none:
             fatalError()
         }
     }
     
-    @objc private func didImageSavingFinished(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
-        
+    private func createAlertController(mediaType text: String, success: Bool) -> UIAlertController {
         let alertController: UIAlertController
-        if let _ = error {
-            alertController = .init(title: "エラー", message: "画像の保存に失敗しました", preferredStyle: .alert)
+        
+        if success {
+            alertController = .init(title: "保存完了", message: "\(text)をカメラロールに保存しました", preferredStyle: .alert)
+            alertController.addAction(.init(title: "OK", style: .default, handler: nil))
+            
         } else {
-            alertController = .init(title: "保存完了", message: "画像をカメラロールに保存しました", preferredStyle: .alert)
+            alertController = .init(title: "エラー", message: "\(text)の保存に失敗しました", preferredStyle: .alert)
+            
+            let settingsAction = UIAlertAction(title: "設定", style: .cancel) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: nil)
+                }
+            }
+            alertController.addAction(settingsAction)
+            alertController.addAction(.init(title: "後で", style: .default, handler: nil))
         }
         
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        DispatchQueue.main.async { [unowned self] in
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
-    @objc private func didVideoSavingFinished(video videoPath: String, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
-        
-        let alertController: UIAlertController
-        if let _ = error {
-            alertController = .init(title: "エラー", message: "動画の保存に失敗しました", preferredStyle: .alert)
-        } else {
-            alertController = .init(title: "保存完了", message: "動画をカメラロールに保存しました", preferredStyle: .alert)
-        }
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        DispatchQueue.main.async { [unowned self] in
-            self.present(alertController, animated: true, completion: nil)
-        }
+        return alertController
     }
 }

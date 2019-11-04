@@ -12,6 +12,7 @@
 		410C2B2C236FE2B3003E9415 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410C2B28236FE270003E9415 /* ARVideoKit.framework */; };
 		410C2B2E236FE362003E9415 /* SceneRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B2D236FE362003E9415 /* SceneRecorder.swift */; };
 		410C2B3023702EED003E9415 /* SharingViewControllerViewsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */; };
+		410C2B3223704F00003E9415 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B3123704F00003E9415 /* PhotoLibraryManager.swift */; };
 		410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410E1C07234EC6940088C71A /* LoadingViewController.storyboard */; };
 		410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E1C09234EC6B10088C71A /* LoadingViewController.swift */; };
 		411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A22340E3C000644A61 /* HyperionCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -149,6 +150,7 @@
 		410C2B28236FE270003E9415 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARVideoKit.framework; path = Carthage/Build/iOS/ARVideoKit.framework; sourceTree = "<group>"; };
 		410C2B2D236FE362003E9415 /* SceneRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneRecorder.swift; sourceTree = "<group>"; };
 		410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewControllerViewsBuilder.swift; sourceTree = "<group>"; };
+		410C2B3123704F00003E9415 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 		410E1C07234EC6940088C71A /* LoadingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
 		410E1C09234EC6B10088C71A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				41B9AEB42367F64200CA1997 /* System.swift */,
 				41C97ABF236EDD73006E407C /* CustomLabel.swift */,
 				410C2B2D236FE362003E9415 /* SceneRecorder.swift */,
+				410C2B3123704F00003E9415 /* PhotoLibraryManager.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				41647D88234745670021A2E3 /* ScanningViewModel.swift in Sources */,
 				4103C4E32355F2F7000918EB /* WorkCollectionHeaderViewModel.swift in Sources */,
 				416C213F2347264100648C0A /* ScanningViewController.swift in Sources */,
+				410C2B3223704F00003E9415 /* PhotoLibraryManager.swift in Sources */,
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
 				41A596A923334179008DA6AF /* LabelNode.swift in Sources */,
