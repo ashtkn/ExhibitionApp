@@ -6,7 +6,8 @@ final class SharingViewController: UIViewController {
     // MARK: Outlets
     private weak var imageView: UIImageView! {
         didSet {
-            self.imageView.image = viewModel?.snapshotImage
+            // TODO: 配列の長さに応じて処理を変更
+            self.imageView.image = viewModel?.images.last
         }
     }
     
@@ -70,6 +71,7 @@ final class SharingViewController: UIViewController {
     // MARK: Actions
     
     @objc private func didShareButtonTapped(_ sender: UIButton) {
+        // TODO: 動画に対応
         guard let image = self.imageView.image else { fatalError() }
         
         let activityItems: [Any] = [image]
@@ -92,6 +94,7 @@ final class SharingViewController: UIViewController {
     }
     
     @objc private func didSaveSnapshotButtonTapped(_ sender: UIButton) {
+        // TODO: 動画に対応
         guard let image = self.imageView.image else { fatalError() }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(didSavingSnapshotImageSavingFinished(_:didFinishSavingWithError:contextInfo:)), nil)
     }

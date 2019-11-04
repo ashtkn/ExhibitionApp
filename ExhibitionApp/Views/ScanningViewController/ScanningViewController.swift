@@ -54,8 +54,8 @@ final class ScanningViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func didTakeSnapshotButtonTapped(_ sender: UITapGestureRecognizer) {
-        let snapshotImage = sceneView.snapshot()
-        let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: viewModel.detectingWork, stash: viewModel)
+        let image = sceneView.snapshot()
+        let sharingViewModel = SharingViewModel(images: [image], detecting: viewModel.detectingWork, stash: viewModel)
         
         let sharingViewController = SharingViewController.init()
         sharingViewController.configure(sharingViewModel)
