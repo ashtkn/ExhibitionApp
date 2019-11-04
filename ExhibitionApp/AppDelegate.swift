@@ -9,15 +9,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseService.shared.configure()
         return true
     }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return SceneRecordingUtility.orientation
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {}
     func applicationDidEnterBackground(_ application: UIApplication) {}
     func applicationWillEnterForeground(_ application: UIApplication) {}
     func applicationDidBecomeActive(_ application: UIApplication) {}
     func applicationWillTerminate(_ application: UIApplication) {}
-    
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return SceneRecordingUtility.shared.orientation
-    }
 }
 
