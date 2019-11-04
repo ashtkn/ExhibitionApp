@@ -31,13 +31,14 @@ final class ScanningViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneRecorder = SceneRecorder(sceneView)
-        sceneRecorder?.requestMicrophonePermission()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         sceneView.session.run(configuration)
+        
+        sceneRecorder?.requestMicrophonePermission()
         sceneRecorder?.prepare(configuration)
     }
     

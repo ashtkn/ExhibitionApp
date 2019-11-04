@@ -4,7 +4,6 @@ struct SharingViewModel {
     
     enum Media {
         case image(UIImage)
-        case images([UIImage])
         case video(URL)
     }
     

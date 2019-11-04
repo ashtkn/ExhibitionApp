@@ -1,29 +1,19 @@
 import UIKit
 import SnapKit
+import AVFoundation
 
 final class SharingViewController: UIViewController {
     
     // MARK: Outlets
-    private weak var imageView: UIImageView! {
-        didSet {
-            switch viewModel?.media {
-            case .image(let image):
-                self.imageView.image = image
-            case .images(let images):
-                self.imageView.image = images.last
-            case .video(let url):
-                print("Video at \(url)")
-            case .none:
-                fatalError()
-            }
-        }
-    }
-    
+    private weak var imageView: UIImageView!
     private weak var shareButton: UIButton!
     private weak var backButton: UIButton!
     private weak var saveSnapshotButton: UIButton!
 
     private var viewModel: SharingViewModel?
+    
+    private var queuePlayer = AVQueuePlayer()
+    private var playerLooper: AVPlayerLooper?
     
     func configure(_ viewModel: SharingViewModel) {
         self.viewModel = viewModel
@@ -35,25 +25,21 @@ final class SharingViewController: UIViewController {
         super.viewDidLoad()
         self.setupSubviews()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
+
     private func setupSubviews() {
         var containerView = createContainerView()
-        self.imageView = SharingViewControllerViewsBuilder.addImageView(parent: &containerView)
         
-        self.shareButton = SharingViewControllerViewsBuilder.addShareButton(parent: &containerView)
-        self.shareButton.setTitle(viewModel?.shareButtonTitle, for: .normal)
-        self.shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
+        imageView = SharingViewControllerViewsBuilder.addImageView(parent: &containerView)
+
+        shareButton = SharingViewControllerViewsBuilder.addShareButton(parent: &containerView)
+        shareButton.setTitle(viewModel?.shareButtonTitle, for: .normal)
+        shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
         
-        self.backButton = SharingViewControllerViewsBuilder.addBackButton(parent: &containerView)
-        self.backButton.addTarget(self, action: #selector(didBackButtonTapped(_:)), for: .touchUpInside)
+        backButton = SharingViewControllerViewsBuilder.addBackButton(parent: &containerView)
+        backButton.addTarget(self, action: #selector(didBackButtonTapped(_:)), for: .touchUpInside)
         
-        self.saveSnapshotButton = SharingViewControllerViewsBuilder.addSaveSnapshotButton(parent: &containerView)
-        self.saveSnapshotButton.addTarget(self, action: #selector(didSaveSnapshotButtonTapped(_:)), for: .touchUpInside)
+        saveSnapshotButton = SharingViewControllerViewsBuilder.addSaveSnapshotButton(parent: &containerView)
+        saveSnapshotButton.addTarget(self, action: #selector(didSaveSnapshotButtonTapped(_:)), for: .touchUpInside)
     }
     
     private func createContainerView() -> UIView {
@@ -61,6 +47,7 @@ final class SharingViewController: UIViewController {
         self.view.addSubview(containerView)
         
         let safeArea = self.view.safeArea
+        containerView.backgroundColor = AssetsManager.default.getColor(of: .background)
         containerView.snp.makeConstraints { make in
             make.top.equalTo(safeArea.top)
             make.bottom.equalTo(safeArea.bottom)
@@ -71,22 +58,56 @@ final class SharingViewController: UIViewController {
         return containerView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        switch viewModel?.media {
+        case .image(let image):
+            imageView.image = image
+            
+        case .video(let path):
+            let item = AVPlayerItem(asset: AVAsset(url: path))
+            playerLooper = AVPlayerLooper(player: queuePlayer, templateItem: item)
+            queuePlayer.play()
+            
+            let playerLayer = AVPlayerLayer(player: queuePlayer)
+            playerLayer.frame = imageView.bounds
+            playerLayer.videoGravity = .resizeAspect
+            imageView.layer.addSublayer(playerLayer)
+            
+        case .none:
+            fatalError()
+        }
+    }
+    
     // MARK: Actions
     
     @objc private func didShareButtonTapped(_ sender: UIButton) {
-        // TODO: 動画に対応
-        guard let image = self.imageView.image else { fatalError() }
-        
-        let activityItems: [Any] = [image]
-        let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-        activityViewController.excludedActivityTypes = [.message, .print]
-        
-        if System.current.device == .pad {
-            activityViewController.popoverPresentationController?.sourceView = imageView
-        }
-        
-        DispatchQueue.main.async { [unowned self] in
-            self.present(activityViewController, animated: true, completion: nil)
+        switch viewModel?.media {
+        case .image(let image):
+            let activityItems: [Any] = [image]
+            let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+            activityViewController.excludedActivityTypes = [.message, .print]
+            
+            if System.current.device == .pad {
+                activityViewController.popoverPresentationController?.sourceView = imageView
+            }
+            
+            DispatchQueue.main.async { [unowned self] in
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+            
+        case .video(let url):
+            // TODO: Implement
+            print("Currently not avalibale: \(url)")
+            
+        case .none:
+            fatalError()
         }
     }
     
@@ -97,9 +118,17 @@ final class SharingViewController: UIViewController {
     }
     
     @objc private func didSaveSnapshotButtonTapped(_ sender: UIButton) {
-        // TODO: 動画に対応
-        guard let image = self.imageView.image else { fatalError() }
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(didSavingSnapshotImageSavingFinished(_:didFinishSavingWithError:contextInfo:)), nil)
+        switch viewModel?.media {
+        case .image(let image):
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(didSavingSnapshotImageSavingFinished(_:didFinishSavingWithError:contextInfo:)), nil)
+            
+        case .video(let url):
+            // TODO: Implement
+            print("Currently not avalibale: \(url)")
+            
+        case .none:
+            fatalError()
+        }
     }
     
     @objc private func didSavingSnapshotImageSavingFinished(_ image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
