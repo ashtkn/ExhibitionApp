@@ -1,7 +1,7 @@
 import ARKit
 import ARVideoKit
 
-final class SceneRecordingUtility {
+final class SceneRecorder {
     
     static var orientation: UIInterfaceOrientationMask {
         return ViewAR.orientation
