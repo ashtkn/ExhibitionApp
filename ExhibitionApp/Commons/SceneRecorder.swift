@@ -8,6 +8,7 @@ final class SceneRecorder {
     }
     
     private let recorder: RecordAR
+    private let recordingQueue = DispatchQueue(label: "RecordingThread")
     
     init(_ sceneView: ARSCNView) {
         recorder = RecordAR(ARSceneKit: sceneView)!
@@ -30,14 +31,14 @@ final class SceneRecorder {
     }
     
     func startRecording() {
-        recorder.record()
-    }
-    
-    func pauseRecording() {
-        recorder.pause()
+        recordingQueue.async { [unowned self] in
+            self.recorder.record()
+        }
     }
     
     func stopRecording(finished handler: ((URL) -> Void)?) {
-        recorder.stop(handler)
+        recordingQueue.async { [unowned self] in
+            self.recorder.stop(handler)
+        }
     }
 }
