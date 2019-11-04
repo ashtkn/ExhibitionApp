@@ -32,7 +32,7 @@ final class SharingViewController: UIViewController {
         imageView = SharingViewControllerViewsBuilder.addImageView(parent: &containerView)
 
         shareButton = SharingViewControllerViewsBuilder.addShareButton(parent: &containerView)
-        shareButton.setTitle(viewModel?.shareButtonTitle, for: .normal)
+        shareButton.setTitle("シェア", for: .normal)
         shareButton.addTarget(self, action: #selector(didShareButtonTapped(_:)), for: .touchUpInside)
         
         backButton = SharingViewControllerViewsBuilder.addBackButton(parent: &containerView)
@@ -120,25 +120,39 @@ final class SharingViewController: UIViewController {
     @objc private func didSaveSnapshotButtonTapped(_ sender: UIButton) {
         switch viewModel?.media {
         case .image(let image):
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(didSavingSnapshotImageSavingFinished(_:didFinishSavingWithError:contextInfo:)), nil)
-            
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(didImageSavingFinished(image:didFinishSavingWithError:contextInfo:)), nil)
         case .video(let url):
-            // TODO: Implement
-            print("Currently not avalibale: \(url)")
-            
+            UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(didVideoSavingFinished(video:didFinishSavingWithError:contextInfo:)), nil)
         case .none:
             fatalError()
         }
     }
     
-    @objc private func didSavingSnapshotImageSavingFinished(_ image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
+    @objc private func didImageSavingFinished(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
         
-        var alert = viewModel!.imageSavingSuccessAlert
+        let alertController: UIAlertController
         if let _ = error {
-            alert = viewModel!.imageSavingErrorAlert
+            alertController = .init(title: "エラー", message: "画像の保存に失敗しました", preferredStyle: .alert)
+        } else {
+            alertController = .init(title: "保存完了", message: "画像をカメラロールに保存しました", preferredStyle: .alert)
         }
         
-        let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        DispatchQueue.main.async { [unowned self] in
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    @objc private func didVideoSavingFinished(video videoPath: String, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
+        
+        let alertController: UIAlertController
+        if let _ = error {
+            alertController = .init(title: "エラー", message: "動画の保存に失敗しました", preferredStyle: .alert)
+        } else {
+            alertController = .init(title: "保存完了", message: "動画をカメラロールに保存しました", preferredStyle: .alert)
+        }
+        
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         DispatchQueue.main.async { [unowned self] in
