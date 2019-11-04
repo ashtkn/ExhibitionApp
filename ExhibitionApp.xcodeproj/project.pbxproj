@@ -73,6 +73,11 @@
 		41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AD233E6C7C008C797A /* Realm.framework */; };
 		41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AF233E6C86008C797A /* RealmSwift.framework */; };
 		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
+		41AE8646236FAF35008A7927 /* URWDIN-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8641236FAF33008A7927 /* URWDIN-Regular.otf */; };
+		41AE8647236FAF35008A7927 /* FOT-TsukuARdGothicStd-B.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8642236FAF34008A7927 /* FOT-TsukuARdGothicStd-B.otf */; };
+		41AE8648236FAF35008A7927 /* FOT-TsukuARdGothicStd-R.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8643236FAF34008A7927 /* FOT-TsukuARdGothicStd-R.otf */; };
+		41AE8649236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8644236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf */; };
+		41AE864A236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8645236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf */; };
 		41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B589EB2347279800C4BB45 /* SharingViewController.swift */; };
 		41B58A1323473A5E00C4BB45 /* WorkCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */; };
 		41B58A182347425200C4BB45 /* WorkCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B58A172347425200C4BB45 /* WorkCollectionViewCellModel.swift */; };
@@ -206,6 +211,11 @@
 		41A3C7AD233E6C7C008C797A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		41A3C7AF233E6C86008C797A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		41A596A823334179008DA6AF /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
+		41AE8641236FAF33008A7927 /* URWDIN-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "URWDIN-Regular.otf"; sourceTree = "<group>"; };
+		41AE8642236FAF34008A7927 /* FOT-TsukuARdGothicStd-B.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FOT-TsukuARdGothicStd-B.otf"; sourceTree = "<group>"; };
+		41AE8643236FAF34008A7927 /* FOT-TsukuARdGothicStd-R.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FOT-TsukuARdGothicStd-R.otf"; sourceTree = "<group>"; };
+		41AE8644236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FOT-TsukuARdGothicStd-E.otf"; sourceTree = "<group>"; };
+		41AE8645236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A-OTF-GothicBBBPr6-Medium.otf"; sourceTree = "<group>"; };
 		41B589EB2347279800C4BB45 /* SharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkCollectionViewCell.xib; sourceTree = "<group>"; };
 		41B58A172347425200C4BB45 /* WorkCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionViewCellModel.swift; sourceTree = "<group>"; };
@@ -414,6 +424,7 @@
 		4186ADDC23324192002F6A4C /* ExhibitionApp */ = {
 			isa = PBXGroup;
 			children = (
+				41AE863F236FAEEE008A7927 /* Resources */,
 				41481F872343899D004E2EB2 /* APIs */,
 				41F46B8923404D8200606D7B /* Commons */,
 				41A596A423333EDD008DA6AF /* Models */,
@@ -512,6 +523,26 @@
 				41A596A823334179008DA6AF /* LabelNode.swift */,
 			);
 			path = SceneNodes;
+			sourceTree = "<group>";
+		};
+		41AE863F236FAEEE008A7927 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				41AE8640236FAEF6008A7927 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		41AE8640236FAEF6008A7927 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				41AE8645236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf */,
+				41AE8642236FAF34008A7927 /* FOT-TsukuARdGothicStd-B.otf */,
+				41AE8644236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf */,
+				41AE8643236FAF34008A7927 /* FOT-TsukuARdGothicStd-R.otf */,
+				41AE8641236FAF33008A7927 /* URWDIN-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		41B589E82347275900C4BB45 /* SharingViewController */ = {
@@ -708,13 +739,18 @@
 			files = (
 				41481F80234387C8004E2EB2 /* gRPCCertificates-Cpp.bundle in Resources */,
 				41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */,
+				41AE864A236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf in Resources */,
+				41AE8646236FAF35008A7927 /* URWDIN-Regular.otf in Resources */,
 				4186ADE023324192002F6A4C /* art.scnassets in Resources */,
 				416C213D2347261B00648C0A /* ScanningViewController.storyboard in Resources */,
 				4186ADEA23324194002F6A4C /* LaunchScreen.storyboard in Resources */,
 				416C212A234723A100648C0A /* TopPageViewController.storyboard in Resources */,
+				41AE8647236FAF35008A7927 /* FOT-TsukuARdGothicStd-B.otf in Resources */,
+				41AE8649236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf in Resources */,
 				410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */,
 				4186ADE723324194002F6A4C /* Assets.xcassets in Resources */,
 				416C2138234725C100648C0A /* LaunchScanningViewController.storyboard in Resources */,
+				41AE8648236FAF35008A7927 /* FOT-TsukuARdGothicStd-R.otf in Resources */,
 				41B58A1323473A5E00C4BB45 /* WorkCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
