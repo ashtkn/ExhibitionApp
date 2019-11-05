@@ -129,6 +129,10 @@
 		41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C272334F57600552D40 /* NSObject+Extensions.swift */; };
 		41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8A23404DBE00606D7B /* JsonUtility.swift */; };
 		41F46B8E2340502B00606D7B /* WorkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8D2340502B00606D7B /* WorkObject.swift */; };
+		41F5C92F23716DE00081E7ED /* ImageLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */; };
+		41F5C931237172780081E7ED /* TextLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C930237172780081E7ED /* TextLabelNode.swift */; };
+		41F5C93523717C230081E7ED /* SceneKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C93423717C230081E7ED /* SceneKit+Extensions.swift */; };
+		41F5C937237182220081E7ED /* ShipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C936237182220081E7ED /* ShipNode.swift */; };
 		8A6804A723503B3D0059019D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6804A623503B3D0059019D /* SnapKit.framework */; };
 		8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AA235040290059019D /* UIColor+Extensions.swift */; };
 		8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */; };
@@ -253,6 +257,10 @@
 		41EA9C272334F57600552D40 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
 		41F46B8A23404DBE00606D7B /* JsonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtility.swift; sourceTree = "<group>"; };
 		41F46B8D2340502B00606D7B /* WorkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkObject.swift; sourceTree = "<group>"; };
+		41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelNode.swift; sourceTree = "<group>"; };
+		41F5C930237172780081E7ED /* TextLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelNode.swift; sourceTree = "<group>"; };
+		41F5C93423717C230081E7ED /* SceneKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneKit+Extensions.swift"; sourceTree = "<group>"; };
+		41F5C936237182220081E7ED /* ShipNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipNode.swift; sourceTree = "<group>"; };
 		8A6804A623503B3D0059019D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		8A6804AA235040290059019D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionHeaderView.swift; sourceTree = "<group>"; };
@@ -475,6 +483,7 @@
 				418E40C82352FB1100322B6A /* SnapKit+Extensions.swift */,
 				8A6804BA2354E1E70059019D /* UIButton+Custom.swift */,
 				41C97AC1236EE33F006E407C /* UITraitCollection+Extensions.swift */,
+				41F5C93423717C230081E7ED /* SceneKit+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -535,6 +544,9 @@
 			isa = PBXGroup;
 			children = (
 				41A596A823334179008DA6AF /* LabelNode.swift */,
+				41F5C930237172780081E7ED /* TextLabelNode.swift */,
+				41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */,
+				41F5C936237182220081E7ED /* ShipNode.swift */,
 			);
 			path = SceneNodes;
 			sourceTree = "<group>";
@@ -896,15 +908,18 @@
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
 				41A596A923334179008DA6AF /* LabelNode.swift in Sources */,
+				41F5C92F23716DE00081E7ED /* ImageLabelNode.swift in Sources */,
 				8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */,
 				4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */,
 				41D77CD72359AC7E00C0C860 /* ResourceObject.swift in Sources */,
 				41C97AC0236EDD73006E407C /* CustomLabel.swift in Sources */,
+				41F5C93523717C230081E7ED /* SceneKit+Extensions.swift in Sources */,
 				8A6804BB2354E1E70059019D /* UIButton+Custom.swift in Sources */,
 				410C2B3023702EED003E9415 /* SharingViewControllerViewsBuilder.swift in Sources */,
 				41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,
 				41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */,
+				41F5C931237172780081E7ED /* TextLabelNode.swift in Sources */,
 				8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */,
 				41647D8B2347458B0021A2E3 /* SharingViewModel.swift in Sources */,
 				41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */,
@@ -916,6 +931,7 @@
 				41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */,
 				416C213A234725DD00648C0A /* LaunchScanningViewController.swift in Sources */,
 				41B9AEB52367F64200CA1997 /* System.swift in Sources */,
+				41F5C937237182220081E7ED /* ShipNode.swift in Sources */,
 				416E580E2357587B004A1B30 /* LoadingViewModel.swift in Sources */,
 				418E40C92352FB1100322B6A /* SnapKit+Extensions.swift in Sources */,
 				41222D042340484600F5EFE9 /* UserData.swift in Sources */,
