@@ -17,8 +17,7 @@ final class ShipNode: SCNNode {
     
     init(gropuId name: String, width: CGFloat, originalPosition: SCNVector3 = .init()) {
         // Configure current class
-        let originalPostion = SCNVector3()
-        self.originalPosition = originalPostion
+        self.originalPosition = originalPosition
         
         // Confugure SuperClass
         super.init()

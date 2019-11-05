@@ -17,8 +17,7 @@ final class ImageLabelNode: SCNNode {
     
     init(groupId name: String, image: UIImage, width: CGFloat, height: CGFloat, originalPosition: SCNVector3 = .init()) {
         // Configure current class
-        let originalPostion = SCNVector3()
-        self.originalPosition = originalPostion
+        self.originalPosition = originalPosition
         
         // Confugure SuperClass
         super.init()
