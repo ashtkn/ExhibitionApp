@@ -136,6 +136,7 @@
 		41F5C92F23716DE00081E7ED /* ImageLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */; };
 		41F5C931237172780081E7ED /* TextLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C930237172780081E7ED /* TextLabelNode.swift */; };
 		41F5C93523717C230081E7ED /* SceneKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C93423717C230081E7ED /* SceneKit+Extensions.swift */; };
+		41F5C937237182220081E7ED /* ShipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C936237182220081E7ED /* ShipNode.swift */; };
 		8A6804A723503B3D0059019D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6804A623503B3D0059019D /* SnapKit.framework */; };
 		8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AA235040290059019D /* UIColor+Extensions.swift */; };
 		8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */; };
@@ -267,6 +268,7 @@
 		41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelNode.swift; sourceTree = "<group>"; };
 		41F5C930237172780081E7ED /* TextLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelNode.swift; sourceTree = "<group>"; };
 		41F5C93423717C230081E7ED /* SceneKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneKit+Extensions.swift"; sourceTree = "<group>"; };
+		41F5C936237182220081E7ED /* ShipNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipNode.swift; sourceTree = "<group>"; };
 		8A6804A623503B3D0059019D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		8A6804AA235040290059019D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionHeaderView.swift; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 				41A596A823334179008DA6AF /* LabelNode.swift */,
 				41F5C930237172780081E7ED /* TextLabelNode.swift */,
 				41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */,
+				41F5C936237182220081E7ED /* ShipNode.swift */,
 				410C2B352370643C003E9415 /* TitleNode.swift */,
 				410C2B3723706A7D003E9415 /* ProfileNode.swift */,
 				410C2B3323705E28003E9415 /* PaperNode.swift */,
@@ -942,6 +945,7 @@
 				41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */,
 				416C213A234725DD00648C0A /* LaunchScanningViewController.swift in Sources */,
 				41B9AEB52367F64200CA1997 /* System.swift in Sources */,
+				41F5C937237182220081E7ED /* ShipNode.swift in Sources */,
 				416E580E2357587B004A1B30 /* LoadingViewModel.swift in Sources */,
 				418E40C92352FB1100322B6A /* SnapKit+Extensions.swift in Sources */,
 				41222D042340484600F5EFE9 /* UserData.swift in Sources */,

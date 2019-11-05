@@ -98,10 +98,13 @@ final class ScanningViewController: UIViewController {
                     textLabelNode.move(to: newPosition)
                 }
                 
+            case _ as ShipNode:
+                print("Ship")
+                
             case .none:
                 fatalError()
             default:
-                fatalError()
+                print("Not set")
             }
         }
     }
@@ -192,24 +195,29 @@ extension ScanningViewController {
         addedNodes[labelNodeGroupId] = labelNode
         node.addChildNode(labelNode)
         
-        for i in 0..<3 {
-            let imageLabelNodeGroupId = "group_of_image_label_node_\(i)"
-            let image = AssetsManager.default.getArtistImage(name: .hashimoto)
-            
-            let position = SCNVector3(.random(in: -0.2...0.2), .random(in: -0.2..<0.0), .random(in: -0.2...0.2))
-            let imageLabelNode = ImageLabelNode(groupId: imageLabelNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: position)
-            
-            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
-            let rotation = SCNQuaternion.euler(eulerAngles)
-            imageLabelNode.localRotate(by: rotation)
-            
-            addedNodes[imageLabelNodeGroupId] = imageLabelNode
-            node.addChildNode(imageLabelNode)
-        }
+//        for i in 0..<3 {
+//            let imageLabelNodeGroupId = "group_of_image_label_node_\(i)"
+//            let image = AssetsManager.default.getArtistImage(name: .hashimoto)
+//
+//            let position = SCNVector3(.random(in: -0.2...0.2), .random(in: -0.2..<0.0), .random(in: -0.2...0.2))
+//            let imageLabelNode = ImageLabelNode(groupId: imageLabelNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: position)
+//
+//            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
+//            let rotation = SCNQuaternion.euler(eulerAngles)
+//            imageLabelNode.localRotate(by: rotation)
+//            
+//            addedNodes[imageLabelNodeGroupId] = imageLabelNode
+//            node.addChildNode(imageLabelNode)
+//        }
         
         let textLabelNodeGroupId = "group_of_text_label_node"
         let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: "Hello", textColor: .purple, width: 0.15)
         addedNodes[textLabelNodeGroupId] = textLabelNode
         node.addChildNode(textLabelNode)
+        
+        let shipNodeGroupId = "group_of_text_ship_node"
+        let shipNode = ShipNode(gropuId: shipNodeGroupId, width: 0.1)
+        addedNodes[shipNodeGroupId] = shipNode
+        node.addChildNode(shipNode)
     }
 }
