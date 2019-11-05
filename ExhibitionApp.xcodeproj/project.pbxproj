@@ -13,10 +13,6 @@
 		410C2B2E236FE362003E9415 /* SceneRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B2D236FE362003E9415 /* SceneRecorder.swift */; };
 		410C2B3023702EED003E9415 /* SharingViewControllerViewsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */; };
 		410C2B3223704F00003E9415 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B3123704F00003E9415 /* PhotoLibraryManager.swift */; };
-		410C2B3423705E28003E9415 /* PaperNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B3323705E28003E9415 /* PaperNode.swift */; };
-		410C2B362370643C003E9415 /* TitleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B352370643C003E9415 /* TitleNode.swift */; };
-		410C2B3823706A7D003E9415 /* ProfileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B3723706A7D003E9415 /* ProfileNode.swift */; };
-		410C2B3A23706BBB003E9415 /* ImageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B3923706BBB003E9415 /* ImageNode.swift */; };
 		410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410E1C07234EC6940088C71A /* LoadingViewController.storyboard */; };
 		410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E1C09234EC6B10088C71A /* LoadingViewController.swift */; };
 		411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A22340E3C000644A61 /* HyperionCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -160,10 +156,6 @@
 		410C2B2D236FE362003E9415 /* SceneRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneRecorder.swift; sourceTree = "<group>"; };
 		410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewControllerViewsBuilder.swift; sourceTree = "<group>"; };
 		410C2B3123704F00003E9415 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
-		410C2B3323705E28003E9415 /* PaperNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperNode.swift; sourceTree = "<group>"; };
-		410C2B352370643C003E9415 /* TitleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleNode.swift; sourceTree = "<group>"; };
-		410C2B3723706A7D003E9415 /* ProfileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNode.swift; sourceTree = "<group>"; };
-		410C2B3923706BBB003E9415 /* ImageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNode.swift; sourceTree = "<group>"; };
 		410E1C07234EC6940088C71A /* LoadingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
 		410E1C09234EC6B10088C71A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
@@ -555,10 +547,6 @@
 				41F5C930237172780081E7ED /* TextLabelNode.swift */,
 				41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */,
 				41F5C936237182220081E7ED /* ShipNode.swift */,
-				410C2B352370643C003E9415 /* TitleNode.swift */,
-				410C2B3723706A7D003E9415 /* ProfileNode.swift */,
-				410C2B3323705E28003E9415 /* PaperNode.swift */,
-				410C2B3923706BBB003E9415 /* ImageNode.swift */,
 			);
 			path = SceneNodes;
 			sourceTree = "<group>";
@@ -908,10 +896,8 @@
 			files = (
 				41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */,
 				416C212C2347240200648C0A /* TopPageViewController.swift in Sources */,
-				410C2B3A23706BBB003E9415 /* ImageNode.swift in Sources */,
 				41456D6223559AFE0077309C /* AssetsManager.swift in Sources */,
 				41C97AC2236EE33F006E407C /* UITraitCollection+Extensions.swift in Sources */,
-				410C2B362370643C003E9415 /* TitleNode.swift in Sources */,
 				41222D022340452000F5EFE9 /* Work.swift in Sources */,
 				414F0E60234488F20013F833 /* SubscriptionToken.swift in Sources */,
 				4186ADFF233254FB002F6A4C /* UIViewController+Extensions.swift in Sources */,
@@ -952,7 +938,6 @@
 				41481F89234389AF004E2EB2 /* FirebaseService.swift in Sources */,
 				4159257A236ECD3E00C9F6F9 /* HistoryViewControllerViewsBuilder.swift in Sources */,
 				4186ADFC233254FB002F6A4C /* UIImage+Extensions.swift in Sources */,
-				410C2B3423705E28003E9415 /* PaperNode.swift in Sources */,
 				41D77CD52359AC4800C0C860 /* Resource.swift in Sources */,
 				8A6804B523527B890059019D /* UIFont+Extensions.swift in Sources */,
 				416C21342347256A00648C0A /* WorkCollectionViewCell.swift in Sources */,
@@ -962,7 +947,6 @@
 				416C2131234724D500648C0A /* HistoryViewController.swift in Sources */,
 				4186AE00233254FB002F6A4C /* UITableView+Extensions.swift in Sources */,
 				41B58A182347425200C4BB45 /* WorkCollectionViewCellModel.swift in Sources */,
-				410C2B3823706A7D003E9415 /* ProfileNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
