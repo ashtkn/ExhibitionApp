@@ -7,12 +7,7 @@ final class ScanningViewController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet private weak var sceneView: ARSCNView! {
-        didSet {
-            self.sceneView.delegate = self
-        }
-    }
-    
+    @IBOutlet private weak var sceneView: ARSCNView!
     @IBOutlet private weak var takeSnapshotButton: UIButton!
     
     @IBOutlet private weak var cancelButton: UIButton! {
@@ -24,22 +19,32 @@ final class ScanningViewController: UIViewController {
     // MARK: ViewModel
     
     private var viewModel = ScanningViewModel()
+    private var sceneRecorder: SceneRecorder?
     
     // MARK: Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sceneView.delegate = self
+        sceneRecorder = SceneRecorder(sceneView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
         sceneView.session.run(configuration)
+        
+        sceneRecorder?.requestMicrophonePermission()
+        sceneRecorder?.prepare(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         sceneView.session.pause()
+        sceneRecorder?.rest()
     }
     
     private var configuration: ARConfiguration {
@@ -53,19 +58,48 @@ final class ScanningViewController: UIViewController {
     
     // MARK: Actions
     
-    @IBAction private func didTakeSnapshotButtonTapped(_ sender: Any) {
-        let snapshotImage = sceneView.snapshot()
-        let sharingViewModel = SharingViewModel(snapshot: snapshotImage, detecting: viewModel.detectingWork, stash: viewModel)
-        
-        let sharingViewController = SharingViewController.init()
-        sharingViewController.configure(sharingViewModel)
+    @IBAction private func didTakeSnapshotButtonTapped(_ sender: UITapGestureRecognizer) {
+        guard let sceneRecorder = sceneRecorder else { fatalError() }
+        let photo = sceneRecorder.takePhoto()
+        let sharingViewModel = SharingViewModel(media: .image(photo), detecting: viewModel.detectingWork, stash: viewModel)
         
         DispatchQueue.main.async { [unowned self] in
+            let sharingViewController = SharingViewController.init()
+            sharingViewController.configure(sharingViewModel)
             self.navigationController?.show(sharingViewController, sender: nil)
         }
     }
     
-    @IBAction func didCancelButtonTapped(_ sender: Any) {
+    @IBAction private func didTakeSnapshotButtonLongPressed(_ sender: UILongPressGestureRecognizer) {
+        switch(sender.state) {
+        case .began:
+            startRecording()
+        case .ended:
+            stopRecording()
+        case .possible, .changed, .cancelled, .failed:
+            break
+        @unknown default:
+            fatalError()
+        }
+    }
+    
+    private func startRecording() {
+        sceneRecorder?.startRecording()
+    }
+    
+    private func stopRecording() {
+        sceneRecorder?.stopRecording { [viewModel] url in
+            let sharingViewModel = SharingViewModel(media: .video(url), detecting: viewModel.detectingWork, stash: viewModel)
+            
+            DispatchQueue.main.async { [unowned self] in
+                let sharingViewController = SharingViewController.init()
+                sharingViewController.configure(sharingViewModel)
+                self.navigationController?.show(sharingViewController, sender: nil)
+            }
+        }
+    }
+    
+    @IBAction private func didCancelButtonTapped(_ sender: Any) {
         DispatchQueue.main.async { [unowned self] in
             self.navigationController?.dismiss(animated: true, completion: nil)
         }
@@ -77,16 +111,6 @@ final class ScanningViewController: UIViewController {
 extension ScanningViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-//        var expectedResourceName = ""
-//        switch anchor {
-//        case let objectAnchor as ARObjectAnchor:
-//            expectedResourceName = "\(objectAnchor.name ?? "").arobject"
-//        case let imageAnchor as ARImageAnchor:
-//            expectedResourceName = "\(imageAnchor.name ?? "").jpg"
-//        default:
-//            fatalError()
-//        }
-        
         let name = anchor.name ?? ""
         let works = viewModel.works
         if let detectingWorkIndex = works.firstIndex(where: { $0.has(resource: name) }) {

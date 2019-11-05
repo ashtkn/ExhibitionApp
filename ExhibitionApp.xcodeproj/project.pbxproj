@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4103C4E32355F2F7000918EB /* WorkCollectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103C4E22355F2F7000918EB /* WorkCollectionHeaderViewModel.swift */; };
+		410C2B29236FE270003E9415 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410C2B28236FE270003E9415 /* ARVideoKit.framework */; };
+		410C2B2C236FE2B3003E9415 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410C2B28236FE270003E9415 /* ARVideoKit.framework */; };
+		410C2B2E236FE362003E9415 /* SceneRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B2D236FE362003E9415 /* SceneRecorder.swift */; };
+		410C2B3023702EED003E9415 /* SharingViewControllerViewsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */; };
+		410C2B3223704F00003E9415 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C2B3123704F00003E9415 /* PhotoLibraryManager.swift */; };
 		410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410E1C07234EC6940088C71A /* LoadingViewController.storyboard */; };
 		410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E1C09234EC6B10088C71A /* LoadingViewController.swift */; };
 		411A16A32340E3C000644A61 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411A16A22340E3C000644A61 /* HyperionCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -15,6 +20,7 @@
 		41222D022340452000F5EFE9 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D012340452000F5EFE9 /* Work.swift */; };
 		41222D042340484600F5EFE9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D032340484600F5EFE9 /* UserData.swift */; };
 		41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAD233B291C00B88732 /* Array+Extensions.swift */; };
+		412B39F1237109F600E8F6F7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 412B39F0237109F600E8F6F7 /* Settings.bundle */; };
 		41456D6223559AFE0077309C /* AssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41456D6123559AFE0077309C /* AssetsManager.swift */; };
 		41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41481F4023438129004E2EB2 /* GoogleService-Info.plist */; };
 		41481F582343873E004E2EB2 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F452343873D004E2EB2 /* nanopb.framework */; };
@@ -73,6 +79,11 @@
 		41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AD233E6C7C008C797A /* Realm.framework */; };
 		41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AF233E6C86008C797A /* RealmSwift.framework */; };
 		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
+		41AE8646236FAF35008A7927 /* URWDIN-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8641236FAF33008A7927 /* URWDIN-Regular.otf */; };
+		41AE8647236FAF35008A7927 /* FOT-TsukuARdGothicStd-B.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8642236FAF34008A7927 /* FOT-TsukuARdGothicStd-B.otf */; };
+		41AE8648236FAF35008A7927 /* FOT-TsukuARdGothicStd-R.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8643236FAF34008A7927 /* FOT-TsukuARdGothicStd-R.otf */; };
+		41AE8649236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8644236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf */; };
+		41AE864A236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41AE8645236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf */; };
 		41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B589EB2347279800C4BB45 /* SharingViewController.swift */; };
 		41B58A1323473A5E00C4BB45 /* WorkCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */; };
 		41B58A182347425200C4BB45 /* WorkCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B58A172347425200C4BB45 /* WorkCollectionViewCellModel.swift */; };
@@ -137,6 +148,10 @@
 
 /* Begin PBXFileReference section */
 		4103C4E22355F2F7000918EB /* WorkCollectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionHeaderViewModel.swift; sourceTree = "<group>"; };
+		410C2B28236FE270003E9415 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARVideoKit.framework; path = Carthage/Build/iOS/ARVideoKit.framework; sourceTree = "<group>"; };
+		410C2B2D236FE362003E9415 /* SceneRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneRecorder.swift; sourceTree = "<group>"; };
+		410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewControllerViewsBuilder.swift; sourceTree = "<group>"; };
+		410C2B3123704F00003E9415 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 		410E1C07234EC6940088C71A /* LoadingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
 		410E1C09234EC6B10088C71A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		411A16A22340E3C000644A61 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
@@ -144,6 +159,7 @@
 		41222D012340452000F5EFE9 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		41222D032340484600F5EFE9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		41270EAD233B291C00B88732 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		412B39F0237109F600E8F6F7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		41456D6123559AFE0077309C /* AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsManager.swift; sourceTree = "<group>"; };
 		41481F4023438129004E2EB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41481F452343873D004E2EB2 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
@@ -206,6 +222,11 @@
 		41A3C7AD233E6C7C008C797A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		41A3C7AF233E6C86008C797A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		41A596A823334179008DA6AF /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
+		41AE8641236FAF33008A7927 /* URWDIN-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "URWDIN-Regular.otf"; sourceTree = "<group>"; };
+		41AE8642236FAF34008A7927 /* FOT-TsukuARdGothicStd-B.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FOT-TsukuARdGothicStd-B.otf"; sourceTree = "<group>"; };
+		41AE8643236FAF34008A7927 /* FOT-TsukuARdGothicStd-R.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FOT-TsukuARdGothicStd-R.otf"; sourceTree = "<group>"; };
+		41AE8644236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FOT-TsukuARdGothicStd-E.otf"; sourceTree = "<group>"; };
+		41AE8645236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A-OTF-GothicBBBPr6-Medium.otf"; sourceTree = "<group>"; };
 		41B589EB2347279800C4BB45 /* SharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkCollectionViewCell.xib; sourceTree = "<group>"; };
 		41B58A172347425200C4BB45 /* WorkCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionViewCellModel.swift; sourceTree = "<group>"; };
@@ -248,6 +269,7 @@
 				411A16A72340E3D000644A61 /* AttributesInspector.framework in Frameworks */,
 				41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */,
 				41481F6A2343873E004E2EB2 /* GoogleAppMeasurement.framework in Frameworks */,
+				410C2B29236FE270003E9415 /* ARVideoKit.framework in Frameworks */,
 				41481F6C2343873E004E2EB2 /* BoringSSL-GRPC.framework in Frameworks */,
 				41481F702343873E004E2EB2 /* FIRAnalyticsConnector.framework in Frameworks */,
 				41481F742343873E004E2EB2 /* GoogleDataTransport.framework in Frameworks */,
@@ -280,6 +302,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				410C2B2C236FE2B3003E9415 /* ARVideoKit.framework in Frameworks */,
 				41B9AF0323681DF100CA1997 /* StoreKit.framework in Frameworks */,
 				41B9AF0123681DE400CA1997 /* libsqlite3.tbd in Frameworks */,
 				41B9AEFF23681DDB00CA1997 /* libc++.tbd in Frameworks */,
@@ -414,6 +437,7 @@
 		4186ADDC23324192002F6A4C /* ExhibitionApp */ = {
 			isa = PBXGroup;
 			children = (
+				41AE863F236FAEEE008A7927 /* Resources */,
 				41481F872343899D004E2EB2 /* APIs */,
 				41F46B8923404D8200606D7B /* Commons */,
 				41A596A423333EDD008DA6AF /* Models */,
@@ -428,6 +452,7 @@
 				4186ADE823324194002F6A4C /* LaunchScreen.storyboard */,
 				4186ADEB23324194002F6A4C /* Info.plist */,
 				41481F4023438129004E2EB2 /* GoogleService-Info.plist */,
+				412B39F0237109F600E8F6F7 /* Settings.bundle */,
 			);
 			path = ExhibitionApp;
 			sourceTree = "<group>";
@@ -514,10 +539,31 @@
 			path = SceneNodes;
 			sourceTree = "<group>";
 		};
+		41AE863F236FAEEE008A7927 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				41AE8640236FAEF6008A7927 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		41AE8640236FAEF6008A7927 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				41AE8645236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf */,
+				41AE8642236FAF34008A7927 /* FOT-TsukuARdGothicStd-B.otf */,
+				41AE8644236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf */,
+				41AE8643236FAF34008A7927 /* FOT-TsukuARdGothicStd-R.otf */,
+				41AE8641236FAF33008A7927 /* URWDIN-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		41B589E82347275900C4BB45 /* SharingViewController */ = {
 			isa = PBXGroup;
 			children = (
 				41B589EB2347279800C4BB45 /* SharingViewController.swift */,
+				410C2B2F23702EED003E9415 /* SharingViewControllerViewsBuilder.swift */,
 			);
 			path = SharingViewController;
 			sourceTree = "<group>";
@@ -558,6 +604,7 @@
 		41D34EC32339DF080096188B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				410C2B28236FE270003E9415 /* ARVideoKit.framework */,
 				41B9AF0223681DF100CA1997 /* StoreKit.framework */,
 				41B9AF0023681DE400CA1997 /* libsqlite3.tbd */,
 				41B9AEFE23681DDB00CA1997 /* libc++.tbd */,
@@ -605,6 +652,8 @@
 				41456D6123559AFE0077309C /* AssetsManager.swift */,
 				41B9AEB42367F64200CA1997 /* System.swift */,
 				41C97ABF236EDD73006E407C /* CustomLabel.swift */,
+				410C2B2D236FE362003E9415 /* SceneRecorder.swift */,
+				410C2B3123704F00003E9415 /* PhotoLibraryManager.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -708,13 +757,19 @@
 			files = (
 				41481F80234387C8004E2EB2 /* gRPCCertificates-Cpp.bundle in Resources */,
 				41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */,
+				41AE864A236FAF35008A7927 /* A-OTF-GothicBBBPr6-Medium.otf in Resources */,
+				41AE8646236FAF35008A7927 /* URWDIN-Regular.otf in Resources */,
 				4186ADE023324192002F6A4C /* art.scnassets in Resources */,
 				416C213D2347261B00648C0A /* ScanningViewController.storyboard in Resources */,
 				4186ADEA23324194002F6A4C /* LaunchScreen.storyboard in Resources */,
 				416C212A234723A100648C0A /* TopPageViewController.storyboard in Resources */,
+				412B39F1237109F600E8F6F7 /* Settings.bundle in Resources */,
+				41AE8647236FAF35008A7927 /* FOT-TsukuARdGothicStd-B.otf in Resources */,
+				41AE8649236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf in Resources */,
 				410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */,
 				4186ADE723324194002F6A4C /* Assets.xcassets in Resources */,
 				416C2138234725C100648C0A /* LaunchScanningViewController.storyboard in Resources */,
+				41AE8648236FAF35008A7927 /* FOT-TsukuARdGothicStd-R.otf in Resources */,
 				41B58A1323473A5E00C4BB45 /* WorkCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,6 +841,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CodableFirebase.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -808,6 +864,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CodableFirebase.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ARVideoKit.framework",
 			);
 			name = "Run Script for Carthage";
 			outputFileListPaths = (
@@ -835,6 +892,7 @@
 				41647D88234745670021A2E3 /* ScanningViewModel.swift in Sources */,
 				4103C4E32355F2F7000918EB /* WorkCollectionHeaderViewModel.swift in Sources */,
 				416C213F2347264100648C0A /* ScanningViewController.swift in Sources */,
+				410C2B3223704F00003E9415 /* PhotoLibraryManager.swift in Sources */,
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
 				41A596A923334179008DA6AF /* LabelNode.swift in Sources */,
@@ -843,6 +901,7 @@
 				41D77CD72359AC7E00C0C860 /* ResourceObject.swift in Sources */,
 				41C97AC0236EDD73006E407C /* CustomLabel.swift in Sources */,
 				8A6804BB2354E1E70059019D /* UIButton+Custom.swift in Sources */,
+				410C2B3023702EED003E9415 /* SharingViewControllerViewsBuilder.swift in Sources */,
 				41B5BB252344F48700A274C7 /* UIView+Extensions.swift in Sources */,
 				4186AE092332553F002F6A4C /* Injectable.swift in Sources */,
 				41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */,
@@ -851,6 +910,7 @@
 				41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */,
 				4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */,
 				41B5BB272344F4BE00A274C7 /* UIApplication+Extensions.swift in Sources */,
+				410C2B2E236FE362003E9415 /* SceneRecorder.swift in Sources */,
 				418FDBDC2352E77300E57D51 /* HistoryViewModel.swift in Sources */,
 				410E1C0A234EC6B10088C71A /* LoadingViewController.swift in Sources */,
 				41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */,
