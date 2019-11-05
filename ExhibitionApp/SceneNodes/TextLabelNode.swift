@@ -1,6 +1,6 @@
 import SceneKit
 
-final class ImageLabelNode: SCNNode {
+final class TextLabelNode: SCNNode {
     
     let originalPosition: SCNVector3
     let originalRotation: SCNVector4
@@ -16,7 +16,7 @@ final class ImageLabelNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, image: UIImage, width: CGFloat, height: CGFloat) {
+    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat) {
         // Configure current class
         let originalPostion = SCNVector3()
         self.originalPosition = originalPostion
@@ -27,18 +27,25 @@ final class ImageLabelNode: SCNNode {
         // Confugure SuperClass
         super.init()
         
-        let planeNode = SCNNode(geometry: SCNPlane(width: width, height: height))
+        // Configure text node
+        let str = SCNText(string: text, extrusionDepth: 0.01)
+        str.font = UIFont(name: "HiraginoSans-W6", size: 1);
+        let textNode = SCNNode(geometry: str)
+        
+        let (min, max) = textNode.boundingBox
+        let ratio = width / CGFloat(max.x - min.x)
+        textNode.scale = SCNVector3(ratio, ratio, ratio)
         
         // Set color or material
-        planeNode.geometry?.materials.append(SCNMaterial())
-        planeNode.geometry?.materials.first?.diffuse.contents = image
+        textNode.geometry?.materials.append(SCNMaterial())
+        textNode.geometry?.materials.first?.diffuse.contents = textColor
         
         // Set name as group ID for detecting touches
-        planeNode.name = name
+        textNode.name = name
         super.name = name
         
         // Add children nodes
-        super.addChildNode(planeNode)
+        super.addChildNode(textNode)
 
         // Configure entire transform
         super.position = originalPosition
