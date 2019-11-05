@@ -20,6 +20,7 @@
 		41222D022340452000F5EFE9 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D012340452000F5EFE9 /* Work.swift */; };
 		41222D042340484600F5EFE9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D032340484600F5EFE9 /* UserData.swift */; };
 		41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAD233B291C00B88732 /* Array+Extensions.swift */; };
+		412B39F1237109F600E8F6F7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 412B39F0237109F600E8F6F7 /* Settings.bundle */; };
 		41456D6223559AFE0077309C /* AssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41456D6123559AFE0077309C /* AssetsManager.swift */; };
 		41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41481F4023438129004E2EB2 /* GoogleService-Info.plist */; };
 		41481F582343873E004E2EB2 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F452343873D004E2EB2 /* nanopb.framework */; };
@@ -158,6 +159,7 @@
 		41222D012340452000F5EFE9 /* Work.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
 		41222D032340484600F5EFE9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		41270EAD233B291C00B88732 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		412B39F0237109F600E8F6F7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		41456D6123559AFE0077309C /* AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsManager.swift; sourceTree = "<group>"; };
 		41481F4023438129004E2EB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41481F452343873D004E2EB2 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				4186ADE823324194002F6A4C /* LaunchScreen.storyboard */,
 				4186ADEB23324194002F6A4C /* Info.plist */,
 				41481F4023438129004E2EB2 /* GoogleService-Info.plist */,
+				412B39F0237109F600E8F6F7 /* Settings.bundle */,
 			);
 			path = ExhibitionApp;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				416C213D2347261B00648C0A /* ScanningViewController.storyboard in Resources */,
 				4186ADEA23324194002F6A4C /* LaunchScreen.storyboard in Resources */,
 				416C212A234723A100648C0A /* TopPageViewController.storyboard in Resources */,
+				412B39F1237109F600E8F6F7 /* Settings.bundle in Resources */,
 				41AE8647236FAF35008A7927 /* FOT-TsukuARdGothicStd-B.otf in Resources */,
 				41AE8649236FAF35008A7927 /* FOT-TsukuARdGothicStd-E.otf in Resources */,
 				410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */,
