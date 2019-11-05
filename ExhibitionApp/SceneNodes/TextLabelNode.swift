@@ -3,7 +3,6 @@ import SceneKit
 final class TextLabelNode: SCNNode {
     
     let originalPosition: SCNVector3
-    let originalRotation: SCNVector4
     private(set) var hasMoved: Bool = false
     
     func move(to position: SCNVector3) {
@@ -16,13 +15,10 @@ final class TextLabelNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat) {
+    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, originalPosition: SCNVector3 = .init()) {
         // Configure current class
         let originalPostion = SCNVector3()
         self.originalPosition = originalPostion
-        
-        let originalRotation = SCNVector4()
-        self.originalRotation = originalRotation
         
         // Confugure SuperClass
         super.init()
@@ -49,7 +45,6 @@ final class TextLabelNode: SCNNode {
 
         // Configure entire transform
         super.position = originalPosition
-        super.rotation = originalRotation
     }
     
     required init?(coder aDecoder: NSCoder) {
