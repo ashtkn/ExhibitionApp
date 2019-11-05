@@ -11,7 +11,7 @@ final class LaunchScanningViewController: UIViewController {
     @IBOutlet private weak var scanButton: UIButton! {
         didSet {
             self.scanButton.layer.cornerRadius = self.scanButton.frame.size.width / 2
-            self.scanButton.layer.borderWidth = 1
+            self.scanButton.layer.borderWidth = 4
             self.scanButton.layer.borderColor = AssetsManager.default.getColor(of: .circleButton).cgColor
             self.scanButton.setImage(AssetsManager.default.getImage(image: .finger), for: .normal)
             self.scanButton.tintColor = AssetsManager.default.getColor(of: .circleButton)
