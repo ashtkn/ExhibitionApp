@@ -29,7 +29,15 @@ English
 
 ### Default Mode
 
+<img src="https://user-images.githubusercontent.com/24489109/68183754-a0615000-ffe0-11e9-8202-ac2cb4f7c458.png" width="45%">
+
+<img src="https://user-images.githubusercontent.com/24489109/68183789-b2db8980-ffe0-11e9-8677-c2bdc8cadb03.png" width="45%">
+
 ### Dark Mode
+
+<img src="https://user-images.githubusercontent.com/24489109/68183814-c1c23c00-ffe0-11e9-8050-0ac3563697c3.png" width="45%">
+
+<img src="https://user-images.githubusercontent.com/24489109/68183843-d30b4880-ffe0-11e9-911e-ac1e8f2972d3.png" width="45%">
 
 ## Requirements
 
