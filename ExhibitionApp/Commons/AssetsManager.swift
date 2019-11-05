@@ -37,9 +37,9 @@ final class AssetsManager {
     
     func getColor(of item: ColorItem) -> UIColor {
         switch item {
-        case .background:
+        case .background, .header:
             return UIColor(named: "BackgroundDefault")!
-        case .header, .circleButtonBackground:
+        case .circleButtonBackground:
             return UIColor(named: "BackgroundLight")!
         case .rectButtonBackground, .circleButton, .progressBar:
             return UIColor(named: "ComponentsDefault")!

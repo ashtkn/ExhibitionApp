@@ -26,6 +26,7 @@ final class HistoryViewController: UIViewController {
     }
     
     private func setupSubviews() {
+        self.view.backgroundColor = AssetsManager.default.getColor(of: .background)
         var containerView = self.createContainerView()
         var (headerViewContainer, counterViewContainer, collectionViewContainer)
             = HistoryViewControllerViewsBuilder.createSubContainerViews(parent: &containerView)
