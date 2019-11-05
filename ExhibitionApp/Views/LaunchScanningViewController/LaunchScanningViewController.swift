@@ -2,7 +2,7 @@ import UIKit
 
 final class LaunchScanningViewController: UIViewController {
     
-    @IBOutlet weak var containerView: UIView! {
+    @IBOutlet private weak var containerView: UIView! {
         didSet {
             self.containerView.backgroundColor = AssetsManager.default.getColor(of: .background)
         }
@@ -29,8 +29,12 @@ final class LaunchScanningViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setupViews()
+        self.view.backgroundColor = AssetsManager.default.getColor(of: .background)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.scanButton.layer.borderColor = AssetsManager.default.getColor(of: .circleButton).cgColor
     }
     
     @IBAction private func didScanButtonTapped(_ sender: Any) {
@@ -40,9 +44,5 @@ final class LaunchScanningViewController: UIViewController {
         DispatchQueue.main.async { [unowned self] in
             self.present(navigationViewController, animated: true, completion: nil)
         }
-    }
-    
-    private func setupViews() {
-        self.view.backgroundColor = AssetsManager.default.getColor(of: .background)
     }
 }
