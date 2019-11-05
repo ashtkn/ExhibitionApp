@@ -75,12 +75,19 @@ final class ScanningViewController: UIViewController {
             let node = addedNodes[groupId]
             switch node {
             case let labelNode as LabelNode:
-                
                 if labelNode.hasMoved {
                     labelNode.moveToOriginalPosition()
                 } else {
                     let newPosition = SCNVector3(0.1, 0.0, 0.0)
                     labelNode.move(to: newPosition)
+                }
+                
+            case let imageLabelNode as ImageLabelNode:
+                if imageLabelNode.hasMoved {
+                    imageLabelNode.moveToOriginalPosition()
+                } else {
+                    let newPosition = SCNVector3(0.2, 0.0, 0.0)
+                    imageLabelNode.move(to: newPosition)
                 }
                 
             case .none:
@@ -173,13 +180,19 @@ extension ScanningViewController {
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
         // TODO: objects in the world
         // タッチイベントの区別の粒度によってグループIDをセットすること
-        let groupId = "groups_of_label_node"
-        let labelNode = LabelNode(groupId: groupId, text: work.title, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+        let labelNodeGroupId = "groups_of_label_node"
+        let labelNode = LabelNode(groupId: labelNodeGroupId, text: work.title, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+        
+        let imageLabelNodeGroupId = "groups_of_image_label_node"
+        let image = AssetsManager.default.getArtistImage(name: .hashimoto)
+        let imageLabelNode = ImageLabelNode(groupId: imageLabelNodeGroupId, image: image, width: 0.127, height: 0.089, panelThickness: 0.1)
         
         // TODO: Save reference to the added nodes if necessary
-        addedNodes[groupId] = labelNode
+        addedNodes[labelNodeGroupId] = labelNode
+        addedNodes[imageLabelNodeGroupId] = imageLabelNode
         
         // Add the node to root node.
         node.addChildNode(labelNode)
+        node.addChildNode(imageLabelNode)
     }
 }

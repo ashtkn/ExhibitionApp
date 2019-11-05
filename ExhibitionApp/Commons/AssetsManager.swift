@@ -24,6 +24,10 @@ final class AssetsManager {
         case progressBar
     }
     
+    enum ArtistImageItem: String, CaseIterable {
+        case hashimoto = "hashimoto_daiki_1"
+    }
+    
     static let `default` = AssetsManager()
     private init() {}
     
@@ -48,5 +52,9 @@ final class AssetsManager {
         case .text:
             return UIColor(named: "TextDefault")!
         }
+    }
+    
+    func getArtistImage(name item: ArtistImageItem) -> UIImage {
+        return UIImage(named: item.rawValue)!
     }
 }
