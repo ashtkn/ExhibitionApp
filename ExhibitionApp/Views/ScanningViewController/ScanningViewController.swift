@@ -21,6 +21,8 @@ final class ScanningViewController: UIViewController {
     private var viewModel = ScanningViewModel()
     private var sceneRecorder: SceneRecorder?
     
+    private var addedNodes: [String: SCNNode] = [:]
+    
     // MARK: Lifecycles
     
     override func viewDidLoad() {
@@ -54,6 +56,31 @@ final class ScanningViewController: UIViewController {
         configuration.maximumNumberOfTrackedImages = 1
         
         return configuration
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        guard let location = touches.first?.location(in: sceneView) else { return }
+        guard let hitTestResult = sceneView.hitTest(location, options: nil).first else { return }
+        
+        // TODO: process when user touches a node
+        print("Hit node: \(hitTestResult.node)")
+        print("Parent: \(String(describing: hitTestResult.node.parent))")
+        print("Children: \(hitTestResult.node.childNodes)")
+        
+        guard let nodeName = hitTestResult.node.name else { return }
+        if addedNodes.keys.contains(nodeName) {
+            print("Detected: \(String(describing: addedNodes[nodeName]))")
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
     }
     
     // MARK: Actions
@@ -129,6 +156,19 @@ extension ScanningViewController {
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
         // TODO: objects in the world
         let labelNode = LabelNode(text: work.title, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+        
+        // TODO: Save reference to the added nodes if necessary
+        let groupId = "groups_of_label_node"
+        // Geometryのついていないにノードはおそらくタッチで検知されない．
+        labelNode.name = groupId
+        // ノードを検知するためにはGeometryのついたノードにIDをセットする必要がある．
+        // もしノードが多重構造になっているなら全てにばIDをセットする．
+        labelNode.childNodes.forEach { $0.name = groupId }
+        
+        // 親ノードのみを登録
+        addedNodes[groupId] = labelNode
+        
+        // Add the node to root node.
         node.addChildNode(labelNode)
     }
 }
