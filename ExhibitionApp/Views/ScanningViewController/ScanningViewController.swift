@@ -75,14 +75,18 @@ final class ScanningViewController: UIViewController {
             let node = addedNodes[groupId]
             switch node {
             case let labelNode as LabelNode:
-                print(labelNode)
-                print(labelNode.originalPosition)
+                
+                if labelNode.hasMoved {
+                    labelNode.moveToOriginalPosition()
+                } else {
+                    let newPosition = SCNVector3(0.1, 0.0, 0.0)
+                    labelNode.move(to: newPosition)
+                }
                 
             case .none:
                 fatalError()
-                
             default:
-                print("Unknown node")
+                fatalError()
             }
         }
     }
