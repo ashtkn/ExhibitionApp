@@ -70,6 +70,7 @@ final class ScanningViewController: UIViewController {
         print("Children: \(hitTestResult.node.childNodes)")
         
         // push test by kiho
+        // test
         
         guard let groupId = hitTestResult.node.name else { return }
         
