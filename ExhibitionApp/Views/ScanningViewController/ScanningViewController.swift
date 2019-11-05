@@ -69,6 +69,8 @@ final class ScanningViewController: UIViewController {
         print("Parent: \(String(describing: hitTestResult.node.parent))")
         print("Children: \(hitTestResult.node.childNodes)")
         
+        // push test by kiho
+        
         guard let groupId = hitTestResult.node.name else { return }
         
         if addedNodes.keys.contains(groupId) {
