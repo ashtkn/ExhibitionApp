@@ -32,7 +32,14 @@ final class FirebaseService {
                         reject(error)
                     } else {
                         guard let querySnapshot = querySnapshot else { fatalError() }
-                        let works = querySnapshot.documents.compactMap { try? $0.decode(as: Work.self) }
+                        let works: [Work] = querySnapshot.documents.compactMap { document in
+                            do {
+                                return try document.decode(as: Work.self)
+                            } catch {
+                                print("Decoding error: \(error)")
+                                return nil
+                            }
+                        }
                         resolve(works)
                     }
                 }
