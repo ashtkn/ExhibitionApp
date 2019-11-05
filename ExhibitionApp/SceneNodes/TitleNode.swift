@@ -2,10 +2,10 @@ import ARKit
 
 final class TitleNode: SCNNode {
     
-    init(position: SCNVector3, rotation: SCNVector4, scale: SCNVector3, text: String) {
+    init(groupId: String, text: String, position: SCNVector3, rotation: SCNVector4, scale: SCNVector3) {
         super.init()
         
-        let titleNode = LabelNode(text: text, width: 0.2, textColor: .black, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+        let titleNode = LabelNode(groupId: groupId, text: text, width: 0.2, textColor: .black, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
         
         super.addChildNode(titleNode)
         

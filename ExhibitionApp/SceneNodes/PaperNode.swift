@@ -5,7 +5,7 @@ final class PaperNode: SCNNode {
     private let originalPosition: SCNVector3
     private var hasMoved: Bool = false
     
-    init(position: SCNVector3, rotation: SCNVector4, scale: SCNVector3, texture: UIImage) {
+    init(groupId: String, texture: UIImage, position: SCNVector3, rotation: SCNVector4, scale: SCNVector3) {
         // Store properties
         self.originalPosition = position
         

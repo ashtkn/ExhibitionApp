@@ -3,41 +3,66 @@ import SceneKit
 
 final class LabelNode: SCNNode {
     
-    init(text: String, width: CGFloat, textColor: UIColor, panelColor: UIColor, textThickness: CGFloat, panelThickness: CGFloat) {
+    let originalPosition: SCNVector3
+    let originalRotation: SCNVector4
+    private(set) var hasMoved: Bool = false
+    
+    func move(to position: SCNVector3) {
+        self.hasMoved = true
+        super.position = position
+    }
+    
+    func moveToOriginalPosition() {
+        self.hasMoved = false
+        super.position = originalPosition
+    }
+    
+    init(groupId name: String, text: String, width: CGFloat, textColor: UIColor, panelColor: UIColor, textThickness: CGFloat, panelThickness: CGFloat) {
+        // Configure current class
+        let originalPostion = SCNVector3()
+        self.originalPosition = originalPostion
+        
+        let originalRotation = SCNVector4()
+        self.originalRotation = originalRotation
+        
+        // Confugure SuperClass
         super.init()
         
-        //*******************************************************
-        // テキストノードの生成
-        //*******************************************************
+        // Configure text node
         let str = SCNText(string: text, extrusionDepth: textThickness)
         str.font = UIFont(name: "HiraginoSans-W6", size: 1);
         let textNode = SCNNode(geometry: str)
         
-        // バウンディングボックスから縦横の長さを取得する
         let (min, max) = textNode.boundingBox
         let w = CGFloat(max.x - min.x)
         let h = CGFloat(max.y - min.y)
-        // 中心になるように移動する
         textNode.position = SCNVector3(-(w/2), -(h/2) - 0.9 , 0.001 + textThickness)
-        // 色を設定
+        
+        // Set color or material
         textNode.geometry?.materials.append(SCNMaterial())
         textNode.geometry?.materials.first?.diffuse.contents = textColor
         
-        //*******************************************************
-        // パネルノードの生成
-        //*******************************************************
+        // Configure panel node
         let panelNode = SCNNode(geometry: SCNBox(width: w * 1.1, height: h * 1.1, length: panelThickness, chamferRadius: 0))
-        // 色を設定
+        
+        // Set color or material
         panelNode.geometry?.materials.append(SCNMaterial())
         panelNode.geometry?.materials.first?.diffuse.contents = panelColor
         
-        addChildNode(textNode)
-        addChildNode(panelNode)
-        //*******************************************************
-        // サイズを調整する
-        //*******************************************************
+        // Set name as group ID for detecting touches
+        textNode.name = name
+        panelNode.name = name
+        super.name = name
+        
+        // Add children nodes
+        super.addChildNode(textNode)
+        super.addChildNode(panelNode)
+
+        // Configure entire transform
+        super.position = originalPosition
+        super.rotation = originalRotation
         let ratio = width / w
-        scale = SCNVector3(ratio, ratio, ratio)
+        super.scale = SCNVector3(ratio, ratio, ratio)
     }
     
     required init?(coder aDecoder: NSCoder) {

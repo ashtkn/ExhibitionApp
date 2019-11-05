@@ -2,7 +2,7 @@ import ARKit
 
 final class ProfileNode: SCNNode {
     
-    init(position: SCNVector3, rotation: SCNVector4, scale: SCNVector3, title: String, image: UIImage) {
+    init(groupId: String, image: UIImage, position: SCNVector3, rotation: SCNVector4, scale: SCNVector3) {
         super.init()
         
         // TODO: Load person resource here

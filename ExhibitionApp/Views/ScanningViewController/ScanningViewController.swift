@@ -69,9 +69,21 @@ final class ScanningViewController: UIViewController {
         print("Parent: \(String(describing: hitTestResult.node.parent))")
         print("Children: \(hitTestResult.node.childNodes)")
         
-        guard let nodeName = hitTestResult.node.name else { return }
-        if addedNodes.keys.contains(nodeName) {
-            print("Detected: \(String(describing: addedNodes[nodeName]))")
+        guard let groupId = hitTestResult.node.name else { return }
+        
+        if addedNodes.keys.contains(groupId) {
+            let node = addedNodes[groupId]
+            switch node {
+            case let labelNode as LabelNode:
+                print(labelNode)
+                print(labelNode.originalPosition)
+                
+            case .none:
+                fatalError()
+                
+            default:
+                print("Unknown node")
+            }
         }
     }
     
@@ -153,19 +165,14 @@ extension ScanningViewController: ARSCNViewDelegate {
 }
 
 extension ScanningViewController {
+    
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
         // TODO: objects in the world
-        let labelNode = LabelNode(text: work.title, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+        // タッチイベントの区別の粒度によってグループIDをセットすること
+        let groupId = "groups_of_label_node"
+        let labelNode = LabelNode(groupId: groupId, text: work.title, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
         
         // TODO: Save reference to the added nodes if necessary
-        let groupId = "groups_of_label_node"
-        // Geometryのついていないにノードはおそらくタッチで検知されない．
-        labelNode.name = groupId
-        // ノードを検知するためにはGeometryのついたノードにIDをセットする必要がある．
-        // もしノードが多重構造になっているなら全てにばIDをセットする．
-        labelNode.childNodes.forEach { $0.name = groupId }
-        
-        // 親ノードのみを登録
         addedNodes[groupId] = labelNode
         
         // Add the node to root node.
