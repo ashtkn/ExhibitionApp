@@ -9,6 +9,7 @@
 ExhibitionApp (制作展アプリ) enriches your experience at III EXHIBITION held at University of Tokyo from November 14th to November 18th in 2019. With this app, you will understand and enjoy our works with new AR technology. You can collect the works at the exhibition so that you can find more information later. We are looking forward to seeing you. Thank you.
 
 制作展ウェブサイト: http://iiiexhibition.com/
+
 III EXHIBITION Website (Japanese): http://iiiexhibition.com/
 
 ## Features
