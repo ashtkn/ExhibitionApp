@@ -120,6 +120,10 @@
 		41C97AC2236EE33F006E407C /* UITraitCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C97AC1236EE33F006E407C /* UITraitCollection+Extensions.swift */; };
 		41D77CD52359AC4800C0C860 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D77CD42359AC4800C0C860 /* Resource.swift */; };
 		41D77CD72359AC7E00C0C860 /* ResourceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D77CD62359AC7E00C0C860 /* ResourceObject.swift */; };
+		41E2148D2371B2EC00EEE911 /* rounded-mplus-1c-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41E2148C2371B2EC00EEE911 /* rounded-mplus-1c-medium.ttf */; };
+		41E2148F2371B2F300EEE911 /* rounded-mplus-1c-heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41E2148E2371B2F300EEE911 /* rounded-mplus-1c-heavy.ttf */; };
+		41E214912371B2FD00EEE911 /* NotoSansCJKjp-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41E214902371B2FD00EEE911 /* NotoSansCJKjp-Regular.otf */; };
+		41E214932371B30400EEE911 /* NotoSansCJKjp-DemiLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41E214922371B30400EEE911 /* NotoSansCJKjp-DemiLight.otf */; };
 		41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C0F2334D86700552D40 /* UICollectionView+Extensions.swift */; };
 		41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C272334F57600552D40 /* NSObject+Extensions.swift */; };
 		41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8A23404DBE00606D7B /* JsonUtility.swift */; };
@@ -243,6 +247,10 @@
 		41D34ED12339E7C80096188B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		41D77CD42359AC4800C0C860 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		41D77CD62359AC7E00C0C860 /* ResourceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceObject.swift; sourceTree = "<group>"; };
+		41E2148C2371B2EC00EEE911 /* rounded-mplus-1c-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1c-medium.ttf"; sourceTree = "<group>"; };
+		41E2148E2371B2F300EEE911 /* rounded-mplus-1c-heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1c-heavy.ttf"; sourceTree = "<group>"; };
+		41E214902371B2FD00EEE911 /* NotoSansCJKjp-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-Regular.otf"; sourceTree = "<group>"; };
+		41E214922371B30400EEE911 /* NotoSansCJKjp-DemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-DemiLight.otf"; sourceTree = "<group>"; };
 		41EA9C0F2334D86700552D40 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		41EA9C272334F57600552D40 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
 		41F46B8A23404DBE00606D7B /* JsonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtility.swift; sourceTree = "<group>"; };
@@ -544,6 +552,7 @@
 		41AE863F236FAEEE008A7927 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				41E2148B2371B2BD00EEE911 /* Fonts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -632,6 +641,17 @@
 				41D34EC42339DF090096188B /* RxSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		41E2148B2371B2BD00EEE911 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				41E2148C2371B2EC00EEE911 /* rounded-mplus-1c-medium.ttf */,
+				41E2148E2371B2F300EEE911 /* rounded-mplus-1c-heavy.ttf */,
+				41E214902371B2FD00EEE911 /* NotoSansCJKjp-Regular.otf */,
+				41E214922371B30400EEE911 /* NotoSansCJKjp-DemiLight.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		41F46B8923404D8200606D7B /* Commons */ = {
@@ -744,14 +764,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41E2148F2371B2F300EEE911 /* rounded-mplus-1c-heavy.ttf in Resources */,
 				41481F80234387C8004E2EB2 /* gRPCCertificates-Cpp.bundle in Resources */,
 				41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */,
 				4186ADE023324192002F6A4C /* art.scnassets in Resources */,
 				416C213D2347261B00648C0A /* ScanningViewController.storyboard in Resources */,
 				4186ADEA23324194002F6A4C /* LaunchScreen.storyboard in Resources */,
+				41E2148D2371B2EC00EEE911 /* rounded-mplus-1c-medium.ttf in Resources */,
 				416C212A234723A100648C0A /* TopPageViewController.storyboard in Resources */,
 				412B39F1237109F600E8F6F7 /* Settings.bundle in Resources */,
 				410E1C08234EC6940088C71A /* LoadingViewController.storyboard in Resources */,
+				41E214932371B30400EEE911 /* NotoSansCJKjp-DemiLight.otf in Resources */,
+				41E214912371B2FD00EEE911 /* NotoSansCJKjp-Regular.otf in Resources */,
 				4186ADE723324194002F6A4C /* Assets.xcassets in Resources */,
 				416C2138234725C100648C0A /* LaunchScanningViewController.storyboard in Resources */,
 				41B58A1323473A5E00C4BB45 /* WorkCollectionViewCell.xib in Resources */,
