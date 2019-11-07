@@ -112,9 +112,9 @@ extension ScanningViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         let name = anchor.name ?? ""
-        let works = viewModel.works
-        if let detectingWorkIndex = works.firstIndex(where: { $0.has(resource: name) }) {
-            let detectingWork = works[detectingWorkIndex]
+        let allWorks = viewModel.allWorks
+        if let detectingWorkIndex = allWorks.firstIndex(where: { $0.has(resource: name) }) {
+            let detectingWork = allWorks[detectingWorkIndex]
             viewModel.setDetectingWork(detectingWork)
             addNode(to: node, for: anchor, work: detectingWork)
         }

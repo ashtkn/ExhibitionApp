@@ -21,6 +21,8 @@
 		41222D042340484600F5EFE9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41222D032340484600F5EFE9 /* UserData.swift */; };
 		41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41270EAD233B291C00B88732 /* Array+Extensions.swift */; };
 		412B39F1237109F600E8F6F7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 412B39F0237109F600E8F6F7 /* Settings.bundle */; };
+		413484C423743F3E00F834CF /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413484C323743F3E00F834CF /* Author.swift */; };
+		413484C623743FA100F834CF /* AuthorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413484C523743FA100F834CF /* AuthorObject.swift */; };
 		41456D6223559AFE0077309C /* AssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41456D6123559AFE0077309C /* AssetsManager.swift */; };
 		41481F4123438129004E2EB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41481F4023438129004E2EB2 /* GoogleService-Info.plist */; };
 		41481F582343873E004E2EB2 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41481F452343873D004E2EB2 /* nanopb.framework */; };
@@ -160,6 +162,8 @@
 		41222D032340484600F5EFE9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		41270EAD233B291C00B88732 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		412B39F0237109F600E8F6F7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		413484C323743F3E00F834CF /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		413484C523743FA100F834CF /* AuthorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorObject.swift; sourceTree = "<group>"; };
 		41456D6123559AFE0077309C /* AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsManager.swift; sourceTree = "<group>"; };
 		41481F4023438129004E2EB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41481F452343873D004E2EB2 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
@@ -527,6 +531,7 @@
 				41222D012340452000F5EFE9 /* Work.swift */,
 				41222D032340484600F5EFE9 /* UserData.swift */,
 				41D77CD42359AC4800C0C860 /* Resource.swift */,
+				413484C323743F3E00F834CF /* Author.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -665,6 +670,7 @@
 				4176FAE72340509B0025B470 /* UserDataObject.swift */,
 				414F0E5F234488F20013F833 /* SubscriptionToken.swift */,
 				41D77CD62359AC7E00C0C860 /* ResourceObject.swift */,
+				413484C523743FA100F834CF /* AuthorObject.swift */,
 			);
 			path = RealmObjects;
 			sourceTree = "<group>";
@@ -916,6 +922,7 @@
 				41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */,
 				416C213A234725DD00648C0A /* LaunchScanningViewController.swift in Sources */,
 				41B9AEB52367F64200CA1997 /* System.swift in Sources */,
+				413484C423743F3E00F834CF /* Author.swift in Sources */,
 				416E580E2357587B004A1B30 /* LoadingViewModel.swift in Sources */,
 				418E40C92352FB1100322B6A /* SnapKit+Extensions.swift in Sources */,
 				41222D042340484600F5EFE9 /* UserData.swift in Sources */,
@@ -926,6 +933,7 @@
 				8A6804B523527B890059019D /* UIFont+Extensions.swift in Sources */,
 				416C21342347256A00648C0A /* WorkCollectionViewCell.swift in Sources */,
 				41B5BB232344F27700A274C7 /* String+Extensions.swift in Sources */,
+				413484C623743FA100F834CF /* AuthorObject.swift in Sources */,
 				41907CA9233F19EC00C54253 /* DataStore.swift in Sources */,
 				41F46B8E2340502B00606D7B /* WorkObject.swift in Sources */,
 				416C2131234724D500648C0A /* HistoryViewController.swift in Sources */,

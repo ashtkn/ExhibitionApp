@@ -3,8 +3,7 @@ import Foundation
 struct Work: Codable, Equatable, Hashable {
     let id: String
     let title: String
-    //let resource: String
-    let authors: [String]
+    let authors: [Author]
     let images: [String]
     let caption: String
     let url: String
@@ -15,7 +14,6 @@ struct Work: Codable, Equatable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case id
         case title
-        //case resource
         case authors
         case images
         case caption
