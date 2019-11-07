@@ -202,15 +202,15 @@ extension ScanningViewController {
         node.addChildNode(textLabelNode)
         
         // show artist info
-        for i in work.authors.count{
+        for i in 1...work.authors.count{
             // show hand model
             let handNodeGroupId = "group_of_hand_node_\(i)"
             
             let pos_x: Double
             if (work.authors.count, %2 == 0){
-                pos_x = Double(work_authors_count/2) + 0.3*Double(i) + 0.15
+                pos_x = Double(-work_authors_count/2) + 0.3*Double(i) + 0.15
             }else{
-                pos_x = Double(work_authors_count/2) + 0.3*Double(i) + 0.15
+                pos_x = Double(-work_authors_count/2) + 0.3*Double(i)
             }
             let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: SCNVector3(pos_x, -0.5, -0.3), handtype: i%3)
             addedNodes[handNodeGroupId] = handNode

@@ -26,9 +26,9 @@ final class HandNode: SCNNode {
         let handScene:SCNScene
         switch handtype {
         case 0:
-            handScene = SCNScene(named: "art.scnassets/hand-fist.dae")!
-        case 1:
             handScene = SCNScene(named: "art.scnassets/hand-palm.dae")!
+        case 1:
+            handScene = SCNScene(named: "art.scnassets/hand-fist.dae")!
         case 2:
             handScene = SCNScene(named: "art.scnassets/hand-fist.dae")!
         default:
