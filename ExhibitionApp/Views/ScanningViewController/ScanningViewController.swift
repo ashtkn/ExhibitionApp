@@ -206,9 +206,9 @@ extension ScanningViewController {
             // show hand model
             let handNodeGroupId = "group_of_hand_node_\(i)"
             if (work.authors.count, %2 == 0){
-                let handNode = HandNode(gropuId: shipNodeGroupId, width: 0.1, originalPosition: SCNVector3(-0.3, work.authors.count/2 + 0.3*i + 0.15), handtype: i%3)
+                let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: SCNVector3(-0.3, work.authors.count/2 + 0.3*i + 0.15), handtype: i%3)
             }else{
-                let handNode = HandNode(gropuId: shipNodeGroupId, width: 0.1, originalPosition: SCNVector3(-0.3, work.authors.count/2 + 0.3*i), handtype: i%3)
+                let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: SCNVector3(-0.3, work.authors.count/2 + 0.3*i), handtype: i%3)
             }
             addedNodes[handNodeGroupId] = handNode
             node.addChildNode(handNode)

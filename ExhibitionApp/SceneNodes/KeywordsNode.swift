@@ -22,25 +22,32 @@ final class KeywordsNode: SCNNode {
         // Confugure SuperClass
         super.init()
         
-        // Configure text node
-        let str = SCNText(string: text, extrusionDepth: 0.01)
-        str.font = UIFont(name: "rounded-mplus-1c-medium.ttf", size: 1);
-        let textNode = SCNNode(geometry: str)
-        
-        let (min, max) = textNode.boundingBox
-        let ratio = width / CGFloat(max.x - min.x)
-        textNode.scale = SCNVector3(ratio, ratio, ratio)
+        // モデルを使う場合
+        // Configure node
+//        let paperScene = SCNScene(named: "art.scnassets/paper/paper-1.dae")!
+//        let paperNode = paperScene.rootNode
+//
+//        paperNode.name = name
+//        renameChildNodes(name: name, children: paperNode.childNodes)
+//
+//        for childNode in shipNode.childNodes {
+//            // テクスチャを貼るなら再帰的に子ノードを探索し，テクスチャを貼る対象のノードにテクスチャをはる
+//             childNode.geometry?.materials.append(SCNMaterial())
+//             childNode.geometry?.materials.first?.diffuse.contents = image
+//        }
+
+        let planeNode = SCNNode(geometry: SCNPlane(width: width, height: height))
         
         // Set color or material
-        textNode.geometry?.materials.append(SCNMaterial())
-        textNode.geometry?.materials.first?.diffuse.contents = textColor
+        planeNode.geometry?.materials.append(SCNMaterial())
+        planeNode.geometry?.materials.first?.diffuse.contents = image
         
         // Set name as group ID for detecting touches
-        textNode.name = name
+        planeNode.name = name
         super.name = name
         
         // Add children nodes
-        super.addChildNode(textNode)
+        super.addChildNode(planeNode)
 
         // Configure entire transform
         super.position = originalPosition
