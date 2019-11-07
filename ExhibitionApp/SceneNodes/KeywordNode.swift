@@ -15,7 +15,7 @@ final class KeywordsNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, image: UIImage, width: CGFloat, height: CGFloat, originalPosition: SCNVector3 = .init()) {
+    init(groupId name: String, image: UIImage, width: CGFloat, height: CGFloat, originalPosition: SCNVector3 = .init(), papertype: Int) {
         // Configure current class
         self.originalPosition = originalPosition
         
@@ -24,7 +24,18 @@ final class KeywordsNode: SCNNode {
         
         // モデルを使う場合
         // Configure node
-//        let paperScene = SCNScene(named: "art.scnassets/paper/paper-1.dae")!
+//        switch papertype {
+//        case 0:
+//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-1.dae")!
+//        case 1:
+//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-2.dae")!
+//        case 2:
+//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-3.dae")!
+//        case 3:
+//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-4.dae")!
+//        case 4:
+//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-5.dae")!
+//        }
 //        let paperNode = paperScene.rootNode
 //
 //        paperNode.name = name
