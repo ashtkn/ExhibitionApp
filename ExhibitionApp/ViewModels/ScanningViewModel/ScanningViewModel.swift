@@ -12,8 +12,8 @@ struct ScanningViewModel {
         self.detectingWork = nil
     }
     
-    var works: [Work] {
-        return DataStore.shared.works
+    var allWorks: [Work] {
+        return DataStore.shared.allWorks
     }
     
     mutating func setDetectingWork(_ detectingWork: Work?) {

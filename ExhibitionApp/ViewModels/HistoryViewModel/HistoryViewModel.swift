@@ -5,13 +5,13 @@ struct HistoryViewModel {
     private var dataStoreSubscriptionToken: SubscriptionToken?
     
     var sortedWorks: [Work] {
-        return DataStore.shared.works.sorted { _, w1 in
+        return DataStore.shared.allWorks.sorted { _, w1 in
             return w1.isLocked
         }
     }
     
     private var allWorks: [Work] {
-        return DataStore.shared.works
+        return DataStore.shared.allWorks
     }
     
     var unlockedWorks: [Work] {

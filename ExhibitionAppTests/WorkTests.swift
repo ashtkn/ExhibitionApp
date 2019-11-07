@@ -19,7 +19,12 @@ class WorkTests: XCTestCase {
             }
         ],
         "authors": [
-            "Someone"
+            {
+                "name": "hoge",
+                "imageName": "fuga",
+                "greeting": "Hi",
+                "belonging": "something"
+            }
         ],
         "images": [
             "turtlerock.jpg"

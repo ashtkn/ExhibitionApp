@@ -86,4 +86,23 @@ final class FirebaseService {
             })
         }
     }
+    
+    func download(profileImage fileName: String, to directory: URL) -> Promise<URL> {
+        return Promise<URL> { [unowned self] resolve, reject, _ in
+            self.signInAsync().retry(3).timeout(timeout: 5.0).then( {
+                let reference = Storage.storage().reference(withPath: "Assets/ProfileImages/\(fileName)")
+                let path = directory.appendingPathComponent("\(fileName)")
+                reference.write(toFile: path) { url, error in
+                    if let error = error {
+                        reject(error)
+                    } else {
+                        guard let url = url else { fatalError() }
+                        resolve(url)
+                    }
+                }
+            }).catch({ error in
+                reject(error)
+            })
+        }
+    }
 }
