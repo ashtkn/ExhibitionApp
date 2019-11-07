@@ -197,7 +197,7 @@ extension ScanningViewController {
         // ここから
         // show title
         let textLabelNodeGroupId = "group_of_title_label_node"
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, originalPosition: SCNVector3(0, 2, 0), textColor: .white, width: 1.0)
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, originalPosition: SCNVector3(0, 0.5, 0), textColor: .white, width: 1.0)
         addedNodes[textLabelNodeGroupId] = textLabelNode
         node.addChildNode(textLabelNode)
         
