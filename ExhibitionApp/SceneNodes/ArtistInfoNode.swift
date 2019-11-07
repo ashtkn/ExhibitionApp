@@ -16,7 +16,7 @@ final class ArtistInfoNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, text: String, width: CGFloat, textColor: UIColor, panelColor: UIColor, textThickness: CGFloat, panelThickness: CGFloat, originalPosition: SCNVector3 = .init()) {
+    init(groupId name: String, text: String, width: CGFloat, textColor: UIColor, panelColor: UIColor, textThickness: CGFloat, panelThickness: CGFloat, originalPosition: SCNVector3 = .init(), image: image) {
         // Configure current class
         self.originalPosition = originalPosition
         
@@ -25,7 +25,7 @@ final class ArtistInfoNode: SCNNode {
         
         // Configure text node
         let str = SCNText(string: text, extrusionDepth: textThickness)
-        str.font = UIFont(name: "HiraginoSans-W6", size: 1);
+        str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
         let textNode = SCNNode(geometry: str)
         
         let (min, max) = textNode.boundingBox
@@ -44,14 +44,22 @@ final class ArtistInfoNode: SCNNode {
         panelNode.geometry?.materials.append(SCNMaterial())
         panelNode.geometry?.materials.first?.diffuse.contents = panelColor
         
+        let planeNode = SCNNode(geometry: SCNPlane(width: 0.1, height: 0.1))
+        
+        // Set color or material
+        planeNode.geometry?.materials.append(SCNMaterial())
+        planeNode.geometry?.materials.first?.diffuse.contents = image
+        
         // Set name as group ID for detecting touches
         textNode.name = name
         panelNode.name = name
+        planeNode.name = name
         super.name = name
         
         // Add children nodes
         super.addChildNode(textNode)
         super.addChildNode(panelNode)
+        super.addChildNode(planeNode)
 
         // Configure entire transform
         super.position = originalPosition

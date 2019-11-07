@@ -213,10 +213,6 @@ extension ScanningViewController {
 //            node.addChildNode(imageLabelNode)
 //        }
         
-//        let textLabelNodeGroupId = "group_of_text_label_node"
-//        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: "Hello", textColor: .purple, width: 0.15)
-//        addedNodes[textLabelNodeGroupId] = textLabelNode
-//        node.addChildNode(textLabelNode)
     
 //        let shipNodeGroupId = "group_of_text_ship_node"
 //        let shipNode = ShipNode(gropuId: shipNodeGroupId, width: 0.1)
@@ -226,28 +222,34 @@ extension ScanningViewController {
         // ここから
         // show title
         let textLabelNodeGroupId = "group_of_title_label_node"
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 0.15)
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, originalPosition: SCNVector3(0, 2, 0), textColor: .white, width: 1.0)
         addedNodes[textLabelNodeGroupId] = textLabelNode
         node.addChildNode(textLabelNode)
         
         // show artist info
+
         for i in work.authors.count{
             // show hand model
             let handNodeGroupId = "group_of_hand_node_\(i)"
-            let handNode = HandNode(gropuId: shipNodeGroupId, width: 0.1, i%3)
+            if (work.authors.count, %2 == 0){
+                let handNode = HandNode(gropuId: shipNodeGroupId, width: 0.1, originalPosition: SCNVector3(-0.3, work.authors.count/2 + 0.3*i + 0.15), handtype: i%3)
+            }else{
+                let handNode = HandNode(gropuId: shipNodeGroupId, width: 0.1, originalPosition: SCNVector3(-0.3, work.authors.count/2 + 0.3*i), handtype: i%3)
+            }
             addedNodes[handNodeGroupId] = handNode
             node.addChildNode(handNode)
             
             // show info-board
-            let artistInfoNodeGroupId = "group_of_artist_info_node"
-            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, text: work.authors, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+            let artistInfoNodeGroupId = "group_of_artist_info_node_\(i)"
+            let image = AssetsManager.default.getArtistImage(name: .hashimoto)
+            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, text: work.authors, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2, image: image)
             addedNodes[artistInfoNodeGroupId] = artistInfoNode
             node.addChildNode(artistInfoNode)
         }
         
         // show paper ( keyword for a work )
         let keywordsNodeGroupId = "group_of_text_label_node"
-        let keywordsNode = KeywordsLabelNode(groupId: keywordsNodeGroupId, text: work.resources, textColor: .purple, width: 0.15)
+        let keywordsNode = KeywordsLabelNode(groupId: keywordsNodeGroupId, text: work.images, textColor: .purple, width: 0.15)
         addedNodes[textLabelNodeGroupId] = textLabelNode
         node.addChildNode(textLabelNode)
         
