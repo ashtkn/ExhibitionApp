@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>58</string>
+	<string>88</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -30,11 +30,10 @@
 	<string>画像を保存します</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>A-OTF-GothicBBBPr6-Medium.otf</string>
-		<string>FOT-TsukuARdGothicStd-B.otf</string>
-		<string>FOT-TsukuARdGothicStd-E.otf</string>
-		<string>FOT-TsukuARdGothicStd-R.otf</string>
-		<string>URWDIN-Regular.otf</string>
+		<string>rounded-mplus-1c-medium.ttf</string>
+		<string>rounded-mplus-1c-heavy.ttf</string>
+		<string>NotoSansCJKjp-Regular.otf</string>
+		<string>NotoSansCJKjp-DemiLight.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
