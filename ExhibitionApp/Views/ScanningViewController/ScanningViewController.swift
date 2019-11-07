@@ -197,7 +197,7 @@ extension ScanningViewController {
         // ここから
         // show title
         let textLabelNodeGroupId = "group_of_title_label_node"
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, originalPosition: SCNVector3(0, 0.5, 0), textColor: .white, width: 1.0)
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, originalPosition: SCNVector3(0, 0.5, -0.1), textColor: .white, width: 1.0)
         addedNodes[textLabelNodeGroupId] = textLabelNode
         node.addChildNode(textLabelNode)
         
@@ -205,11 +205,14 @@ extension ScanningViewController {
         for i in work.authors.count{
             // show hand model
             let handNodeGroupId = "group_of_hand_node_\(i)"
+            
+            let pos_x: Double
             if (work.authors.count, %2 == 0){
-                let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: SCNVector3(-0.3, work.authors.count/2 + 0.3*i + 0.15), handtype: i%3)
+                pos_x = Double(work_authors_count/2) + 0.3*Double(i) + 0.15
             }else{
-                let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: SCNVector3(-0.3, work.authors.count/2 + 0.3*i), handtype: i%3)
+                pos_x = Double(work_authors_count/2) + 0.3*Double(i) + 0.15
             }
+            let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: SCNVector3(pos_x, -0.5, -0.3), handtype: i%3)
             addedNodes[handNodeGroupId] = handNode
             node.addChildNode(handNode)
             

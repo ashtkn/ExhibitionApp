@@ -23,22 +23,23 @@ final class HandNode: SCNNode {
         super.init()
         
         // Configure text node
+        let handScene:SCNScene
         switch handtype {
         case 0:
-            let handScene = SCNScene(named: "art.scnassets/hand/hand-fist.dae")!
+            handScene = SCNScene(named: "art.scnassets/hand-fist.dae")!
         case 1:
-            let handScene = SCNScene(named: "art.scnassets/hand/hand-palm.dae")!
+            handScene = SCNScene(named: "art.scnassets/hand-palm.dae")!
         case 2:
-            let handScene = SCNScene(named: "art.scnassets/hand/hand-fist.dae")!
+            handScene = SCNScene(named: "art.scnassets/hand-fist.dae")!
+        default:
+            handScene = SCNScene(named: "art.scnassets/hand-palm.dae")!
         }
         let handNode = handScene.rootNode
         
         handNode.name = name
         renameChildNodes(name: name, children: handNode.childNodes)
         
-        let (min, max) = handNode.boundingBox
-        let ratio = width / CGFloat(max.x - min.x)
-        handNode.scale = SCNVector3(ratio, ratio, ratio)
+        handNode.scale = SCNVector3(0.005, 0.005, 0.005)
         
         // Add children nodes
         super.addChildNode(handNode)

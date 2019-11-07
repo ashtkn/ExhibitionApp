@@ -24,17 +24,20 @@ final class KeywordsNode: SCNNode {
         
         // モデルを使う場合
         // Configure node
+//        let paperScene:SCNScene
 //        switch papertype {
 //        case 0:
-//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-1.dae")!
+//            paperScene = SCNScene(named: "art.scnassets/paper/paper-1.dae")!
 //        case 1:
-//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-2.dae")!
+//            paperScene = SCNScene(named: "art.scnassets/paper/paper-2.dae")!
 //        case 2:
-//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-3.dae")!
+//            paperScene = SCNScene(named: "art.scnassets/paper/paper-3.dae")!
 //        case 3:
-//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-4.dae")!
+//            paperScene = SCNScene(named: "art.scnassets/paper/paper-4.dae")!
 //        case 4:
-//            let paperScene = SCNScene(named: "art.scnassets/paper/paper-5.dae")!
+//            paperScene = SCNScene(named: "art.scnassets/paper/paper-5.dae")!
+//        default:
+//            paperScene = SCNScene(named: "art.scnassets/paper/paper-1.dae")!
 //        }
 //        let paperNode = paperScene.rootNode
 //
