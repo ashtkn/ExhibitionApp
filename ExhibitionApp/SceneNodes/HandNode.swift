@@ -30,7 +30,7 @@ final class HandNode: SCNNode {
         case 1:
             handScene = SCNScene(named: "art.scnassets/hand-fist.dae")!
         case 2:
-            handScene = SCNScene(named: "art.scnassets/hand-fist.dae")!
+            handScene = SCNScene(named: "art.scnassets/hand-pointer.dae")!
         default:
             handScene = SCNScene(named: "art.scnassets/hand-palm.dae")!
         }
@@ -39,7 +39,7 @@ final class HandNode: SCNNode {
         handNode.name = name
         renameChildNodes(name: name, children: handNode.childNodes)
         
-        handNode.scale = SCNVector3(0.005, 0.005, 0.005)
+        handNode.scale = SCNVector3(0.02, 0.02, 0.02)
         
         // Add children nodes
         super.addChildNode(handNode)
