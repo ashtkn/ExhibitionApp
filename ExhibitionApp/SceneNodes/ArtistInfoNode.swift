@@ -24,18 +24,46 @@ final class ArtistInfoNode: SCNNode {
         super.init()
         
         // Configure text node
-        let str = SCNText(string: text, extrusionDepth: textThickness)
-        str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
-        let textNode = SCNNode(geometry: str)
         
-        let (min, max) = textNode.boundingBox
+        //
+        // text.name
+        //
+        let str = SCNText(string: text.name, extrusionDepth: textThickness)
+        str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
+        let nameNode = SCNNode(geometry: str)
+        
+        let (min, max) = nameNode.boundingBox
         let w = CGFloat(max.x - min.x)
         let h = CGFloat(max.y - min.y)
-        textNode.position = SCNVector3(-(w/2), -(h/2) - 0.9 , 0.001 + textThickness)
+        nameNode.position = SCNVector3(-(w/2), -(h/2) - 0.9 , 0.001 + textThickness)
         
         // Set color or material
-        textNode.geometry?.materials.append(SCNMaterial())
-        textNode.geometry?.materials.first?.diffuse.contents = textColor
+        nameNode.geometry?.materials.append(SCNMaterial())
+        nameNode.geometry?.materials.first?.diffuse.contents = textColor
+
+        //
+        // text.belonging
+        //
+        str = SCNText(string: text.belonging, extrusionDepth: textThickness)
+        str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
+        let belongingNode = SCNNode(geometry: str)
+        
+        (min, max) = belongingNode.boundingBox
+        w = CGFloat(max.x - min.x)
+        h = CGFloat(max.y - min.y)
+        belongingNode.position = SCNVector3(-(w/2), -(h/2) - 0.5 , 0.001 + textThickness)
+        
+        //
+        // text.greeting
+        //
+        str = SCNText(string: text.name, extrusionDepth: textThickness)
+        str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
+        greetingNode = SCNNode(geometry: str)
+        
+        (min, max) = greetingNode.boundingBox
+        w = CGFloat(max.x - min.x)
+        h = CGFloat(max.y - min.y)
+        greetingNode.position = SCNVector3(-(w/2), -(h/2) - 0.2, 0.001 + textThickness)
         
         // Configure panel node
         let panelNode = SCNNode(geometry: SCNBox(width: w * 1.1, height: h * 1.1, length: panelThickness, chamferRadius: 0))
@@ -51,13 +79,17 @@ final class ArtistInfoNode: SCNNode {
         planeNode.geometry?.materials.first?.diffuse.contents = image
         
         // Set name as group ID for detecting touches
-        textNode.name = name
+        nameNode.name = name
+        belongingNode.name = name
+        greetingNode.name = name
         panelNode.name = name
         planeNode.name = name
         super.name = name
         
         // Add children nodes
-        super.addChildNode(textNode)
+        super.addChildNode(nameNode)
+        super.addChildNode(belongingNode)
+        super.addChildNode(greetingNode)
         super.addChildNode(panelNode)
         super.addChildNode(planeNode)
 
