@@ -213,14 +213,32 @@ extension ScanningViewController {
 //            node.addChildNode(imageLabelNode)
 //        }
         
-        let textLabelNodeGroupId = "group_of_text_label_node"
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: "Hello", textColor: .purple, width: 0.15)
-        addedNodes[textLabelNodeGroupId] = textLabelNode
-        node.addChildNode(textLabelNode)
-        
+//        let textLabelNodeGroupId = "group_of_text_label_node"
+//        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: "Hello", textColor: .purple, width: 0.15)
+//        addedNodes[textLabelNodeGroupId] = textLabelNode
+//        node.addChildNode(textLabelNode)
+    
         let shipNodeGroupId = "group_of_text_ship_node"
         let shipNode = ShipNode(gropuId: shipNodeGroupId, width: 0.1)
         addedNodes[shipNodeGroupId] = shipNode
         node.addChildNode(shipNode)
+
+        // ここから
+        // show title
+        let textLabelNodeGroupId = "group_of_title_label_node"
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 0.15)
+        addedNodes[textLabelNodeGroupId] = textLabelNode
+        node.addChildNode(textLabelNode)
+        
+        // show artist info
+        for i in work.authors.count{
+            // show hand model
+            let handNodeGroupId = "group_of_hand_node_\(i)"
+            let handNode = HandNode(gropuId: shipNodeGroupId, width: 0.1)
+            addedNodes[handNodeGroupId] = handNode
+            node.addChildNode(handNode)
+            
+        }
+        
     }
 }

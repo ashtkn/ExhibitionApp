@@ -139,6 +139,7 @@
 		8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */; };
 		8A6804B523527B890059019D /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804B423527B890059019D /* UIFont+Extensions.swift */; };
 		8A6804BB2354E1E70059019D /* UIButton+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804BA2354E1E70059019D /* UIButton+Custom.swift */; };
+		BAC7423423748FBF006499AB /* HandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC7423323748FBF006499AB /* HandNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -268,6 +269,7 @@
 		8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionHeaderView.swift; sourceTree = "<group>"; };
 		8A6804B423527B890059019D /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		8A6804BA2354E1E70059019D /* UIButton+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Custom.swift"; sourceTree = "<group>"; };
+		BAC7423323748FBF006499AB /* HandNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -550,6 +552,7 @@
 				41F5C930237172780081E7ED /* TextLabelNode.swift */,
 				41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */,
 				41F5C936237182220081E7ED /* ShipNode.swift */,
+				BAC7423323748FBF006499AB /* HandNode.swift */,
 			);
 			path = SceneNodes;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 			files = (
 				41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */,
 				416C212C2347240200648C0A /* TopPageViewController.swift in Sources */,
+				BAC7423423748FBF006499AB /* HandNode.swift in Sources */,
 				41456D6223559AFE0077309C /* AssetsManager.swift in Sources */,
 				41C97AC2236EE33F006E407C /* UITraitCollection+Extensions.swift in Sources */,
 				41222D022340452000F5EFE9 /* Work.swift in Sources */,
@@ -1107,7 +1111,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Asahi Takenouchi (P2SAHRC466)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = P2SAHRC466;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1135,7 +1139,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Asahi Takenouchi (P2SAHRC466)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = P2SAHRC466;
 				FRAMEWORK_SEARCH_PATHS = (

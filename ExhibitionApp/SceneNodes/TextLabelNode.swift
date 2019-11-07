@@ -24,7 +24,7 @@ final class TextLabelNode: SCNNode {
         
         // Configure text node
         let str = SCNText(string: text, extrusionDepth: 0.01)
-        str.font = UIFont(name: "HiraginoSans-W6", size: 1);
+        str.font = UIFont(name: "rounded-mplus-1c-medium.ttf", size: 1);
         let textNode = SCNNode(geometry: str)
         
         let (min, max) = textNode.boundingBox
