@@ -15,7 +15,7 @@ final class KeywordsNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, originalPosition: SCNVector3 = .init()) {
+    init(groupId name: String, image: UIImage, width: CGFloat, height: CGFloat, originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition
         

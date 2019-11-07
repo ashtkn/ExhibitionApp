@@ -237,10 +237,20 @@ extension ScanningViewController {
         //            addedNodes[imageLabelNodeGroupId] = imageLabelNode
         //            node.addChildNode(imageLabelNode)
         //        }
-                
-        let keywordsNodeGroupId = "group_of_text_label_node"
-        let keywordsNode = KeywordsLabelNode(groupId: keywordsNodeGroupId, text: work.images, textColor: .purple, width: 0.15)
-        addedNodes[textLabelNodeGroupId] = textLabelNode
-        node.addChildNode(textLabelNode)
+        let keywords_num = work.images.count
+        for i in keywords_num{
+            let keywordNodeGroupId = "group_of_text_label_node_\(i)"
+            // TODO:
+            // テクスチャのソースの取得方法がわからない
+            //let image = AssetsManager.default.getImage(image: .)
+            let position = SCNVector3(.random(in: -0.2...0.2), .random(in: -0.2..<0.0), .random(in: -0.2...0.2))
+            let keywordNode = KeywordNode(groupId: keywordsNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: position)
+            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
+            let rotation = SCNQuaternion.euler(eulerAngles)
+            keywordNode.localRotate(by: rotation)
+
+            addedNodes[keywordNodeGroupId] = keywordNode
+            node.addChildNode(keywordNode)
+        }
     }
 }
