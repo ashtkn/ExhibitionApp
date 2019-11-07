@@ -140,6 +140,8 @@
 		8A6804B523527B890059019D /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804B423527B890059019D /* UIFont+Extensions.swift */; };
 		8A6804BB2354E1E70059019D /* UIButton+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804BA2354E1E70059019D /* UIButton+Custom.swift */; };
 		BAC7423423748FBF006499AB /* HandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC7423323748FBF006499AB /* HandNode.swift */; };
+		BAC74236237494E8006499AB /* ArtistInfoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC74235237494E8006499AB /* ArtistInfoNode.swift */; };
+		BAC7423823749771006499AB /* KeywordsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC7423723749771006499AB /* KeywordsNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +272,8 @@
 		8A6804B423527B890059019D /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		8A6804BA2354E1E70059019D /* UIButton+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Custom.swift"; sourceTree = "<group>"; };
 		BAC7423323748FBF006499AB /* HandNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandNode.swift; sourceTree = "<group>"; };
+		BAC74235237494E8006499AB /* ArtistInfoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoNode.swift; sourceTree = "<group>"; };
+		BAC7423723749771006499AB /* KeywordsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordsNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -553,6 +557,8 @@
 				41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */,
 				41F5C936237182220081E7ED /* ShipNode.swift */,
 				BAC7423323748FBF006499AB /* HandNode.swift */,
+				BAC74235237494E8006499AB /* ArtistInfoNode.swift */,
+				BAC7423723749771006499AB /* KeywordsNode.swift */,
 			);
 			path = SceneNodes;
 			sourceTree = "<group>";
@@ -914,6 +920,7 @@
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
 				41A596A923334179008DA6AF /* LabelNode.swift in Sources */,
+				BAC7423823749771006499AB /* KeywordsNode.swift in Sources */,
 				41F5C92F23716DE00081E7ED /* ImageLabelNode.swift in Sources */,
 				8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */,
 				4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */,
@@ -929,6 +936,7 @@
 				8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */,
 				41647D8B2347458B0021A2E3 /* SharingViewModel.swift in Sources */,
 				41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */,
+				BAC74236237494E8006499AB /* ArtistInfoNode.swift in Sources */,
 				4176FAE82340509B0025B470 /* UserDataObject.swift in Sources */,
 				41B5BB272344F4BE00A274C7 /* UIApplication+Extensions.swift in Sources */,
 				410C2B2E236FE362003E9415 /* SceneRecorder.swift in Sources */,

@@ -15,7 +15,7 @@ final class HandNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(gropuId name: String, width: CGFloat, originalPosition: SCNVector3 = .init(), hand-type: CGFloat) {
+    init(gropuId name: String, width: CGFloat, originalPosition: SCNVector3 = .init(), handtype: Int) {
         // Configure current class
         self.originalPosition = originalPosition
         
@@ -23,7 +23,14 @@ final class HandNode: SCNNode {
         super.init()
         
         // Configure text node
-        let handScene = SCNScene(named: "art.scnassets/hand-fist.dae")!
+        switch handtype {
+        case 0:
+            let handScene = SCNScene(named: "art.scnassets/hand/hand-fist.dae")!
+        case 1:
+            let handScene = SCNScene(named: "art.scnassets/hand/hand-palm.dae")!
+        case 2:
+            let handScene = SCNScene(named: "art.scnassets/hand/hand-fist.dae")!
+        }
         let handNode = handScene.rootNode
         
         handNode.name = name

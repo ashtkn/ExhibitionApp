@@ -193,10 +193,10 @@ extension ScanningViewController {
     
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
         // TODO: objects in the world
-        let labelNodeGroupId = "group_of_label_node"
-        let labelNode = LabelNode(groupId: labelNodeGroupId, text: work.title, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
-        addedNodes[labelNodeGroupId] = labelNode
-        node.addChildNode(labelNode)
+//        let labelNodeGroupId = "group_of_label_node"
+//        let labelNode = LabelNode(groupId: labelNodeGroupId, text: work.title, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+//        addedNodes[labelNodeGroupId] = labelNode
+//        node.addChildNode(labelNode)
         
 //        for i in 0..<3 {
 //            let imageLabelNodeGroupId = "group_of_image_label_node_\(i)"
@@ -218,10 +218,10 @@ extension ScanningViewController {
 //        addedNodes[textLabelNodeGroupId] = textLabelNode
 //        node.addChildNode(textLabelNode)
     
-        let shipNodeGroupId = "group_of_text_ship_node"
-        let shipNode = ShipNode(gropuId: shipNodeGroupId, width: 0.1)
-        addedNodes[shipNodeGroupId] = shipNode
-        node.addChildNode(shipNode)
+//        let shipNodeGroupId = "group_of_text_ship_node"
+//        let shipNode = ShipNode(gropuId: shipNodeGroupId, width: 0.1)
+//        addedNodes[shipNodeGroupId] = shipNode
+//        node.addChildNode(shipNode)
 
         // ここから
         // show title
@@ -234,11 +234,22 @@ extension ScanningViewController {
         for i in work.authors.count{
             // show hand model
             let handNodeGroupId = "group_of_hand_node_\(i)"
-            let handNode = HandNode(gropuId: shipNodeGroupId, width: 0.1)
+            let handNode = HandNode(gropuId: shipNodeGroupId, width: 0.1, i%3)
             addedNodes[handNodeGroupId] = handNode
             node.addChildNode(handNode)
             
+            // show info-board
+            let artistInfoNodeGroupId = "group_of_artist_info_node"
+            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, text: work.authors, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
+            addedNodes[artistInfoNodeGroupId] = artistInfoNode
+            node.addChildNode(artistInfoNode)
         }
+        
+        // show paper ( keyword for a work )
+        let keywordsNodeGroupId = "group_of_text_label_node"
+        let keywordsNode = KeywordsLabelNode(groupId: keywordsNodeGroupId, text: work.resources, textColor: .purple, width: 0.15)
+        addedNodes[textLabelNodeGroupId] = textLabelNode
+        node.addChildNode(textLabelNode)
         
     }
 }
