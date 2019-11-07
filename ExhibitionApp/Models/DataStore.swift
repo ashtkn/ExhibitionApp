@@ -31,17 +31,23 @@ final class DataStore {
         return imagesDirectory
     }
     
-    var works: [Work] {
+    var profileImagesDirectory: URL {
+        let profileImagesDirectory = applicationSupportDirectory.appendingPathComponent("ProfileImages", isDirectory: true)
+        try! FileManager.default.createDirectory(at: profileImagesDirectory, withIntermediateDirectories: true, attributes: nil)
+        return profileImagesDirectory
+    }
+    
+    var allWorks: [Work] {
         let realm = try! Realm()
         return Array(realm.objects(WorkObject.self)).map { $0.entity }
     }
     
     var unlockedWorks: [Work] {
-        return works.filter { !$0.isLocked }
+        return allWorks.filter { !$0.isLocked }
     }
     
     var debugDescription: String {
-        return "Works: \(works.count), ARObjectReferences: \(getARObjects()), ARImageReferences: \(getARImages().count)"
+        return "Works: \(allWorks.count), ARObjectReferences: \(getARObjects()), ARImageReferences: \(getARImages().count)"
     }
     
     // MARK: Methods
@@ -91,7 +97,7 @@ final class DataStore {
     }
     
     func fetchApplicationDataUpdateExists(completion handler: ((_ updated: Bool, _ error: Error?) -> Void)?) {
-        let fetchedWorksSet = Set<Work>(works)
+        let fetchedWorksSet = Set<Work>(allWorks)
         FirebaseService.shared.fetchWorks().then({ fetchingWorks in
             let fetchingWorksSet = Set<Work>(fetchingWorks)
             let diff = fetchingWorksSet.subtracting(fetchedWorksSet)
@@ -107,6 +113,11 @@ final class DataStore {
     func getImage(name imageName: String) -> UIImage? {
         let imagePath = imagesDirectory.appendingPathComponent(imageName)
         return UIImage(contentsOfFile: imagePath.path)
+    }
+    
+    func getProfileImage(name imageName: String) -> UIImage? {
+        let profileImagePath = profileImagesDirectory.appendingPathComponent(imageName)
+        return UIImage(contentsOfFile: profileImagePath.path)
     }
     
     func getARObjectsSet() -> Set<ARReferenceObject> {
@@ -147,7 +158,7 @@ extension DataStore {
     
     private var config: Realm.Configuration {
         return Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
                 if (oldSchemaVersion < 1) {
                     migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
@@ -174,6 +185,12 @@ extension DataStore {
                         newObject!["resources"] = resources
                     }
                 }
+                if (oldSchemaVersion < 3) {
+                    migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
+                        let authors = List<AuthorObject>()
+                        newObject!["authors"] = authors
+                    }
+                }
         })
     }
     
@@ -190,18 +207,20 @@ extension DataStore {
                 }
                 
                 // Create promises for downloading images
-                var downloadImagesPromises: [Promise<URL>] = initialWorkData.flatMap { work in
+                let downloadImagesPromises: [Promise<URL>] = initialWorkData.flatMap { work in
                     return work.images.map { imageName in
                         FirebaseService.shared.download(image: imageName, to: self.imagesDirectory)
                     }
                 }
                 
-                // Add promise for downloading hatena.png
-                let downloadHatenaImagePromise = FirebaseService.shared.download(image: "hatena.png", to: self.imagesDirectory)
-                downloadImagesPromises.append(downloadHatenaImagePromise)
+                let downloadProfileImagesPromised: [Promise<URL>] = initialWorkData.flatMap { work in
+                    return work.authors.map { author in
+                        return FirebaseService.shared.download(profileImage: author.imageName, to: self.profileImagesDirectory)
+                    }
+                }
                 
                 // Execute downloading
-                zip(all(downloadResoucesPromises), all(downloadImagesPromises)).then({ resourcesPaths, imagesPaths in
+                zip(a: all(downloadResoucesPromises), b: all(downloadImagesPromises), c: all(downloadProfileImagesPromised)).then({ resourcesPaths, imagesPaths, profileImagesPaths in
                     // Register fetched data to Realm database
                     let realm = try! Realm()
                     try! realm.write {
@@ -217,7 +236,7 @@ extension DataStore {
     }
     
     private func getARObjects() -> [ARReferenceObject] {
-        let arObjects: [ARReferenceObject] = works.flatMap { (work: Work) -> [ARReferenceObject] in
+        let arObjects: [ARReferenceObject] = allWorks.flatMap { (work: Work) -> [ARReferenceObject] in
             let resourcesDirectory = self.resourcesDirectory
             let referenceObjects: [ARReferenceObject] = work.resources.compactMap { resource in
                 let resourcePath = resourcesDirectory.appendingPathComponent("\(resource.filename)")
@@ -234,7 +253,7 @@ extension DataStore {
     }
     
     private func getARImages() -> [ARReferenceImage] {
-        let arImages: [ARReferenceImage] = works.flatMap { (work: Work) -> [ARReferenceImage] in
+        let arImages: [ARReferenceImage] = allWorks.flatMap { (work: Work) -> [ARReferenceImage] in
             let resourcesDirectory = self.resourcesDirectory
             let referencesImages: [ARReferenceImage] = work.resources.compactMap { resource in
                 let resourcePath = resourcesDirectory.appendingPathComponent("\(resource.filename)")
