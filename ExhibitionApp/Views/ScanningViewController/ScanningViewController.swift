@@ -193,7 +193,6 @@ extension ScanningViewController {
     
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
         // TODO: objects in the world
-
         // ここから
         // show title
         let textLabelNodeGroupId = "group_of_title_label_node"
