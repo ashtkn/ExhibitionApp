@@ -15,7 +15,7 @@ final class TextLabelNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, depth: CGFloat, originalPosition: SCNVector3 = .init()) {
+    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, depth: CGFloat, origin originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition
         

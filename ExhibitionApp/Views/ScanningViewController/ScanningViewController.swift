@@ -181,7 +181,7 @@ extension ScanningViewController {
         let textLabelNodeGroupId = "TitleTextLabelNode"
         // FIXME: Modify size
         let textLabelNodeOriginalPosition = SCNVector3(0, 0, 0)
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 0.2, depth: 50.0, originalPosition: textLabelNodeOriginalPosition)
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 0.2, depth: 50.0, origin: textLabelNodeOriginalPosition)
 //        let textLabelNodeOriginalPosition = SCNVector3(0, 0.5, -0.3)
 //        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 1.0, originalPosition: textLabelNodeOriginalPosition, depth: 50.0)
         addedNodes[textLabelNodeGroupId] = textLabelNode
