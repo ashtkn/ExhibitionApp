@@ -43,7 +43,7 @@ final class KeywordsNode: SCNNode {
 
         paperNode.name = name
         renameChildNodes(name: name, children: paperNode.childNodes)
-        paperNode.scale = SCNVector3(0.0002, 0.0002, 0.0002)
+        paperNode.scale = SCNVector3(0.0003, 0.0003, 0.0003)
 
         for childNode in shipNode.childNodes {
             // テクスチャを貼るなら再帰的に子ノードを探索し，テクスチャを貼る対象のノードにテクスチャをはる

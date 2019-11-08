@@ -196,7 +196,7 @@ extension ScanningViewController {
         // ここから
         // show title
         let textLabelNodeGroupId = "group_of_title_label_node"
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, originalPosition: SCNVector3(0, 0.3, -0.3), textColor: .white, width: 1.0, extrusionDepth: 3.0)
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, originalPosition: SCNVector3(0, 0.5, -0.3), textColor: .white, width: 1.0, extrusionDepth: 3.0)
         addedNodes[textLabelNodeGroupId] = textLabelNode
         node.addChildNode(textLabelNode)
         
@@ -235,7 +235,7 @@ extension ScanningViewController {
             // TODO:
             // テクスチャのソースの取得方法がわからない
             //let image = AssetsManager.default.getImage(image: .)
-            let position = SCNVector3(.random(in: -0.2...0.2), .random(in: 0.2 ... 0.5), .random(in: -0.5 ... -0.2))
+            let position = SCNVector3(.random(in: -0.5...0.5), .random(in: 0.2 ... 0.5), .random(in: -0.8 ... -0.2))
             let keywordNode = KeywordNode(groupId: keywordsNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: position, papertype: i%5)
             let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
 //            let rotation = SCNQuaternion.euler(eulerAngles)
