@@ -192,54 +192,51 @@ extension ScanningViewController: ARSCNViewDelegate {
 extension ScanningViewController {
     
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
-        // TODO: objects in the world
-        // ここから
-        // show title
         let textLabelNodeGroupId = "group_of_title_label_node"
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, originalPosition: SCNVector3(0, 0.5, -0.3), textColor: .white, width: 1.0, extrusionDepth: 50.0)
+        let textLabelNodeOriginalPosition = SCNVector3(0, 0.5, -0.3)
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 1.0, originalPosition: textLabelNodeOriginalPosition, depth: 50.0)
         addedNodes[textLabelNodeGroupId] = textLabelNode
         node.addChildNode(textLabelNode)
         
         // show artist info
-        for i in 1...work.authors.count{
-            // show hand model
-            let handNodeGroupId = "group_of_hand_node_\(i)"
+        for (index, author) in work.authors.enumerated() {
+            let handNodeGroupId = "group_of_hand_node_\(index)"
             
-            let pos_x: Double
-            let pos_y = -0.2
-            let pos_z = -0.5
-            switch work_authors_count%2 {
-            case 0:
-               pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i-1) + 0.15
-            case 1:
-               pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i-1)
-            default:
-               pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i-1)
-            }
-            let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: SCNVector3(pos_x, pos_y, pos_z), handtype: i%3)
+            // TODO: Check this formula
+            let posX: Double = -0.3 * Double(work.authors.count) / 2.0 + 0.3 * Double(index)
+//            switch auhtorsCount % 2 {
+//            case 0:
+//                pos_x = -0.3 * Double(auhtorsCount) / 2 + Double(0.3 * i + 0.15)
+//            case 1:
+//                pos_x = -0.3 * Double(auhtorsCount) / 2 + 0.3 * i
+//            default:
+//                pos_x = -0.3 * Double(auhtorsCount) / 2 + 0.3 * i
+//            }
+            let posY = -0.2
+            let posZ = -0.5
+            
+            let handNodeOriginalPosition = SCNVector3(posX, posY, posZ)
+            let handType = (index + 1) % 3
+            let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: handNodeOriginalPosition, handType: handType)
             addedNodes[handNodeGroupId] = handNode
             node.addChildNode(handNode)
             
             // show info-board
-            let artistInfoNodeGroupId = "group_of_artist_info_node_\(i)"
+            let artistInfoNodeOriginalPosition = handNodeOriginalPosition
+            let artistInfoNodeGroupId = "group_of_artist_info_node_\(index)"
             let image = AssetsManager.default.getArtistImage(name: .hashimoto)
-            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, text: work.authors, width: 0.2, textColor: .white, panelColor: .blue, textThickness: 0.1, panelThickness: 0.2, image: image, pos: SCNVector3(pos_x, pos_y, pos_z))
+            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, author: author, width: 0.2, textColor: .white, panelColor: .blue, textThickness: 0.1, panelThickness: 0.2, image: image, pos: artistInfoNodeOriginalPosition)
             addedNodes[artistInfoNodeGroupId] = artistInfoNode
             node.addChildNode(artistInfoNode)
         }
         
-        // show paper ( keyword for a work )
-        let keywords_num = work.images.count
-        for i in 0..<keywords_num{
-            let keywordNodeGroupId = "group_of_text_label_node_\(i)"
-            // TODO:
-            // テクスチャのソースの取得方法がわからない
-            //let image = AssetsManager.default.getImage(image: .)
-            let position = SCNVector3(.random(in: -0.5...0.5), .random(in: 0.2 ... 0.5), .random(in: -0.8 ... -0.2))
-            let keywordNode = KeywordNode(groupId: keywordsNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: position, papertype: i%5)
+        for (index, imageName) in work.images.enumerated() {
+            let keywordNodeGroupId = "group_of_text_label_node_\(index)"
+            guard let image = DataStore.shared.getImage(name: imageName) else { continue }
+            let keywordNodeOriginalPosition = SCNVector3(.random(in: -0.5...0.5), .random(in: 0.2 ... 0.5), .random(in: -0.8 ... -0.2))
+            let paperType = (index + 1) % 5
+            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: keywordNodeOriginalPosition, paperType: paperType)
             let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
-//            let rotation = SCNQuaternion.euler(eulerAngles)
-//            keywordNode.localRotate(by: rotation)
             keywordNode.eulerAngles = eulerAngles
 
             addedNodes[keywordNodeGroupId] = keywordNode

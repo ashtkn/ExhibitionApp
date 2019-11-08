@@ -15,7 +15,7 @@ final class KeywordsNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, image: UIImage, width: CGFloat, height: CGFloat, originalPosition: SCNVector3 = .init(), papertype: Int) {
+    init(groupId name: String, image: UIImage, width: CGFloat, height: CGFloat, originalPosition: SCNVector3 = .init(), paperType type: Int) {
         // Configure current class
         self.originalPosition = originalPosition
         
@@ -24,8 +24,8 @@ final class KeywordsNode: SCNNode {
         
         // モデルを使う場合
         // Configure node
-        let paperScene:SCNScene
-        switch papertype {
+        let paperScene: SCNScene
+        switch type {
         case 0:
             paperScene = SCNScene(named: "art.scnassets/paper/paper-1.dae")!
         case 1:
@@ -45,8 +45,8 @@ final class KeywordsNode: SCNNode {
         renameChildNodes(name: name, children: paperNode.childNodes)
         paperNode.scale = SCNVector3(0.0003, 0.0003, 0.0003)
 
-        for childNode in shipNode.childNodes {
-            // テクスチャを貼るなら再帰的に子ノードを探索し，テクスチャを貼る対象のノードにテクスチャをはる
+        // TODO: これでいいの？
+        for childNode in paperNode.childNodes {
              childNode.geometry?.materials.append(SCNMaterial())
              childNode.geometry?.materials.first?.diffuse.contents = image
         }
@@ -60,5 +60,13 @@ final class KeywordsNode: SCNNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func renameChildNodes(name: String, children nodes: [SCNNode]) {
+        if nodes.count == 0 { return }
+        for node in nodes {
+            node.name = name
+            renameChildNodes(name: name, children: node.childNodes)
+        }
     }
 }

@@ -40,7 +40,6 @@ final class TextLabelNode: SCNNode {
         
         let (min, max) = textNode.boundingBox
         let w = CGFloat(max.x - min.x)
-        let h = CGFloat(max.y - min.y)
         let ratio = width / CGFloat(max.x - min.x)
         textNode.scale = SCNVector3(ratio, ratio, ratio)
         
@@ -56,7 +55,7 @@ final class TextLabelNode: SCNNode {
         super.addChildNode(textNode)
         
         // Configure entire transform
-        super.position = (originalPosition.x - Double(w*ratio/2), originalPosition.y, originalPosition.z)
+        super.position = SCNVector3(originalPosition.x - Float(w*ratio/2), originalPosition.y, originalPosition.z)
     }
     
     required init?(coder aDecoder: NSCoder) {
