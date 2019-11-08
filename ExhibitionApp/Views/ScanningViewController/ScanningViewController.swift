@@ -63,36 +63,11 @@ final class ScanningViewController: UIViewController {
         
         guard let location = touches.first?.location(in: sceneView) else { return }
         guard let hitTestResult = sceneView.hitTest(location, options: nil).first else { return }
-        
-        // TODO: process when user touches a node
-        print("Hit node: \(hitTestResult.node)")
-        print("Parent: \(String(describing: hitTestResult.node.parent))")
-        print("Children: \(hitTestResult.node.childNodes)")
-        
-        // push test by kiho
-        // test
-        
         guard let groupId = hitTestResult.node.name else { return }
         
         if addedNodes.keys.contains(groupId) {
             let node = addedNodes[groupId]
             switch node {
-            case let labelNode as LabelNode:
-                if labelNode.hasMoved {
-                    labelNode.moveToOriginalPosition()
-                } else {
-                    let newPosition = SCNVector3(0.1, 0.0, 0.0)
-                    labelNode.move(to: newPosition)
-                }
-                
-            case let imageLabelNode as ImageLabelNode:
-                if imageLabelNode.hasMoved {
-                    imageLabelNode.moveToOriginalPosition()
-                } else {
-                    let newPosition = SCNVector3(0.2, 0.0, 0.0)
-                    imageLabelNode.move(to: newPosition)
-                }
-                
             case let textLabelNode as TextLabelNode:
                 if textLabelNode.hasMoved {
                     textLabelNode.moveToOriginalPosition()
@@ -106,6 +81,7 @@ final class ScanningViewController: UIViewController {
                 
             case .none:
                 fatalError()
+                
             default:
                 print("Not set")
             }
@@ -180,7 +156,9 @@ extension ScanningViewController: ARSCNViewDelegate {
         if let detectingWorkIndex = allWorks.firstIndex(where: { $0.has(resource: name) }) {
             let detectingWork = allWorks[detectingWorkIndex]
             viewModel.setDetectingWork(detectingWork)
-            addNode(to: node, for: anchor, work: detectingWork)
+            DispatchQueue.main.async { [weak self] in
+                self?.addNode(to: node, for: anchor, work: detectingWork)
+            }
         }
     }
     
@@ -192,35 +170,53 @@ extension ScanningViewController: ARSCNViewDelegate {
 extension ScanningViewController {
     
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
-        // TODO: objects in the world
-        let labelNodeGroupId = "group_of_label_node"
-        let labelNode = LabelNode(groupId: labelNodeGroupId, text: work.title, width: 0.2, textColor: .blue, panelColor: .white, textThickness: 0.1, panelThickness: 0.2)
-        addedNodes[labelNodeGroupId] = labelNode
-        node.addChildNode(labelNode)
-        
-//        for i in 0..<3 {
-//            let imageLabelNodeGroupId = "group_of_image_label_node_\(i)"
-//            let image = AssetsManager.default.getArtistImage(name: .hashimoto)
-//
-//            let position = SCNVector3(.random(in: -0.2...0.2), .random(in: -0.2..<0.0), .random(in: -0.2...0.2))
-//            let imageLabelNode = ImageLabelNode(groupId: imageLabelNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: position)
-//
-//            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
-//            let rotation = SCNQuaternion.euler(eulerAngles)
-//            imageLabelNode.localRotate(by: rotation)
-//            
-//            addedNodes[imageLabelNodeGroupId] = imageLabelNode
-//            node.addChildNode(imageLabelNode)
-//        }
-        
-        let textLabelNodeGroupId = "group_of_text_label_node"
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: "Hello", textColor: .purple, width: 0.15)
+        let textLabelNodeGroupId = "TitleTextLabelNode"
+        // FIXME: Modify size
+        let textLabelNodePosition = SCNVector3(0, 0, 0)
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 0.2, depth: 50.0, origin: textLabelNodePosition)
+//        let textLabelNodeOriginalPosition = SCNVector3(0, 0.5, -0.3)
+//        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 1.0, originalPosition: textLabelNodeOriginalPosition, depth: 50.0)
         addedNodes[textLabelNodeGroupId] = textLabelNode
         node.addChildNode(textLabelNode)
         
-        let shipNodeGroupId = "group_of_text_ship_node"
-        let shipNode = ShipNode(gropuId: shipNodeGroupId, width: 0.1)
-        addedNodes[shipNodeGroupId] = shipNode
-        node.addChildNode(shipNode)
+        for (index, author) in work.authors.enumerated() {
+            let handNodeGroupId = "HandNode_\(index)"
+
+            // FIXME: Modify size
+//            let posX = -0.3 * Double(work.authors.count / 2) + 0.3 * 1.5
+//            let posY = -0.2
+//            let posZ = -0.5
+            let posX = -0.3 * Double(work.authors.count / 2) + 0.3 * 1.5 / 10
+            let posY = -0.2 / 10
+            let posZ = -0.5 / 10
+
+            let handNodePosition = SCNVector3(posX, posY, posZ)
+            let handType = (index + 1) % 3
+            let handNode = HandNode(gropuId: handNodeGroupId, handType: handType, origin: handNodePosition)
+            addedNodes[handNodeGroupId] = handNode
+            node.addChildNode(handNode)
+
+            let artistInfoNodePosition = handNodePosition
+            let artistInfoNodeGroupId = "ArtistInfoNode_\(index)"
+            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, author: author, origin: artistInfoNodePosition)
+            addedNodes[artistInfoNodeGroupId] = artistInfoNode
+            node.addChildNode(artistInfoNode)
+        }
+        
+        for (index, imageName) in work.images.enumerated() {
+            let keywordNodeGroupId = "KeywordNode_\(index)"
+            // TODO: change image to keyword image
+            guard let image = DataStore.shared.getImage(name: imageName) else { continue }
+            // FIXME: Modify size
+//            let keywordNodeOriginalPosition = SCNVector3(.random(in: -0.5...0.5), .random(in: 0.2 ... 0.5), .random(in: -0.8 ... -0.2))
+            let keywordNodePosition = SCNVector3(.random(in: -0.1...0.1), .random(in: -0.1 ... 0.1), .random(in: -0.1 ... -0.1))
+            let paperType = (index + 1) % 5
+            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, keyword: image, paperType: paperType, origin: keywordNodePosition)
+            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
+            keywordNode.eulerAngles = eulerAngles
+
+            addedNodes[keywordNodeGroupId] = keywordNode
+            node.addChildNode(keywordNode)
+        }
     }
 }

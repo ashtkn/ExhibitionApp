@@ -29,12 +29,6 @@ final class ShipNode: SCNNode {
         shipNode.name = name
         renameChildNodes(name: name, children: shipNode.childNodes)
         
-//        for childNode in shipNode.childNodes {
-//            // テクスチャを貼るなら再帰的に子ノードを探索し，テクスチャを貼る対象のノードにテクスチャをはる
-//            // childNode.geometry?.materials.append(SCNMaterial())
-//            // childNode.geometry?.materials.first?.diffuse.contents = image
-//        }
-        
         let (min, max) = shipNode.boundingBox
         let ratio = width / CGFloat(max.x - min.x)
         shipNode.scale = SCNVector3(ratio, ratio, ratio)
