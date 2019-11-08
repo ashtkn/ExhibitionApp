@@ -13,6 +13,7 @@ final class WorkObject: Object {
     let images = List<String>()
     let authors = List<AuthorObject>()
     let resources = List<ResourceObject>()
+    let keywordImages = List<String>()
     
     static func create(from entity: Work) -> WorkObject {
         let model = WorkObject()
@@ -26,6 +27,7 @@ final class WorkObject: Object {
         model.authors.append(objectsIn: entity.authors.map { AuthorObject.create(from: $0) })
         model.resources.append(objectsIn: entity.resources.map { ResourceObject.create(from: $0) })
         model.version = entity.version
+        model.keywordImages.append(objectsIn: entity.keywordImages)
         
         return model
     }
@@ -38,6 +40,7 @@ final class WorkObject: Object {
         let authorsArray = Array(authors).map { $0.entity }
         let imagesArray = Array(images)
         let resourcesArray = Array(resources).map { $0.entity }
+        let keywordImagesArray = Array(keywordImages)
         
         return Work(
             id: id,
@@ -48,7 +51,8 @@ final class WorkObject: Object {
             url: url,
             isLocked: isLocked,
             version: version,
-            resources: resourcesArray
+            resources: resourcesArray,
+            keywordImages: keywordImagesArray
         )
     }
 }
