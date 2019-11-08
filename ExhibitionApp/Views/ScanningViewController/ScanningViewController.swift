@@ -63,15 +63,6 @@ final class ScanningViewController: UIViewController {
         
         guard let location = touches.first?.location(in: sceneView) else { return }
         guard let hitTestResult = sceneView.hitTest(location, options: nil).first else { return }
-        
-        // TODO: process when user touches a node
-        print("Hit node: \(hitTestResult.node)")
-        print("Parent: \(String(describing: hitTestResult.node.parent))")
-        print("Children: \(hitTestResult.node.childNodes)")
-        
-        // push test by kiho
-        // test
-        
         guard let groupId = hitTestResult.node.name else { return }
         
         if addedNodes.keys.contains(groupId) {
@@ -90,6 +81,7 @@ final class ScanningViewController: UIViewController {
                 
             case .none:
                 fatalError()
+                
             default:
                 print("Not set")
             }
@@ -213,6 +205,7 @@ extension ScanningViewController {
         
         for (index, imageName) in work.images.enumerated() {
             let keywordNodeGroupId = "KeywordNode_\(index)"
+            // TODO: change image to keyword image
             guard let image = DataStore.shared.getImage(name: imageName) else { continue }
             // FIXME: Modify size
 //            let keywordNodeOriginalPosition = SCNVector3(.random(in: -0.5...0.5), .random(in: 0.2 ... 0.5), .random(in: -0.8 ... -0.2))
