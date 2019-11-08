@@ -65,6 +65,10 @@ final class ArtistInfoNode: SCNNode {
         str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 100);
         greetingNode = SCNNode(geometry: str)
         
+        //TODO: テキストが長文だった時の対応
+        //str.containerFrame = CGRect(origin: .zero, size: CGSize(width: 10, height: 10))
+        //            str.isWrapped = true;
+        
         (min, max) = greetingNode.boundingBox
         w = CGFloat(max.x - min.x)
         h = CGFloat(max.y - min.y)
