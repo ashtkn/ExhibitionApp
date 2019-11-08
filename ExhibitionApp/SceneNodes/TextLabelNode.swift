@@ -15,7 +15,7 @@ final class TextLabelNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, originalPosition: SCNVector3 = .init()) {
+    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, originalPosition: SCNVector3 = .init(), depth: CGFloat) {
         // Configure current class
         self.originalPosition = originalPosition
         
@@ -23,7 +23,7 @@ final class TextLabelNode: SCNNode {
         super.init()
         
         // Configure text node
-        let str = SCNText(string: text, extrusionDepth: 0.01)
+        let str = SCNText(string: text, extrusionDepth: depth)
         str.font = UIFont(name: "rounded-mplus-1c-medium.ttf", size: 1);
         let textNode = SCNNode(geometry: str)
         
