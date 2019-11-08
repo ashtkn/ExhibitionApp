@@ -39,7 +39,7 @@ final class HandNode: SCNNode {
         handNode.name = name
         renameChildNodes(name: name, children: handNode.childNodes)
         
-        handNode.scale = SCNVector3(0.02, 0.02, 0.02)
+        handNode.scale = SCNVector3(0.03, 0.03, 0.03)
         
         // Add children nodes
         super.addChildNode(handNode)

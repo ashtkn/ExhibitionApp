@@ -72,24 +72,25 @@ final class ArtistInfoNode: SCNNode {
         greetingNode.scale = SCNVector3(ratio/5, ratio/5, ratio/5)
         greetingNode.position = SCNVector3(pos_x - Double(w*ratio/10), pos_y + 0.15, pos_z + 0.1)
         
-        // Configure panel node
-        let panelNode = SCNNode(geometry: SCNBox(width: w * 1.1, height: h * 1.1, length: panelThickness, chamferRadius: 0))
-        
-        // Set color or material
-        panelNode.geometry?.materials.append(SCNMaterial())
-        panelNode.geometry?.materials.first?.diffuse.contents = panelColor
+//        // Configure panel node
+//        let panelNode = SCNNode(geometry: SCNBox(width: w * 1.1, height: h * 1.1, length: panelThickness, chamferRadius: 0))
+//
+//        // Set color or material
+//        panelNode.geometry?.materials.append(SCNMaterial())
+//        panelNode.geometry?.materials.first?.diffuse.contents = panelColor
         
         let planeNode = SCNNode(geometry: SCNPlane(width: 0.1, height: 0.1))
         
         // Set color or material
         planeNode.geometry?.materials.append(SCNMaterial())
         planeNode.geometry?.materials.first?.diffuse.contents = image
+        planeNode.position = SCNVector3(pos_x, pos_y + 0.35, pos_z + 0.1)
         
         // Set name as group ID for detecting touches
         nameNode.name = name
         belongingNode.name = name
         greetingNode.name = name
-        panelNode.name = name
+//        panelNode.name = name
         planeNode.name = name
         super.name = name
         
@@ -97,7 +98,7 @@ final class ArtistInfoNode: SCNNode {
         super.addChildNode(nameNode)
         super.addChildNode(belongingNode)
         super.addChildNode(greetingNode)
-        super.addChildNode(panelNode)
+//        super.addChildNode(panelNode)
         super.addChildNode(planeNode)
 
         // Configure entire transform
