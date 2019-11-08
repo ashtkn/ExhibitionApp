@@ -30,7 +30,7 @@ final class ArtistInfoNode: SCNNode {
         // text.name
         //
         var str = SCNText(string: text.name, extrusionDepth: textThickness)
-        str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
+        str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 1);
         let nameNode = SCNNode(geometry: str)
         
         var (min, max) = nameNode.boundingBox
@@ -48,7 +48,7 @@ final class ArtistInfoNode: SCNNode {
         // text.belonging
         //
         str = SCNText(string: text.belonging, extrusionDepth: textThickness)
-        str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
+        str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 1);
         let belongingNode = SCNNode(geometry: str)
         
         (min, max) = belongingNode.boundingBox
@@ -60,7 +60,7 @@ final class ArtistInfoNode: SCNNode {
         // text.greeting
         //
         str = SCNText(string: text.name, extrusionDepth: textThickness)
-        str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
+        str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 1);
         greetingNode = SCNNode(geometry: str)
         
         (min, max) = greetingNode.boundingBox
@@ -98,7 +98,7 @@ final class ArtistInfoNode: SCNNode {
 
         // Configure entire transform
         super.position = originalPosition
-        let ratio = width / w
+        ratio = width / w
         super.scale = SCNVector3(ratio, ratio, ratio)
     }
     

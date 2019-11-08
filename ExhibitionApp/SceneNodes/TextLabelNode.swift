@@ -24,7 +24,17 @@ final class TextLabelNode: SCNNode {
         
         // Configure text node
         let str = SCNText(string: text, extrusionDepth: depth)
-        str.font = UIFont(name: "rounded-mplus-1c-medium.ttf", size: 1);
+        str.font = UIFont(name: "rounded-mplus-1c-medium", size: 1);
+        
+        // Set color or material
+        let m1 = SCNMaterial()
+        m1.diffuse.contents = UIColor.init(red: 0, green: 130/255, blue: 180/255, alpha: 1)
+        let m2 = SCNMaterial()
+        m2.diffuse.contents = UIColor.init(red: 240/255, green: 102/255, blue: 102/255, alpha: 1)
+        let m3 = SCNMaterial()
+        m3.diffuse.contents = UIColor.white
+        str.materials = [m1, m1, m2, m3, m3]
+        
         let textNode = SCNNode(geometry: str)
         
         let (min, max) = textNode.boundingBox
