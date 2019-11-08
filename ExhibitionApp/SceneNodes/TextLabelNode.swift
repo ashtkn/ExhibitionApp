@@ -15,7 +15,7 @@ final class TextLabelNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, originalPosition: SCNVector3 = .init(), depth: CGFloat) {
+    init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, depth: CGFloat, originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition
         
@@ -24,14 +24,12 @@ final class TextLabelNode: SCNNode {
         
         // Configure text node
         let str = SCNText(string: text, extrusionDepth: depth)
-        str.chamferRadius = 2.0;
-        str.font = UIFont(name: "rounded-mplus-1c-medium", size: 100);
+        str.chamferRadius = 2.0
+        str.font = UIFont(name: "rounded-mplus-1c-medium", size: 100)
         
         // Set color or material
         let m1 = SCNMaterial()
         m1.diffuse.contents = UIColor.init(red: 0, green: 130/255, blue: 180/255, alpha: 1)
-//        let m2 = SCNMaterial()
-//        m2.diffuse.contents = UIColor.init(red: 240/255, green: 102/255, blue: 102/255, alpha: 1)
         let m3 = SCNMaterial()
         m3.diffuse.contents = UIColor.white
         str.materials = [m1, m1, m1, m3, m3]
