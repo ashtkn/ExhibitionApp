@@ -207,22 +207,24 @@ extension ScanningViewController {
             let handNodeGroupId = "group_of_hand_node_\(i)"
             
             let pos_x: Double
+            let pos_y = -0.2
+            let pos_z = -0.3
             switch work_authors_count%2 {
             case 0:
-               pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i) + 0.15
+               pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i-1) + 0.15
             case 1:
-               pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i)
+               pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i-1)
             default:
-               pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i)
+               pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i-1)
             }
-            let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: SCNVector3(pos_x, -0.2, -0.3), handtype: i%3)
+            let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, originalPosition: SCNVector3(pos_x, pos_y, pos_z), handtype: i%3)
             addedNodes[handNodeGroupId] = handNode
             node.addChildNode(handNode)
             
             // show info-board
             let artistInfoNodeGroupId = "group_of_artist_info_node_\(i)"
             let image = AssetsManager.default.getArtistImage(name: .hashimoto)
-            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, text: work.authors, width: 0.2, textColor: .white, panelColor: .blue, textThickness: 0.1, panelThickness: 0.2, image: image)
+            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, text: work.authors, width: 0.2, textColor: .white, panelColor: .blue, textThickness: 0.1, panelThickness: 0.2, image: image, pos: SCNVector3(pos_x, pos_y, pos_z))
             addedNodes[artistInfoNodeGroupId] = artistInfoNode
             node.addChildNode(artistInfoNode)
         }

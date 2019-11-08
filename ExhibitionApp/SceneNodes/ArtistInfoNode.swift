@@ -16,7 +16,8 @@ final class ArtistInfoNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, text: String, width: CGFloat, textColor: UIColor, panelColor: UIColor, textThickness: CGFloat, panelThickness: CGFloat, originalPosition: SCNVector3 = .init(), image: UIimage) {
+    init(groupId name: String, text: String, width: CGFloat, textColor: UIColor, panelColor: UIColor, textThickness: CGFloat, panelThickness: CGFloat, originalPosition: SCNVector3 = .init(),
+         image: UIimage, pos: SCNVector3) {
         // Configure current class
         self.originalPosition = originalPosition
         
@@ -32,10 +33,12 @@ final class ArtistInfoNode: SCNNode {
         str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
         let nameNode = SCNNode(geometry: str)
         
-        var (min, max) = nameNode.boundingBox
-        var w = CGFloat(max.x - min.x)
-        var h = CGFloat(max.y - min.y)
-        nameNode.position = SCNVector3(-(w/2), -(h/2) - 0.9 , 0.001 + textThickness)
+        let (min, max) = nameNode.boundingBox
+        let w = CGFloat(max.x - min.x)
+        let h = CGFloat(max.y - min.y)
+        let ratio = 1.0 / CGFloat(max.x - min.x)
+        nameNode.scale = SCNVector3(ratio/5, ratio/5, ratio/5)
+        nameNode.position = SCNVector3(pos_x - Double(w*ratio/10), 0.0, -0.3)
         
         // Set color or material
         nameNode.geometry?.materials.append(SCNMaterial())
