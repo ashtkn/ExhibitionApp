@@ -33,12 +33,12 @@ final class ArtistInfoNode: SCNNode {
         str.font = UIFont(name: "NotoSansCJKjp-Regular.otf", size: 1);
         let nameNode = SCNNode(geometry: str)
         
-        let (min, max) = nameNode.boundingBox
-        let w = CGFloat(max.x - min.x)
-        let h = CGFloat(max.y - min.y)
-        let ratio = 1.0 / CGFloat(max.x - min.x)
+        var (min, max) = nameNode.boundingBox
+        var w = CGFloat(max.x - min.x)
+        var h = CGFloat(max.y - min.y)
+        var ratio = 1.0 / CGFloat(max.x - min.x)
         nameNode.scale = SCNVector3(ratio/5, ratio/5, ratio/5)
-        nameNode.position = SCNVector3(pos_x - Double(w*ratio/10), 0.0, -0.3)
+        nameNode.position = SCNVector3(pos.x - Double(w*ratio/10), pos.y + 0.2, pos.z)
         
         // Set color or material
         nameNode.geometry?.materials.append(SCNMaterial())
