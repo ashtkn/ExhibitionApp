@@ -216,14 +216,14 @@ extension ScanningViewController {
 
             let handNodeOriginalPosition = SCNVector3(posX, posY, posZ)
             let handType = (index + 1) % 3
-            let handNode = HandNode(gropuId: handNodeGroupId, width: 0.1, handType: handType, originalPosition: handNodeOriginalPosition)
+            let handNode = HandNode(gropuId: handNodeGroupId, handType: handType, origin: handNodeOriginalPosition)
             addedNodes[handNodeGroupId] = handNode
             node.addChildNode(handNode)
 
             let artistInfoNodeOriginalPosition = handNodeOriginalPosition
             let artistInfoNodeGroupId = "ArtistInfoNode_\(index)"
             let image = AssetsManager.default.getArtistImage(name: .hashimoto)
-            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, author: author, width: 0.2, textColor: .white, panelColor: .blue, textThickness: 0.1, panelThickness: 0.2, image: image, pos: artistInfoNodeOriginalPosition)
+            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, author: author, image: image, origin: artistInfoNodeOriginalPosition)
             addedNodes[artistInfoNodeGroupId] = artistInfoNode
             node.addChildNode(artistInfoNode)
         }
@@ -235,7 +235,7 @@ extension ScanningViewController {
 //            let keywordNodeOriginalPosition = SCNVector3(.random(in: -0.5...0.5), .random(in: 0.2 ... 0.5), .random(in: -0.8 ... -0.2))
             let keywordNodeOriginalPosition = SCNVector3(.random(in: -0.1...0.1), .random(in: -0.1 ... 0.1), .random(in: -0.1 ... -0.1))
             let paperType = (index + 1) % 5
-            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: keywordNodeOriginalPosition, paperType: paperType)
+            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, image: image, paperType: paperType, origin: keywordNodeOriginalPosition)
             let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
             keywordNode.eulerAngles = eulerAngles
 

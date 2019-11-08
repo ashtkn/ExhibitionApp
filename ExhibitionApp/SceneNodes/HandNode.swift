@@ -15,7 +15,7 @@ final class HandNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(gropuId name: String, width: CGFloat, handType type: Int, originalPosition: SCNVector3 = .init()) {
+    init(gropuId id: String, handType type: Int, origin originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition
         
@@ -36,8 +36,8 @@ final class HandNode: SCNNode {
         }
         let handNode = handScene.rootNode
         
-        handNode.name = name
-        renameChildNodes(name: name, children: handNode.childNodes)
+        handNode.name = id
+        renameChildNodes(name: id, children: handNode.childNodes)
         
         handNode.scale = SCNVector3(0.03, 0.03, 0.03)
         

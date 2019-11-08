@@ -16,17 +16,22 @@ final class ArtistInfoNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, author: Author, width: CGFloat, textColor: UIColor, panelColor: UIColor, textThickness: CGFloat, panelThickness: CGFloat, originalPosition: SCNVector3 = .init(), image: UIImage, pos: SCNVector3) {
+    init(groupId id: String, author: Author, image: UIImage, origin originalPosition: SCNVector3 = .init()) {
+        
+        let width: CGFloat = 0.2
+        let textColor: UIColor = .white
+        let textThickness: CGFloat = 0.1
+        
         self.originalPosition = originalPosition
         
         // Confugure SuperClass
         super.init()
         
-        addNameNode(groupId: name, name: author.name, textColor: textColor, extrusionDepth: textThickness, pos: pos)
-        addBelongingNode(groupId: name, belonging: author.belonging, extrusionDepth: textThickness, pos: pos)
-        addGreetingLabel(groupId: name, name: author.greeting, extrusionDepth: textThickness, pos: pos)
+        addNameNode(groupId: id, name: author.name, textColor: textColor, extrusionDepth: textThickness, origin: originalPosition)
+        addBelongingNode(groupId: id, belonging: author.belonging, extrusionDepth: textThickness, origin: originalPosition)
+        addGreetingLabel(groupId: id, name: author.greeting, extrusionDepth: textThickness, origin: originalPosition)
         
-        super.name = name
+        super.name = id
         super.position = originalPosition
         
         // TODO: スケールが正しいかすること
@@ -43,7 +48,7 @@ final class ArtistInfoNode: SCNNode {
 
 extension ArtistInfoNode {
     
-    private func addNameNode(groupId: String, name: String, textColor: UIColor, extrusionDepth textThickness: CGFloat, pos: SCNVector3) {
+    private func addNameNode(groupId: String, name: String, textColor: UIColor, extrusionDepth textThickness: CGFloat, origin p: SCNVector3) {
         let str = SCNText(string: name, extrusionDepth: textThickness)
         str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 1);
         let nameNode = SCNNode(geometry: str)
@@ -52,7 +57,7 @@ extension ArtistInfoNode {
         let w = CGFloat(max.x - min.x)
         let ratio = 1.0 / CGFloat(max.x - min.x)
         nameNode.scale = SCNVector3(ratio/5, ratio/5, ratio/5)
-        nameNode.position = SCNVector3(pos.x - Float(w*ratio/10), pos.y + 0.2, pos.z + 0.1)
+        nameNode.position = SCNVector3(p.x - Float(w*ratio/10), p.y + 0.2, p.z + 0.1)
         
         // Set color or material
         nameNode.geometry?.materials.append(SCNMaterial())
@@ -62,7 +67,7 @@ extension ArtistInfoNode {
         super.addChildNode(nameNode)
     }
     
-    private func addBelongingNode(groupId: String, belonging: String, extrusionDepth textThickness: CGFloat, pos: SCNVector3) {
+    private func addBelongingNode(groupId: String, belonging: String, extrusionDepth textThickness: CGFloat, origin p: SCNVector3) {
         let str = SCNText(string: belonging, extrusionDepth: textThickness)
         str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 100);
         let belongingNode = SCNNode(geometry: str)
@@ -71,13 +76,13 @@ extension ArtistInfoNode {
         let w = CGFloat(max.x - min.x)
         let ratio = 1.0 / CGFloat(max.x - min.x)
         belongingNode.scale = SCNVector3(ratio/5, ratio/5, ratio/5)
-        belongingNode.position = SCNVector3(pos.x - Float(w*ratio/10), pos.y + 0.18, pos.z + 0.1)
+        belongingNode.position = SCNVector3(p.x - Float(w*ratio/10), p.y + 0.18, p.z + 0.1)
         
         belongingNode.name = groupId
         super.addChildNode(belongingNode)
     }
     
-    private func addGreetingLabel(groupId: String, name: String, extrusionDepth textThickness: CGFloat, pos: SCNVector3) {
+    private func addGreetingLabel(groupId: String, name: String, extrusionDepth textThickness: CGFloat, origin p: SCNVector3) {
         let str = SCNText(string: name, extrusionDepth: textThickness)
         str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 100);
         let greetingNode = SCNNode(geometry: str)
@@ -86,7 +91,7 @@ extension ArtistInfoNode {
         let w = CGFloat(max.x - min.x)
         let ratio = 1.0 / CGFloat(max.x - min.x)
         greetingNode.scale = SCNVector3(ratio/5, ratio/5, ratio/5)
-        greetingNode.position = SCNVector3(pos.x - Float(w*ratio/10), pos.y + 0.15, pos.z + 0.1)
+        greetingNode.position = SCNVector3(p.x - Float(w*ratio/10), p.y + 0.15, p.z + 0.1)
         
         greetingNode.name = groupId
         super.addChildNode(greetingNode)

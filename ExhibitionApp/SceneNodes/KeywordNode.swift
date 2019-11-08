@@ -15,7 +15,7 @@ final class KeywordsNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId name: String, image: UIImage, width: CGFloat, height: CGFloat, originalPosition: SCNVector3 = .init(), paperType type: Int) {
+    init(groupId id: String, image: UIImage, paperType type: Int, origin originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition
         
@@ -41,8 +41,8 @@ final class KeywordsNode: SCNNode {
         }
         let paperNode = paperScene.rootNode
 
-        paperNode.name = name
-        renameChildNodes(name: name, children: paperNode.childNodes)
+        paperNode.name = id
+        renameChildNodes(name: id, children: paperNode.childNodes)
         paperNode.scale = SCNVector3(0.0003, 0.0003, 0.0003)
 
         // TODO: これでいいの？
