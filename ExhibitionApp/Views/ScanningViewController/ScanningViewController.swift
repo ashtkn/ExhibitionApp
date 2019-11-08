@@ -77,22 +77,6 @@ final class ScanningViewController: UIViewController {
         if addedNodes.keys.contains(groupId) {
             let node = addedNodes[groupId]
             switch node {
-            case let labelNode as LabelNode:
-                if labelNode.hasMoved {
-                    labelNode.moveToOriginalPosition()
-                } else {
-                    let newPosition = SCNVector3(0.1, 0.0, 0.0)
-                    labelNode.move(to: newPosition)
-                }
-                
-            case let imageLabelNode as ImageLabelNode:
-                if imageLabelNode.hasMoved {
-                    imageLabelNode.moveToOriginalPosition()
-                } else {
-                    let newPosition = SCNVector3(0.2, 0.0, 0.0)
-                    imageLabelNode.move(to: newPosition)
-                }
-                
             case let textLabelNode as TextLabelNode:
                 if textLabelNode.hasMoved {
                     textLabelNode.moveToOriginalPosition()

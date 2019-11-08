@@ -80,7 +80,6 @@
 		41907CA9233F19EC00C54253 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41907CA8233F19EC00C54253 /* DataStore.swift */; };
 		41A3C7AE233E6C7C008C797A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AD233E6C7C008C797A /* Realm.framework */; };
 		41A3C7B0233E6C86008C797A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3C7AF233E6C86008C797A /* RealmSwift.framework */; };
-		41A596A923334179008DA6AF /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A596A823334179008DA6AF /* LabelNode.swift */; };
 		41B589EC2347279800C4BB45 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B589EB2347279800C4BB45 /* SharingViewController.swift */; };
 		41B58A1323473A5E00C4BB45 /* WorkCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */; };
 		41B58A182347425200C4BB45 /* WorkCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B58A172347425200C4BB45 /* WorkCollectionViewCellModel.swift */; };
@@ -130,7 +129,6 @@
 		41EA9C282334F57600552D40 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EA9C272334F57600552D40 /* NSObject+Extensions.swift */; };
 		41F46B8B23404DBE00606D7B /* JsonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8A23404DBE00606D7B /* JsonUtility.swift */; };
 		41F46B8E2340502B00606D7B /* WorkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F46B8D2340502B00606D7B /* WorkObject.swift */; };
-		41F5C92F23716DE00081E7ED /* ImageLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */; };
 		41F5C931237172780081E7ED /* TextLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C930237172780081E7ED /* TextLabelNode.swift */; };
 		41F5C93523717C230081E7ED /* SceneKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C93423717C230081E7ED /* SceneKit+Extensions.swift */; };
 		41F5C937237182220081E7ED /* ShipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5C936237182220081E7ED /* ShipNode.swift */; };
@@ -231,7 +229,6 @@
 		41907CA8233F19EC00C54253 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		41A3C7AD233E6C7C008C797A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		41A3C7AF233E6C86008C797A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		41A596A823334179008DA6AF /* LabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
 		41B589EB2347279800C4BB45 /* SharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		41B58A1223473A5D00C4BB45 /* WorkCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkCollectionViewCell.xib; sourceTree = "<group>"; };
 		41B58A172347425200C4BB45 /* WorkCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkCollectionViewCellModel.swift; sourceTree = "<group>"; };
@@ -262,7 +259,6 @@
 		41EA9C272334F57600552D40 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
 		41F46B8A23404DBE00606D7B /* JsonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtility.swift; sourceTree = "<group>"; };
 		41F46B8D2340502B00606D7B /* WorkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkObject.swift; sourceTree = "<group>"; };
-		41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelNode.swift; sourceTree = "<group>"; };
 		41F5C930237172780081E7ED /* TextLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelNode.swift; sourceTree = "<group>"; };
 		41F5C93423717C230081E7ED /* SceneKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneKit+Extensions.swift"; sourceTree = "<group>"; };
 		41F5C936237182220081E7ED /* ShipNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipNode.swift; sourceTree = "<group>"; };
@@ -552,9 +548,7 @@
 		41A596A723334167008DA6AF /* SceneNodes */ = {
 			isa = PBXGroup;
 			children = (
-				41A596A823334179008DA6AF /* LabelNode.swift */,
 				41F5C930237172780081E7ED /* TextLabelNode.swift */,
-				41F5C92E23716DE00081E7ED /* ImageLabelNode.swift */,
 				41F5C936237182220081E7ED /* ShipNode.swift */,
 				BAC7423323748FBF006499AB /* HandNode.swift */,
 				BAC74235237494E8006499AB /* ArtistInfoNode.swift */,
@@ -919,9 +913,7 @@
 				410C2B3223704F00003E9415 /* PhotoLibraryManager.swift in Sources */,
 				41270EAE233B291C00B88732 /* Array+Extensions.swift in Sources */,
 				414F0E5423446C100013F833 /* Firestore+Extensions.swift in Sources */,
-				41A596A923334179008DA6AF /* LabelNode.swift in Sources */,
 				BAC7423823749771006499AB /* KeywordNode.swift in Sources */,
-				41F5C92F23716DE00081E7ED /* ImageLabelNode.swift in Sources */,
 				8A6804AB235040290059019D /* UIColor+Extensions.swift in Sources */,
 				4186ADDE23324192002F6A4C /* AppDelegate.swift in Sources */,
 				41D77CD72359AC7E00C0C860 /* ResourceObject.swift in Sources */,
