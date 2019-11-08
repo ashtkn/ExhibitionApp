@@ -246,12 +246,12 @@ extension ScanningViewController {
         //            node.addChildNode(imageLabelNode)
         //        }
         let keywords_num = work.images.count
-        for i in keywords_num{
+        for i in 1...keywords_num{
             let keywordNodeGroupId = "group_of_text_label_node_\(i)"
             // TODO:
             // テクスチャのソースの取得方法がわからない
             //let image = AssetsManager.default.getImage(image: .)
-            let position = SCNVector3(.random(in: -0.2...0.2), .random(in: -0.2..<0.0), .random(in: -0.2...0.2))
+            let position = SCNVector3(.random(in: -0.2...0.2), .random(in: 0.2 ... 0.5), .random(in: -0.5 ... -0.2))
             let keywordNode = KeywordNode(groupId: keywordsNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: position, papertype: i%5)
             let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
             let rotation = SCNQuaternion.euler(eulerAngles)
