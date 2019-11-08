@@ -16,11 +16,13 @@ final class ArtistInfoNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId id: String, author: Author, image: UIImage, origin originalPosition: SCNVector3 = .init()) {
+    init(groupId id: String, author: Author, origin originalPosition: SCNVector3 = .init()) {
         
         let width: CGFloat = 0.2
         let textColor: UIColor = .white
         let textThickness: CGFloat = 0.1
+        // TODO: プロフィール写真を配置
+        let image = DataStore.shared.getProfileImage(name: author.imageName)
         
         self.originalPosition = originalPosition
         

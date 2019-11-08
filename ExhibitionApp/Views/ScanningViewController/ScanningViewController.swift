@@ -180,8 +180,8 @@ extension ScanningViewController {
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
         let textLabelNodeGroupId = "TitleTextLabelNode"
         // FIXME: Modify size
-        let textLabelNodeOriginalPosition = SCNVector3(0, 0, 0)
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 0.2, depth: 50.0, origin: textLabelNodeOriginalPosition)
+        let textLabelNodePosition = SCNVector3(0, 0, 0)
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 0.2, depth: 50.0, origin: textLabelNodePosition)
 //        let textLabelNodeOriginalPosition = SCNVector3(0, 0.5, -0.3)
 //        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 1.0, originalPosition: textLabelNodeOriginalPosition, depth: 50.0)
         addedNodes[textLabelNodeGroupId] = textLabelNode
@@ -198,16 +198,15 @@ extension ScanningViewController {
             let posY = -0.2 / 10
             let posZ = -0.5 / 10
 
-            let handNodeOriginalPosition = SCNVector3(posX, posY, posZ)
+            let handNodePosition = SCNVector3(posX, posY, posZ)
             let handType = (index + 1) % 3
-            let handNode = HandNode(gropuId: handNodeGroupId, handType: handType, origin: handNodeOriginalPosition)
+            let handNode = HandNode(gropuId: handNodeGroupId, handType: handType, origin: handNodePosition)
             addedNodes[handNodeGroupId] = handNode
             node.addChildNode(handNode)
 
-            let artistInfoNodeOriginalPosition = handNodeOriginalPosition
+            let artistInfoNodePosition = handNodePosition
             let artistInfoNodeGroupId = "ArtistInfoNode_\(index)"
-            let image = AssetsManager.default.getArtistImage(name: .hashimoto)
-            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, author: author, image: image, origin: artistInfoNodeOriginalPosition)
+            let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, author: author, origin: artistInfoNodePosition)
             addedNodes[artistInfoNodeGroupId] = artistInfoNode
             node.addChildNode(artistInfoNode)
         }
@@ -217,9 +216,9 @@ extension ScanningViewController {
             guard let image = DataStore.shared.getImage(name: imageName) else { continue }
             // FIXME: Modify size
 //            let keywordNodeOriginalPosition = SCNVector3(.random(in: -0.5...0.5), .random(in: 0.2 ... 0.5), .random(in: -0.8 ... -0.2))
-            let keywordNodeOriginalPosition = SCNVector3(.random(in: -0.1...0.1), .random(in: -0.1 ... 0.1), .random(in: -0.1 ... -0.1))
+            let keywordNodePosition = SCNVector3(.random(in: -0.1...0.1), .random(in: -0.1 ... 0.1), .random(in: -0.1 ... -0.1))
             let paperType = (index + 1) % 5
-            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, image: image, paperType: paperType, origin: keywordNodeOriginalPosition)
+            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, keyword: image, paperType: paperType, origin: keywordNodePosition)
             let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
             keywordNode.eulerAngles = eulerAngles
 

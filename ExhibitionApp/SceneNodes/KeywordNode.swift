@@ -15,7 +15,7 @@ final class KeywordsNode: SCNNode {
         super.position = originalPosition
     }
     
-    init(groupId id: String, image: UIImage, paperType type: Int, origin originalPosition: SCNVector3 = .init()) {
+    init(groupId id: String, keyword image: UIImage, paperType type: Int, origin originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition
         
