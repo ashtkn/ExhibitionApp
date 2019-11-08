@@ -139,10 +139,6 @@
 		8A6804AF23521A4A0059019D /* WorkCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804AE23521A4A0059019D /* WorkCollectionHeaderView.swift */; };
 		8A6804B523527B890059019D /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804B423527B890059019D /* UIFont+Extensions.swift */; };
 		8A6804BB2354E1E70059019D /* UIButton+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6804BA2354E1E70059019D /* UIButton+Custom.swift */; };
-		BA93142B237502000024F7B1 /* rounded-mplus-1c-medium.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 41E2148C2371B2EC00EEE911 /* rounded-mplus-1c-medium.ttf */; };
-		BA93142C237502000024F7B1 /* rounded-mplus-1c-heavy.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 41E2148E2371B2F300EEE911 /* rounded-mplus-1c-heavy.ttf */; };
-		BA93142D237502000024F7B1 /* NotoSansCJKjp-Regular.otf in Sources */ = {isa = PBXBuildFile; fileRef = 41E214902371B2FD00EEE911 /* NotoSansCJKjp-Regular.otf */; };
-		BA93142E237502000024F7B1 /* NotoSansCJKjp-DemiLight.otf in Sources */ = {isa = PBXBuildFile; fileRef = 41E214922371B30400EEE911 /* NotoSansCJKjp-DemiLight.otf */; };
 		BAC7423423748FBF006499AB /* HandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC7423323748FBF006499AB /* HandNode.swift */; };
 		BAC74236237494E8006499AB /* ArtistInfoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC74235237494E8006499AB /* ArtistInfoNode.swift */; };
 		BAC7423823749771006499AB /* KeywordNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC7423723749771006499AB /* KeywordNode.swift */; };
@@ -909,10 +905,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA93142B237502000024F7B1 /* rounded-mplus-1c-medium.ttf in Sources */,
-				BA93142C237502000024F7B1 /* rounded-mplus-1c-heavy.ttf in Sources */,
-				BA93142D237502000024F7B1 /* NotoSansCJKjp-Regular.otf in Sources */,
-				BA93142E237502000024F7B1 /* NotoSansCJKjp-DemiLight.otf in Sources */,
 				41EA9C102334D86700552D40 /* UICollectionView+Extensions.swift in Sources */,
 				416C212C2347240200648C0A /* TopPageViewController.swift in Sources */,
 				BAC7423423748FBF006499AB /* HandNode.swift in Sources */,
