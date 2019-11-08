@@ -21,8 +21,6 @@ final class ArtistInfoNode: SCNNode {
         let width: CGFloat = 0.2
         let textColor: UIColor = .white
         let textThickness: CGFloat = 0.1
-        // TODO: プロフィール写真を配置
-        let image = DataStore.shared.getProfileImage(name: author.imageName)
         
         self.originalPosition = originalPosition
         
@@ -32,6 +30,10 @@ final class ArtistInfoNode: SCNNode {
         addNameNode(groupId: id, name: author.name, textColor: textColor, extrusionDepth: textThickness, origin: originalPosition)
         addBelongingNode(groupId: id, belonging: author.belonging, extrusionDepth: textThickness, origin: originalPosition)
         addGreetingLabel(groupId: id, name: author.greeting, extrusionDepth: textThickness, origin: originalPosition)
+        
+        if let image = DataStore.shared.getProfileImage(name: author.imageName) {
+            addPlaneNode(groupId: id, image: image, origin: originalPosition)
+        }
         
         super.name = id
         super.position = originalPosition
@@ -99,13 +101,13 @@ extension ArtistInfoNode {
         super.addChildNode(greetingNode)
     }
     
-    private func addPlaneNode(groupId: String, image: UIImage, pos: SCNVector3) {
+    private func addPlaneNode(groupId: String, image: UIImage, origin p: SCNVector3) {
         let planeNode = SCNNode(geometry: SCNPlane(width: 0.1, height: 0.1))
         
         // Set color or material
         planeNode.geometry?.materials.append(SCNMaterial())
         planeNode.geometry?.materials.first?.diffuse.contents = image
-        planeNode.position = SCNVector3(pos.x, pos.y + 0.35, pos.z + 0.1)
+        planeNode.position = SCNVector3(p.x, p.y + 0.35, p.z + 0.1)
         
         planeNode.name = groupId
         super.addChildNode(planeNode)
