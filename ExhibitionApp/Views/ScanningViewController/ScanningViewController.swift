@@ -230,23 +230,8 @@ extension ScanningViewController {
         }
         
         // show paper ( keyword for a work )
-        
-        //        for i in 0..<3 {
-        //            let imageLabelNodeGroupId = "group_of_image_label_node_\(i)"
-        //            let image = AssetsManager.default.getArtistImage(name: .hashimoto)
-        //
-        //            let position = SCNVector3(.random(in: -0.2...0.2), .random(in: -0.2..<0.0), .random(in: -0.2...0.2))
-        //            let imageLabelNode = ImageLabelNode(groupId: imageLabelNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: position)
-        //
-        //            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
-        //            let rotation = SCNQuaternion.euler(eulerAngles)
-        //            imageLabelNode.localRotate(by: rotation)
-        //
-        //            addedNodes[imageLabelNodeGroupId] = imageLabelNode
-        //            node.addChildNode(imageLabelNode)
-        //        }
         let keywords_num = work.images.count
-        for i in 1...keywords_num{
+        for i in 0..<keywords_num{
             let keywordNodeGroupId = "group_of_text_label_node_\(i)"
             // TODO:
             // テクスチャのソースの取得方法がわからない
@@ -254,8 +239,9 @@ extension ScanningViewController {
             let position = SCNVector3(.random(in: -0.2...0.2), .random(in: 0.2 ... 0.5), .random(in: -0.5 ... -0.2))
             let keywordNode = KeywordNode(groupId: keywordsNodeGroupId, image: image, width: 0.127, height: 0.089, originalPosition: position, papertype: i%5)
             let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
-            let rotation = SCNQuaternion.euler(eulerAngles)
-            keywordNode.localRotate(by: rotation)
+//            let rotation = SCNQuaternion.euler(eulerAngles)
+//            keywordNode.localRotate(by: rotation)
+            keywordNode.eulerAngles = eulerAngles
 
             addedNodes[keywordNodeGroupId] = keywordNode
             node.addChildNode(keywordNode)
