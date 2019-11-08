@@ -24,7 +24,7 @@ final class TextLabelNode: SCNNode {
         
         // Configure text node
         let str = SCNText(string: text, extrusionDepth: depth)
-        str.font = UIFont(name: "rounded-mplus-1c-medium", size: 1);
+        str.font = UIFont(name: "rounded-mplus-1c-medium", size: 100);
         
         // Set color or material
         let m1 = SCNMaterial()

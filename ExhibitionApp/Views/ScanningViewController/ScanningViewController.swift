@@ -207,7 +207,7 @@ extension ScanningViewController {
             
             let pos_x: Double
             let pos_y = -0.2
-            let pos_z = -0.3
+            let pos_z = -0.5
             switch work_authors_count%2 {
             case 0:
                pos_x = -0.3 * Double(work_authors_count/2) + 0.3*Double(i-1) + 0.15

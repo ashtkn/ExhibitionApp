@@ -38,7 +38,7 @@ final class ArtistInfoNode: SCNNode {
         var h = CGFloat(max.y - min.y)
         var ratio = 1.0 / CGFloat(max.x - min.x)
         nameNode.scale = SCNVector3(ratio/5, ratio/5, ratio/5)
-        nameNode.position = SCNVector3(pos.x - Double(w*ratio/10), pos.y + 0.2, pos.z)
+        nameNode.position = SCNVector3(pos.x - Double(w*ratio/10), pos.y + 0.2, pos.z + 0.1)
         
         // Set color or material
         nameNode.geometry?.materials.append(SCNMaterial())
@@ -48,25 +48,29 @@ final class ArtistInfoNode: SCNNode {
         // text.belonging
         //
         str = SCNText(string: text.belonging, extrusionDepth: textThickness)
-        str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 1);
+        str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 100);
         let belongingNode = SCNNode(geometry: str)
         
         (min, max) = belongingNode.boundingBox
         w = CGFloat(max.x - min.x)
         h = CGFloat(max.y - min.y)
-        belongingNode.position = SCNVector3(-(w/2), -(h/2) - 0.5 , 0.001 + textThickness)
+        ratio = 1.0 / CGFloat(max.x - min.x)
+        belongingNode.scale = SCNVector3(ratio/5, ratio/5, ratio/5)
+        belongingNode.position = SCNVector3(pos_x - Double(w*ratio/10), pos_y + 0.18, pos_z + 0.1)
         
         //
         // text.greeting
         //
         str = SCNText(string: text.name, extrusionDepth: textThickness)
-        str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 1);
+        str.font = UIFont(name: "NotoSansCJKjp-Regular", size: 100);
         greetingNode = SCNNode(geometry: str)
         
         (min, max) = greetingNode.boundingBox
         w = CGFloat(max.x - min.x)
         h = CGFloat(max.y - min.y)
-        greetingNode.position = SCNVector3(-(w/2), -(h/2) - 0.2, 0.001 + textThickness)
+        ratio = 1.0 / CGFloat(max.x - min.x)
+        greetingNode.scale = SCNVector3(ratio/5, ratio/5, ratio/5)
+        greetingNode.position = SCNVector3(pos_x - Double(w*ratio/10), pos_y + 0.15, pos_z + 0.1)
         
         // Configure panel node
         let panelNode = SCNNode(geometry: SCNBox(width: w * 1.1, height: h * 1.1, length: panelThickness, chamferRadius: 0))
