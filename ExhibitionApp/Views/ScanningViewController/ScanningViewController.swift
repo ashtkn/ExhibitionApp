@@ -16,6 +16,8 @@ final class ScanningViewController: UIViewController {
         }
     }
     
+    @IBOutlet private weak var instructionLabel: UILabel!
+    
     // MARK: ViewModel
     
     private var viewModel = ScanningViewModel()
@@ -157,6 +159,7 @@ extension ScanningViewController: ARSCNViewDelegate {
             let detectingWork = allWorks[detectingWorkIndex]
             viewModel.setDetectingWork(detectingWork)
             DispatchQueue.main.async { [weak self] in
+                self?.instructionLabel.isHidden = true
                 self?.addNode(to: node, for: anchor, work: detectingWork)
             }
         }
