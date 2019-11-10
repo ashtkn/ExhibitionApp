@@ -16,7 +16,13 @@ final class ScanningViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var instructionLabel: UILabel!
+    @IBOutlet private weak var instructionLabel: UILabel! {
+        didSet {
+            self.instructionLabel.numberOfLines = 0
+            self.instructionLabel.text = "作品や作品の画像をスキャンしてください．長押しで動画を撮影できます．"
+            self.instructionLabel.sizeToFit()
+        }
+    }
     
     // MARK: ViewModel
     
