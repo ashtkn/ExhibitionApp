@@ -96,29 +96,48 @@ final class ScanningViewController: UIViewController {
                 
             case .none:
                 fatalError()
-                
             default:
                 print("Not set")
+                // 何もない場所をタップしたらタップ位置にハートを追加
+                // 出現時のアニメーション、回りながら上の方に消えていく
+                // scale1 -> scale2 -> sleep -> (同時)rotate, move, fadeOut
+
+                let point = SCNVector3.init(hitTestResult.worldCoordinates.x,
+                hitTestResult.worldCoordinates.y,
+                hitTestResult.worldCoordinates.z)
                 
-                // 何もない場所をタップしたらハートを追加とかどうですか
-                // タップした位置に出現 -> 上の方に上がっていく
-                // TODO: タップ位置に移動
-                
-//                let anchor = ARAnchor(name:"model", transform: hitTestResult.first.worldTransform)
-//                sceneView.session.add(anchor: anchor)
-                
+                let heartNodeGroupId = "HeartNode"
+            
                 let heart = SCNText(string: "♡", extrusionDepth: 3)
                 heart.chamferRadius = 2.0
                 heart.font = UIFont(name: "rounded-mplus-1c-medium", size: 100)
                 let heartNode = SCNNode(geometry: heart)
+
+                heartNode.position = point
                 
                 heartNode.geometry?.materials.append(SCNMaterial())
                 heartNode.geometry?.materials.first?.diffuse.contents = UIColor.init(red: 240/255, green: 102/255, blue: 102/255, alpha: 1)
                 
-                let moveAnimation = SCNAction.moveBy(x: 0, y: 10, z: 0, duration: 2)
-                moveAnimation.timingMode = .easeInEaseOut
-                heartNode.runAction(moveAnimation)
+                heartNode.scale = SCNVector3(0.05, 0.05, 0.05)
+                let scale1 = SCNAction.scale(to: 0.13, duration: 0.2)
+                let scale2 = SCNAction.scale(to: 0.1, duration: 0.1)
+                scale2.timingMode = .easeOut
+                let sleep = SCNAction.wait(duration: 0.1)
                 
+                let rotateAnimation = SCNAction.rotateBy(x: 0, y: 10 * .pi, z: 0, duration: 5.0)
+                rotateAnimation.timingMode = .easeInEaseOut
+                rotateAnimation.timingMode = .easeIn
+                
+                let fadeOutAnimation =  SCNAction.fadeOut(duration: 5.0)
+                
+                let moveAnimation = SCNAction.moveBy(x: 0, y: 10, z: 0, duration: 5.0)
+                moveAnimation.timingMode = .easeIn
+                let group = SCNAction.group([rotateAnimation, fadeOutAnimation, moveAnimation])
+                
+                heartNode.runAction(SCNAction.sequence([scale1, scale2, sleep, group]))
+                
+                addedNodes[heartNodeGroupId] = heartNode
+                sceneView.scene.rootNode.addChildNode(heartNode)
                 //TODO: animationが終わったらnodeを削除
                 
             }
@@ -258,5 +277,6 @@ extension ScanningViewController {
             addedNodes[keywordNodeGroupId] = keywordNode
             node.addChildNode(keywordNode)
         }
+        
     }
 }
