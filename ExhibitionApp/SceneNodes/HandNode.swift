@@ -15,6 +15,12 @@ final class HandNode: SCNNode {
         super.position = originalPosition
     }
     
+    func rotateOnetimes() {
+        let action = SCNAction.rotateBy(x: 0, y: 2 * .pi, z: 0, duration: 1)
+        action.timingMode = .easeInEaseOut
+        super.runAction(action)
+    }
+    
     init(gropuId id: String, handType type: Int, origin originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition

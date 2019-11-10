@@ -76,6 +76,10 @@ final class ScanningViewController: UIViewController {
                     textLabelNode.move(to: newPosition)
                 }
                 
+            // handNodeをタップしたら回転のアニメーション
+            case let handNode as HandNode:
+                handNode.rotateOnetimes()
+                
             case _ as ShipNode:
                 print("Ship")
                 
@@ -204,14 +208,14 @@ extension ScanningViewController {
         }
         
         for (index, imageName) in work.images.enumerated() {
+            
             let keywordNodeGroupId = "KeywordNode_\(index)"
             // TODO: change image to keyword image
             guard let image = DataStore.shared.getImage(name: imageName) else { continue }
             // FIXME: Modify size
 //            let keywordNodeOriginalPosition = SCNVector3(.random(in: -0.5...0.5), .random(in: 0.2 ... 0.5), .random(in: -0.8 ... -0.2))
-            let keywordNodePosition = SCNVector3(.random(in: -0.1...0.1), .random(in: -0.1 ... 0.1), .random(in: -0.1 ... -0.1))
             let paperType = (index + 1) % 5
-            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, keyword: image, paperType: paperType, origin: keywordNodePosition)
+            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, keyword: image, paperType: paperType)
             let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
             keywordNode.eulerAngles = eulerAngles
 

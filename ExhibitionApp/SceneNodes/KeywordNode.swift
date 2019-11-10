@@ -17,7 +17,7 @@ final class KeywordsNode: SCNNode {
     
     init(groupId id: String, keyword image: UIImage, paperType type: Int, origin originalPosition: SCNVector3 = .init()) {
         // Configure current class
-        self.originalPosition = originalPosition
+        self.originalPosition = SCNVector3(.random(in: -0.1...0.1), .random(in: -0.1 ... 0.1), .random(in: -0.1 ... -0.1))
         
         // Confugure SuperClass
         super.init()
@@ -50,6 +50,29 @@ final class KeywordsNode: SCNNode {
              childNode.geometry?.materials.append(SCNMaterial())
              childNode.geometry?.materials.first?.diffuse.contents = image
         }
+        
+        // 生成時にマーカーの位置からoriginalPositionまで移動
+        // 同時に透明度を0から1に
+        // そのあとはずっと上下に少しだけ移動するアニメーションをループ
+        paperNode.position = SCNVector3(0, 0, 0)
+        let moveAnimation = SCNAction.move(to: originalPosition, duration: 1.0)
+        moveAnimation.timingMode = .easeOut
+        
+        paperNode.opacity = 0
+        let fadeInAnimation = SCNAction.fadeIn(duration: 1.5)
+        let group = SCNAction.group([moveAnimation, fadeInAnimation])
+        
+        let floatAnimation = SCNAction.moveBy(x: 0, y: 0.1, z: 0, duration: 2)
+        floatAnimation.timingMode = .easeInEaseOut
+        
+        let animation =
+                SCNAction.repeatForever(SCNAction.sequence([
+                    floatAnimation,
+                    floatAnimation.reversed()
+                ]))
+        paperNode.runAction(group)
+        paperNode.runAction(animation)
+        
         
         // Add children nodes
         super.addChildNode(paperNode)
