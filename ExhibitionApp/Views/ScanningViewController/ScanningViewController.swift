@@ -254,17 +254,17 @@ extension ScanningViewController {
         }
         
         // Set KeywordNodes
-        for (index, imageName) in work.images.enumerated() {
-            let keywordNodeGroupId = "KeywordNode_\(index)"
-            guard let image = DataStore.shared.getImage(name: imageName) else { continue }
-            let paperType = (index + 1) % 5
-            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, keyword: image, paperType: paperType)
-            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
-            keywordNode.eulerAngles = eulerAngles
-
-            addedNodes[keywordNodeGroupId] = keywordNode
-            node.addChildNode(keywordNode)
-        }
+//        for (index, imageName) in work.images.enumerated() {
+//            let keywordNodeGroupId = "KeywordNode_\(index)"
+//            guard let image = DataStore.shared.getImage(name: imageName) else { continue }
+//            let paperType = (index + 1) % 5
+//            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, keyword: image, paperType: paperType)
+//            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
+//            keywordNode.eulerAngles = eulerAngles
+//
+//            addedNodes[keywordNodeGroupId] = keywordNode
+//            node.addChildNode(keywordNode)
+//        }
         
     }
 }
