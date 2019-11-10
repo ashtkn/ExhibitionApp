@@ -250,7 +250,8 @@ extension DataStore {
                     }
                     
                     resolve(())
-                }).catch({ _ in
+                }).catch({ error in
+                    print("Error at downloading files: \(error)")
                     reject(DataStoreError.fetchError)
                 })
             })

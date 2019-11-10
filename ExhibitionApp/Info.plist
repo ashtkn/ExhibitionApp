@@ -17,17 +17,17 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>88</string>
+	<string>78</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>ARカメラに使用します</string>
+	<string>ARカメラで現実空間の映像を取得するために使用します</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>ARカメラに使用します</string>
+	<string>ARカメラで現実空間の音声を取得するために使用します</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>画像を保存します</string>
+	<string>撮影した画像を保存します</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>画像を保存します</string>
+	<string>撮影した画像を保存します</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>rounded-mplus-1c-medium.ttf</string>
@@ -51,7 +51,7 @@
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
