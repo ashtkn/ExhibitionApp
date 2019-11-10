@@ -17,13 +17,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>78</string>
+	<string>79</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>ARカメラで現実空間の映像を取得するために使用します</string>
+	<string>AR機能を体験するためにカメラへのアクセスを許可してください</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>ARカメラで現実空間の音声を取得するために使用します</string>
+	<string>動画撮影時に音声を取得するためにマイクへのアクセスを許可してください</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>撮影した画像を保存します</string>
 	<key>NSPhotoLibraryUsageDescription</key>
