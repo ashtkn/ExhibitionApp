@@ -87,6 +87,7 @@ final class ScanningViewController: UIViewController {
                 
             // handNodeをタップしたら回転のアニメーション
             case let handNode as HandNode:
+                viewModel.vote(for: handNode.handType)
                 handNode.rotateOnetimes()
                 
             case .none:

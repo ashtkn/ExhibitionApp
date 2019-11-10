@@ -3,6 +3,7 @@ import SceneKit
 final class HandNode: SCNNode {
     
     let originalPosition: SCNVector3
+    let handType: Int
     private(set) var hasMoved: Bool = false
     
     func move(to position: SCNVector3) {
@@ -24,6 +25,7 @@ final class HandNode: SCNNode {
     init(gropuId id: String, handType type: Int, origin originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition
+        self.handType = type
         
         // Confugure SuperClass
         super.init()
