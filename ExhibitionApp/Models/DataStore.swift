@@ -37,6 +37,12 @@ final class DataStore {
         return profileImagesDirectory
     }
     
+    var keywordImagesDirectory: URL {
+        let keywordImagesDirectory = applicationSupportDirectory.appendingPathComponent("KeywordImages", isDirectory: true)
+        try! FileManager.default.createDirectory(at: keywordImagesDirectory, withIntermediateDirectories: true, attributes: nil)
+        return keywordImagesDirectory
+    }
+    
     var allWorks: [Work] {
         let realm = try! Realm()
         return Array(realm.objects(WorkObject.self)).map { $0.entity }
@@ -120,6 +126,11 @@ final class DataStore {
         return UIImage(contentsOfFile: profileImagePath.path)
     }
     
+    func getKeywordImage(name imageName: String) -> UIImage? {
+        let keywordImagePath = profileImagesDirectory.appendingPathComponent(imageName)
+        return UIImage(contentsOfFile: keywordImagePath.path)
+    }
+    
     func getARObjectsSet() -> Set<ARReferenceObject> {
         let arObjects = getARObjects()
         return Set(arObjects)
@@ -158,7 +169,7 @@ extension DataStore {
     
     private var config: Realm.Configuration {
         return Realm.Configuration(
-            schemaVersion: 3,
+            schemaVersion: 4,
             migrationBlock: { migration, oldSchemaVersion in
                 if (oldSchemaVersion < 1) {
                     migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
@@ -191,6 +202,11 @@ extension DataStore {
                         newObject!["authors"] = authors
                     }
                 }
+                if (oldSchemaVersion < 4) {
+                    migration.enumerateObjects(ofType: WorkObject.className()) { oldObject, newObject in
+                        newObject!["keywordImages"] = List<String>()
+                    }
+                }
         })
     }
     
@@ -213,14 +229,20 @@ extension DataStore {
                     }
                 }
                 
-                let downloadProfileImagesPromised: [Promise<URL>] = initialWorkData.flatMap { work in
+                let downloadProfileImagesPromises: [Promise<URL>] = initialWorkData.flatMap { work in
                     return work.authors.map { author in
                         return FirebaseService.shared.download(profileImage: author.imageName, to: self.profileImagesDirectory)
                     }
                 }
                 
+                let downloadKeywordImagesPromises: [Promise<URL>] = initialWorkData.flatMap { work in
+                    return work.keywordImages.map { imageName in
+                        return FirebaseService.shared.download(keywordImage: imageName, to: self.keywordImagesDirectory)
+                    }
+                }
+                
                 // Execute downloading
-                zip(a: all(downloadResoucesPromises), b: all(downloadImagesPromises), c: all(downloadProfileImagesPromised)).then({ resourcesPaths, imagesPaths, profileImagesPaths in
+                zip(a: all(downloadResoucesPromises), b: all(downloadImagesPromises), c: all(downloadProfileImagesPromises), d: all(downloadKeywordImagesPromises)).then({ resourcesPaths, imagesPaths, profileImagesPaths, keywordImagesPaths in
                     // Register fetched data to Realm database
                     let realm = try! Realm()
                     try! realm.write {
@@ -228,7 +250,8 @@ extension DataStore {
                     }
                     
                     resolve(())
-                }).catch({ _ in
+                }).catch({ error in
+                    print("Error at downloading files: \(error)")
                     reject(DataStoreError.fetchError)
                 })
             })

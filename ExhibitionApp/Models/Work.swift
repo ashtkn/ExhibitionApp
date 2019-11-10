@@ -10,6 +10,7 @@ struct Work: Codable, Equatable, Hashable {
     let isLocked: Bool
     let version: Int
     let resources: [Resource]
+    let keywordImages: [String]
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -21,6 +22,7 @@ struct Work: Codable, Equatable, Hashable {
         case isLocked = "is_locked"
         case version
         case resources
+        case keywordImages = "keyword_images"
     }
     
     static func ==(lhs: Work, rhs: Work) -> Bool {

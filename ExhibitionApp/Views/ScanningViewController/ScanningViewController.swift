@@ -16,6 +16,14 @@ final class ScanningViewController: UIViewController {
         }
     }
     
+    @IBOutlet private weak var instructionLabel: UILabel! {
+        didSet {
+            self.instructionLabel.numberOfLines = 0
+            self.instructionLabel.text = "作品や作品の画像をスキャンしてください．長押しで動画を撮影できます．"
+            self.instructionLabel.sizeToFit()
+        }
+    }
+    
     // MARK: ViewModel
     
     private var viewModel = ScanningViewModel()
@@ -186,6 +194,7 @@ extension ScanningViewController: ARSCNViewDelegate {
             let detectingWork = allWorks[detectingWorkIndex]
             viewModel.setDetectingWork(detectingWork)
             DispatchQueue.main.async { [weak self] in
+                self?.instructionLabel.isHidden = true
                 self?.addNode(to: node, for: anchor, work: detectingWork)
             }
         }

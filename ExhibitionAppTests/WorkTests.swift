@@ -32,7 +32,8 @@ class WorkTests: XCTestCase {
         "caption": "これはキャプションです．",
         "url": "https://www.google.co.jp/",
         "is_locked": false,
-        "version": 0
+        "version": 0,
+        "keyword_images": ["something"]
     }
     """.data(using: .utf8)!
     
@@ -77,7 +78,7 @@ class WorkTests: XCTestCase {
     func testEuatableProtocol() {
         let id = "XXXXXX"
         let version = 0
-        let work = Work(id: id, title: "", authors: [], images: [], caption: "", url: "",  isLocked: false, version: version, resources: [])
+        let work = Work(id: id, title: "", authors: [], images: [], caption: "", url: "",  isLocked: false, version: version, resources: [], keywordImages: [])
         
         XCTAssertEqual(work, try! getWork())
     }
