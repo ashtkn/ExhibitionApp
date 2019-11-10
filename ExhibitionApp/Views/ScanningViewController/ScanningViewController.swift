@@ -80,6 +80,9 @@ final class ScanningViewController: UIViewController {
             case let handNode as HandNode:
                 handNode.rotateOnetimes()
                 
+            case let titleNode as TextLabelNode:
+                titleNode.doAnimation()
+                
             case _ as ShipNode:
                 print("Ship")
                 
@@ -174,10 +177,12 @@ extension ScanningViewController: ARSCNViewDelegate {
 extension ScanningViewController {
     
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
+        
         let textLabelNodeGroupId = "TitleTextLabelNode"
         // FIXME: Modify size
         let textLabelNodePosition = SCNVector3(0, 0, 0)
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 0.2, depth: 50.0, origin: textLabelNodePosition)
+        
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: UIColor.init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 0.2, depth: 50.0, origin: textLabelNodePosition)
 //        let textLabelNodeOriginalPosition = SCNVector3(0, 0.5, -0.3)
 //        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 1.0, originalPosition: textLabelNodeOriginalPosition, depth: 50.0)
         addedNodes[textLabelNodeGroupId] = textLabelNode
