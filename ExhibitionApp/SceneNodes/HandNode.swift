@@ -3,6 +3,7 @@ import SceneKit
 final class HandNode: SCNNode {
     
     let originalPosition: SCNVector3
+    let handType: Int
     private(set) var hasMoved: Bool = false
     
     func move(to position: SCNVector3) {
@@ -15,9 +16,16 @@ final class HandNode: SCNNode {
         super.position = originalPosition
     }
     
+    func rotateOnetimes() {
+        let action = SCNAction.rotateBy(x: 0, y: 2 * .pi, z: 0, duration: 1)
+        action.timingMode = .easeInEaseOut
+        super.runAction(action)
+    }
+    
     init(gropuId id: String, handType type: Int, origin originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition
+        self.handType = type
         
         // Confugure SuperClass
         super.init()
@@ -40,6 +48,14 @@ final class HandNode: SCNNode {
         renameChildNodes(name: id, children: handNode.childNodes)
         
         handNode.scale = SCNVector3(0.03, 0.03, 0.03)
+        
+        //出現時に回転と拡大のアニメーション
+        // 小さくしとく
+        handNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        let scaleAction = SCNAction.scale(to: 0.03, duration: 0.4)
+        let rotateAction = SCNAction.rotateBy(x: 0, y: 2 * .pi, z: 0, duration: 0.4)
+        let action = SCNAction.group([scaleAction, rotateAction])
+        handNode.runAction(action)
         
         // Add children nodes
         super.addChildNode(handNode)

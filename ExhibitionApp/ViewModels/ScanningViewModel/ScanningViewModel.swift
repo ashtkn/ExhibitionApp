@@ -5,6 +5,7 @@ struct ScanningViewModel {
     let detectionObjects: Set<ARReferenceObject>
     let detectionImages: Set<ARReferenceImage>
     private(set) var detectingWork: Work?
+    private let votingQueue = DispatchQueue(label: "VotingThread")
     
     init() {
         self.detectionObjects = DataStore.shared.getARObjectsSet()
@@ -23,5 +24,15 @@ struct ScanningViewModel {
             }
         }
         self.detectingWork = detectingWork
+    }
+    
+    func vote(for handType: Int) {
+        votingQueue.async {
+            FirebaseService.shared.vote(for: handType).then({
+                print("Voting for \(handType) finished")
+            }).catch({ error in
+                print(error)
+            })
+        }
     }
 }

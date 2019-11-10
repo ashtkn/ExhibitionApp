@@ -3,6 +3,7 @@ import SceneKit
 final class TextLabelNode: SCNNode {
     
     let originalPosition: SCNVector3
+    let textColor: UIColor
     private(set) var hasMoved: Bool = false
     
     func move(to position: SCNVector3) {
@@ -15,9 +16,27 @@ final class TextLabelNode: SCNNode {
         super.position = originalPosition
     }
     
+    func doAnimation() {
+        let changeColor = SCNAction.customAction(duration: 10) { (node, elapsedTime) -> () in
+            let percentage = elapsedTime / 5
+            let color = UIColor(red: 1 - percentage, green: percentage, blue: 0, alpha: 1)
+            super.geometry?.materials.first?.diffuse.contents = color
+        }
+        changeColor.timingMode = .easeInEaseOut
+        
+        let colorAnimation = SCNAction.sequence([ changeColor, changeColor.reversed() ])
+
+        let rotateAnimation = SCNAction.rotateBy(x: 0, y: 2 * .pi, z: 0, duration: 1)
+        rotateAnimation.timingMode = .easeInEaseOut
+        
+        let group = SCNAction.group([colorAnimation, rotateAnimation])
+        super.runAction(group)
+    }
+    
     init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, depth: CGFloat, origin originalPosition: SCNVector3 = .init()) {
         // Configure current class
         self.originalPosition = originalPosition
+        self.textColor = textColor
         
         // Confugure SuperClass
         super.init()
@@ -29,7 +48,7 @@ final class TextLabelNode: SCNNode {
         
         // Set color or material
         let m1 = SCNMaterial()
-        m1.diffuse.contents = UIColor.init(red: 0, green: 130/255, blue: 180/255, alpha: 1)
+        m1.diffuse.contents = textColor
         let m3 = SCNMaterial()
         m3.diffuse.contents = UIColor.white
         str.materials = [m1, m1, m1, m3, m3]
@@ -39,6 +58,7 @@ final class TextLabelNode: SCNNode {
         let (min, max) = textNode.boundingBox
         let w = CGFloat(max.x - min.x)
         let ratio = width / CGFloat(max.x - min.x)
+        textNode.position = SCNVector3(-w * ratio / 2, 0, 0)
         textNode.scale = SCNVector3(ratio, ratio, ratio)
         
         // Set color or material
@@ -53,7 +73,7 @@ final class TextLabelNode: SCNNode {
         super.addChildNode(textNode)
         
         // Configure entire transform
-        super.position = SCNVector3(originalPosition.x - Float(w*ratio/2), originalPosition.y, originalPosition.z)
+        super.position = SCNVector3(originalPosition.x, originalPosition.y, originalPosition.z)
     }
     
     required init?(coder aDecoder: NSCoder) {

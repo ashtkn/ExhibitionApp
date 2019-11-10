@@ -16,7 +16,13 @@ final class ScanningViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var instructionLabel: UILabel!
+    @IBOutlet private weak var instructionLabel: UILabel! {
+        didSet {
+            self.instructionLabel.numberOfLines = 0
+            self.instructionLabel.text = "作品や作品の画像をスキャンしてください．長押しで動画を撮影できます．"
+            self.instructionLabel.sizeToFit()
+        }
+    }
     
     // MARK: ViewModel
     
@@ -71,6 +77,7 @@ final class ScanningViewController: UIViewController {
             let node = addedNodes[groupId]
             switch node {
             case let textLabelNode as TextLabelNode:
+                textLabelNode.doAnimation()
                 if textLabelNode.hasMoved {
                     textLabelNode.moveToOriginalPosition()
                 } else {
@@ -78,14 +85,53 @@ final class ScanningViewController: UIViewController {
                     textLabelNode.move(to: newPosition)
                 }
                 
-            case _ as ShipNode:
-                print("Ship")
+            // handNodeをタップしたら回転のアニメーション
+            case let handNode as HandNode:
+                viewModel.vote(for: handNode.handType)
+                handNode.rotateOnetimes()
                 
             case .none:
                 fatalError()
                 
             default:
-                print("Not set")
+                let point = SCNVector3.init(hitTestResult.worldCoordinates.x,
+                hitTestResult.worldCoordinates.y,
+                hitTestResult.worldCoordinates.z)
+                
+                let heartNodeGroupId = "HeartNode"
+            
+                let heart = SCNText(string: "♡", extrusionDepth: 3)
+                heart.chamferRadius = 2.0
+                heart.font = UIFont(name: "rounded-mplus-1c-medium", size: 100)
+                let heartNode = SCNNode(geometry: heart)
+
+                heartNode.position = point
+                
+                heartNode.geometry?.materials.append(SCNMaterial())
+                heartNode.geometry?.materials.first?.diffuse.contents = UIColor.init(red: 240/255, green: 102/255, blue: 102/255, alpha: 1)
+                
+                heartNode.scale = SCNVector3(0.05, 0.05, 0.05)
+                let scale1 = SCNAction.scale(to: 0.13, duration: 0.2)
+                let scale2 = SCNAction.scale(to: 0.1, duration: 0.1)
+                scale2.timingMode = .easeOut
+                let sleep = SCNAction.wait(duration: 0.1)
+                
+                let rotateAnimation = SCNAction.rotateBy(x: 0, y: 10 * .pi, z: 0, duration: 5.0)
+                rotateAnimation.timingMode = .easeInEaseOut
+                rotateAnimation.timingMode = .easeIn
+                
+                let fadeOutAnimation =  SCNAction.fadeOut(duration: 5.0)
+                
+                let moveAnimation = SCNAction.moveBy(x: 0, y: 10, z: 0, duration: 5.0)
+                moveAnimation.timingMode = .easeIn
+                let group = SCNAction.group([rotateAnimation, fadeOutAnimation, moveAnimation])
+                
+                heartNode.runAction(SCNAction.sequence([scale1, scale2, sleep, group]))
+                
+                addedNodes[heartNodeGroupId] = heartNode
+                sceneView.scene.rootNode.addChildNode(heartNode)
+                //TODO: animationが終わったらnodeを削除
+                
             }
         }
     }
@@ -173,53 +219,53 @@ extension ScanningViewController: ARSCNViewDelegate {
 extension ScanningViewController {
     
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
+        
+        // Set TitleNodes
         let textLabelNodeGroupId = "TitleTextLabelNode"
-        // FIXME: Modify size
         let textLabelNodePosition = SCNVector3(0, 0, 0)
-        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 0.2, depth: 50.0, origin: textLabelNodePosition)
-//        let textLabelNodeOriginalPosition = SCNVector3(0, 0.5, -0.3)
-//        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .white, width: 1.0, originalPosition: textLabelNodeOriginalPosition, depth: 50.0)
+        let textLabelNode = TextLabelNode(groupId: textLabelNodeGroupId, text: work.title, textColor: .init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 0.2, depth: 50.0, origin: textLabelNodePosition)
         addedNodes[textLabelNodeGroupId] = textLabelNode
         node.addChildNode(textLabelNode)
         
-        for (index, author) in work.authors.enumerated() {
+        // Set HandNodes
+        for index in 0..<3 {
             let handNodeGroupId = "HandNode_\(index)"
-
-            // FIXME: Modify size
-//            let posX = -0.3 * Double(work.authors.count / 2) + 0.3 * 1.5
-//            let posY = -0.2
-//            let posZ = -0.5
-            let posX = -0.3 * Double(work.authors.count / 2) + 0.3 * 1.5 / 10
-            let posY = -0.2 / 10
-            let posZ = -0.5 / 10
+            let posX = 0.2 * Double(index - 1)
+            let posY = -0.4
+            let posZ = -0.5
 
             let handNodePosition = SCNVector3(posX, posY, posZ)
             let handType = (index + 1) % 3
             let handNode = HandNode(gropuId: handNodeGroupId, handType: handType, origin: handNodePosition)
             addedNodes[handNodeGroupId] = handNode
             node.addChildNode(handNode)
+        }
+        
+        // Set ArtistsNode
+        for (index, author) in work.authors.enumerated() {
+            let posX = 0.12 * (-1 * Double(work.authors.count) / 2 + Double(index))
+            let posY = -0.15
+            let posZ = -0.3
 
-            let artistInfoNodePosition = handNodePosition
+            let artistInfoNodePosition = SCNVector3(posX, posY, posZ)
             let artistInfoNodeGroupId = "ArtistInfoNode_\(index)"
             let artistInfoNode = ArtistInfoNode(groupId: artistInfoNodeGroupId, author: author, origin: artistInfoNodePosition)
             addedNodes[artistInfoNodeGroupId] = artistInfoNode
             node.addChildNode(artistInfoNode)
         }
         
-        for (index, imageName) in work.images.enumerated() {
-            let keywordNodeGroupId = "KeywordNode_\(index)"
-            // TODO: change image to keyword image
-            guard let image = DataStore.shared.getImage(name: imageName) else { continue }
-            // FIXME: Modify size
-//            let keywordNodeOriginalPosition = SCNVector3(.random(in: -0.5...0.5), .random(in: 0.2 ... 0.5), .random(in: -0.8 ... -0.2))
-            let keywordNodePosition = SCNVector3(.random(in: -0.1...0.1), .random(in: -0.1 ... 0.1), .random(in: -0.1 ... -0.1))
-            let paperType = (index + 1) % 5
-            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, keyword: image, paperType: paperType, origin: keywordNodePosition)
-            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
-            keywordNode.eulerAngles = eulerAngles
-
-            addedNodes[keywordNodeGroupId] = keywordNode
-            node.addChildNode(keywordNode)
-        }
+        // Set KeywordNodes
+//        for (index, imageName) in work.images.enumerated() {
+//            let keywordNodeGroupId = "KeywordNode_\(index)"
+//            guard let image = DataStore.shared.getImage(name: imageName) else { continue }
+//            let paperType = (index + 1) % 5
+//            let keywordNode = KeywordsNode(groupId: keywordNodeGroupId, keyword: image, paperType: paperType)
+//            let eulerAngles = SCNVector3(.random(in: 0..<360), .random(in: 0..<360), .random(in: 0..<360))
+//            keywordNode.eulerAngles = eulerAngles
+//
+//            addedNodes[keywordNodeGroupId] = keywordNode
+//            node.addChildNode(keywordNode)
+//        }
+        
     }
 }
