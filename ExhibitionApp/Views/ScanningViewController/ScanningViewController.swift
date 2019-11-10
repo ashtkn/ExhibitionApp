@@ -91,6 +91,28 @@ final class ScanningViewController: UIViewController {
                 
             default:
                 print("Not set")
+                
+                // 何もない場所をタップしたらハートを追加とかどうですか
+                // タップした位置に出現 -> 上の方に上がっていく
+                // TODO: タップ位置に移動
+                
+//                let anchor = ARAnchor(name:"model", transform: hitTestResult.first.worldTransform)
+//                sceneView.session.add(anchor: anchor)
+                
+                let heart = SCNText(string: "♡", extrusionDepth: 3)
+                heart.chamferRadius = 2.0
+                heart.font = UIFont(name: "rounded-mplus-1c-medium", size: 100)
+                let heartNode = SCNNode(geometry: heart)
+                
+                heartNode.geometry?.materials.append(SCNMaterial())
+                heartNode.geometry?.materials.first?.diffuse.contents = UIColor.init(red: 240/255, green: 102/255, blue: 102/255, alpha: 1)
+                
+                let moveAnimation = SCNAction.moveBy(x: 0, y: 10, z: 0, duration: 2)
+                moveAnimation.timingMode = .easeInEaseOut
+                heartNode.runAction(moveAnimation)
+                
+                //TODO: animationが終わったらnodeを削除
+                
             }
         }
     }
