@@ -38,13 +38,7 @@ final class ScanningViewController: UIViewController {
         
         sceneView.delegate = self
         sceneRecorder = SceneRecorder(sceneView)
-     
-        // Setup Ambient Light
-        let ambientLight = SCNLight()
-        ambientLight.type = .ambient
-        ambientLight.intensity = 0
-        ambientLight.temperature = 0
-        sceneView.scene.rootNode.light = ambientLight
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -232,22 +226,42 @@ extension ScanningViewController: ARSCNViewDelegate {
 extension ScanningViewController {
     
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
-//        let particle = SCNParticleSystem(named: "MyParticle.sks", inDirectory: "art.scnassets")
-//        let particleNode = SCNNode()
-//        particleNode.addParticleSystem(particle!)
-//        sceneView.scene.rootNode.addChildNode(particleNode)
+        // light settings
+        // 若干描画が重くなるので必要なさそうなら切って！
+        // Create a ambient light
+        let ambientLight = SCNNode()
+        ambientLight.light = SCNLight()
+        ambientLight.light?.shadowMode = .deferred
+        ambientLight.light?.color = UIColor.white
+        ambientLight.light?.type = SCNLight.LightType.ambient
+        ambientLight.position = SCNVector3(x: 0,y: 5,z: 0)
+        // Create a directional light node with shadow
+        let myNode = SCNNode()
+        myNode.light = SCNLight()
+        myNode.light?.type = SCNLight.LightType.directional
+        myNode.light?.color = UIColor.white
+        myNode.light?.castsShadow = true
+        myNode.light?.automaticallyAdjustsShadowProjection = true
+        myNode.light?.shadowSampleCount = 64
+        myNode.light?.shadowRadius = 16
+        myNode.light?.shadowMode = .deferred
+        myNode.light?.shadowMapSize = CGSize(width: 2048, height: 2048)
+        myNode.light?.shadowColor = UIColor.black.withAlphaComponent(0.75)
+        myNode.position = SCNVector3(x: 0,y: 5,z: 0)
+        myNode.eulerAngles = SCNVector3(-Float.pi / 2, 0, 0)
+        // Add the lights to the container
+        node.addChildNode(ambientLight)
+        node.addChildNode(myNode)
+        // End
         
-//        let conceptNodeGroupId = "conceptNode"
-//        let conceptNodePosition = SCNVector3(0, 0.0, 0)
-//        let conceptNode = TextLabelNode(groupId: conceptNodeGroupId, text: "ああ言えば", textColor: .init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 1.0, depth: 25.0, origin: conceptNodePosition)
-//        let moveAnimation = SCNAction.moveBy(x: 2, y: 0, z: 0, duration: 10.0)
-//        let fadeInAnimation = SCNAction.fadeIn(duration: 5.0)
-//        let fadeOutAnimation = SCNAction.fadeOut(duration: 5.0)
-//        let group = SCNAction.group([moveAnimation, SCNAction.sequence([fadeInAnimation, fadeOutAnimation])])
-//        conceptNode.runAction(SCNAction.repeatForever(group))
-//
-//        addedNodes[conceptNodeGroupId] =  conceptNode
-//        node.addChildNode(conceptNode)
+
+        let particle = SCNParticleSystem(named: "bokeh.scnp", inDirectory: "art.scnassets")
+        let particleNode = SCNNode()
+        particleNode.addParticleSystem(particle!)
+        particleNode.scale = SCNVector3Make(0.5, 0.5, 0.5)
+        particleNode.position = SCNVector3(0, 0, 0)
+        sceneView.scene.rootNode.addChildNode(particleNode)
+        
         
         // Set TitleNodes
         let textLabelNodeGroupId = "TitleTextLabelNode"
