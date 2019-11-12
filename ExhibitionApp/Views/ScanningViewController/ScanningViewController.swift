@@ -38,19 +38,7 @@ final class ScanningViewController: UIViewController {
         
         sceneView.delegate = self
         sceneRecorder = SceneRecorder(sceneView)
-//
-//        // Setup Omni Light
-//        let omniLight = SCNLight()
-//        omniLight.type = .omni
-//        omniLight.intensity = 0
-//        omniLight.temperature = 0
-//        omniLight.castsShadow = true
-//
-//        let omniLightNode = SCNNode()
-//        omniLightNode.light = omniLight
-//        omniLightNode.position = SCNVector3(0,10,1)
-//        sceneView.scene.rootNode.addChildNode(omniLightNode)
-//        
+     
         // Setup Ambient Light
         let ambientLight = SCNLight()
         ambientLight.type = .ambient
@@ -144,10 +132,15 @@ final class ScanningViewController: UIViewController {
                 moveAnimation.timingMode = .easeIn
                 let group = SCNAction.group([rotateAnimation, fadeOutAnimation, moveAnimation])
 
-                markNode.runAction(SCNAction.sequence([scale1, scale2, group]))
+                //アニメーションが終わったらノードを削除
+                markNode.runAction(SCNAction.sequence([scale1, scale2, group]), completionHandler: {() -> Void in
+                    markNode.removeFromParentNode()
+                })
 
                 addedNodes[markNodeGroupId] =  markNode
                 handNode.addChildNode(markNode)
+                
+            
                 
             case .none:
                 fatalError()
