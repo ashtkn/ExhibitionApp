@@ -97,25 +97,23 @@ final class ScanningViewController: UIViewController {
                 viewModel.vote(for: handNode.handType)
                 handNode.rotateOnetimes()
                 
-                let mark: String
-                var markColor = UIColor.black
-                switch(handNode.handType){
-                case 0:
-                    mark = "♡"
-                    markColor = UIColor(240/255, 102/255, 102/255)
-                case 1:
-                    mark = "★"
-                    markColor = UIColor(255/255, 185/255, 21/255)
-                case 2:
-                    mark = "♪"
-                    markColor = UIColor(0, 138/255, 93/255)
-                default:
-                    mark = "◆"
-                }
+
                 let markNodeGroupId = "markNode"
                 let markNodePosition = SCNVector3(0, 0.1, 0)
-                        
-                let markNode = TextLabelNode(groupId: markNodeGroupId, text: mark, textColor: markColor, width: 0.03, depth: 50.0, origin: markNodePosition)
+                let markNode: TextLabelNode
+                switch(handNode.handType){
+                case 0:
+                    markNode = TextLabelNode(groupId: markNodeGroupId, text: "♡", textColor: .init(red: 240/255, green: 102/255, blue: 102/255, alpha: 1), width: 0.03, depth: 50.0, origin: markNodePosition)
+                case 1:
+                    markNode = TextLabelNode(groupId: markNodeGroupId, text: "★", textColor: .init(red: 255/255, green: 185/255, blue: 21/255, alpha: 1), width: 0.03, depth: 50.0, origin: markNodePosition)
+                case 2:
+                    markNode = TextLabelNode(groupId: markNodeGroupId, text: "♪", textColor: .init(red: 0, green: 138/255, blue: 93/255, alpha: 1), width: 0.03, depth: 50.0, origin: markNodePosition)
+                default:
+                    markNode = TextLabelNode(groupId: markNodeGroupId, text: "◆", textColor: .init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 0.03, depth: 50.0, origin: markNodePosition)
+                }
+                markNode.eulerAngles.x = .random(in: 0..<360)
+                markNode.eulerAngles.y = .random(in: 0..<360)
+                markNode.eulerAngles.z = .random(in: 0..<360)
                 
                 let scale1 = SCNAction.scale(by: 1.2, duration: 0.2)
                 let scale2 = SCNAction.scale(to: 1.0, duration: 0.1)
@@ -139,9 +137,7 @@ final class ScanningViewController: UIViewController {
 
                 addedNodes[markNodeGroupId] =  markNode
                 handNode.addChildNode(markNode)
-                
-            
-                
+
             case .none:
                 fatalError()
                 
@@ -236,6 +232,22 @@ extension ScanningViewController: ARSCNViewDelegate {
 extension ScanningViewController {
     
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
+//        let particle = SCNParticleSystem(named: "MyParticle.sks", inDirectory: "art.scnassets")
+//        let particleNode = SCNNode()
+//        particleNode.addParticleSystem(particle!)
+//        sceneView.scene.rootNode.addChildNode(particleNode)
+        
+//        let conceptNodeGroupId = "conceptNode"
+//        let conceptNodePosition = SCNVector3(0, 0.0, 0)
+//        let conceptNode = TextLabelNode(groupId: conceptNodeGroupId, text: "ああ言えば", textColor: .init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 1.0, depth: 25.0, origin: conceptNodePosition)
+//        let moveAnimation = SCNAction.moveBy(x: 2, y: 0, z: 0, duration: 10.0)
+//        let fadeInAnimation = SCNAction.fadeIn(duration: 5.0)
+//        let fadeOutAnimation = SCNAction.fadeOut(duration: 5.0)
+//        let group = SCNAction.group([moveAnimation, SCNAction.sequence([fadeInAnimation, fadeOutAnimation])])
+//        conceptNode.runAction(SCNAction.repeatForever(group))
+//
+//        addedNodes[conceptNodeGroupId] =  conceptNode
+//        node.addChildNode(conceptNode)
         
         // Set TitleNodes
         let textLabelNodeGroupId = "TitleTextLabelNode"
