@@ -93,7 +93,7 @@ final class ScanningViewController: UIViewController {
                 
 
                 let markNodeGroupId = "markNode"
-                let markNodePosition = SCNVector3(0, 0.1, 0)
+                let markNodePosition = SCNVector3(0, 0.2, 0)
                 let markNode: TextLabelNode
                 switch(handNode.handType){
                 case 0:
@@ -254,14 +254,29 @@ extension ScanningViewController {
         node.addChildNode(myNode)
         // End
         
-
-        let particle = SCNParticleSystem(named: "bokeh.scnp", inDirectory: "art.scnassets")
-        let particleNode = SCNNode()
-        particleNode.addParticleSystem(particle!)
-        particleNode.scale = SCNVector3Make(0.5, 0.5, 0.5)
-        particleNode.position = SCNVector3(0, 0, 0)
-        sceneView.scene.rootNode.addChildNode(particleNode)
+        // Set ConceptNodes
+        let conceptNodeGroupId = "conceptLabelNode"
+        let conceptNodePosition = SCNVector3(-0.5, 1.6, -3)
         
+        let conceptNode = TextLabelNode(groupId: conceptNodeGroupId, text: "ああ言えばこう言う", textColor: .init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 5.0, depth: 50.0, origin: conceptNodePosition)
+        let moveAnimation = SCNAction.moveBy(x: 2, y: -1, z: 0, duration: 5.0)
+        moveAnimation.timingMode = .easeIn
+        let animation = SCNAction.repeatForever(SCNAction.sequence([moveAnimation, moveAnimation
+            .reversed()]))
+        conceptNode.runAction(animation)
+
+        addedNodes[conceptNodeGroupId] = conceptNode
+        node.addChildNode(conceptNode)
+        
+        let conceptNode2GroupId = "concept2LabelNode"
+        let conceptNode2Position = SCNVector3(0.5, 1.6, -3)
+        let conceptNode2 = TextLabelNode(groupId: conceptNode2GroupId, text: "こう言えばどう言う", textColor: .init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 5.0, depth: 50.0, origin: conceptNode2Position)
+        let moveAnimation2 = SCNAction.moveBy(x: -2, y: 1, z: 0, duration: 5.0)
+        moveAnimation2.timingMode = .easeIn
+        let animation2 = SCNAction.repeatForever(SCNAction.sequence([moveAnimation2, moveAnimation2.reversed()]))
+        conceptNode2.runAction(animation2)
+        addedNodes[conceptNodeGroupId] = conceptNode2
+        node.addChildNode(conceptNode2)
         
         // Set TitleNodes
         let textLabelNodeGroupId = "TitleTextLabelNode"
