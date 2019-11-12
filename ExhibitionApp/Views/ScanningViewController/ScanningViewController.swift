@@ -38,6 +38,25 @@ final class ScanningViewController: UIViewController {
         
         sceneView.delegate = self
         sceneRecorder = SceneRecorder(sceneView)
+//
+//        // Setup Omni Light
+//        let omniLight = SCNLight()
+//        omniLight.type = .omni
+//        omniLight.intensity = 0
+//        omniLight.temperature = 0
+//        omniLight.castsShadow = true
+//
+//        let omniLightNode = SCNNode()
+//        omniLightNode.light = omniLight
+//        omniLightNode.position = SCNVector3(0,10,1)
+//        sceneView.scene.rootNode.addChildNode(omniLightNode)
+//        
+        // Setup Ambient Light
+        let ambientLight = SCNLight()
+        ambientLight.type = .ambient
+        ambientLight.intensity = 0
+        ambientLight.temperature = 0
+        sceneView.scene.rootNode.light = ambientLight
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +109,46 @@ final class ScanningViewController: UIViewController {
                 viewModel.vote(for: handNode.handType)
                 handNode.rotateOnetimes()
                 
+                let mark: String
+                var markColor = UIColor.black
+                switch(handNode.handType){
+                case 0:
+                    mark = "♡"
+                    markColor = UIColor(240/255, 102/255, 102/255)
+                case 1:
+                    mark = "★"
+                    markColor = UIColor(255/255, 185/255, 21/255)
+                case 2:
+                    mark = "♪"
+                    markColor = UIColor(0, 138/255, 93/255)
+                default:
+                    mark = "◆"
+                }
+                let markNodeGroupId = "markNode"
+                let markNodePosition = SCNVector3(0, 0.1, 0)
+                        
+                let markNode = TextLabelNode(groupId: markNodeGroupId, text: mark, textColor: markColor, width: 0.03, depth: 50.0, origin: markNodePosition)
+                
+                let scale1 = SCNAction.scale(by: 1.2, duration: 0.2)
+                let scale2 = SCNAction.scale(to: 1.0, duration: 0.1)
+                scale2.timingMode = .easeOut
+                //let sleep = SCNAction.wait(duration: 0.2)
+
+                let rotateAnimation = SCNAction.rotateBy(x: 0, y: 10 * .pi, z: 0, duration: 5.0)
+                rotateAnimation.timingMode = .easeInEaseOut
+                rotateAnimation.timingMode = .easeIn
+
+                let fadeOutAnimation =  SCNAction.fadeOut(duration: 8.0)
+
+                let moveAnimation = SCNAction.moveBy(x: 0, y: 2, z: 0, duration: 5.0)
+                moveAnimation.timingMode = .easeIn
+                let group = SCNAction.group([rotateAnimation, fadeOutAnimation, moveAnimation])
+
+                markNode.runAction(SCNAction.sequence([scale1, scale2, group]))
+
+                addedNodes[markNodeGroupId] =  markNode
+                handNode.addChildNode(markNode)
+                
             case .none:
                 fatalError()
                 
@@ -97,41 +156,6 @@ final class ScanningViewController: UIViewController {
                 let point = SCNVector3.init(hitTestResult.worldCoordinates.x,
                 hitTestResult.worldCoordinates.y,
                 hitTestResult.worldCoordinates.z)
-                
-                let heartNodeGroupId = "HeartNode"
-            
-                let heart = SCNText(string: "♡", extrusionDepth: 3)
-                heart.chamferRadius = 2.0
-                heart.font = UIFont(name: "rounded-mplus-1c-medium", size: 100)
-                let heartNode = SCNNode(geometry: heart)
-
-                heartNode.position = point
-                
-                heartNode.geometry?.materials.append(SCNMaterial())
-                heartNode.geometry?.materials.first?.diffuse.contents = UIColor.init(red: 240/255, green: 102/255, blue: 102/255, alpha: 1)
-                
-                heartNode.scale = SCNVector3(0.05, 0.05, 0.05)
-                let scale1 = SCNAction.scale(to: 0.13, duration: 0.2)
-                let scale2 = SCNAction.scale(to: 0.1, duration: 0.1)
-                scale2.timingMode = .easeOut
-                let sleep = SCNAction.wait(duration: 0.1)
-                
-                let rotateAnimation = SCNAction.rotateBy(x: 0, y: 10 * .pi, z: 0, duration: 5.0)
-                rotateAnimation.timingMode = .easeInEaseOut
-                rotateAnimation.timingMode = .easeIn
-                
-                let fadeOutAnimation =  SCNAction.fadeOut(duration: 5.0)
-                
-                let moveAnimation = SCNAction.moveBy(x: 0, y: 10, z: 0, duration: 5.0)
-                moveAnimation.timingMode = .easeIn
-                let group = SCNAction.group([rotateAnimation, fadeOutAnimation, moveAnimation])
-                
-                heartNode.runAction(SCNAction.sequence([scale1, scale2, sleep, group]))
-                
-                addedNodes[heartNodeGroupId] = heartNode
-                sceneView.scene.rootNode.addChildNode(heartNode)
-                //TODO: animationが終わったらnodeを削除
-                
             }
         }
     }
