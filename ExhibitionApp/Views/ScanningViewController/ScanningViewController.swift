@@ -91,7 +91,6 @@ final class ScanningViewController: UIViewController {
                 viewModel.vote(for: handNode.handType)
                 handNode.rotateOnetimes()
                 
-
                 let markNodeGroupId = "markNode"
                 let markNodePosition = SCNVector3(0, 0.2, 0)
                 let markNode: TextLabelNode
@@ -136,9 +135,8 @@ final class ScanningViewController: UIViewController {
                 fatalError()
                 
             default:
-                let point = SCNVector3.init(hitTestResult.worldCoordinates.x,
-                hitTestResult.worldCoordinates.y,
-                hitTestResult.worldCoordinates.z)
+                break
+                //let point = SCNVector3.init(hitTestResult.worldCoordinates.x, hitTestResult.worldCoordinates.y, hitTestResult.worldCoordinates.z)
             }
         }
     }
