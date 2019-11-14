@@ -9,4 +9,8 @@ struct Author: Codable, Equatable, Hashable {
     static func ==(lhs: Author, rhs: Author) -> Bool {
         return lhs.name == rhs.name
     }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
 }

@@ -29,6 +29,11 @@ struct Work: Codable, Equatable, Hashable {
         return lhs.id == rhs.id && lhs.version == rhs.version
     }
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(version)
+    }
+    
     func has(resource name: String) -> Bool {
         return resources.first(where: { $0.file.base == name} ) != nil
     }

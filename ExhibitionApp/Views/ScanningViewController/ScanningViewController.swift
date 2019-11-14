@@ -38,6 +38,7 @@ final class ScanningViewController: UIViewController {
         
         sceneView.delegate = self
         sceneRecorder = SceneRecorder(sceneView)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,48 +91,52 @@ final class ScanningViewController: UIViewController {
                 viewModel.vote(for: handNode.handType)
                 handNode.rotateOnetimes()
                 
+                let markNodeGroupId = "markNode"
+                let markNodePosition = SCNVector3(0, 0.2, 0)
+                let markNode: TextLabelNode
+                switch(handNode.handType){
+                case 0:
+                    markNode = TextLabelNode(groupId: markNodeGroupId, text: "♡", textColor: .init(red: 240/255, green: 102/255, blue: 102/255, alpha: 1), width: 0.03, depth: 50.0, origin: markNodePosition)
+                case 1:
+                    markNode = TextLabelNode(groupId: markNodeGroupId, text: "★", textColor: .init(red: 255/255, green: 185/255, blue: 21/255, alpha: 1), width: 0.03, depth: 50.0, origin: markNodePosition)
+                case 2:
+                    markNode = TextLabelNode(groupId: markNodeGroupId, text: "♪", textColor: .init(red: 0, green: 138/255, blue: 93/255, alpha: 1), width: 0.03, depth: 50.0, origin: markNodePosition)
+                default:
+                    markNode = TextLabelNode(groupId: markNodeGroupId, text: "◆", textColor: .init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 0.03, depth: 50.0, origin: markNodePosition)
+                }
+                markNode.eulerAngles.x = .random(in: 0..<360)
+                markNode.eulerAngles.y = .random(in: 0..<360)
+                markNode.eulerAngles.z = .random(in: 0..<360)
+                
+                let scale1 = SCNAction.scale(by: 1.2, duration: 0.2)
+                let scale2 = SCNAction.scale(to: 1.0, duration: 0.1)
+                scale2.timingMode = .easeOut
+                //let sleep = SCNAction.wait(duration: 0.2)
+
+                let rotateAnimation = SCNAction.rotateBy(x: 0, y: 10 * .pi, z: 0, duration: 5.0)
+                rotateAnimation.timingMode = .easeInEaseOut
+                rotateAnimation.timingMode = .easeIn
+
+                let fadeOutAnimation =  SCNAction.fadeOut(duration: 8.0)
+
+                let moveAnimation = SCNAction.moveBy(x: 0, y: 2, z: 0, duration: 5.0)
+                moveAnimation.timingMode = .easeIn
+                let group = SCNAction.group([rotateAnimation, fadeOutAnimation, moveAnimation])
+
+                //アニメーションが終わったらノードを削除
+                markNode.runAction(SCNAction.sequence([scale1, scale2, group]), completionHandler: {() -> Void in
+                    markNode.removeFromParentNode()
+                })
+
+                addedNodes[markNodeGroupId] =  markNode
+                handNode.addChildNode(markNode)
+
             case .none:
                 fatalError()
                 
             default:
-                let point = SCNVector3.init(hitTestResult.worldCoordinates.x,
-                hitTestResult.worldCoordinates.y,
-                hitTestResult.worldCoordinates.z)
-                
-                let heartNodeGroupId = "HeartNode"
-            
-                let heart = SCNText(string: "♡", extrusionDepth: 3)
-                heart.chamferRadius = 2.0
-                heart.font = UIFont(name: "rounded-mplus-1c-medium", size: 100)
-                let heartNode = SCNNode(geometry: heart)
-
-                heartNode.position = point
-                
-                heartNode.geometry?.materials.append(SCNMaterial())
-                heartNode.geometry?.materials.first?.diffuse.contents = UIColor.init(red: 240/255, green: 102/255, blue: 102/255, alpha: 1)
-                
-                heartNode.scale = SCNVector3(0.05, 0.05, 0.05)
-                let scale1 = SCNAction.scale(to: 0.13, duration: 0.2)
-                let scale2 = SCNAction.scale(to: 0.1, duration: 0.1)
-                scale2.timingMode = .easeOut
-                let sleep = SCNAction.wait(duration: 0.1)
-                
-                let rotateAnimation = SCNAction.rotateBy(x: 0, y: 10 * .pi, z: 0, duration: 5.0)
-                rotateAnimation.timingMode = .easeInEaseOut
-                rotateAnimation.timingMode = .easeIn
-                
-                let fadeOutAnimation =  SCNAction.fadeOut(duration: 5.0)
-                
-                let moveAnimation = SCNAction.moveBy(x: 0, y: 10, z: 0, duration: 5.0)
-                moveAnimation.timingMode = .easeIn
-                let group = SCNAction.group([rotateAnimation, fadeOutAnimation, moveAnimation])
-                
-                heartNode.runAction(SCNAction.sequence([scale1, scale2, sleep, group]))
-                
-                addedNodes[heartNodeGroupId] = heartNode
-                sceneView.scene.rootNode.addChildNode(heartNode)
-                //TODO: animationが終わったらnodeを削除
-                
+                break
+                //let point = SCNVector3.init(hitTestResult.worldCoordinates.x, hitTestResult.worldCoordinates.y, hitTestResult.worldCoordinates.z)
             }
         }
     }
@@ -219,6 +224,57 @@ extension ScanningViewController: ARSCNViewDelegate {
 extension ScanningViewController {
     
     private func addNode(to node: SCNNode, for anchor: ARAnchor, work: Work) {
+        // light settings
+        // 若干描画が重くなるので必要なさそうなら切って！
+        // Create a ambient light
+        let ambientLight = SCNNode()
+        ambientLight.light = SCNLight()
+        ambientLight.light?.shadowMode = .deferred
+        ambientLight.light?.color = UIColor.white
+        ambientLight.light?.type = SCNLight.LightType.ambient
+        ambientLight.position = SCNVector3(x: 0,y: 5,z: 0)
+        // Create a directional light node with shadow
+        let myNode = SCNNode()
+        myNode.light = SCNLight()
+        myNode.light?.type = SCNLight.LightType.directional
+        myNode.light?.color = UIColor.white
+        myNode.light?.castsShadow = true
+        myNode.light?.automaticallyAdjustsShadowProjection = true
+        myNode.light?.shadowSampleCount = 64
+        myNode.light?.shadowRadius = 16
+        myNode.light?.shadowMode = .deferred
+        myNode.light?.shadowMapSize = CGSize(width: 2048, height: 2048)
+        myNode.light?.shadowColor = UIColor.black.withAlphaComponent(0.75)
+        myNode.position = SCNVector3(x: 0,y: 5,z: 0)
+        myNode.eulerAngles = SCNVector3(-Float.pi / 2, 0, 0)
+        // Add the lights to the container
+        node.addChildNode(ambientLight)
+        node.addChildNode(myNode)
+        // End
+        
+        // Set ConceptNodes
+        let conceptNodeGroupId = "conceptLabelNode"
+        let conceptNodePosition = SCNVector3(-0.5, 1.6, -3)
+        
+        let conceptNode = TextLabelNode(groupId: conceptNodeGroupId, text: "ああ言えばこう言う", textColor: .init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 5.0, depth: 50.0, origin: conceptNodePosition)
+        let moveAnimation = SCNAction.moveBy(x: 2, y: -1, z: 0, duration: 5.0)
+        moveAnimation.timingMode = .easeIn
+        let animation = SCNAction.repeatForever(SCNAction.sequence([moveAnimation, moveAnimation
+            .reversed()]))
+        conceptNode.runAction(animation)
+
+        addedNodes[conceptNodeGroupId] = conceptNode
+        node.addChildNode(conceptNode)
+        
+        let conceptNode2GroupId = "concept2LabelNode"
+        let conceptNode2Position = SCNVector3(0.5, 1.6, -3)
+        let conceptNode2 = TextLabelNode(groupId: conceptNode2GroupId, text: "こう言えばどう言う", textColor: .init(red: 0, green: 130/255, blue: 180/255, alpha: 1), width: 5.0, depth: 50.0, origin: conceptNode2Position)
+        let moveAnimation2 = SCNAction.moveBy(x: -2, y: 1, z: 0, duration: 5.0)
+        moveAnimation2.timingMode = .easeIn
+        let animation2 = SCNAction.repeatForever(SCNAction.sequence([moveAnimation2, moveAnimation2.reversed()]))
+        conceptNode2.runAction(animation2)
+        addedNodes[conceptNodeGroupId] = conceptNode2
+        node.addChildNode(conceptNode2)
         
         // Set TitleNodes
         let textLabelNodeGroupId = "TitleTextLabelNode"

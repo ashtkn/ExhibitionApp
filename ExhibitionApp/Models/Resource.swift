@@ -10,4 +10,13 @@ struct Resource: Codable, Equatable, Hashable {
         let ext = filename.components(separatedBy: ".").last!
         return (base, ext)
     }
+    
+    static func ==(lhs: Resource, rhs: Resource) -> Bool {
+        return lhs.type == rhs.type && lhs.filename == rhs.filename
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(type)
+        hasher.combine(filename)
+    }
 }
