@@ -10,6 +10,8 @@ ExhibitionApp (制作展アプリ) enriches your experience at III EXHIBITION he
 
 制作展ウェブサイト: http://iiiexhibition.com/
 
+アプリ使用の様子: https://youtu.be/fe0_cMPLUwc
+
 III EXHIBITION Website (Japanese): http://iiiexhibition.com/
 
 ## Features
