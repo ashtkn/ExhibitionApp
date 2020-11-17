@@ -17,20 +17,13 @@ final class TextLabelNode: SCNNode {
     }
     
     func doAnimation() {
-        let changeColor = SCNAction.customAction(duration: 10) { (node, elapsedTime) -> () in
-            let percentage = elapsedTime / 5
-            let color = UIColor(red: 1 - percentage, green: percentage, blue: 0, alpha: 1)
-            super.geometry?.materials.first?.diffuse.contents = color
-        }
-        changeColor.timingMode = .easeInEaseOut
-        
-        let colorAnimation = SCNAction.sequence([ changeColor, changeColor.reversed() ])
-
+        let moveAnimation = SCNAction.moveBy(x: 0, y: 0.1, z: 0, duration: 0.5)
+        moveAnimation.timingMode = .easeIn
+        let move = SCNAction.sequence([moveAnimation, moveAnimation.reversed()])
         let rotateAnimation = SCNAction.rotateBy(x: 0, y: 2 * .pi, z: 0, duration: 1)
         rotateAnimation.timingMode = .easeInEaseOut
         
-        let group = SCNAction.group([colorAnimation, rotateAnimation])
-        super.runAction(group)
+        super.runAction(SCNAction.group([move, rotateAnimation]))
     }
     
     init(groupId name: String, text: String, textColor: UIColor, width: CGFloat, depth: CGFloat, origin originalPosition: SCNVector3 = .init()) {
